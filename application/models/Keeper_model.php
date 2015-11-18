@@ -1,17 +1,19 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Keeper_model extends CI_Model{
-	private $number;
+	private $keeperid;
 	private $username;
 	private $password;
-	private $firstname;
-	private $lastname;
+	private $fname;
+	private $lname;
+	private $telephone;
+	private $email;
 
 	public function __construct(){
 		parent::__construct();
 	}
-	public function set_number($number){
-		$this->number = $number;
+	public function set_keeperid($keeperid){
+		$this->keeperid = $keeperid;
 	}
 	public function set_username($username){
 		$this->username = $username;
@@ -19,14 +21,20 @@ class Keeper_model extends CI_Model{
 	public function set_password($password){
 		$this->password = $password;
 	}
-	public function set_firstname($firstname){
-		$this->firstname = $firstname;
+	public function set_fname($fname){
+		$this->fname = $fname;
 	}
-	public function set_lastname($lastname){
-		$this->lastname = $lastname;
+	public function set_lname($lname){
+		$this->lname = $lname;
 	}
-	public function get_number(){
-		return $this->number;
+	public function set_telephone($telephone){
+		$this->telephone = $telephone;
+	}
+	public function set_email($email){
+		$this->email = $email;
+	}
+	public function get_keeperid(){
+		return $this->keeperid;
 	}
 	public function get_username(){
 		return $this->username;
@@ -34,11 +42,17 @@ class Keeper_model extends CI_Model{
 	public function get_password(){
 		return $this->password;
 	}
-	public function get_firstname(){
-		return $this->firstname;
+	public function get_fname(){
+		return $this->fname;
 	}
-	public function get_lastname(){
-		return $this->lastname;
+	public function get_lname(){
+		return $this->lname;
+	}
+	public function get_telephone(){
+		return $this->telephone;
+	}
+	public function get_email(){
+		return $this->email;
 	}
 	public function get_data(){
 		return "NingSama";
@@ -65,4 +79,5 @@ class Keeper_model extends CI_Model{
 		}
 		return $keepers;
 	}
+
 }

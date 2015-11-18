@@ -1,0 +1,5 @@
+1. Simple form for every attribute user input
+2. ID got from row count +1 (Get auto ID)
+3. after submit, password changed into MD5 before save
+
+Work after dad's work
