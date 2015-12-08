@@ -1,5 +1,17 @@
+(1)
 1. Simple form for every attribute user input
 2. ID got from row count +1 (Get auto ID)
 3. after submit, password changed into MD5 before save
 
 Work after dad's work
+
+(2)
+สร้าง login.php ใน view
+เขียนให้มีการ login และ authen password โดยการแปลงเป็น md5 ก่อน
+แล้วให้เซฟลง session+cookie พร้อมกับมีปุ่ม logout พร้อมกับ welcome [ชื่อ firstname] + [lastname]
+logout ต้องเคลียร์ cookie และ session
+แล้วก็เขียนให้มีการสร้าง [ลืม password]
+วิธีการทำแบบง่ายๆ
+ให้ใส่ email แล้วไปเช็คว่ามีในระบบรึเปล่า
+ถ้ามีก็บอกว่าส่ง Mail ไปแล้ว
+ถ้าไม่มีก็บอกว่า email ไม่มีในระบบ แล้วก็ให้ใส่ email ใหม่
