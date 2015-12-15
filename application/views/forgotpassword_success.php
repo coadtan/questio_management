@@ -8,6 +8,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 	<h2>E-Mail has been sent.</h2>
-	<a href="login">Back</a>
+	<a href="<?=base_url('login')?>">Back</a>
 </body>
 </html>

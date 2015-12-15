@@ -6,7 +6,7 @@ class Addplace extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->library('form_validation');
-		$this->load->model('Keeper_model');
+		$this->load->model('Place_model');
 	}
 
 	public function index(){
@@ -18,6 +18,7 @@ class Addplace extends CI_Controller {
 	}
 
 	public function addplacecheck(){
+		$place = $this->Place_model;
 		$placename = $_POST['placename'];
 		$placefullname = $_POST['placefullname'];
 		$latitude = $_POST['latitude'];
@@ -33,18 +34,19 @@ class Addplace extends CI_Controller {
 		$this->form_validation->set_rules('placetype', 'placetype', 'required|alpha_numeric');
 	
 		if ($this->form_validation->run()==TRUE){
-			$this->db->set('placename', $placename);
-			$this->db->set('placefullname', $placefullname);
-			$this->db->set('latitude', $latitude);
-			$this->db->set('longitude', $longitude);
-			$this->db->set('radius', $radius);
-			$this->db->set('placetype', $placetype);
-			$this->db->insert('place');
-			$this->load->view(
-			'addplace_page',array(
-				'message' => 'Add Place successful.'
-				)
-			);
+			if($place->addplace($placename, $placefullname, null, null, $latitude, $longitude, $radius, $placetype, null, null, null)==TRUE){
+				$this->load->view(
+					'addplace_page',array(
+					'message' => 'Add Place successful.'
+					)
+				);
+			}else{
+				$this->load->view(
+					'addplace_page',array(
+					'message' => 'Add Place failed.'
+					)
+				);
+			}
 		}else{
 			$this->load->view(
 			'addplace_page',array(

@@ -79,7 +79,6 @@ class Keeper_model extends CI_Model{
 		}
 		return $keepers;
 	}
-
 	public function login_check($username, $password){
 		$this->db->select('*');
 		$this->db->from('keeper');
@@ -93,7 +92,6 @@ class Keeper_model extends CI_Model{
 			return false;
 		}
 	}
-
 	public function email_check($email){
 		$this->db->select('*');
 		$this->db->from('keeper');
@@ -104,6 +102,28 @@ class Keeper_model extends CI_Model{
 			return $query->result();
 		}else{
 			return false;
+		}
+	}
+	public function addkeeper($keeperid, $username, $password, $fname, $lname, $telephone, $email){
+		$keeper_obj = array(
+			'keeperid' => $keeperid,
+			'username' => $username,
+			'password' => md5($password),
+			'fname' => $fname,
+			'lname' => $lname,
+			'telephone' => $telephone,
+			'email' => $email,
+			);
+
+		$this->db->trans_start();
+		$this->db->insert('keeper',$keeper_obj);
+		$this->db->trans_complete();
+		if ($this->db->trans_status() === FALSE){
+    		$this->db->trans_rollback();
+    		return false;
+		}else{
+			$this->db->trans_commit();
+			return true;
 		}
 	}
 

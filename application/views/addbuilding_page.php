@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<h1>Add Buildings</h1>
 
 	<h2 style='color:red'><?=$message?></h2>
-	<form action="/questio_management/index.php/addbuilding/addbuildingcheck" method="POST">
+	<?= form_open('addbuilding/addbuildingcheck')?>
 		Building Name*:
 		<i>Must be less than 140 characters</i>
 		 <input type="text" name="buildingname" id="buildingname" size="50"><br>
@@ -25,6 +25,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<input type="text" name="radius" id="radius"><br>
 		<input type="submit" value="Submit">
 	</form>
-	<a href="/questio_management/index.php/mainpage">Go Back</a>
+	<a href="<?=base_url('mainpage')?>">Go Back</a>
 </body>
 </html>

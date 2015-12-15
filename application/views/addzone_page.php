@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<h1>Add Zones</h1>
 
 	<h2 style='color:red'><?=$message?></h2>
-	<form action="/questio_management/index.php/addzone/addzonecheck" method="POST">
+	<?= form_open('addzone/addzonecheck')?>
 		Zone Name*:
 		<i>Must be less than 100 characters</i>
 		 <input type="text" name="zonename" id="zonename" size="50"><br>
@@ -25,6 +25,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</textarea><br>
 		<input type="submit" value="Submit">
 	</form>
-	<a href="/questio_management/index.php/mainpage">Go Back</a>
+	<a href="<?=base_url('mainpage')?>">Go Back</a>
 </body>
 </html>

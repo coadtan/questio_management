@@ -6,11 +6,13 @@ class Addfloor extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->library('form_validation');
-		$this->load->model('Keeper_model');
+		$this->load->model('Building_model');
+		$this->load->model('Floor_model');
+		$this->load->helper('form');
 	}
 
 	public function index(){
-		$buildingdata = $this->getbuildingdata();
+		$buildingdata = $this->Building_model->getbuildingdata();
 		$this->load->view(
 			'addfloor_page',array(
 				'message' => "",
@@ -20,22 +22,29 @@ class Addfloor extends CI_Controller {
 	}
 
 	public function addfloorcheck(){
-		$buildingdata = $this->getbuildingdata();
+		$buildingdata = $this->Building_model->getbuildingdata();
+		$floor = $this->Floor_model;
 		$buildingid = $_POST['buildingid'];
 		$floorname = $_POST['floorname'];
 
 		$this->form_validation->set_rules('floorname', 'floorname', 'required|max_length[100]');
 	
 		if ($this->form_validation->run()==TRUE){
-			$this->db->set('buildingid', $buildingid);
-			$this->db->set('floorname', $floorname);
-			$this->db->insert('floor');
-			$this->load->view(
-			'addfloor_page',array(
-				'message' => 'Add floor successful.',
-				'buildingdata' => $buildingdata
-				)
-			);
+			if($floor->addfloor($buildingid, $floorname, null, null, null)==TRUE){
+					$this->load->view(
+					'addfloor_page',array(
+					'message' => 'Add floor successful.',
+					'buildingdata' => $buildingdata
+					)
+				);
+			}else{
+				$this->load->view(
+					'addfloor_page',array(
+					'message' => 'Add floor failed.',
+					'buildingdata' => $buildingdata
+					)
+				);
+			}
 		}else{
 			$this->load->view(
 			'addfloor_page',array(
@@ -46,19 +55,5 @@ class Addfloor extends CI_Controller {
 		}
 	}
 
-	function getbuildingdata(){
-		$buildings = null;
-		$this->db->select('*');
-		$this->db->from('building');
-		$query = $this->db->get();
-		if ($query->num_rows() >= 1){
-			$places = array();
-			foreach($query->result_array() as $row){
-				$buildings[$row['buildingid']] = $row['buildingname'];
-			}
-		}else{
-			echo "No data in query at 'getbuildingdata'";
-		}
-		return $buildings;
-	}
+	
 }

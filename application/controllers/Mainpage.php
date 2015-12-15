@@ -5,6 +5,7 @@ class Mainpage extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
+		$this->load->library('session');
 	}
 
 	public function index(){
@@ -23,4 +24,6 @@ class Mainpage extends CI_Controller {
 		session_destroy();
 		redirect('mainpage','refresh');
 	}
+
+	
 }

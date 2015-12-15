@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<h1>Add Floors</h1>
 
 	<h2 style='color:red'><?=$message?></h2>
-	<form action="/questio_management/index.php/addfloor/addfloorcheck" method="POST">
+	<?= form_open('addfloor/addfloorcheck')?>
 		Floor Name*:
 		<i>Must be less than 100 characters</i>
 		 <input type="text" name="floorname" id="floorname" size="50"><br>
@@ -19,6 +19,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 <br>
 		<input type="submit" value="Submit">
 	</form>
-	<a href="/questio_management/index.php/mainpage">Go Back</a>
+	<a href="<?=base_url('mainpage')?>">Go Back</a>
 </body>
 </html>

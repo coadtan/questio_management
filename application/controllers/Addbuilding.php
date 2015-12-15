@@ -6,11 +6,13 @@ class Addbuilding extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->library('form_validation');
-		$this->load->model('Keeper_model');
+		$this->load->model('Building_model');
+		$this->load->model('Place_model');
+		$this->load->helper('form');
 	}
 
 	public function index(){
-		$placedata = $this->getplacedata();
+		$placedata = $this->Place_model->getplacedata();
 		$this->load->view(
 			'addbuilding_page',array(
 				'message' => "",
@@ -20,7 +22,8 @@ class Addbuilding extends CI_Controller {
 	}
 
 	public function addbuildingcheck(){
-		$placedata = $this->getplacedata();
+		$placedata = $this->Place_model->getplacedata();
+		$building = $this->Building_model;
 		$placeid = $_POST['placeid'];
 		$buildingname = $_POST['buildingname'];
 		$latitude = $_POST['latitude'];
@@ -33,18 +36,22 @@ class Addbuilding extends CI_Controller {
 		$this->form_validation->set_rules('radius', 'radius', 'required|numeric');
 	
 		if ($this->form_validation->run()==TRUE){
-			$this->db->set('placeid', $placeid);
-			$this->db->set('buildingname', $buildingname);
-			$this->db->set('latitude', $latitude);
-			$this->db->set('longitude', $longitude);
-			$this->db->set('radius', $radius);
-			$this->db->insert('building');
-			$this->load->view(
-			'addbuilding_page',array(
-				'message' => 'Add building successful.',
-				'placedata' => $placedata
-				)
-			);
+			if($building->addbuilding($placeid, $buildingname, $latitude,$longitude, $radius, null)==TRUE){
+				$this->load->view(
+					'addbuilding_page',array(
+					'message' => 'Add building successful.',
+					'placedata' => $placedata
+					)
+				);
+			}else{
+				$this->load->view(
+					'addbuilding_page',array(
+					'message' => 'Add building failed.',
+					'placedata' => $placedata
+					)
+				);
+			}
+			
 		}else{
 			$this->load->view(
 			'addbuilding_page',array(
@@ -55,19 +62,5 @@ class Addbuilding extends CI_Controller {
 		}
 	}
 
-	function getplacedata(){
-		$places = null;
-		$this->db->select('*');
-		$this->db->from('place');
-		$query = $this->db->get();
-		if ($query->num_rows() >= 1){
-			$places = array();
-			foreach($query->result_array() as $row){
-				$places[$row['placeid']] = $row['placename'];
-			}
-		}else{
-			echo "No data in query at 'getplacedata'";
-		}
-		return $places;
-	}
+	
 }

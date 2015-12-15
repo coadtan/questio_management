@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<br/>
 		<input type="submit" value="login">
 	</form>
-	<a href="register">Register</a>
-	<a href="forgotpassword">Forgot password?</a>
+	<a href="<?=base_url('register')?>">Register</a>
+	<a href="<?=base_url('forgotpassword')?>">Forgot password?</a>
 </body>
 </html>

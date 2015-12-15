@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<h1>Keeper Registeration</h1>
 
 	<h2 style='color:red'><?=$message?></h2>
-	<form action="updatecheck" method="POST">
+	<?= form_open('register/updatecheck')?>
 		Username*:
 		<i>Must be 3-16 characters</i>
 		 <input type="text" name="username" id="username"><br>
