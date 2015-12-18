@@ -74,10 +74,11 @@ class Building_model extends CI_Model{
 			return true;
 		}
 	}
-	public function getbuildingdata(){
+	public function getbuildingdata($keeperid){
 		$buildings = null;
 		$this->db->select('*');
 		$this->db->from('building');
+		$this->db->where('placeid IN (SELECT placeid FROM management WHERE keeperid = '.$keeperid.')');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
 			$places = array();

@@ -24,7 +24,9 @@ class Addplace extends CI_Controller {
 		$latitude = $_POST['latitude'];
 		$longitude = $_POST['longitude'];
 		$radius = $_POST['radius'];
-		$placetype = $_POST['placetype'];	
+		$placetype = $_POST['placetype'];
+		$qrcode = $place->getqrcode();
+		$sensorid = $place->getsensorid();
 
 		$this->form_validation->set_rules('placename', 'placename', 'required|max_length[50]');
 		$this->form_validation->set_rules('placefullname', 'placefullname', 'required|max_length[255]');
@@ -34,7 +36,7 @@ class Addplace extends CI_Controller {
 		$this->form_validation->set_rules('placetype', 'placetype', 'required|alpha_numeric');
 	
 		if ($this->form_validation->run()==TRUE){
-			if($place->addplace($placename, $placefullname, null, null, $latitude, $longitude, $radius, $placetype, null, null, null)==TRUE){
+			if($place->addplace($placename, $placefullname, $qrcode, $sensorid, $latitude, $longitude, $radius, $placetype, null, null, null)==TRUE){
 				$this->load->view(
 					'addplace_page',array(
 					'message' => 'Add Place successful.'

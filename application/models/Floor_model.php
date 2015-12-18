@@ -66,10 +66,11 @@ class Floor_model extends CI_Model{
 			return true;
 		}
 	}
-	public function getfloordata(){
+	public function getfloordata($keeperid){
 		$floor = null;
 		$this->db->select('*');
 		$this->db->from('floor');
+		$this->db->where('buildingid IN (SELECT buildingid FROM building WHERE placeid IN (SELECT placeid FROM management WHERE keeperid = '.$keeperid.'))');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
 			$places = array();
@@ -80,6 +81,38 @@ class Floor_model extends CI_Model{
 			echo "No data in query at 'getfloordata'";
 		}
 		return $floor;
+	}
+
+	public function getqrcode(){
+		$qrcode = null;
+		$this->db->select_max('qrcode', 'currentqr');
+		$this->db->from('floor');
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			foreach($query->result_array() as $row){
+				$qrcode = $row['currentqr'];
+				$qrcode++;
+			}
+		}else{
+			echo "No data in query at 'getqrcode'";
+		}
+		return $qrcode;
+	}
+
+	public function getsensorid(){
+		$sensorid = null;
+		$this->db->select_max('sensorid', 'currentsensor');
+		$this->db->from('floor');
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			foreach($query->result_array() as $row){
+				$sensorid = $row['currentsensor'];
+				$sensorid++;
+			}
+		}else{
+			echo "No data in query at 'getsensorid'";
+		}
+		return $sensorid;
 	}
 
 }

@@ -121,4 +121,36 @@ class Zone_model extends CI_Model{
 		}
 		return $zonetype;
 	}
+
+	public function getqrcode(){
+		$qrcode = null;
+		$this->db->select_max('qrcode', 'currentqr');
+		$this->db->from('zone');
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			foreach($query->result_array() as $row){
+				$qrcode = $row['currentqr'];
+				$qrcode++;
+			}
+		}else{
+			echo "No data in query at 'getqrcode'";
+		}
+		return $qrcode;
+	}
+
+	public function getsensorid(){
+		$sensorid = null;
+		$this->db->select_max('sensorid', 'currentsensor');
+		$this->db->from('zone');
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			foreach($query->result_array() as $row){
+				$sensorid = $row['currentsensor'];
+				$sensorid++;
+			}
+		}else{
+			echo "No data in query at 'getsensorid'";
+		}
+		return $sensorid;
+	}
 }

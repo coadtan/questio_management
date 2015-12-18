@@ -16,6 +16,7 @@ class Place_model extends CI_Model{
 
 	public function __construct(){
 		parent::__construct();
+		$this->load->library('session');
 	}
 	public function set_placeid($placeid){
 		$this->placeid = $placeid;
@@ -110,14 +111,25 @@ class Place_model extends CI_Model{
     		$this->db->trans_rollback();
     		return false;
 		}else{
-			$this->db->trans_commit();
-			return true;
+			$session_data = $this->session->userdata('logged_in');
+			$keeperid = $session_data['keeperid'];
+			if($this->addmanagement($keeperid, $this->getplaceid(), 1) === TRUE){
+				$this->db->trans_commit();
+				return true;
+			}else{
+				$this->db->trans_rollback();
+    			return false;
+			}
+
+			
+			
 		}
 	}
-	public function getplacedata(){
+	public function getplacedata($keeperid){
 		$places = null;
 		$this->db->select('*');
 		$this->db->from('place');
+		$this->db->where('placeid IN (SELECT placeid FROM management WHERE keeperid = '.$keeperid.')');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
 			$places = array();
@@ -128,6 +140,71 @@ class Place_model extends CI_Model{
 			echo "No data in query at 'getplacedata'";
 		}
 		return $places;
+	}
+
+	public function addmanagement($keeperid, $placeid, $roleid){
+		$management_obj = array(
+			'keeperid' => $keeperid,
+			'placeid' => $placeid,
+			'roleid' => $roleid
+			);
+		$this->db->trans_start();
+		$this->db->insert('management',$management_obj);
+		$this->db->trans_complete();
+		if ($this->db->trans_status() === FALSE){
+    		$this->db->trans_rollback();
+    		return false;
+		}else{
+			$this->db->trans_commit();
+			return true;
+		}
+	}
+
+	public function getplaceid(){
+		$placeid = null;
+		$this->db->select_max('placeid', 'currentid');
+		$this->db->from('place');
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			foreach($query->result_array() as $row){
+				$placeid = $row['currentid'];
+			}
+		}else{
+			echo "No data in query at 'getplaceid'";
+		}
+		return $placeid;
+	}
+
+	public function getqrcode(){
+		$qrcode = null;
+		$this->db->select_max('qrcode', 'currentqr');
+		$this->db->from('place');
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			foreach($query->result_array() as $row){
+				$qrcode = $row['currentqr'];
+				$qrcode++;
+			}
+		}else{
+			echo "No data in query at 'getqrcode'";
+		}
+		return $qrcode;
+	}
+
+	public function getsensorid(){
+		$sensorid = null;
+		$this->db->select_max('sensorid', 'currentsensor');
+		$this->db->from('place');
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			foreach($query->result_array() as $row){
+				$sensorid = $row['currentsensor'];
+				$sensorid++;
+			}
+		}else{
+			echo "No data in query at 'getsensorid'";
+		}
+		return $sensorid;
 	}
 
 }

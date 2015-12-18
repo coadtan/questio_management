@@ -6,13 +6,14 @@ class Addbuilding extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->library('form_validation');
+		$this->load->library('session');
 		$this->load->model('Building_model');
 		$this->load->model('Place_model');
 		$this->load->helper('form');
 	}
 
 	public function index(){
-		$placedata = $this->Place_model->getplacedata();
+		$placedata = $this->getplace();
 		$this->load->view(
 			'addbuilding_page',array(
 				'message' => "",
@@ -22,7 +23,7 @@ class Addbuilding extends CI_Controller {
 	}
 
 	public function addbuildingcheck(){
-		$placedata = $this->Place_model->getplacedata();
+		$placedata = $this->getplace();
 		$building = $this->Building_model;
 		$placeid = $_POST['placeid'];
 		$buildingname = $_POST['buildingname'];
@@ -60,6 +61,13 @@ class Addbuilding extends CI_Controller {
 				)
 			);
 		}
+	}
+
+	public function getplace(){
+		$session_data = $this->session->userdata('logged_in');
+		$keeperid = $session_data['keeperid'];
+		$placedata = $this->Place_model->getplacedata($keeperid);
+		return $placedata;
 	}
 
 	
