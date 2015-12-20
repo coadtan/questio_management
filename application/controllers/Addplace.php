@@ -10,9 +10,14 @@ class Addplace extends CI_Controller {
 	}
 
 	public function index(){
+		$place = $this->Place_model;
+		$qrcode = $place->getqrcode();
+		$sensorid = $place->getsensorid();
 		$this->load->view(
 			'addplace_page',array(
-				'message' => ""
+				'message' => "",
+				'qrcode' => $qrcode,
+				'sensorid' => $sensorid
 			)
 		);
 	}
@@ -25,8 +30,8 @@ class Addplace extends CI_Controller {
 		$longitude = $_POST['longitude'];
 		$radius = $_POST['radius'];
 		$placetype = $_POST['placetype'];
-		$qrcode = $place->getqrcode();
-		$sensorid = $place->getsensorid();
+		$qrcode = $_POST['qrcode'];
+		$sensorid = $_POST['sensorid'];
 
 		$this->form_validation->set_rules('placename', 'placename', 'required|max_length[50]');
 		$this->form_validation->set_rules('placefullname', 'placefullname', 'required|max_length[255]');
@@ -37,15 +42,23 @@ class Addplace extends CI_Controller {
 	
 		if ($this->form_validation->run()==TRUE){
 			if($place->addplace($placename, $placefullname, $qrcode, $sensorid, $latitude, $longitude, $radius, $placetype, null, null, null)==TRUE){
+				$qrcode = $place->getqrcode();
+				$sensorid = $place->getsensorid();
 				$this->load->view(
 					'addplace_page',array(
-					'message' => 'Add Place successful.'
+					'message' => 'Add Place successful.',
+					'qrcode' => $qrcode,
+					'sensorid' => $sensorid
 					)
 				);
 			}else{
+				$qrcode = $place->getqrcode();
+				$sensorid = $place->getsensorid();
 				$this->load->view(
 					'addplace_page',array(
-					'message' => 'Add Place failed.'
+					'message' => 'Add Place failed.',
+					'qrcode' => $qrcode,
+					'sensorid' => $sensorid
 					)
 				);
 			}

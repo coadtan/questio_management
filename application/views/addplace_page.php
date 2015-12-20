@@ -23,6 +23,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<input type="text" name="longitude" id="longitude"><br>
 		Radius*:
 		<input type="text" name="radius" id="radius"><br>
+		QR Code:
+		<input type="text" name="qrcode" id="qrcode" value="<?=$qrcode?>" readonly><br>
+		Sensor ID:
+		<input type="text" name="sensorid" id="sensorid" value="<?=$sensorid?>" readonly><br>
 		Place Type*:
 		<i>Must be less than 30 characters</i>
 		<input type="text" name="placetype" id="placetype" size="30"><br>

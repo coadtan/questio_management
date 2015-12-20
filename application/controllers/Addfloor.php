@@ -13,11 +13,16 @@ class Addfloor extends CI_Controller {
 	}
 
 	public function index(){
+		$floor = $this->Floor_model;
+		$qrcode = $floor->getqrcode();
+		$sensorid = $floor->getsensorid();
 		$buildingdata = $this->getbuilding();
 		$this->load->view(
 			'addfloor_page',array(
 				'message' => "",
-				'buildingdata' => $buildingdata
+				'buildingdata' => $buildingdata,
+				'qrcode' => $qrcode,
+				'sensorid' => $sensorid
 			)
 		);
 	}
@@ -27,24 +32,32 @@ class Addfloor extends CI_Controller {
 		$floor = $this->Floor_model;
 		$buildingid = $_POST['buildingid'];
 		$floorname = $_POST['floorname'];
-		$qrcode = $floor->getqrcode();
-		$sensorid = $floor->getsensorid();
+		$qrcode = $_POST['qrcode'];
+		$sensorid = $_POST['sensorid'];
 
 		$this->form_validation->set_rules('floorname', 'floorname', 'required|max_length[100]');
 	
 		if ($this->form_validation->run()==TRUE){
 			if($floor->addfloor($buildingid, $floorname, null, $qrcode, $sensorid)==TRUE){
-					$this->load->view(
+				$qrcode = $floor->getqrcode();
+				$sensorid = $floor->getsensorid();
+				$this->load->view(
 					'addfloor_page',array(
 					'message' => 'Add floor successful.',
-					'buildingdata' => $buildingdata
+					'buildingdata' => $buildingdata,
+					'qrcode' => $qrcode,
+					'sensorid' => $sensorid
 					)
 				);
 			}else{
+				$qrcode = $floor->getqrcode();
+				$sensorid = $floor->getsensorid();
 				$this->load->view(
 					'addfloor_page',array(
 					'message' => 'Add floor failed.',
-					'buildingdata' => $buildingdata
+					'buildingdata' => $buildingdata,
+					'qrcode' => $qrcode,
+					'sensorid' => $sensorid
 					)
 				);
 			}

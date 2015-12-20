@@ -23,6 +23,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		Zone Details:<br>
 		<textarea name="zonedetails" rows="5" cols="50">
 		</textarea><br>
+		QR Code:
+		<input type="text" name="qrcode" id="qrcode" value="<?=$qrcode?>" readonly><br>
+		Sensor ID:
+		<input type="text" name="sensorid" id="sensorid" value="<?=$sensorid?>" readonly><br>
 		<input type="submit" value="Submit">
 	</form>
 	<a href="<?=base_url('mainpage')?>">Go Back</a>

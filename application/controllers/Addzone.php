@@ -14,12 +14,17 @@ class Addzone extends CI_Controller {
 
 	public function index(){
 		$floordata = $this->getfloor();
+		$zone = $this->Zone_model;
+		$qrcode = $zone->getqrcode();
+		$sensorid = $zone->getsensorid();
 		$zonetypedata = $this->Zone_model->getzonetypedata();
 		$this->load->view(
 			'addzone_page',array(
 				'message' => "",
 				'floordata' => $floordata,
-				'zonetypedata' => $zonetypedata
+				'zonetypedata' => $zonetypedata,
+				'qrcode' => $qrcode,
+				'sensorid' => $sensorid
 			)
 		);
 	}
@@ -32,26 +37,34 @@ class Addzone extends CI_Controller {
 		$zonename = $_POST['zonename'];
 		$zonetypeid = $_POST['zonetype'];
 		$zonedetails = $_POST['zonedetails'];
-		$qrcode = $zone->getqrcode();
-		$sensorid = $zone->getsensorid();
+		$qrcode = $_POST['qrcode'];
+		$sensorid = $_POST['sensorid'];
 
 		$this->form_validation->set_rules('zonename', 'zonename', 'required|max_length[100]');
 	
 		if ($this->form_validation->run()==TRUE){
 			if($zone->addzone($floorid, $zonetypeid, $zonename, $zonedetails, $qrcode, $sensorid, null, null, null, null)==TRUE){
+				$qrcode = $zone->getqrcode();
+				$sensorid = $zone->getsensorid();
 				$this->load->view(
 					'addzone_page',array(
 					'message' => 'Add zone successful.',
 					'floordata' => $floordata,
-					'zonetypedata' => $zonetypedata
+					'zonetypedata' => $zonetypedata,
+					'qrcode' => $qrcode,
+					'sensorid' => $sensorid
 					)
 				);
 			}else{
+				$qrcode = $zone->getqrcode();
+				$sensorid = $zone->getsensorid();
 				$this->load->view(
 					'addzone_page',array(
 					'message' => 'Add zone failed.',
 					'floordata' => $floordata,
-					'zonetypedata' => $zonetypedata
+					'zonetypedata' => $zonetypedata,
+					'qrcode' => $qrcode,
+					'sensorid' => $sensorid
 					)
 				);
 			}
