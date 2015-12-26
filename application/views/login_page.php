@@ -20,5 +20,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</form>
 	<a href="<?=base_url('register')?>">Register</a>
 	<a href="<?=base_url('forgotpassword')?>">Forgot password?</a>
+	<br>
+	<a href="<?=base_url('placelist')?>">Place list</a>
+	<a href="<?=base_url('itemlist')?>">Item list</a>
+	<a href="<?=base_url('questlist')?>">Quest list</a>
+	<a href="<?=base_url('rewardlist')?>">Reward list</a>
 </body>
 </html>

@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Register</title>
+	<title>Add Places</title>
 </head>
 <body>
 	<h1>Add Places</h1>

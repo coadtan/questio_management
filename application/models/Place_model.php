@@ -119,10 +119,7 @@ class Place_model extends CI_Model{
 			}else{
 				$this->db->trans_rollback();
     			return false;
-			}
-
-			
-			
+			}	
 		}
 	}
 	public function getplacedata($keeperid){
@@ -205,6 +202,138 @@ class Place_model extends CI_Model{
 			echo "No data in query at 'getsensorid'";
 		}
 		return $sensorid;
+	}
+	public function getallplace(){
+		$places = null;
+		$this->db->select('placename, placefullname, latitude, longitude, radius, placetype');
+		$this->db->from('place');
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			$places = array();
+			$i = 0;
+			foreach($query->result_array() as $row){
+				$placename = $row['placename'];
+				$placefullname = $row['placefullname'];
+				$latitude = $row['latitude'];
+				$longitude = $row['longitude'];
+				$radius = $row['radius'];
+				$placetype = $row['placetype'];
+				$places[$i++] = 
+					array(
+						'placeno'=>$i,
+						'placename'=>$placename,
+						'placefullname'=>$placefullname,
+						'latitude'=>$latitude,
+						'longitude'=>$longitude,
+						'radius'=>$radius,
+						'placetype'=>$placetype
+					);
+			}
+		}
+		return $places;
+	}
+	public function getenterreward(){
+		$enterrewards = null;
+		$this->db->select('rewardname AS enter_rewardname');
+		$this->db->from('place');
+		$this->db->join('rewards','place.enter_rewardid = rewards.rewardid', 'left');
+		$this->db->order_by('placeid','asc');
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			$enterrewards = array();
+			$i = 0;
+			foreach($query->result_array() as $row){
+				$enter_rewardname = $row['enter_rewardname'];
+				$enterrewards[$i++] = $enter_rewardname;
+			}
+		}
+		return $enterrewards;
+	}
+	public function getplacereward(){
+		$placerewards = null;
+		$this->db->select('rewardname AS place_rewardname');
+		$this->db->from('place');
+		$this->db->join('rewards','place.rewardid = rewards.rewardid', 'left');
+		$this->db->order_by('placeid','asc');
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			$placerewards = array();
+			$i = 0;
+			foreach($query->result_array() as $row){
+				$place_rewardname = $row['place_rewardname'];
+				$placerewards[$i++] = $place_rewardname;
+			}
+		}
+		return $placerewards;
+	}
+	public function searchplace($namepart){
+		$places = null;
+		$this->db->select('placename, placefullname, latitude, longitude, radius, placetype');
+		$this->db->from('place');
+		$this->db->like('placename',$namepart);
+		$this->db->or_like('placefullname',$namepart);
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			$places = array();
+			$i = 0;
+			foreach($query->result_array() as $row){
+				$placename = $row['placename'];
+				$placefullname = $row['placefullname'];
+				$latitude = $row['latitude'];
+				$longitude = $row['longitude'];
+				$radius = $row['radius'];
+				$placetype = $row['placetype'];
+				$places[$i++] = 
+					array(
+						'placeno'=>$i,
+						'placename'=>$placename,
+						'placefullname'=>$placefullname,
+						'latitude'=>$latitude,
+						'longitude'=>$longitude,
+						'radius'=>$radius,
+						'placetype'=>$placetype
+					);
+			}
+		}
+		return $places;
+	}
+	public function searchenterreward($namepart){
+		$enterrewards = null;
+		$this->db->select('rewardname AS enter_rewardname');
+		$this->db->from('place');
+		$this->db->join('rewards','place.enter_rewardid = rewards.rewardid', 'left');
+		$this->db->like('placename',$namepart);
+		$this->db->or_like('placefullname',$namepart);
+		$this->db->order_by('placeid','asc');
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			$enterrewards = array();
+			$i = 0;
+			foreach($query->result_array() as $row){
+				$enter_rewardname = $row['enter_rewardname'];
+				$enterrewards[$i++] = $enter_rewardname;
+			}
+		}
+		return $enterrewards;
+	}
+	public function searchplacereward($namepart){
+		$placerewards = null;
+		$this->db->select('rewardname AS place_rewardname');
+		$this->db->from('place');
+		$this->db->join('rewards','place.rewardid = rewards.rewardid', 'left');
+		$this->db->like('placename',$namepart);
+		$this->db->or_like('placefullname',$namepart);
+		$this->db->order_by('placeid','asc');
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			$placerewards = array();
+			$i = 0;
+			foreach($query->result_array() as $row){
+				$place_rewardname = $row['place_rewardname'];
+				$placerewards[$i++] = $place_rewardname;
+			}
+		}
+		return $placerewards;
 	}
 
 }

@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Login</title>
+	<title>Forgot Password</title>
 </head>
 <body>
 	<h1>Enter E-Mail Address</h1>
