@@ -153,4 +153,29 @@ class Zone_model extends CI_Model{
 		}
 		return $sensorid;
 	}
+
+	public function showZoneManagement($floorid){
+		$zone = null;
+		$this->db->select('zoneid, zonename, imageurl');
+		$this->db->from('zone');
+		$this->db->where('floorid',$floorid);
+		$this->db->order_by('zoneid','asc');
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			$zone = array();
+			$i = 0;
+			foreach($query->result_array() as $row){
+				$zoneid = $row['zoneid'];
+				$zonename = $row['zonename'];
+				$imageurl = $row['imageurl'];
+				$zone[$i++] =
+					array(
+						'zoneid'=>$zoneid,
+						'zonename'=>$zonename,
+						'imageurl'=>$imageurl
+					);
+			}
+		}
+		return $zone;
+	}
 }

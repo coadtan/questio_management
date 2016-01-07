@@ -115,4 +115,29 @@ class Floor_model extends CI_Model{
 		return $sensorid;
 	}
 
+	public function showFloorManagement($buildingid){
+		$floor = null;
+		$this->db->select('floorid, floorname, imageurl');
+		$this->db->from('floor');
+		$this->db->where('buildingid',$buildingid);
+		$this->db->order_by('floorid','asc');
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			$floor = array();
+			$i = 0;
+			foreach($query->result_array() as $row){
+				$floorid = $row['floorid'];
+				$floorname = $row['floorname'];
+				$imageurl = $row['imageurl'];
+				$floor[$i++] =
+					array(
+						'floorid'=>$floorid,
+						'floorname'=>$floorname,
+						'imageurl'=>$imageurl
+					);
+			}
+		}
+		return $floor;
+	}
+
 }

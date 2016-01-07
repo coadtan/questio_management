@@ -119,7 +119,7 @@ class Place_model extends CI_Model{
 			}else{
 				$this->db->trans_rollback();
     			return false;
-			}	
+			}
 		}
 	}
 	public function getplacedata($keeperid){
@@ -218,7 +218,7 @@ class Place_model extends CI_Model{
 				$longitude = $row['longitude'];
 				$radius = $row['radius'];
 				$placetype = $row['placetype'];
-				$places[$i++] = 
+				$places[$i++] =
 					array(
 						'placeno'=>$i,
 						'placename'=>$placename,
@@ -283,7 +283,7 @@ class Place_model extends CI_Model{
 				$longitude = $row['longitude'];
 				$radius = $row['radius'];
 				$placetype = $row['placetype'];
-				$places[$i++] = 
+				$places[$i++] =
 					array(
 						'placeno'=>$i,
 						'placename'=>$placename,
@@ -334,6 +334,30 @@ class Place_model extends CI_Model{
 			}
 		}
 		return $placerewards;
+	}
+	public function showPlaceManagement($keeperid){
+		$places = null;
+		$this->db->select('placeid, placename, imageurl');
+		$this->db->from('place');
+		$this->db->where('placeid IN (SELECT placeid FROM management WHERE keeperid = '.$keeperid.')');
+		$this->db->order_by('placeid','asc');
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			$places = array();
+			$i = 0;
+			foreach($query->result_array() as $row){
+				$placeid = $row['placeid'];
+				$placename = $row['placename'];
+				$imageurl = $row['imageurl'];
+				$places[$i++] =
+					array(
+						'placeid'=>$placeid,
+						'placename'=>$placename,
+						'imageurl'=>$imageurl
+					);
+			}
+		}
+		return $places;
 	}
 
 }

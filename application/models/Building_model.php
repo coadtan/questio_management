@@ -90,5 +90,29 @@ class Building_model extends CI_Model{
 		}
 		return $buildings;
 	}
-	
+	public function showBuildingManagement($placeid){
+		$building = null;
+		$this->db->select('buildingid, buildingname, imageurl');
+		$this->db->from('building');
+		$this->db->where('placeid',$placeid);
+		$this->db->order_by('buildingid','asc');
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			$building = array();
+			$i = 0;
+			foreach($query->result_array() as $row){
+				$buildingid = $row['buildingid'];
+				$buildingname = $row['buildingname'];
+				$imageurl = $row['imageurl'];
+				$building[$i++] =
+					array(
+						'buildingid'=>$buildingid,
+						'buildingname'=>$buildingname,
+						'imageurl'=>$imageurl
+					);
+			}
+		}
+		return $building;
+	}
+
 }
