@@ -8,6 +8,7 @@ class Login extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('session');
 		$this->load->model('Keeper_model');
+		$this->load->helper('html');
 	}
 
 	public function index(){
