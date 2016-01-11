@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<!-- <?=link_tag('assets/bootstrap/css/bootstrap-theme.min.css')?> -->
 </head>
 <body>
-	<div class="container-fluid">
+	<!--<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-5">.col-md-5</div>
 			<div class="col-md-1">.col-md-1</div>
@@ -36,7 +36,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="col-md-6">.col-md-6</div>
 			<div class="col-md-6">.col-md-6</div>
 		</div>
-<!--	
+		-->
+	
  		<div class="row">
 			<h1>Login</h1>
 			<?php echo validation_errors();?>
@@ -56,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<a href="<?=base_url('itemlist')?>">Item list</a>
 		<a href="<?=base_url('questlist')?>">Quest list</a>
 		<a href="<?=base_url('rewardlist')?>">Reward list</a>
-	</div> -->
+	</div> 
 </div> 
 
 </body>
