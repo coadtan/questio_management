@@ -11,6 +11,7 @@ class Mainpage extends CI_Controller {
 		$this->load->model('Building_model');
 		$this->load->model('Floor_model');
 		$this->load->model('Zone_model');
+		$this->load->model('Quest_model');
 		$this->load->helper('html');
 	}
 
@@ -36,21 +37,30 @@ class Mainpage extends CI_Controller {
 		$placeid = substr($placeidstr,6);
 		$data['keeperbuilding'] = $this->Building_model->showBuildingManagement($placeid);
 		$this->load->view('main_page_building', $data);
-
 	}
 
 	public function getfloor($buildingidstr){
 		$buildingid = substr($buildingidstr,9);
 		$data['keeperfloor'] = $this->Floor_model->showFloorManagement($buildingid);
 		$this->load->view('main_page_floor', $data);
-
 	}
 
 	public function getzone($flooridstr){
 		$floorid = substr($flooridstr,6);
 		$data['keeperzone'] = $this->Zone_model->showZoneManagement($floorid);
 		$this->load->view('main_page_zone', $data);
+	}
 
+	public function getquest($zoneidstr){
+		$zoneid = substr($zoneidstr,5);
+		$data['keeperquest'] = $this->Quest_model->getQuestByZone($zoneid);
+		$this->load->view('main_page_quest', $data);
+	}
+
+	public function getquestdetails($questidstr){
+		$questid = substr($questidstr,6);
+		$data['keeperquestdetails'] = $this->Quest_model->getQuestByQuest($questid);
+		$this->load->view('main_page_questdetails', $data);
 	}
 
 

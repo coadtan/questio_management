@@ -95,7 +95,6 @@ class Quest_model extends CI_Model{
 		$this->db->join('difficulty','quest.diffid = difficulty.diffid','left');
 		$this->db->join('rewards','quest.rewardid = rewards.rewardid','left');
 		$this->db->like('questname',$namepart);
-		$this->db->order_by('questid','asc');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
 			$quests = array();
@@ -112,6 +111,64 @@ class Quest_model extends CI_Model{
 						'questname'=>$questname,
 						'typename'=>$typename,
 						'zonename'=>$zonename,
+						'difftype'=>$difftype,
+						'rewardname'=>$rewardname,
+					);
+			}
+		}
+		return $quests;
+	}
+
+	public function getQuestByZone($zoneid){
+		$quests = null;
+		$this->db->select('questid, questname, typename');
+		$this->db->from('quest');
+		$this->db->join('questtype','quest.questtypeid = questtype.questtypeid','left');
+		$this->db->where('zoneid',$zoneid);
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			$quests = array();
+			$i = 0;
+			foreach($query->result_array() as $row){
+				$questid = $row['questid'];
+				$questname = $row['questname'];
+				$typename = $row['typename'];
+				$quests[$i++] = 
+					array(
+						'questid'=>$questid,
+						'questname'=>$questname,
+						'typename'=>$typename
+					);
+			}
+		}
+		return $quests;
+	}
+
+	public function getQuestByQuest($questid){
+	$quests = null;
+		$this->db->select('questname, questdetails, typename, difftype, rewardname');
+		$this->db->from('quest');
+		$this->db->join('questtype','quest.questtypeid = questtype.questtypeid','left');
+		$this->db->join('zone','quest.zoneid = zone.zoneid','left');
+		$this->db->join('difficulty','quest.diffid = difficulty.diffid','left');
+		$this->db->join('rewards','quest.rewardid = rewards.rewardid','left');
+		$this->db->where('questid',$questid);
+		$this->db->order_by('questid','asc');
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			$quests = array();
+			$i = 0;
+			foreach($query->result_array() as $row){
+				$questname = $row['questname'];
+				$questdetails = $row['questdetails'];
+				$typename = $row['typename'];
+				$difftype = $row['difftype'];
+				$rewardname = $row['rewardname'];
+				$quests[$i++] = 
+					array(
+						'questname'=>$questname,
+						'questdetails'=>$questdetails,
+						'typename'=>$typename,
 						'difftype'=>$difftype,
 						'rewardname'=>$rewardname,
 					);
