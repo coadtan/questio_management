@@ -1,42 +1,34 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<?=script_tag('assets/jquery/jquery-2.2.0.min.js')?>
-	<title>Welcome</title>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$('.keeperplace').click(function(){
-				var id = this.id;
-				$('#buildinglist').load("<?=base_url('mainpage/getbuilding/"+id+"')?>")
-			});
-		});
-	</script>
-</head>
+<?php $this->load->view('head', array('title' => 'Welcome'));?>
 <body>
-	<h1>Welcome
-	<?=$firstname?>
-	<?=$lastname?>
-	</h1>
+<div class="container-fluid">
+<?php $this->load->view('header', array('title' => 'Welcome'));?>
 	<a href="<?=base_url('addplace')?>">Add Place</a>
 	<a href="<?=base_url('addbuilding')?>">Add Building</a>
 	<a href="<?=base_url('addfloor')?>">Add Floor</a>
 	<a href="<?=base_url('addzone')?>">Add Zone</a>
-	<a href="<?=base_url('mainpage/logout')?>">Logout</a>
-	<div id="placelist">
-	<?php
-		if(!empty($keeperplace)){
-			for($i=0; $i<count($keeperplace);$i++){
-				echo "<a class='keeperplace' id='place_".$keeperplace[$i]['placeid']."' href='#buildinglist'>";
-				echo '<img src="http://52.74.64.61'.$keeperplace[$i]['imageurl'].'" style="width:250px;height:250px;">';
-				echo '<h3>'.$keeperplace[$i]['placename'].'</h3>';
-				echo "</a>";
-			};
-		}
-	?>
+	<h1>Places</h1>
+	<div class="row">
+	<?php if(!empty($keeperplace)):?>
+		<?php foreach($keeperplace as $place):?>
+            <div class="col-xs-6 col-md-3">
+	            <a
+	            	href="#"
+	            	class="thumbnail keeperplace"
+	            	id="place_<?=$place['placeid']?>"
+	            	placeid="<?=$place['placeid']?>"
+	            >
+			      <img
+			      	src="http://52.74.64.61/<?=$place['imageurl']?>"
+			      	alt="<?=$place['placename']?>">
+			    </a>
+			    <?=$place['placename']?>
+		  	</div>
+        <?php endforeach;?>
+	<?php endif;?>
+	</div>
+
 	<div id="buildinglist">
 	</div>
+</div>
 </body>
 </html>

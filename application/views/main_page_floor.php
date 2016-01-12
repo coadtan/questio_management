@@ -1,30 +1,25 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<?=script_tag('assets/jquery/jquery-2.2.0.min.js')?>
-	<title>Welcome</title>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$('.keeperfloor').click(function(){
-				var id = this.id;
-				$('#zonelist').load("<?=base_url('mainpage/getzone/"+id+"')?>")
-			});
-		});
-	</script>
-</head>
+<?php $this->load->view('head', array('title' => 'Welcome'));?>
 <body>
-	<?php
-		if(!empty($keeperfloor)){
-			for($i=0; $i<count($keeperfloor);$i++){
-				echo "<a class='keeperfloor' id='floor_".$keeperfloor[$i]['floorid']."' href='#zonelist'>".'<img src="http://52.74.64.61'.$keeperfloor[$i]['imageurl'].'" style="width:250px;height:250px;">';
-				echo '<h3>'.$keeperfloor[$i]['floorname'].'</h3>';
-				echo "</a>";
-			};
-		}
-	?>
+	<h1>Floors</h1>
+	<div class="row">
+	<?php if(!empty($data)):?>
+		<?php foreach($data as $floor):?>
+            <div class="col-xs-6 col-md-3">
+	            <a
+	            	href="#"
+	            	class="thumbnail keeperfloor"
+	            	id="floor_<?=$floor['floorid']?>"
+	            	floorid="<?=$floor['floorid']?>"
+	            >
+			      <img
+			      	src="http://52.74.64.61/<?=$floor['imageurl']?>"
+			      	alt="<?=$floor['floorname']?>">
+			    </a>
+			    <?=$floor['floorname']?>
+		  	</div>
+        <?php endforeach;?>
+	<?php endif;?>
+	</div>
 	<div id="zonelist">
 	</div>
 </body>

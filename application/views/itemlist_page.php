@@ -1,20 +1,14 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Item List</title>
-</head>
+<?php $this->load->view('head', array('title' => 'Item List'));?>
 <body>
-<h1>Item List</h1>
+<div class="container-fluid">
+	<?php $this->load->view('header', array('title' => 'Item List'));?>
 	<?=form_open('itemlist/search')?>
 	Search: <input type="text" name="namepart" id="namepart" size="50"><br>
 		<input type="submit" value="Enter">
-	</form>
+	<?=form_close()?>
 	<?php
 		$this->table->set_heading('#','Item Name','Item Collection','Position');
-		
+
 		if(!empty($itemdata)){
 			for($i=0; $i<count($itemdata);$i++){
 				$this->table->add_row($itemdata[$i]['itemno'],$itemdata[$i]['itemname'],$itemdata[$i]['itemcollection'],$itemdata[$i]['positionname']);
@@ -25,5 +19,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 	?>
 	<a href="<?=base_url('login')?>">Go back</a>
+</div>
 </body>
 </html>

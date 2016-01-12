@@ -5,7 +5,6 @@ class Addfloor extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->library('form_validation');
 		$this->load->library('session');
 		$this->load->model('Building_model');
 		$this->load->model('Floor_model');
@@ -36,7 +35,7 @@ class Addfloor extends CI_Controller {
 		$sensorid = $_POST['sensorid'];
 
 		$this->form_validation->set_rules('floorname', 'floorname', 'required|max_length[100]');
-	
+
 		if ($this->form_validation->run()==TRUE){
 			if($floor->addfloor($buildingid, $floorname, null, $qrcode, $sensorid)==TRUE){
 				$qrcode = $floor->getqrcode();
@@ -78,5 +77,5 @@ class Addfloor extends CI_Controller {
 		return $buildingdata;
 	}
 
-	
+
 }

@@ -1,14 +1,6 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Add Buildings</title>
-</head>
-<body>
-	<h1>Add Buildings</h1>
-
+<?php $this->load->view('head', array('title' => 'Add Building'));?>
+<div class="container-fluid">
+	<?php $this->load->view('header', array('title' => 'Add Building'));?>
 	<h2 style='color:red'><?=$message?></h2>
 	<?= form_open('addbuilding/addbuildingcheck')?>
 		Building Name*:
@@ -24,7 +16,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		Radius*:
 		<input type="text" name="radius" id="radius"><br>
 		<input type="submit" value="Submit">
-	</form>
+	<?=form_close()?>
 	<a href="<?=base_url('mainpage')?>">Go Back</a>
+</div>
 </body>
 </html>

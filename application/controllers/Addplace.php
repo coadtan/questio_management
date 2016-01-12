@@ -5,7 +5,6 @@ class Addplace extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->library('form_validation');
 		$this->load->model('Place_model');
 	}
 
@@ -39,7 +38,7 @@ class Addplace extends CI_Controller {
 		$this->form_validation->set_rules('longitude', 'longitude', 'required|numeric');
 		$this->form_validation->set_rules('radius', 'radius', 'required|numeric');
 		$this->form_validation->set_rules('placetype', 'placetype', 'required|alpha_numeric');
-	
+
 		if ($this->form_validation->run()==TRUE){
 			if($place->addplace($placename, $placefullname, $qrcode, $sensorid, $latitude, $longitude, $radius, $placetype, null, null, null)==TRUE){
 				$qrcode = $place->getqrcode();

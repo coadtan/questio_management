@@ -1,19 +1,4 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<?=script_tag('assets/jquery/jquery-2.2.0.min.js')?>
-	<title>Welcome</title>
-	<!--<script type="text/javascript">
-		$(document).ready(function(){
-			$('.keeperquest').click(function(){
-				
-			});
-		});
-	</script>-->
-</head>
+<?php $this->load->view('head', array('title' => 'Welcome'));?>
 <body>
 	<?php
 		if(!empty($keeperquestdetails)){

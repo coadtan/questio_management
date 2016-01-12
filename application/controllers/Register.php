@@ -2,10 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Register extends CI_Controller {
-
 	public function __construct(){
 		parent::__construct();
-		$this->load->library('form_validation');
 		$this->load->model('Keeper_model');
 		$this->load->helper('form');
 	}
@@ -28,7 +26,7 @@ class Register extends CI_Controller {
 		$telephone = $_POST['telephone'];
 		$email = $_POST['email'];
 
-		$keeperid++;		
+		$keeperid++;
 
 		$this->form_validation->set_rules('username', 'username', 'required|min_length[3]|max_length[16]|alpha_dash');
 		$this->form_validation->set_rules('password', 'password', 'required|min_length[8]|max_length[12]');
@@ -37,7 +35,7 @@ class Register extends CI_Controller {
 		$this->form_validation->set_rules('lname', 'lname', 'required|alpha');
 		$this->form_validation->set_rules('telephone', 'telephone', 'required|integer|max_length[10]');
 		$this->form_validation->set_rules('email', 'email', 'required|valid_email');
-	
+
 		if ($this->form_validation->run()==TRUE){
 			if($keeper->addkeeper($keeperid, $username, $password, $fname, $lname, $telephone, $email)==TRUE){
 				$this->load->view(
@@ -50,7 +48,7 @@ class Register extends CI_Controller {
 					)
 				);
 			}
-			
+
 		}else{
 			$this->load->view(
 			'register_page',array(

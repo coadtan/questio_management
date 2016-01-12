@@ -1,14 +1,7 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Register</title>
-</head>
+<?php $this->load->view('head', array('title' => 'Register'));?>
 <body>
-	<h1>Keeper Registeration</h1>
-
+<div class="container-fluid">
+    <?php $this->load->view('header', array('title' => 'Keeper Registeration'));?>
 	<h2 style='color:red'><?=$message?></h2>
 	<?= form_open('register/updatecheck')?>
 		Username*:
@@ -23,6 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		Telephone*: <input type="tel" name="telephone" id="telephone"><br>
 		E-Mail*: <input type="email" name="email" id="email" size="100"><br>
 		<input type="submit" value="Submit">
-	</form>
+	<?=form_close()?>
+</div>
 </body>
 </html>

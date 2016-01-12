@@ -1,14 +1,7 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Add Places</title>
-</head>
+<?php $this->load->view('head', array('title' => 'Add Place'));?>
 <body>
-	<h1>Add Places</h1>
-
+<div class="container-fluid">
+	<?php $this->load->view('header', array('title' => 'Add Places'));?>
 	<h2 style='color:red'><?=$message?></h2>
 	<?= form_open('addplace/addplacecheck')?>
 		Place Name*:
@@ -31,7 +24,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<i>Must be less than 30 characters</i>
 		<input type="text" name="placetype" id="placetype" size="30"><br>
 		<input type="submit" value="Submit">
-	</form>
+	<?=form_close()?>
 	<a href="<?=base_url('mainpage')?>">Go Back</a>
+</div>
 </body>
 </html>

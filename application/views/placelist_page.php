@@ -1,20 +1,14 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Place List</title>
-</head>
+<?php $this->load->view('head', array('title' => 'Place List'));?>
 <body>
-<h1>Place List</h1>
+<div class="container-fluid">
+	<?php $this->load->view('header', array('title' => 'Place List'));?>
 	<?=form_open('placelist/search')?>
 	Search: <input type="text" name="namepart" id="namepart" size="50"><br>
 		<input type="submit" value="Enter">
-	</form>
+	<?=form_close()?>
 	<?php
 		$this->table->set_heading('#','Place name','Place Full Name','Latitude','Longitude','Radius','Place Type','Enter Reward Name','Reward Name');
-		
+
 		if(!empty($placedata)){
 			for($i=0; $i<count($placedata);$i++){
 				$this->table->add_row($placedata[$i]['placeno'],$placedata[$i]['placename'],$placedata[$i]['placefullname'],$placedata[$i]['latitude'],$placedata[$i]['longitude'],$placedata[$i]['radius'],$placedata[$i]['placetype'],$enter_rewarddata[$i],$reward[$i]);
@@ -25,5 +19,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 	?>
 	<a href="<?=base_url('login')?>">Go back</a>
+</div>
 </body>
 </html>

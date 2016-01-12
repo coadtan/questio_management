@@ -5,7 +5,6 @@ class Addzone extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->library('form_validation');
 		$this->load->library('session');
 		$this->load->model('Zone_model');
 		$this->load->model('Floor_model');
@@ -41,7 +40,7 @@ class Addzone extends CI_Controller {
 		$sensorid = $_POST['sensorid'];
 
 		$this->form_validation->set_rules('zonename', 'zonename', 'required|max_length[100]');
-	
+
 		if ($this->form_validation->run()==TRUE){
 			if($zone->addzone($floorid, $zonetypeid, $zonename, $zonedetails, $qrcode, $sensorid, null, null, null, null)==TRUE){
 				$qrcode = $zone->getqrcode();
@@ -68,7 +67,7 @@ class Addzone extends CI_Controller {
 					)
 				);
 			}
-			
+
 		}else{
 			$this->load->view(
 			'addzone_page',array(
@@ -88,6 +87,6 @@ class Addzone extends CI_Controller {
 	}
 
 
-	
+
 
 }

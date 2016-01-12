@@ -5,16 +5,14 @@ class Login extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->library('form_validation');
 		$this->load->library('session');
 		$this->load->model('Keeper_model');
-		$this->load->helper('html');
 	}
 
 	public function index(){
 		$this->form_validation->set_rules('username','username','trim|required');
 		$this->form_validation->set_rules('password','password','trim|required|callback_dbcheck');
-		
+
 		if($this->form_validation->run() == false){
 			$this->load->view('login_page');
 		}else{

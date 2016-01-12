@@ -5,7 +5,6 @@ class Addbuilding extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->library('form_validation');
 		$this->load->library('session');
 		$this->load->model('Building_model');
 		$this->load->model('Place_model');
@@ -35,7 +34,7 @@ class Addbuilding extends CI_Controller {
 		$this->form_validation->set_rules('latitude', 'latitude', 'required|numeric');
 		$this->form_validation->set_rules('longitude', 'longitude', 'required|numeric');
 		$this->form_validation->set_rules('radius', 'radius', 'required|numeric');
-	
+
 		if ($this->form_validation->run()==TRUE){
 			if($building->addbuilding($placeid, $buildingname, $latitude,$longitude, $radius, null)==TRUE){
 				$this->load->view(
@@ -52,7 +51,7 @@ class Addbuilding extends CI_Controller {
 					)
 				);
 			}
-			
+
 		}else{
 			$this->load->view(
 			'addbuilding_page',array(
@@ -70,5 +69,5 @@ class Addbuilding extends CI_Controller {
 		return $placedata;
 	}
 
-	
+
 }

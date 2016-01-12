@@ -1,14 +1,7 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Register</title>
-</head>
+<?php $this->load->view('head', array('title' => 'Add Zone'));?>
 <body>
-	<h1>Add Zones</h1>
-
+<div class="container-fluid">
+	<?php $this->load->view('header', array('title' => 'Add Zones'));?>
 	<h2 style='color:red'><?=$message?></h2>
 	<?= form_open('addzone/addzonecheck')?>
 		Zone Name*:
@@ -28,7 +21,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		Sensor ID:
 		<input type="text" name="sensorid" id="sensorid" value="<?=$sensorid?>" readonly><br>
 		<input type="submit" value="Submit">
-	</form>
+	<?=form_close()?>
 	<a href="<?=base_url('mainpage')?>">Go Back</a>
+</div>
 </body>
 </html>

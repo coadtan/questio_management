@@ -12,16 +12,16 @@ class Mainpage extends CI_Controller {
 		$this->load->model('Floor_model');
 		$this->load->model('Zone_model');
 		$this->load->model('Quest_model');
-		$this->load->helper('html');
 	}
 
 	public function index(){
 		if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
-			$data['firstname'] = $session_data['firstname'];
-			$data['lastname'] = $session_data['lastname'];
-			$data['keeperplace'] = $this->Place_model->showPlaceManagement($session_data['keeperid']);
-			$this->load->view('main_page', $data);
+			$this->load->view('main_page', array(
+					'firstname' => $session_data['firstname'],
+					'lastname' => $session_data['lastname'],
+					'keeperplace' => $this->Place_model->showPlaceManagement($session_data['keeperid'])
+					));
 		}else{
 			redirect('login','refresh');
 		}
@@ -33,34 +33,41 @@ class Mainpage extends CI_Controller {
 		redirect('mainpage','refresh');
 	}
 
-	public function getbuilding($placeidstr){
-		$placeid = substr($placeidstr,6);
-		$data['keeperbuilding'] = $this->Building_model->showBuildingManagement($placeid);
-		$this->load->view('main_page_building', $data);
+	public function getbuilding($placeid){
+		$data = $this->Building_model->showBuildingManagement($placeid);
+		$this->load->view('main_page_building', array(
+										'data' => $data
+									));
 	}
 
-	public function getfloor($buildingidstr){
-		$buildingid = substr($buildingidstr,9);
-		$data['keeperfloor'] = $this->Floor_model->showFloorManagement($buildingid);
-		$this->load->view('main_page_floor', $data);
+	public function getfloor($buildingid){
+		$data = $this->Floor_model->showFloorManagement($buildingid);
+		$this->load->view('main_page_floor', array(
+										'data' => $data
+									));
 	}
 
-	public function getzone($flooridstr){
-		$floorid = substr($flooridstr,6);
-		$data['keeperzone'] = $this->Zone_model->showZoneManagement($floorid);
-		$this->load->view('main_page_zone', $data);
+	public function getzone($floorid){
+		$data = $this->Zone_model->showZoneManagement($floorid);
+		$this->load->view('main_page_zone', array(
+										'data' => $data
+									));
 	}
 
 	public function getquest($zoneidstr){
 		$zoneid = substr($zoneidstr,5);
-		$data['keeperquest'] = $this->Quest_model->getQuestByZone($zoneid);
-		$this->load->view('main_page_quest', $data);
+		$data = $this->Quest_model->getQuestByZone($zoneid);
+		$this->load->view('main_page_quest', array(
+										'data' => $data
+									));
 	}
 
 	public function getquestdetails($questidstr){
 		$questid = substr($questidstr,6);
-		$data['keeperquestdetails'] = $this->Quest_model->getQuestByQuest($questid);
-		$this->load->view('main_page_questdetails', $data);
+		$data = $this->Quest_model->getQuestByQuest($questid);
+		$this->load->view('main_page_questdetails', array(
+										'data' => $data
+									));
 	}
 
 

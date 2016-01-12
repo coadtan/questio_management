@@ -1,20 +1,14 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Quest List</title>
-</head>
+<?php $this->load->view('head', array('title' => 'Quest List'));?>
 <body>
-<h1>Quest List</h1>
+<div class="container-fluid">
+	<?php $this->load->view('header', array('title' => 'Quest List'));?>
 	<?=form_open('questlist/search')?>
 	Search: <input type="text" name="namepart" id="namepart" size="50"><br>
 		<input type="submit" value="Enter">
-	</form>
+	<?=form_close()?>
 	<?php
 		$this->table->set_heading('#','Quest name','Type','Zone','Difficulty','Reward');
-		
+
 		if(!empty($questdata)){
 			for($i=0; $i<count($questdata);$i++){
 				$this->table->add_row($questdata[$i]['questno'],$questdata[$i]['questname'],$questdata[$i]['typename'],$questdata[$i]['zonename'],$questdata[$i]['difftype'],$questdata[$i]['rewardname']);
@@ -25,5 +19,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 	?>
 	<a href="<?=base_url('login')?>">Go back</a>
+</div>
 </body>
 </html>
