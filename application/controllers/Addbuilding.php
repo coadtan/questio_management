@@ -5,7 +5,6 @@ class Addbuilding extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->library('session');
 		$this->load->model('Building_model');
 		$this->load->model('Place_model');
 		$this->load->helper('form');

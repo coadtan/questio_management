@@ -5,7 +5,6 @@ class Mainpage extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->library('session');
 		$this->load->library('table');
 		$this->load->model('Place_model');
 		$this->load->model('Building_model');

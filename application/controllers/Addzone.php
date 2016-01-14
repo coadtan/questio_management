@@ -5,7 +5,6 @@ class Addzone extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->library('session');
 		$this->load->model('Zone_model');
 		$this->load->model('Floor_model');
 		$this->load->helper('form');

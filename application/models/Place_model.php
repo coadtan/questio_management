@@ -16,7 +16,6 @@ class Place_model extends CI_Model{
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->library('session');
 	}
 	public function set_placeid($placeid){
 		$this->placeid = $placeid;
