@@ -1,0 +1,143 @@
+.col-md-1{
+	position: relative;
+	overflow: hidden;
+}
+.col-md-2{
+	position: relative;
+	overflow: hidden;
+
+}
+.col-md-3{
+	position: relative;
+	overflow: hidden;
+}
+.col-md-4{
+	position: relative;
+	overflow: hidden;
+}
+.col-md-5{
+	position: relative;
+	overflow: hidden;
+}
+.col-md-6{
+	position: relative;
+	overflow: hidden;
+}
+.col-md-7{
+	position: relative;
+	overflow: hidden;
+}
+.col-md-8{
+	position: relative;
+	overflow: hidden;
+}
+.r1{
+	background: url(../images/background.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+	text-align: center;
+	opacity: 0.8;
+	min-height: 514px;
+	overflow: hidden;
+}
+.r2{
+	min-height: 355px;
+	text-align: center;
+	background-color: #f2f3f7 ;
+	overflow: hidden;
+}
+.r3{
+	min-height: 493px;
+	text-align: center;
+	overflow: hidden;
+}
+.r4{
+	min-height: 493px;
+	text-align: center;
+	background-color: #f2f3f7 ;
+	overflow: hidden;
+}
+.r5{
+	min-height: 236px;
+	text-align: center;
+	background-color: #224e6b ;
+	overflow: hidden;
+}
+.r6{
+	min-height: 502px;
+	text-align: center;
+	background-color: #ffffff ;
+	overflow: hidden;
+}
+.r7{
+	min-height: 165px;
+	text-align: center;
+	background-color: #224e6b ;
+	overflow: hidden;
+}
+.r8{
+	min-height: 375px;
+	text-align: center;
+	background-color: #0b2f47;
+	overflow: hidden;
+}
+.questio-sword{
+	width: 150px;
+	height: 150px;
+}
+.center{
+	margin-top: 50px;
+}
+.form-control{
+	margin-top: 10%;
+	width: 60%;
+}
+.text-white{
+	color: white;
+}
+.text-gray{
+	color:gray;
+}
+.text-gray50{
+	color : #6b6b6b;
+}
+.text-gray80{
+	color: #5a5a5a;
+}
+.text-blue-title{
+	color:#29789d;
+}
+.text-questio-title{
+	color: #39b5eb;
+}
+.questio-mini-logo{
+	width: 30px;
+	height: 30px;
+}
+.questio-logo{
+	width: 320px;
+	height: 320px;
+}
+.questio-avatar{
+	width: 122px;
+	height: 265px;
+}
+.questio-temple{
+	width: 282px;
+	height: 231px;
+}
+.questio-sword{
+
+}
+.feat-dummy-logo{
+	max-width: 340px;
+	width: 65%;
+}
+@media only screen and (max-width: 990px) {
+    .r7 .form-control{
+	margin: auto;
+}
+}
