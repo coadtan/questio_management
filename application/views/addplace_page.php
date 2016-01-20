@@ -23,6 +23,10 @@
 		Place Type*:
 		<i>Must be less than 30 characters</i>
 		<input type="text" name="placetype" id="placetype" size="30"><br>
+		Enter Rewards:
+		<?= form_dropdown('enter_rewardid',$enterrewarddata); ?><br>
+		Rewards:
+		<?= form_dropdown('rewardid',$rewarddata); ?><br>
 		<input type="submit" value="Submit">
 	<?=form_close()?>
 	<a href="<?=base_url('mainpage')?>">Go Back</a>

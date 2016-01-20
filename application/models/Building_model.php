@@ -114,5 +114,68 @@ class Building_model extends CI_Model{
 		}
 		return $building;
 	}
+	public function updateBuilding($buildingid,$placeid,$buildingname,$latitude,$longitude,$radius,$imageurl){
+		$building_object = array(
+			'placeid'=>$placeid,
+			'buildingname'=>$buildingname,
+			'latitude'=>$latitude,
+			'longitude'=>$longitude,
+			'radius'=>$radius,
+			'imageurl'=>$imageurl
+		);
+		$this->db->trans_start();
+		$this->db->where('buildingid', $buildingid);
+		$this->db->update('building', $building_object);
+		$this->db->trans_complete();
+		if ($this->db->trans_status() === FALSE){
+    		$this->db->trans_rollback();
+    		return false;
+		}else{
+			$this->db->trans_commit();
+			return true;
+		}
+	}
+	public function deleteBuilding($buildingid){
+		$this->db->trans_start();
+		$this->db->where('buildingid', $buildingid);
+		$this->db->delete('building');
+		$this->db->trans_complete();
+		if ($this->db->trans_status() === FALSE){
+    		$this->db->trans_rollback();
+    		return false;
+		}else{
+			$this->db->trans_commit();
+			return true;
+		}
+	}
+	public function getBuildingFromId($buildingid){
+		$building = null;
+		$this->db->select('*');
+		$this->db->from('building');
+		$this->db->where('buildingid',$buildingid);
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			$row = $query->row_array();
+			$placeid = $row['placeid'];
+			$buildingname = $row['buildingname'];
+			$latitude = $row['latitude'];
+			$longitude = $row['longitude'];
+			$radius = $row['radius'];
+			$imageurl = $row['imageurl'];
+			$building =
+				array(
+					'buildingid'=>$buildingid,
+					'placeid'=>$placeid,
+					'buildingname'=>$buildingname,
+					'latitude'=>$latitude,
+					'longitude'=>$longitude,
+					'radius'=>$radius,
+					'imageurl'=>$imageurl
+				);
+			}
+			return $building;
+		}
+		
+	
 
 }

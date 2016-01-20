@@ -20,6 +20,10 @@
 		<input type="text" name="qrcode" id="qrcode" value="<?=$qrcode?>" readonly><br>
 		Sensor ID:
 		<input type="text" name="sensorid" id="sensorid" value="<?=$sensorid?>" readonly><br>
+		Items:
+		<?= form_dropdown('itemid',$itemdata); ?><br>
+		Rewards:
+		<?= form_dropdown('rewardid',$rewarddata); ?><br>
 		<input type="submit" value="Submit">
 	<?=form_close()?>
 	<a href="<?=base_url('mainpage')?>">Go Back</a>

@@ -16,6 +16,8 @@
 			      	alt="<?=$floor['floorname']?>">
 			    </a>
 			    <?=$floor['floorname']?>
+			    <a href="<?=base_url('editfloor/edit/'.$floor["floorid"])?>">Edit</a>
+			    <a href="<?=base_url('mainpage/deletefloor/'.$floor["floorid"])?>">Delete</a>
 		  	</div>
         <?php endforeach;?>
 	<?php endif;?>

@@ -25,6 +25,8 @@
 			      	alt="<?=$place['placename']?>">
 			    </a>
 			    <?=$place['placename']?>
+			    <a href="<?=base_url('editplace/edit/'.$place["placeid"])?>">Edit</a>
+			    <a href="<?=base_url('mainpage/deleteplace/'.$place["placeid"])?>">Delete</a>
 		  	</div>
         <?php endforeach;?>
 	<?php endif;?>

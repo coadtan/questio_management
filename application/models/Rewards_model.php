@@ -89,4 +89,22 @@ class Rewards_model extends CI_Model{
 		}
 		return $rewards;
 	}
+	public function getRewardFromType($rewardtype){
+		$rewards = null;
+		$this->db->select('rewardid, rewardname');
+		$this->db->from('rewards');
+		$this->db->where('rewardtype',$rewardtype);
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			$rewards = array();
+			$rewards[0] = null;
+			$i = 1;
+			foreach($query->result_array() as $row){
+				$rewardid = $row['rewardid'];
+				$rewardname = $row['rewardname'];
+				$rewards[$rewardid] = $rewardname;
+			}
+		}
+		return $rewards;
+	}
 }

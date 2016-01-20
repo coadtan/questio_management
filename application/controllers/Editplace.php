@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Addplace extends CI_Controller {
+class Editplace extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
@@ -9,25 +9,23 @@ class Addplace extends CI_Controller {
 		$this->load->model('Rewards_model');
 	}
 
-	public function index(){
+	public function edit($placeid){
 		$place = $this->Place_model;
+		$placedata = $place->getPlaceById($placeid);
 		$reward = $this->Rewards_model;
-		$qrcode = $place->getqrcode();
-		$sensorid = $place->getsensorid();
 		$enterrewarddata = $reward->getRewardFromType(5);
 		$rewarddata = $reward->getRewardFromType(2);
 		$this->load->view(
-			'addplace_page',array(
+			'editplace_page',array(
 				'message' => "",
-				'qrcode' => $qrcode,
-				'sensorid' => $sensorid,
 				'enterrewarddata' => $enterrewarddata,
-				'rewarddata' => $rewarddata
+				'rewarddata' => $rewarddata,
+				'placedata' => $placedata
 			)
 		);
 	}
 
-	public function addplacecheck(){
+	public function editplacecheck($placeid){
 		$place = $this->Place_model;
 		$reward = $this->Rewards_model;
 		$enterrewarddata = $reward->getRewardFromType(5);
@@ -38,8 +36,6 @@ class Addplace extends CI_Controller {
 		$longitude = $_POST['longitude'];
 		$radius = $_POST['radius'];
 		$placetype = $_POST['placetype'];
-		$qrcode = $_POST['qrcode'];
-		$sensorid = $_POST['sensorid'];
 		if($_POST['enter_rewardid'] != 0){
 			$enter_rewardid = $_POST['enter_rewardid'];
 		}else{
@@ -61,41 +57,35 @@ class Addplace extends CI_Controller {
 		$this->form_validation->set_rules('placetype', 'placetype', 'required|alpha_numeric');
 
 		if ($this->form_validation->run()==TRUE){
-			if($place->addplace($placename, $placefullname, $qrcode, $sensorid, $latitude, $longitude, $radius, $placetype, null, $enter_rewardid, $rewardid)==TRUE){
-				$qrcode = $place->getqrcode();
-				$sensorid = $place->getsensorid();
+			if($place->updatePlace($placeid, $placename, $placefullname, $latitude ,$longitude ,$radius, $placetype, null, $enter_rewardid, $rewardid)==TRUE){
+				$placedata = $place->getPlaceById($placeid);
 				$this->load->view(
-					'addplace_page',array(
-					'message' => 'Add Place successful.',
-					'qrcode' => $qrcode,
-					'sensorid' => $sensorid,
+					'editplace_page',array(
+					'message' => 'Edd Place successful.',
 					'enterrewarddata' => $enterrewarddata,
-					'rewarddata' => $rewarddata
+					'rewarddata' => $rewarddata,
+				'placedata' => $placedata
 					)
 				);
 			}else{
-				$qrcode = $place->getqrcode();
-				$sensorid = $place->getsensorid();
+				$placedata = $place->getPlaceById($placeid);
 				$this->load->view(
-					'addplace_page',array(
-					'message' => 'Add Place failed.',
-					'qrcode' => $qrcode,
-					'sensorid' => $sensorid,
+					'editplace_page',array(
+					'message' => 'Edd Place failed.',
 					'enterrewarddata' => $enterrewarddata,
-					'rewarddata' => $rewarddata
+					'rewarddata' => $rewarddata,
+				'placedata' => $placedata
 					)
 				);
 			}
 		}else{
-			$qrcode = $place->getqrcode();
-				$sensorid = $place->getsensorid();
+			$placedata = $place->getPlaceById($placeid);
 			$this->load->view(
-			'addplace_page',array(
+			'editplace_page',array(
 				'message' => 'From validation error. please check again.',
-				'qrcode' => $qrcode,
-					'sensorid' => $sensorid,
-					'enterrewarddata' => $enterrewarddata,
-					'rewarddata' => $rewarddata
+				'enterrewarddata' => $enterrewarddata,
+					'rewarddata' => $rewarddata,
+				'placedata' => $placedata
 				)
 			);
 		}

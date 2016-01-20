@@ -139,5 +139,58 @@ class Floor_model extends CI_Model{
 		}
 		return $floor;
 	}
+	public function updateFloor($floorid, $buildingid, $floorname,$imageurl){
+		$floor_object = array(
+			'buildingid'=>$buildingid,
+			'floorname'=>$floorname,
+			'imageurl'=>$imageurl
+		);
+		$this->db->trans_start();
+		$this->db->where('floorid', $floorid);
+		$this->db->update('floor', $floor_object);
+		$this->db->trans_complete();
+		if ($this->db->trans_status() === FALSE){
+    		$this->db->trans_rollback();
+    		return false;
+		}else{
+			$this->db->trans_commit();
+			return true;
+		}
+	}
+	public function deleteFloor($floorid){
+		$this->db->trans_start();
+		$this->db->where('floorid', $floorid);
+		$this->db->delete('floor');
+		$this->db->trans_complete();
+		if ($this->db->trans_status() === FALSE){
+    		$this->db->trans_rollback();
+    		return false;
+		}else{
+			$this->db->trans_commit();
+			return true;
+		}
+	}
+
+	public function getFloorFromId($floorid){
+		$floor = null;
+		$this->db->select('*');
+		$this->db->from('floor');
+		$this->db->where('floorid',$floorid);
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			$row = $query->row_array();
+			$buildingid = $row['buildingid'];
+			$floorname = $row['floorname'];
+			$imageurl = $row['imageurl'];
+			$floor =
+				array(
+					'floorid'=>$floorid,
+					'buildingid'=>$buildingid,
+					'floorname'=>$floorname,
+					'imageurl'=>$imageurl
+				);
+			}
+		return $floor;
+	}
 
 }

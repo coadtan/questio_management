@@ -178,4 +178,73 @@ class Zone_model extends CI_Model{
 		}
 		return $zone;
 	}
+	public function updateZone($zoneid,$floorid,$zonetypeid,$zonename,$zonedetails,$imageurl,$minimapurl,$itemid,$rewardid){
+		$zone_object = array(
+			'floorid'=>$floorid,
+			'zonetypeid'=>$zonetypeid,
+			'zonename'=>$zonename,
+			'zonedetails'=>$zonedetails,
+			'imageurl'=>$imageurl,
+			'minimapurl'=>$minimapurl,
+			'itemid'=>$itemid,
+			'rewardid'=>$rewardid
+		);
+		$this->db->trans_start();
+		$this->db->where('zoneid', $zoneid);
+		$this->db->update('zone', $zone_object);
+		$this->db->trans_complete();
+		if ($this->db->trans_status() === FALSE){
+    		$this->db->trans_rollback();
+    		return false;
+		}else{
+			$this->db->trans_commit();
+			return true;
+		}
+	}
+	public function deleteZone($zoneid){
+		$this->db->trans_start();
+		$this->db->where('zoneid', $zoneid);
+		$this->db->delete('zone');
+		$this->db->trans_complete();
+		if ($this->db->trans_status() === FALSE){
+    		$this->db->trans_rollback();
+    		return false;
+		}else{
+			$this->db->trans_commit();
+			return true;
+		}
+	}
+	public function getZoneFromId($zoneid){
+		$zone = null;
+		$this->db->select('*');
+		$this->db->from('zone');
+		$this->db->where('zoneid',$zoneid);
+		$this->db->order_by('zoneid','asc');
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			$row = $query->row_array();
+			$floorid = $row['floorid'];
+			$zonetypeid = $row['zonetypeid'];
+			$zonename = $row['zonename'];
+			$zonedetails = $row['zonedetails'];
+			$imageurl = $row['imageurl'];
+			$minimapurl = $row['minimapurl'];
+			$itemid = $row['itemid'];
+			$rewardid = $row['rewardid'];
+			$zone =
+				array(
+					'zoneid'=>$zoneid,
+					'floorid'=>$floorid,
+					'zonetypeid'=>$zonetypeid,
+					'zonename'=>$zonename,
+					'zonedetails'=>$zonedetails,
+					'imageurl'=>$imageurl,
+					'minimapurl'=>$minimapurl,
+					'itemid'=>$itemid,
+					'rewardid'=>$rewardid
+				);
+			
+		}
+		return $zone;
+	}	
 }
