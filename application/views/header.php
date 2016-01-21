@@ -27,6 +27,8 @@
 <?php endif; ?>
 </div>
 </div>
+
+
 <!-- Modal -->
 <div id="login" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -37,7 +39,8 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Keeper Login</h4>
     </div>
-    <div class="modal-body">
+    <!-- Login -->
+    <div class="modal-body" id = "login-modal">
         <?=validation_errors();?>
         <?=form_open('login')?>
         <input type="text" size="20" id="username" name="username" placeholder ="Username" style ="margin-bottom:5px;width:300px;"/>
@@ -46,14 +49,40 @@
         <input class ="btn btn-info" type="submit" value="login">
         <?=form_close()?>
         <br>
+         <!--
         <a href="<?=base_url('register')?>">Register</a>
+        -->
+        <a href="#" id="register-link">Register</a>
         <br>
         <a href="<?=base_url('forgotpassword')?>">Forgot password?</a>
     </div>
+    <!-- Register -->
+    <div class="modal-body" id = "register-modal">
+    <?= form_open('register/updatecheck')?>
+        Username*:
+        <i>Must be 3-16 characters</i>
+         <input type="text" name="username" id="username"><br>
+        Password*:
+        <i>Must be 8-12 characters</i>
+         <input type="password" name="password" id="password"><br>
+        Password Confirmation*: <input type="password" name="passwordconf" id="passwordconf"><br>
+        First Name*: <input type="text" name="fname" id="fname" size="50"><br>
+        Last Name*: <input type="text" name="lname" id="lname" size="50"><br>
+        Telephone*: <input type="tel" name="telephone" id="telephone"><br>
+        E-Mail*: <input type="email" name="email" id="email" size="100"><br>
+        <input type="submit" value="Submit">
+    <?=form_close()?>
+    </div>
+
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
     </div>
-</div>
+    </div>
 
 </div>
 </div>
+
+
+
+
+
