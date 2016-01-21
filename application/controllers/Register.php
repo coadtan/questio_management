@@ -5,7 +5,6 @@ class Register extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('Keeper_model');
-		$this->load->helper('form');
 	}
 
 	public function index(){

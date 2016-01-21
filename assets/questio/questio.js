@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    $("#register-modal").hide();
     $('.keeperplace').click(function(){
         var placeid = this.getAttribute( "placeid");
         $('#buildinglist').load(
@@ -20,4 +21,11 @@ $(document).ready(function(){
         var id = this.id;
         $('#questlist').load("<?=base_url('mainpage/getquest/"+id+"')?>")
     });
+
+    $('#register-link').click(function(){
+        var id = this.id;
+         $("#login-modal").hide();
+         $("#register-modal").show();
+    });
+
 });
