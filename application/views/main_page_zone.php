@@ -21,6 +21,14 @@
 		  	</div>
         <?php endforeach;?>
 	<?php endif;?>
+		<div class="col-xs-6 col-md-3" style="text-align:center">
+			<a
+			    href="<?=base_url('addzone')?>"
+			    class="thumbnail"
+			>
+				<span class="fui-plus" style="font-size:100px"></span>
+			</a>
+		</div>
 	</div>
 	<div id="questlist">
 	</div>

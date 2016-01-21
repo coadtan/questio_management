@@ -33,10 +33,10 @@
 }
 .r1{
 	background: url(../images/background.png) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 
 	text-align: center;
 	opacity: 0.8;
@@ -136,8 +136,20 @@
 	max-width: 340px;
 	width: 65%;
 }
-@media only screen and (max-width: 990px) {
-    .r7 .form-control{
-	margin: auto;
+.modal-body{
+	text-align: center;
 }
+.size{
+	max-width: 800px;
+	max-height: 900px;
+	border-radius: 15px;
+}
+.modal-title{
+	margin: auto;
+	text-align: center;
+}
+@media only screen and (max-width: 990px) {
+	.r7 .form-control{
+		margin: auto;
+	}
 }

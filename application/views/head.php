@@ -5,6 +5,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
 <meta charset="utf-8">
 <title><?=$title?></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <?=script_tag('assets/jquery/jquery-2.2.0.min.js')?>
 <?=script_tag('assets/bootstrap/js/bootstrap.js')?>
 <?=script_tag('assets/questio/questio.js')?>
