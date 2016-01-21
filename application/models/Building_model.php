@@ -82,7 +82,7 @@ class Building_model extends CI_Model{
 		$subquery = $this->db->get_compiled_select();
 		$this->db->select('*');
 		$this->db->from('Building');
-		$this->db->where('placeid IN ($subquery)', null, false);
+		$this->db->where('placeid IN (.'$subquery.')', null, false);
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
 			$places = array();

@@ -129,7 +129,7 @@ class Place_model extends CI_Model{
 		$subquery = $this->db->get_compiled_select();
 		$this->db->select('*');
 		$this->db->from('Place');
-		$this->db->where('placeid IN ($subquery)', null, false);
+		$this->db->where('placeid IN ('.$subquery.')', null, false);
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
 			$places = array();
@@ -345,8 +345,8 @@ class Place_model extends CI_Model{
 		$this->db->where('keeperid',$keeperid);
 		$subquery = $this->db->get_compiled_select();
 		$this->db->select('placeid, placename, imageurl');
-		$this->db->from('Place');
-		$this->db->where('placeid IN ($subquery)', null, false);
+		$this->db->from('place');
+		$this->db->where('placeid IN ('.$subquery.')', null, false);
 		$this->db->order_by('placeid','asc');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
