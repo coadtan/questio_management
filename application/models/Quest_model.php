@@ -57,7 +57,7 @@ class Quest_model extends CI_Model{
 	public function getallquest(){
 		$quests = null;
 		$this->db->select('questname, typename, zonename, difftype, rewardname');
-		$this->db->from('quest');
+		$this->db->from('Quest');
 		$this->db->join('questtype','quest.questtypeid = questtype.questtypeid','left');
 		$this->db->join('zone','quest.zoneid = zone.zoneid','left');
 		$this->db->join('difficulty','quest.diffid = difficulty.diffid','left');
@@ -89,7 +89,7 @@ class Quest_model extends CI_Model{
 	public function searchquest($namepart){
 		$quests = null;
 		$this->db->select('questname, typename, zonename, difftype, rewardname');
-		$this->db->from('quest');
+		$this->db->from('Quest');
 		$this->db->join('questtype','quest.questtypeid = questtype.questtypeid','left');
 		$this->db->join('zone','quest.zoneid = zone.zoneid','left');
 		$this->db->join('difficulty','quest.diffid = difficulty.diffid','left');
@@ -122,7 +122,7 @@ class Quest_model extends CI_Model{
 	public function getQuestByZone($zoneid){
 		$quests = null;
 		$this->db->select('questid, questname, typename');
-		$this->db->from('quest');
+		$this->db->from('Quest');
 		$this->db->join('questtype','quest.questtypeid = questtype.questtypeid','left');
 		$this->db->where('zoneid',$zoneid);
 		$query = $this->db->get();
@@ -147,7 +147,7 @@ class Quest_model extends CI_Model{
 	public function getQuestByQuest($questid){
 	$quests = null;
 		$this->db->select('questname, questdetails, typename, difftype, rewardname');
-		$this->db->from('quest');
+		$this->db->from('Quest');
 		$this->db->join('questtype','quest.questtypeid = questtype.questtypeid','left');
 		$this->db->join('zone','quest.zoneid = zone.zoneid','left');
 		$this->db->join('difficulty','quest.diffid = difficulty.diffid','left');

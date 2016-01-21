@@ -43,7 +43,7 @@ class Rewards_model extends CI_Model{
 	public function getallrewards(){
 		$rewards = null;
 		$this->db->select('rewardname, description, rewardtypename');
-		$this->db->from('rewards');
+		$this->db->from('Rewards');
 		$this->db->join('rewardtype','rewardtype.rewardtypeid = rewards.rewardtype');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
@@ -67,7 +67,7 @@ class Rewards_model extends CI_Model{
 	public function searchrewards($namepart){
 		$rewards = null;
 		$this->db->select('rewardname, description, rewardtypename');
-		$this->db->from('rewards');
+		$this->db->from('Rewards');
 		$this->db->join('rewardtype','rewardtype.rewardtypeid = rewards.rewardtype');
 		$this->db->like('rewardname',$namepart);
 		$query = $this->db->get();
@@ -92,7 +92,7 @@ class Rewards_model extends CI_Model{
 	public function getRewardFromType($rewardtype){
 		$rewards = null;
 		$this->db->select('rewardid, rewardname');
-		$this->db->from('rewards');
+		$this->db->from('Rewards');
 		$this->db->where('rewardtype',$rewardtype);
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){

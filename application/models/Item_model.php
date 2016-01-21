@@ -50,7 +50,7 @@ class Item_model extends CI_Model{
 	public function getallitem(){
 		$items = null;
 		$this->db->select('itemname, itemcollection, positionname');
-		$this->db->from('item');
+		$this->db->from('Item');
 		$this->db->join('position','position.positionid = item.positionid');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
@@ -74,7 +74,7 @@ class Item_model extends CI_Model{
 	public function searchitem($namepart){
 		$items = null;
 		$this->db->select('itemname, itemcollection, positionname');
-		$this->db->from('item');
+		$this->db->from('Item');
 		$this->db->join('position','position.positionid = item.positionid');
 		$this->db->like('itemname',$namepart);
 		$query = $this->db->get();
@@ -99,7 +99,7 @@ class Item_model extends CI_Model{
 	public function getEquippableItem(){
 		$items = null;
 		$this->db->select('itemid,itemname');
-		$this->db->from('item');
+		$this->db->from('Item');
 		$this->db->where('positionid <> 10');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){

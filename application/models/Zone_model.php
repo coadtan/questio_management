@@ -96,7 +96,7 @@ class Zone_model extends CI_Model{
 			'rewardid' => $rewardid
 			);
 		$this->db->trans_start();
-		$this->db->insert('zone',$zone_obj);
+		$this->db->insert('Zone',$zone_obj);
 		$this->db->trans_complete();
 		if ($this->db->trans_status() === FALSE){
     		$this->db->trans_rollback();
@@ -109,7 +109,7 @@ class Zone_model extends CI_Model{
 	public function getzonetypedata(){
 		$zonetype = null;
 		$this->db->select('*');
-		$this->db->from('zonetype');
+		$this->db->from('ZoneType');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
 			$places = array();
@@ -125,7 +125,7 @@ class Zone_model extends CI_Model{
 	public function getqrcode(){
 		$qrcode = null;
 		$this->db->select_max('qrcode', 'currentqr');
-		$this->db->from('zone');
+		$this->db->from('Zone');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
 			foreach($query->result_array() as $row){
@@ -141,7 +141,7 @@ class Zone_model extends CI_Model{
 	public function getsensorid(){
 		$sensorid = null;
 		$this->db->select_max('sensorid', 'currentsensor');
-		$this->db->from('zone');
+		$this->db->from('Zone');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
 			foreach($query->result_array() as $row){
@@ -157,7 +157,7 @@ class Zone_model extends CI_Model{
 	public function showZoneManagement($floorid){
 		$zone = null;
 		$this->db->select('zoneid, zonename, imageurl');
-		$this->db->from('zone');
+		$this->db->from('Zone');
 		$this->db->where('floorid',$floorid);
 		$this->db->order_by('zoneid','asc');
 		$query = $this->db->get();
@@ -191,7 +191,7 @@ class Zone_model extends CI_Model{
 		);
 		$this->db->trans_start();
 		$this->db->where('zoneid', $zoneid);
-		$this->db->update('zone', $zone_object);
+		$this->db->update('Zone', $zone_object);
 		$this->db->trans_complete();
 		if ($this->db->trans_status() === FALSE){
     		$this->db->trans_rollback();
@@ -204,7 +204,7 @@ class Zone_model extends CI_Model{
 	public function deleteZone($zoneid){
 		$this->db->trans_start();
 		$this->db->where('zoneid', $zoneid);
-		$this->db->delete('zone');
+		$this->db->delete('Zone');
 		$this->db->trans_complete();
 		if ($this->db->trans_status() === FALSE){
     		$this->db->trans_rollback();
@@ -217,7 +217,7 @@ class Zone_model extends CI_Model{
 	public function getZoneFromId($zoneid){
 		$zone = null;
 		$this->db->select('*');
-		$this->db->from('zone');
+		$this->db->from('Zone');
 		$this->db->where('zoneid',$zoneid);
 		$this->db->order_by('zoneid','asc');
 		$query = $this->db->get();

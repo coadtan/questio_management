@@ -104,7 +104,7 @@ class Place_model extends CI_Model{
 			'rewardid' => $rewardid
 			);
 		$this->db->trans_start();
-		$this->db->insert('place',$place_obj);
+		$this->db->insert('Place',$place_obj);
 		$this->db->trans_complete();
 		if ($this->db->trans_status() === FALSE){
     		$this->db->trans_rollback();
@@ -123,9 +123,13 @@ class Place_model extends CI_Model{
 	}
 	public function getplacedata($keeperid){
 		$places = null;
+		$this->db->select('placeid');
+		$this->db->from('management');
+		$this->db->where('keeperid',$keeperid);
+		$subquery = $this->db->get_compiled_select();
 		$this->db->select('*');
-		$this->db->from('place');
-		$this->db->where('placeid IN (SELECT placeid FROM management WHERE keeperid = '.$keeperid.')');
+		$this->db->from('Place');
+		$this->db->where_in('placeid',$subquery);
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
 			$places = array();
@@ -159,7 +163,7 @@ class Place_model extends CI_Model{
 	public function getplaceid(){
 		$placeid = null;
 		$this->db->select_max('placeid', 'currentid');
-		$this->db->from('place');
+		$this->db->from('Place');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
 			foreach($query->result_array() as $row){
@@ -174,7 +178,7 @@ class Place_model extends CI_Model{
 	public function getqrcode(){
 		$qrcode = null;
 		$this->db->select_max('qrcode', 'currentqr');
-		$this->db->from('place');
+		$this->db->from('Place');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
 			foreach($query->result_array() as $row){
@@ -190,7 +194,7 @@ class Place_model extends CI_Model{
 	public function getsensorid(){
 		$sensorid = null;
 		$this->db->select_max('sensorid', 'currentsensor');
-		$this->db->from('place');
+		$this->db->from('Place');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
 			foreach($query->result_array() as $row){
@@ -205,7 +209,7 @@ class Place_model extends CI_Model{
 	public function getallplace(){
 		$places = null;
 		$this->db->select('placename, placefullname, latitude, longitude, radius, placetype');
-		$this->db->from('place');
+		$this->db->from('Place');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
 			$places = array();
@@ -234,7 +238,7 @@ class Place_model extends CI_Model{
 	public function getenterreward(){
 		$enterrewards = null;
 		$this->db->select('rewardname AS enter_rewardname');
-		$this->db->from('place');
+		$this->db->from('Place');
 		$this->db->join('rewards','place.enter_rewardid = rewards.rewardid', 'left');
 		$this->db->order_by('placeid','asc');
 		$query = $this->db->get();
@@ -251,7 +255,7 @@ class Place_model extends CI_Model{
 	public function getplacereward(){
 		$placerewards = null;
 		$this->db->select('rewardname AS place_rewardname');
-		$this->db->from('place');
+		$this->db->from('Place');
 		$this->db->join('rewards','place.rewardid = rewards.rewardid', 'left');
 		$this->db->order_by('placeid','asc');
 		$query = $this->db->get();
@@ -268,7 +272,7 @@ class Place_model extends CI_Model{
 	public function searchplace($namepart){
 		$places = null;
 		$this->db->select('placename, placefullname, latitude, longitude, radius, placetype');
-		$this->db->from('place');
+		$this->db->from('Place');
 		$this->db->like('placename',$namepart);
 		$this->db->or_like('placefullname',$namepart);
 		$query = $this->db->get();
@@ -299,7 +303,7 @@ class Place_model extends CI_Model{
 	public function searchenterreward($namepart){
 		$enterrewards = null;
 		$this->db->select('rewardname AS enter_rewardname');
-		$this->db->from('place');
+		$this->db->from('Place');
 		$this->db->join('rewards','place.enter_rewardid = rewards.rewardid', 'left');
 		$this->db->like('placename',$namepart);
 		$this->db->or_like('placefullname',$namepart);
@@ -318,7 +322,7 @@ class Place_model extends CI_Model{
 	public function searchplacereward($namepart){
 		$placerewards = null;
 		$this->db->select('rewardname AS place_rewardname');
-		$this->db->from('place');
+		$this->db->from('Place');
 		$this->db->join('rewards','place.rewardid = rewards.rewardid', 'left');
 		$this->db->like('placename',$namepart);
 		$this->db->or_like('placefullname',$namepart);
@@ -336,9 +340,13 @@ class Place_model extends CI_Model{
 	}
 	public function showPlaceManagement($keeperid){
 		$places = null;
+		$this->db->select('placeid');
+		$this->db->from('management');
+		$this->db->where('keeperid',$keeperid);
+		$subquery = $this->db->get_compiled_select();
 		$this->db->select('placeid, placename, imageurl');
-		$this->db->from('place');
-		$this->db->where('placeid IN (SELECT placeid FROM management WHERE keeperid = '.$keeperid.')');
+		$this->db->from('Place');
+		$this->db->where_in('placeid', $subquery);
 		$this->db->order_by('placeid','asc');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
@@ -372,7 +380,7 @@ class Place_model extends CI_Model{
 		);
 		$this->db->trans_start();
 		$this->db->where('placeid', $placeid);
-		$this->db->update('place', $place_object);
+		$this->db->update('Place', $place_object);
 		$this->db->trans_complete();
 		if ($this->db->trans_status() === FALSE){
     		$this->db->trans_rollback();
@@ -385,7 +393,7 @@ class Place_model extends CI_Model{
 	public function deletePlace($placeid){
 		$this->db->trans_start();
 		$this->db->where('placeid', $placeid);
-		$this->db->delete('place');
+		$this->db->delete('Place');
 		$this->db->trans_complete();
 		if ($this->db->trans_status() === FALSE){
     		$this->db->trans_rollback();
@@ -398,7 +406,7 @@ class Place_model extends CI_Model{
 	public function getPlaceById($placeid){
 		$places = null;
 		$this->db->select('*');
-		$this->db->from('place');
+		$this->db->from('Place');
 		$this->db->where('placeid', $placeid);
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){

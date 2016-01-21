@@ -64,7 +64,7 @@ class Building_model extends CI_Model{
 			'imageurl' => $imageurl
 			);
 		$this->db->trans_start();
-		$this->db->insert('building',$building_obj);
+		$this->db->insert('Building',$building_obj);
 		$this->db->trans_complete();
 		if ($this->db->trans_status() === FALSE){
     		$this->db->trans_rollback();
@@ -76,9 +76,13 @@ class Building_model extends CI_Model{
 	}
 	public function getbuildingdata($keeperid){
 		$buildings = null;
+		$this->db->select('placeid');
+		$this->db->from('management');
+		$this->db->where('keeperid',$keeperid);
+		$subquery = $this->db->get_compiled_select();
 		$this->db->select('*');
-		$this->db->from('building');
-		$this->db->where('placeid IN (SELECT placeid FROM management WHERE keeperid = '.$keeperid.')');
+		$this->db->from('Building');
+		$this->db->where_in('placeid',$subquery);
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
 			$places = array();
@@ -93,7 +97,7 @@ class Building_model extends CI_Model{
 	public function showBuildingManagement($placeid){
 		$building = null;
 		$this->db->select('buildingid, buildingname, imageurl');
-		$this->db->from('building');
+		$this->db->from('Building');
 		$this->db->where('placeid',$placeid);
 		$this->db->order_by('buildingid','asc');
 		$query = $this->db->get();
@@ -125,7 +129,7 @@ class Building_model extends CI_Model{
 		);
 		$this->db->trans_start();
 		$this->db->where('buildingid', $buildingid);
-		$this->db->update('building', $building_object);
+		$this->db->update('Building', $building_object);
 		$this->db->trans_complete();
 		if ($this->db->trans_status() === FALSE){
     		$this->db->trans_rollback();
@@ -138,7 +142,7 @@ class Building_model extends CI_Model{
 	public function deleteBuilding($buildingid){
 		$this->db->trans_start();
 		$this->db->where('buildingid', $buildingid);
-		$this->db->delete('building');
+		$this->db->delete('Building');
 		$this->db->trans_complete();
 		if ($this->db->trans_status() === FALSE){
     		$this->db->trans_rollback();
@@ -152,7 +156,7 @@ class Building_model extends CI_Model{
 		$building = null;
 		$this->db->select('*');
 		$this->db->from('building');
-		$this->db->where('buildingid',$buildingid);
+		$this->db->where('Buildingid',$buildingid);
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
 			$row = $query->row_array();
