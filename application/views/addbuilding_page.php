@@ -7,7 +7,7 @@
 		<i>Must be less than 140 characters</i>
 		 <input type="text" name="buildingname" id="buildingname" size="50"><br>
 		Place Name*:
-		<?php echo form_dropdown('placeid',$placedata); ?>
+		<?= form_dropdown('placeid',$placedata); ?>
 		 <br>
 		Latitude*:
 		<input type="text" name="latitude" id="latitude"><br>

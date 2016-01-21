@@ -16,6 +16,8 @@
 			      	alt="<?=$zone['zonename']?>">
 			    </a>
 			    <?=$zone['zonename']?>
+			    <a href="<?=base_url('editzone/edit/'.$zone["zoneid"])?>">Edit</a>
+			    <a href="<?=base_url('mainpage/deletezone/'.$zone["zoneid"])?>">Delete</a>
 		  	</div>
         <?php endforeach;?>
 	<?php endif;?>

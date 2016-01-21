@@ -16,6 +16,8 @@
 			      	alt="<?=$building['buildingname']?>">
 			    </a>
 			    <?=$building['buildingname']?>
+			    <a href="<?=base_url('editbuilding/edit/'.$building["buildingid"])?>">Edit</a>
+			    <a href="<?=base_url('mainpage/deletebuilding/'.$building["buildingid"])?>">Delete</a>
 		  	</div>
         <?php endforeach;?>
 	<?php endif;?>

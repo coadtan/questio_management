@@ -96,4 +96,22 @@ class Item_model extends CI_Model{
 		}
 		return $items;
 	}
+	public function getEquippableItem(){
+		$items = null;
+		$this->db->select('itemid,itemname');
+		$this->db->from('item');
+		$this->db->where('positionid <> 10');
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			$items = array();
+			$items[0] = null;
+			$i = 1;
+			foreach($query->result_array() as $row){
+				$itemid = $row['itemid'];
+				$itemname = $row['itemname'];
+				$items[$itemid] = $itemname;
+			}
+		}
+		return $items;
+	}
 }

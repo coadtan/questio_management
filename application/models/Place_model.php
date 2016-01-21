@@ -358,5 +358,76 @@ class Place_model extends CI_Model{
 		}
 		return $places;
 	}
+	public function updatePlace($placeid, $placename, $placefullname, $latitude ,$longitude ,$radius, $placetype, $imageurl, $enter_rewardid, $rewardid){
+		$place_object = array(
+			'placename'=>$placename,
+			'placefullname'=>$placefullname,
+			'latitude'=>$latitude,
+			'longitude'=>$longitude,
+			'radius'=>$radius,
+			'placetype'=>$placetype,
+			'imageurl'=>$imageurl,
+			'enter_rewardid'=>$enter_rewardid,
+			'rewardid'=>$rewardid
+		);
+		$this->db->trans_start();
+		$this->db->where('placeid', $placeid);
+		$this->db->update('place', $place_object);
+		$this->db->trans_complete();
+		if ($this->db->trans_status() === FALSE){
+    		$this->db->trans_rollback();
+    		return false;
+		}else{
+			$this->db->trans_commit();
+			return true;
+		}
+	}
+	public function deletePlace($placeid){
+		$this->db->trans_start();
+		$this->db->where('placeid', $placeid);
+		$this->db->delete('place');
+		$this->db->trans_complete();
+		if ($this->db->trans_status() === FALSE){
+    		$this->db->trans_rollback();
+    		return false;
+		}else{
+			$this->db->trans_commit();
+			return true;
+		}
+	}
+	public function getPlaceById($placeid){
+		$places = null;
+		$this->db->select('*');
+		$this->db->from('place');
+		$this->db->where('placeid', $placeid);
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			$row = $query->row_array();
+			$placename = $row['placename'];
+			$placefullname = $row['placefullname'];
+			$latitude = $row['latitude'];
+			$longitude = $row['longitude'];
+			$radius = $row['radius'];
+			$placetype = $row['placetype'];
+			$imageurl = $row['imageurl'];
+			$enter_rewardid = $row['enter_rewardid'];
+			$rewardid = $row['rewardid'];
+			$places =
+				array(
+					'placeid'=>$placeid,
+					'placename'=>$placename,
+					'placefullname'=>$placefullname,
+					'latitude'=>$latitude,
+					'longitude'=>$longitude,
+					'radius'=>$radius,
+					'placetype'=>$placetype,
+					'imageurl'=>$imageurl,
+					'enter_rewardid'=>$enter_rewardid,
+					'rewardid'=>$rewardid
+				);
+			}
+			return $places;
+		}
+		
 
 }

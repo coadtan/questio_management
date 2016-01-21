@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Addzone extends CI_Controller {
+class Editzone extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
@@ -12,28 +12,26 @@ class Addzone extends CI_Controller {
 		$this->load->helper('form');
 	}
 
-	public function index(){
+	public function edit($zoneid){
 		$floordata = $this->getfloor();
 		$zone = $this->Zone_model;
-		$qrcode = $zone->getqrcode();
-		$sensorid = $zone->getsensorid();
+		$zonedata = $zone->getZoneFromId($zoneid);
 		$zonetypedata = $zone->getzonetypedata();
 		$itemdata = $this->Item_model->getEquippableItem();
 		$rewarddata = $this->Rewards_model->getRewardFromType(4);
 		$this->load->view(
-			'addzone_page',array(
+			'editzone_page',array(
 				'message' => "",
 				'floordata' => $floordata,
 				'zonetypedata' => $zonetypedata,
-				'qrcode' => $qrcode,
-				'sensorid' => $sensorid,
 				'itemdata' => $itemdata,
-				'rewarddata' => $rewarddata
+				'rewarddata' => $rewarddata,
+				'zonedata' => $zonedata
 			)
 		);
 	}
 
-	public function addzonecheck(){
+	public function editzonecheck($zoneid){
 		$floordata = $this->getfloor();
 		$zone = $this->Zone_model;
 		$zonetypedata = $zone->getzonetypedata();
@@ -43,8 +41,6 @@ class Addzone extends CI_Controller {
 		$zonename = $_POST['zonename'];
 		$zonetypeid = $_POST['zonetype'];
 		$zonedetails = $_POST['zonedetails'];
-		$qrcode = $_POST['qrcode'];
-		$sensorid = $_POST['sensorid'];
 		if($_POST['itemid'] != 0){
 			$itemid = $_POST['itemid'];
 		}else{
@@ -59,48 +55,42 @@ class Addzone extends CI_Controller {
 		$this->form_validation->set_rules('zonename', 'zonename', 'required|max_length[100]');
 
 		if ($this->form_validation->run()==TRUE){
-			if($zone->addzone($floorid, $zonetypeid, $zonename, $zonedetails, $qrcode, $sensorid, null, null, $itemid, $rewardid)==TRUE){
-				$qrcode = $zone->getqrcode();
-				$sensorid = $zone->getsensorid();
+			if($zone->updateZone($zoneid, $floorid, $zonetypeid, $zonename, $zonedetails, null, null, $itemid, $rewardid)==TRUE){
+				$zonedata = $zone->getZoneFromId($zoneid);
 				$this->load->view(
-					'addzone_page',array(
-					'message' => 'Add zone successful.',
+					'editzone_page',array(
+					'message' => 'Edit zone successful.',
 					'floordata' => $floordata,
 					'zonetypedata' => $zonetypedata,
-					'qrcode' => $qrcode,
-					'sensorid' => $sensorid,
 					'itemdata' => $itemdata,
-					'rewarddata' => $rewarddata
+					'rewarddata' => $rewarddata,
+					'zonedata' => $zonedata
 					)
 				);
 			}else{
-				$qrcode = $zone->getqrcode();
-				$sensorid = $zone->getsensorid();
+				$zonedata = $zone->getZoneFromId($zoneid);
 				$this->load->view(
-					'addzone_page',array(
-					'message' => 'Add zone failed.',
+					'editzone_page',array(
+					'message' => 'Edit zone failed.',
 					'floordata' => $floordata,
 					'zonetypedata' => $zonetypedata,
-					'qrcode' => $qrcode,
-					'sensorid' => $sensorid,
 					'itemdata' => $itemdata,
-					'rewarddata' => $rewarddata
+					'rewarddata' => $rewarddata,
+					'zonedata' => $zonedata
 					)
 				);
 			}
 
 		}else{
-			$qrcode = $zone->getqrcode();
-			$sensorid = $zone->getsensorid();
+			$zonedata = $zone->getZoneFromId($zoneid);
 			$this->load->view(
-			'addzone_page',array(
+			'editzone_page',array(
 				'message' => 'From validation error. please check again.',
 				'floordata' => $floordata,
 				'zonetypedata' => $zonetypedata,
-				'qrcode' => $qrcode,
-				'sensorid' => $sensorid,
 				'itemdata' => $itemdata,
-				'rewarddata' => $rewarddata
+				'rewarddata' => $rewarddata,
+				'zonedata' => $zonedata
 				)
 			);
 		}
