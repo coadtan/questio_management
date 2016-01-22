@@ -78,7 +78,7 @@ class Floor_model extends CI_Model{
 		$subquery2 = $this->db->get_compiled_select();
 		$this->db->select('*');
 		$this->db->from('Floor');
-		$this->db->where('buildingid IN (.'$subquery2.')', null, false);
+		$this->db->where('buildingid IN ('.$subquery2.')', null, false);
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
 			$places = array();
