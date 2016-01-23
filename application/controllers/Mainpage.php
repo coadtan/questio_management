@@ -53,8 +53,7 @@ class Mainpage extends CI_Controller {
 									));
 	}
 
-	public function getquest($zoneidstr){
-		$zoneid = substr($zoneidstr,5);
+	public function getquest($zoneid){
 		$data = $this->Quest_model->getQuestByZone($zoneid);
 		$this->load->view('main_page_quest', array(
 										'data' => $data

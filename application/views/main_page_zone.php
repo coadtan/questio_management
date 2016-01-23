@@ -1,5 +1,11 @@
-<?php $this->load->view('head', array('title' => 'Welcome'));?>
-<body>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.keeperzone').click(function(){
+        var zoneid = this.getAttribute("zoneid");
+        $("#questlist").load('<?php echo site_url('mainpage/getquest'); ?>'+'/'+zoneid);
+    });
+});
+</script>
 	<h1>Zones</h1>
 	<div class="row">
 	<?php if(!empty($data)):?>
@@ -32,5 +38,3 @@
 	</div>
 	<div id="questlist">
 	</div>
-</body>
-</html>
