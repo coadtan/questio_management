@@ -12,20 +12,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?=link_tag('assets/questio/questio.css')?>
 <script type="text/javascript">
 $(document).ready(function(){
-    $("#register-modal").hide();
     $('.keeperplace').click(function(){
         var placeid = this.getAttribute("placeid");
         $('#buildinglist').load(
             "<?=base_url('mainpage/getbuilding')?>"+ "/"+ placeid
         );
-    });
-
-
- 
-    $('#register-link').click(function(){
-        var id = this.id;
-         $("#login-modal").hide();
-         $("#register-modal").show();
+        $('html,body').animate({
+        scrollTop: $("#buildinglist").offset().top},
+        'slow');
     });
 });
 </script>

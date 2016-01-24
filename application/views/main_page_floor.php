@@ -5,6 +5,9 @@ $('.keeperfloor').click(function(){
         $('#zonelist').load(
         	"<?=base_url('mainpage/getzone')?>"+ "/"+ floorid
         );
+        $('html,body').animate({
+        scrollTop: $("#zonelist").offset().top},
+        'slow');
     });
 });
 </script>

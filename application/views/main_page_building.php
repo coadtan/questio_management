@@ -5,6 +5,9 @@ $('.keeperbuilding').click(function(){
         $('#floorlist').load(
         	"<?=base_url('mainpage/getfloor')?>"+ "/"+ buildingid
        	);
+       	$('html,body').animate({
+        scrollTop: $("#floorlist").offset().top},
+        'slow');
     });
 });
 </script>

@@ -16,6 +16,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="container-fluid">
     <?php $this->load->view('header', array('title' => 'Statistics'));?>
 
+    <div class="row">
+        <div class="col-md-9">
+        </div>
+        <div class="col-md-3">
     <?php if(!empty($keeperplace)):?>
     <select
         data-toggle="select"
@@ -30,7 +34,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </optgroup>
       </select>
     <?php endif;?>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="row" >
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-2">
+            <a href="#fakelink" class="btn btn-block btn-lg btn-primary">Adventurer count</a>
+        </div>
+        <div class="col-md-2">
+            <a href="#fakelink" class="btn btn-block btn-lg btn-primary">Quest played</a>
+        </div>
+        <div class="col-md-2">
+            <a href="#fakelink" class="btn btn-block btn-lg btn-primary">Average score</a>
+        </div>
+        <div class="col-md-2">
+            <a href="#fakelink" class="btn btn-block btn-lg btn-primary">Zone visited</a>
+        </div>
 
+        <div class="col-md-2">
+            <a href="#fakelink" class="btn btn-block btn-lg btn-primary">Adventurer info</a>
+        </div>
+        <div class="col-md-1">
+        </div>
+    </div>
 
     </div>
 </body>
