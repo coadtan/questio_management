@@ -11,6 +11,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?=script_tag('assets/bootstrap/js/bootstrap.js')?>
 <?=link_tag('assets/bootstrap/css/bootstrap.min.css')?>
 <?=link_tag('assets/questio/questio.css')?>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#adventurer-count').click(function(){
+
+        $('#graph').load(
+            "<?=base_url('statistic/adventurercount')?>"
+        );
+
+        $('html,body').animate({
+        scrollTop: $("#graph").offset().top},
+        'slow');
+    });
+});
+</script>
 </head>
 <body>
     <div class="container-fluid">
@@ -42,7 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="col-md-1">
         </div>
         <div class="col-md-2">
-            <a href="#fakelink" class="btn btn-block btn-lg btn-primary">Adventurer count</a>
+            <a href="#fakelink" id="adventurer-count" class="btn btn-block btn-lg btn-primary">Adventurer count</a>
         </div>
         <div class="col-md-2">
             <a href="#fakelink" class="btn btn-block btn-lg btn-primary">Quest played</a>
@@ -59,8 +75,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="col-md-1">
         </div>
-    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="graph">
 
-    </div>
+
+    </div><!-- end of graph-->
 </body>
 </html>

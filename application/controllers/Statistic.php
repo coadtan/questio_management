@@ -15,4 +15,20 @@ class Statistic extends CI_Controller {
                     ));
     }
 
+    public function adventurercount(){
+        $x = array(
+                '2013-10-04 22:23:00',
+                '2013-11-04 22:23:00',
+                '2013-12-04 22:23:00'
+            );
+        $y = array(
+                1,
+                3,
+                6
+            );
+        $this->load->view('adventurer_count', array(
+                                        'x' => $x,
+                                        'y' => $y
+                                    ));
+    }
 }
