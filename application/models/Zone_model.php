@@ -112,7 +112,6 @@ class Zone_model extends CI_Model{
 		$this->db->from('ZoneType');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
-			$places = array();
 			foreach($query->result_array() as $row){
 				$zonetype[$row['zonetypeid']] = $row['typename'];
 			}
@@ -128,10 +127,9 @@ class Zone_model extends CI_Model{
 		$this->db->from('Zone');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
-			foreach($query->result_array() as $row){
-				$qrcode = $row['currentqr'];
-				$qrcode++;
-			}
+			$row = $query->row_array();
+			$qrcode = $row['currentqr'];
+			$qrcode++;
 		}else{
 			echo "No data in query at 'getqrcode'";
 		}
@@ -144,10 +142,9 @@ class Zone_model extends CI_Model{
 		$this->db->from('Zone');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
-			foreach($query->result_array() as $row){
-				$sensorid = $row['currentsensor'];
-				$sensorid++;
-			}
+			$row = $query->row_array();
+			$sensorid = $row['currentsensor'];
+			$sensorid++;
 		}else{
 			echo "No data in query at 'getsensorid'";
 		}

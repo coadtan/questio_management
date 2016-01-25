@@ -42,7 +42,7 @@ class Rewards_model extends CI_Model{
 	}
 	public function getallrewards(){
 		$rewards = null;
-		$this->db->select('rewardname, description, rewardtypename');
+		$this->db->select('rewardid, rewardname, description, rewardtypename');
 		$this->db->from('Rewards');
 		$this->db->join('rewardtype','rewardtype.rewardtypeid = rewards.rewardtype');
 		$query = $this->db->get();
@@ -50,12 +50,14 @@ class Rewards_model extends CI_Model{
 			$rewards = array();
 			$i = 0;
 			foreach($query->result_array() as $row){
+				$rewardid = $row['rewardid'];
 				$rewardname = $row['rewardname'];
 				$description = $row['description'];
 				$rewardtypename = $row['rewardtypename'];
 				$rewards[$i++] = 
 					array(
 						'rewardno'=>$i,
+						'rewardid'=>$rewardid,
 						'rewardname'=>$rewardname,
 						'description'=>$description,
 						'rewardtypename'=>$rewardtypename
@@ -106,5 +108,23 @@ class Rewards_model extends CI_Model{
 			}
 		}
 		return $rewards;
+	}
+	public function addreward($rewardname, $description, $rewardtype, $rewardpic){
+		$reward_obj = array(	
+			'rewardname' => $rewardname,
+			'description' => $description,
+			'rewardtype' => $rewardtype,
+			'rewardpic' => $rewardpic
+			);
+		$this->db->trans_start();
+		$this->db->insert('Rewards',$reward_obj);
+		$this->db->trans_complete();
+		if ($this->db->trans_status() === FALSE){
+    		$this->db->trans_rollback();
+    		return false;
+		}else{
+			$this->db->trans_commit();
+			return true;
+		}
 	}
 }

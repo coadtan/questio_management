@@ -2,11 +2,17 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Addplace extends CI_Controller {
-
+	var $config;
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('Place_model');
 		$this->load->model('Rewards_model');
+		$this->config =
+			array(
+				'upload_path' => './puzzlepic/',
+				'allowed_types' => 'gif|jpg|png|jpeg',
+				'overwrite' => TRUE
+			);
 	}
 
 	public function index(){

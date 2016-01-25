@@ -73,21 +73,23 @@ class Item_model extends CI_Model{
 	}
 	public function searchitem($namepart){
 		$items = null;
-		$this->db->select('itemname, itemcollection, positionname');
+		$this->db->select('itemid, itemname, itemcollection, positionname');
 		$this->db->from('Item');
-		$this->db->join('position','position.positionid = item.positionid');
+		$this->db->join('Position','position.positionid = item.positionid');
 		$this->db->like('itemname',$namepart);
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
 			$items = array();
 			$i = 0;
 			foreach($query->result_array() as $row){
+				$itemid = $row['itemid'];
 				$itemname = $row['itemname'];
 				$itemcollection = $row['itemcollection'];
 				$positionname = $row['positionname'];
 				$items[$i++] = 
 					array(
 						'itemno'=>$i,
+						'itemid'=>$itemid,
 						'itemname'=>$itemname,
 						'itemcollection'=>$itemcollection,
 						'positionname'=>$positionname
@@ -113,5 +115,38 @@ class Item_model extends CI_Model{
 			}
 		}
 		return $items;
+	}
+	public function additem($itemname, $itempicpath, $equipspritepath, $itemcollection, $positionid){
+		$item_obj = array(
+			'itemname' => $itemname,
+			'itempicpath' => $itempicpath,
+			'equipspritepath' => $equipspritepath,
+			'itemcollection' => $itemcollection,
+			'positionid' => $positionid
+			);
+		$this->db->trans_start();
+		$this->db->insert('Item',$item_obj);
+		$this->db->trans_complete();
+		if ($this->db->trans_status() === FALSE){
+    		$this->db->trans_rollback();
+    		return false;
+		}else{
+			$this->db->trans_commit();
+			return true;
+		}
+	}
+	public function getposition(){
+		$position = null;
+		$this->db->select('*');
+		$this->db->from('Position');
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			foreach($query->result_array() as $row){
+				$position[$row['positionid']] = $row['positionname'];
+			}
+		}else{
+			echo "No data in query at 'getposition'";
+		}
+		return $position;
 	}
 }

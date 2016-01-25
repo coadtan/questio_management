@@ -166,9 +166,8 @@ class Place_model extends CI_Model{
 		$this->db->from('Place');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
-			foreach($query->result_array() as $row){
-				$placeid = $row['currentid'];
-			}
+			$row = $query->row_array();
+			$placeid = $row['currentid'];
 		}else{
 			echo "No data in query at 'getplaceid'";
 		}
@@ -181,10 +180,9 @@ class Place_model extends CI_Model{
 		$this->db->from('Place');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
-			foreach($query->result_array() as $row){
-				$qrcode = $row['currentqr'];
-				$qrcode++;
-			}
+			$row = $query->row_array();
+			$qrcode = $row['currentqr'];
+			$qrcode++;
 		}else{
 			echo "No data in query at 'getqrcode'";
 		}
@@ -197,10 +195,9 @@ class Place_model extends CI_Model{
 		$this->db->from('Place');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
-			foreach($query->result_array() as $row){
-				$sensorid = $row['currentsensor'];
-				$sensorid++;
-			}
+			$row = $query->row_array();
+			$sensorid = $row['currentsensor'];
+			$sensorid++;
 		}else{
 			echo "No data in query at 'getsensorid'";
 		}
