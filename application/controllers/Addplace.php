@@ -90,7 +90,7 @@ class Addplace extends CI_Controller {
 				$sensorid = $place->getsensorid();
 			$this->load->view(
 			'addplace_page',array(
-				'message' => 'From validation error. please check again.',
+				'message' => 'Form validation error. please check again.',
 				'qrcode' => $qrcode,
 					'sensorid' => $sensorid,
 					'enterrewarddata' => $enterrewarddata,

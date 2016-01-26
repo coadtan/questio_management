@@ -94,7 +94,7 @@ class Addzone extends CI_Controller {
 			$sensorid = $zone->getsensorid();
 			$this->load->view(
 			'addzone_page',array(
-				'message' => 'From validation error. please check again.',
+				'message' => 'Form validation error. please check again.',
 				'floordata' => $floordata,
 				'zonetypedata' => $zonetypedata,
 				'qrcode' => $qrcode,

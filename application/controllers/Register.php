@@ -51,7 +51,7 @@ class Register extends CI_Controller {
 		}else{
 			$this->load->view(
 			'register_page',array(
-				'message' => 'From validation error. please check again.'
+				'message' => 'Form validation error. please check again.'
 				)
 			);
 		}

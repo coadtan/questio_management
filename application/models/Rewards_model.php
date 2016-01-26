@@ -44,7 +44,7 @@ class Rewards_model extends CI_Model{
 		$rewards = null;
 		$this->db->select('rewardid, rewardname, description, rewardtypename');
 		$this->db->from('Rewards');
-		$this->db->join('rewardtype','rewardtype.rewardtypeid = rewards.rewardtype');
+		$this->db->join('RewardType','rewardtype.rewardtypeid = rewards.rewardtype');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
 			$rewards = array();
@@ -70,7 +70,7 @@ class Rewards_model extends CI_Model{
 		$rewards = null;
 		$this->db->select('rewardname, description, rewardtypename');
 		$this->db->from('Rewards');
-		$this->db->join('rewardtype','rewardtype.rewardtypeid = rewards.rewardtype');
+		$this->db->join('RewardType','rewardtype.rewardtypeid = rewards.rewardtype');
 		$this->db->like('rewardname',$namepart);
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
@@ -95,7 +95,7 @@ class Rewards_model extends CI_Model{
 		$rewards = null;
 		$this->db->select('rewardid, rewardname');
 		$this->db->from('Rewards');
-		$this->db->where('rewardtype',$rewardtype);
+		$this->db->where('RewardType',$rewardtype);
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
 			$rewards = array();
@@ -127,4 +127,18 @@ class Rewards_model extends CI_Model{
 			return true;
 		}
 	}
+	public function getrewardtype(){
+		$position = null;
+		$this->db->select('*');
+		$this->db->from('RewardType');
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			foreach($query->result_array() as $row){
+				$position[$row['rewardtypeid']] = $row['rewardtypename'];
+			}
+		}else{
+			echo "No data in query at 'getrewardtype'";
+		}
+		return $position;
+	}	
 }

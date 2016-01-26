@@ -301,7 +301,7 @@ class Place_model extends CI_Model{
 		$enterrewards = null;
 		$this->db->select('rewardname AS enter_rewardname');
 		$this->db->from('Place');
-		$this->db->join('rewards','place.enter_rewardid = rewards.rewardid', 'left');
+		$this->db->join('Rewards','place.enter_rewardid = rewards.rewardid', 'left');
 		$this->db->like('placename',$namepart);
 		$this->db->or_like('placefullname',$namepart);
 		$this->db->order_by('placeid','asc');
@@ -320,7 +320,7 @@ class Place_model extends CI_Model{
 		$placerewards = null;
 		$this->db->select('rewardname AS place_rewardname');
 		$this->db->from('Place');
-		$this->db->join('rewards','place.rewardid = rewards.rewardid', 'left');
+		$this->db->join('Rewards','place.rewardid = rewards.rewardid', 'left');
 		$this->db->like('placename',$namepart);
 		$this->db->or_like('placefullname',$namepart);
 		$this->db->order_by('placeid','asc');

@@ -51,7 +51,7 @@ class Item_model extends CI_Model{
 		$items = null;
 		$this->db->select('itemname, itemcollection, positionname');
 		$this->db->from('Item');
-		$this->db->join('position','position.positionid = item.positionid');
+		$this->db->join('Position','position.positionid = item.positionid');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
 			$items = array();

@@ -82,7 +82,7 @@ class Editplace extends CI_Controller {
 			$placedata = $place->getPlaceById($placeid);
 			$this->load->view(
 			'editplace_page',array(
-				'message' => 'From validation error. please check again.',
+				'message' => 'Form validation error. please check again.',
 				'enterrewarddata' => $enterrewarddata,
 					'rewarddata' => $rewarddata,
 				'placedata' => $placedata

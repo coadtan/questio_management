@@ -55,7 +55,7 @@ class Editfloor extends CI_Controller {
 			$floordata = $floor->getFloorFromId($floorid);
 			$this->load->view(
 			'editfloor_page',array(
-				'message' => 'From validation error. please check again.',
+				'message' => 'Form validation error. please check again.',
 				'buildingdata' => $buildingdata,
 				'floordata' => $floordata
 				)
