@@ -13,8 +13,8 @@ $(document).ready(function(){
     $('#header-logo').css('cursor', 'pointer');
 });
 </script>
-<div class="row" style="background-color:white; height:50px;padding:5px" >
-    <div class="col-md-3 col-xs-6" id="header-logo">
+<div class="row" style="background-color:white; height:50px;padding:8px 5px" >
+    <div class="col-md-3 col-xs-6">
         <img class="questio-mini-logo" src="<?= base_url()?>assets/images/logo.png" alt="">
         <font style="font-size:20px" class="text-questio-title">Questio</font>
     </div>
@@ -72,7 +72,7 @@ $(document).ready(function(){
         <a href="<?=base_url('forgotpassword')?>">Forgot password?</a>
     </div>
     <!-- Register -->
-    <div class="modal-body" id = "register-modal">
+    <div class="modal-body " id = "register-modal">
     <?= form_open('register/updatecheck')?>
         Username*:
         <i>Must be 3-16 characters</i>
@@ -84,7 +84,7 @@ $(document).ready(function(){
         First Name*: <input type="text" name="fname" id="fname" size="50"><br>
         Last Name*: <input type="text" name="lname" id="lname" size="50"><br>
         Telephone*: <input type="tel" name="telephone" id="telephone"><br>
-        E-Mail*: <input type="email" name="email" id="email" size="100"><br>
+        E-Mail*: <input type="email" name="email" id="email" size="70"><br>
         <input type="submit" value="Submit">
     <?=form_close()?>
     </div>

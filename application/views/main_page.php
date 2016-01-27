@@ -61,5 +61,6 @@ $(document).ready(function(){
 	<div id="buildinglist">
 	</div>
 </div>
+
 </body>
 </html>
