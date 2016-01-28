@@ -166,9 +166,8 @@ class Place_model extends CI_Model{
 		$this->db->from('Place');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
-			foreach($query->result_array() as $row){
-				$placeid = $row['currentid'];
-			}
+			$row = $query->row_array();
+			$placeid = $row['currentid'];
 		}else{
 			echo "No data in query at 'getplaceid'";
 		}
@@ -181,10 +180,9 @@ class Place_model extends CI_Model{
 		$this->db->from('Place');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
-			foreach($query->result_array() as $row){
-				$qrcode = $row['currentqr'];
-				$qrcode++;
-			}
+			$row = $query->row_array();
+			$qrcode = $row['currentqr'];
+			$qrcode++;
 		}else{
 			echo "No data in query at 'getqrcode'";
 		}
@@ -197,10 +195,9 @@ class Place_model extends CI_Model{
 		$this->db->from('Place');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
-			foreach($query->result_array() as $row){
-				$sensorid = $row['currentsensor'];
-				$sensorid++;
-			}
+			$row = $query->row_array();
+			$sensorid = $row['currentsensor'];
+			$sensorid++;
 		}else{
 			echo "No data in query at 'getsensorid'";
 		}
@@ -304,7 +301,7 @@ class Place_model extends CI_Model{
 		$enterrewards = null;
 		$this->db->select('rewardname AS enter_rewardname');
 		$this->db->from('Place');
-		$this->db->join('rewards','place.enter_rewardid = rewards.rewardid', 'left');
+		$this->db->join('Rewards','place.enter_rewardid = rewards.rewardid', 'left');
 		$this->db->like('placename',$namepart);
 		$this->db->or_like('placefullname',$namepart);
 		$this->db->order_by('placeid','asc');
@@ -323,7 +320,7 @@ class Place_model extends CI_Model{
 		$placerewards = null;
 		$this->db->select('rewardname AS place_rewardname');
 		$this->db->from('Place');
-		$this->db->join('rewards','place.rewardid = rewards.rewardid', 'left');
+		$this->db->join('Rewards','place.rewardid = rewards.rewardid', 'left');
 		$this->db->like('placename',$namepart);
 		$this->db->or_like('placefullname',$namepart);
 		$this->db->order_by('placeid','asc');

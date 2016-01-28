@@ -55,27 +55,27 @@ html,body{
 			<div class ="wrapper-l">
 				<p>MENU</p>
 				<ul>
-					<li>PROFILE</li>
-					<li>QUEST</li>
-					<li>REWARD</li>
-					<li>ITEM</li>
-					<li>NEWS</li>
-					<li>ADVERTISEMENT</li>
+					<li><img class="questio-mini-logo" src="<?= base_url()?>assets/images/profile.png" alt=""> PROFILE</li>
+					<li><img class="questio-mini-logo" src="<?= base_url()?>assets/images/quest.png" alt="">QUEST</li>
+					<li><img class="questio-mini-logo" src="<?= base_url()?>assets/images/rewards.png" alt="">REWARD</li>
+					<li><img class="questio-mini-logo" src="<?= base_url()?>assets/images/item.png" alt="">ITEM</li>
+					<li><img class="questio-mini-logo" src="<?= base_url()?>assets/images/news.png" alt="">NEWS</li>
+					<li><img class="questio-mini-logo" src="<?= base_url()?>assets/images/logo.png" alt="">ADVERTISEMENT</li>
 				</ul>
 			</div>
 			<div class ="wrapper-l">
 				<ul>
-					<li>STATISTICAL</li>
-					<li>ADVENTURER</li>
-					<li>QUEST</li>
-					<li>SCORE</li>
-					<li>POPULAR ZONE</li>
+					<li><img class="questio-mini-logo" src="<?= base_url()?>assets/images/stats.png" alt="">STATISTICAL</li>
+					<li><img class="questio-mini-logo" src="<?= base_url()?>assets/images/.png" alt="">ADVENTURER</li>
+					<li><img class="questio-mini-logo" src="<?= base_url()?>assets/images/quest.png" alt="">QUEST</li>
+					<li><img class="questio-mini-logo" src="<?= base_url()?>assets/images/rank.png" alt="">SCORE</li>
+					<li><img class="questio-mini-logo" src="<?= base_url()?>assets/images/top.png" alt="">POPULAR ZONE</li>
 				</ul>
 			</div>
 			<div class ="wrapper-l">
 				<ul>
-					<li>CONTACT</li>
-					<li>EMAIL ADDRESS</li>
+					<li><img class="questio-mini-logo" src="<?= base_url()?>assets/images/phone.png" alt="">CONTACT</li>
+					<li><img class="questio-mini-logo" src="<?= base_url()?>assets/images/mail.png" alt="">EMAIL ADDRESS</li>
 				</ul>
 			</div>
 		</div>

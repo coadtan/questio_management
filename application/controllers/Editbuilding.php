@@ -61,7 +61,7 @@ class Editbuilding extends CI_Controller {
 			$buildingdata = $building->getBuildingFromId($buildingid);
 			$this->load->view(
 			'editbuilding_page',array(
-				'message' => 'From validation error. please check again.',
+				'message' => 'Form validation error. please check again.',
 				'buildingdata' => $buildingdata,
 				'placedata' => $placedata
 				)

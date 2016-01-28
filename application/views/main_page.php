@@ -28,6 +28,8 @@ $(document).ready(function(){
 	<div class="container-fluid">
 	<?php $this->load->view('header', array('title' => 'Welcome'));?>
 	<a href="<?=base_url('statistic')?>">Statistics</a>
+	<a href="<?=base_url('additem')?>">Add item</a>
+	<a href="<?=base_url('addreward')?>">Add reward</a>
 	<h1>Places</h1>
 	<div class="row">
 	<?php if(!empty($keeperplace)):?>

@@ -2,7 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Addplace extends CI_Controller {
-
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('Place_model');
@@ -50,8 +49,8 @@ class Addplace extends CI_Controller {
 		}else{
 			$rewardid = null;
 		}
-		
-		
+
+
 
 		$this->form_validation->set_rules('placename', 'placename', 'required|max_length[50]');
 		$this->form_validation->set_rules('placefullname', 'placefullname', 'required|max_length[255]');
@@ -91,7 +90,7 @@ class Addplace extends CI_Controller {
 				$sensorid = $place->getsensorid();
 			$this->load->view(
 			'addplace_page',array(
-				'message' => 'From validation error. please check again.',
+				'message' => 'Form validation error. please check again.',
 				'qrcode' => $qrcode,
 					'sensorid' => $sensorid,
 					'enterrewarddata' => $enterrewarddata,

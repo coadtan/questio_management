@@ -85,7 +85,7 @@ class Editzone extends CI_Controller {
 			$zonedata = $zone->getZoneFromId($zoneid);
 			$this->load->view(
 			'editzone_page',array(
-				'message' => 'From validation error. please check again.',
+				'message' => 'Form validation error. please check again.',
 				'floordata' => $floordata,
 				'zonetypedata' => $zonetypedata,
 				'itemdata' => $itemdata,

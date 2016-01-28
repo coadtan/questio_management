@@ -54,7 +54,7 @@ class Addbuilding extends CI_Controller {
 		}else{
 			$this->load->view(
 			'addbuilding_page',array(
-				'message' => 'From validation error. please check again.',
+				'message' => 'Form validation error. please check again.',
 				'placedata' => $placedata
 				)
 			);

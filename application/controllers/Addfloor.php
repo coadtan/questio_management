@@ -64,7 +64,7 @@ class Addfloor extends CI_Controller {
 			$sensorid = $floor->getsensorid();
 			$this->load->view(
 			'addfloor_page',array(
-				'message' => 'From validation error. please check again.',
+				'message' => 'Form validation error. please check again.',
 				'buildingdata' => $buildingdata,
 				'qrcode' => $qrcode,
 				'sensorid' => $sensorid

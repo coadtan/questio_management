@@ -42,20 +42,22 @@ class Rewards_model extends CI_Model{
 	}
 	public function getallrewards(){
 		$rewards = null;
-		$this->db->select('rewardname, description, rewardtypename');
+		$this->db->select('rewardid, rewardname, description, rewardtypename');
 		$this->db->from('Rewards');
-		$this->db->join('rewardtype','rewardtype.rewardtypeid = rewards.rewardtype');
+		$this->db->join('RewardType','rewardtype.rewardtypeid = rewards.rewardtype');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
 			$rewards = array();
 			$i = 0;
 			foreach($query->result_array() as $row){
+				$rewardid = $row['rewardid'];
 				$rewardname = $row['rewardname'];
 				$description = $row['description'];
 				$rewardtypename = $row['rewardtypename'];
 				$rewards[$i++] = 
 					array(
 						'rewardno'=>$i,
+						'rewardid'=>$rewardid,
 						'rewardname'=>$rewardname,
 						'description'=>$description,
 						'rewardtypename'=>$rewardtypename
@@ -68,7 +70,7 @@ class Rewards_model extends CI_Model{
 		$rewards = null;
 		$this->db->select('rewardname, description, rewardtypename');
 		$this->db->from('Rewards');
-		$this->db->join('rewardtype','rewardtype.rewardtypeid = rewards.rewardtype');
+		$this->db->join('RewardType','rewardtype.rewardtypeid = rewards.rewardtype');
 		$this->db->like('rewardname',$namepart);
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
@@ -93,7 +95,7 @@ class Rewards_model extends CI_Model{
 		$rewards = null;
 		$this->db->select('rewardid, rewardname');
 		$this->db->from('Rewards');
-		$this->db->where('rewardtype',$rewardtype);
+		$this->db->where('RewardType',$rewardtype);
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
 			$rewards = array();
@@ -107,4 +109,36 @@ class Rewards_model extends CI_Model{
 		}
 		return $rewards;
 	}
+	public function addreward($rewardname, $description, $rewardtype, $rewardpic){
+		$reward_obj = array(	
+			'rewardname' => $rewardname,
+			'description' => $description,
+			'rewardtype' => $rewardtype,
+			'rewardpic' => $rewardpic
+			);
+		$this->db->trans_start();
+		$this->db->insert('Rewards',$reward_obj);
+		$this->db->trans_complete();
+		if ($this->db->trans_status() === FALSE){
+    		$this->db->trans_rollback();
+    		return false;
+		}else{
+			$this->db->trans_commit();
+			return true;
+		}
+	}
+	public function getrewardtype(){
+		$position = null;
+		$this->db->select('*');
+		$this->db->from('RewardType');
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			foreach($query->result_array() as $row){
+				$position[$row['rewardtypeid']] = $row['rewardtypename'];
+			}
+		}else{
+			echo "No data in query at 'getrewardtype'";
+		}
+		return $position;
+	}	
 }
