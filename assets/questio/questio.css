@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'thai_sans_literegular';
-    src: url('../thaisanslite_r1-webfont.eot');
-    src: url('../thaisanslite_r1-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../thaisanslite_r1-webfont.woff2') format('woff2'),
-         url('../thaisanslite_r1-webfont.woff') format('woff'),
-         url('../thaisanslite_r1-webfont.ttf') format('truetype');
+    src: url('../fonts/thaisanslite_r1-webfont.eot');
+    src: url('../fonts/thaisanslite_r1-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/thaisanslite_r1-webfont.woff2') format('woff2'),
+         url('../fonts/thaisanslite_r1-webfont.woff') format('woff'),
+         url('../fonts/thaisanslite_r1-webfont.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -139,6 +139,12 @@ html,body{
 	width: 30px;
 	height: 30px;
 }
+.questio-menu-logo{
+	width: 20px;
+	height: 20px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
 .questio-logo{
 	width: 320px;
 	height: 320px;
@@ -184,26 +190,27 @@ html,body{
 	float: left;
 	height: 100%;
 	width: 200px;
+	text-align: center;
 }
 .header-mid{
 	text-align: center;
 	background-color: white;
 	float: left;
-	padding-top: 15px;
+	padding-top: 5px;
 	height: 100%;
 	width: calc(100% - 400px);
 }
 .header-right{
-	text-align: center;
+	text-align: left;
 	background-color: white;
 	float: right;
-	padding-top: 15px;
+	padding-top: 5px;
 	height: 100%;
 	width: 200px;
 }
 .header-float > *{
 	display: inline-block;
-	padding-top: 10px;
+	padding-top: 6px;
 }
 header{
 	height: 50px;
@@ -211,12 +218,12 @@ header{
 	background-color: black;
 }
 .wrapper{
-	height: calc(100% - 50px);
+	height: calc(100% - 55px);
 	border-top: solid 1px gray;
 }
 .wrapper-l{
-	padding-top: 15px;
-	padding-bottom: 20px;
+	padding-top: 10px;
+	padding-bottom: 15px;
 	border-bottom: solid gray 1px;
 	width: 100%;
 }
@@ -255,4 +262,41 @@ header{
 	float: left;
 	height: 100%;
 	width: 200px;
+}
+.align-menu{
+	text-align: left;
+	padding: 0px;
+}
+
+.align-menu li{
+	padding: 0 0 0 10px;
+}
+
+.align-menu li:hover{
+	background-color: #4f5f79;
+}
+
+li{
+	list-style: none;
+}
+.li-margin{
+	margin:20px;
+}
+.footer{
+	height: 5px;
+	width: 100%;
+	background-color: #93a3b0;
+}
+.input-search{
+	width: 650px;
+	height: 30px;
+	border-color: transparent;
+}
+.button-search{
+	width: 100px;
+}
+.style-mail-icon{
+	width:12%;
+	margin-top:5px;
+	margin-bottom:5px;
 }
