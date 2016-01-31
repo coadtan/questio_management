@@ -2,7 +2,7 @@
 $(document).ready(function(){
     $('.keeperzone').click(function(){
         var zoneid = this.getAttribute("zoneid");
-        window.location = "<?=base_url('addquest/add')?>"+ "/"+ zoneid;
+        window.location = "<?=base_url('questoverview/getquest')?>"+ "/"+ zoneid;
     });
 });
 </script>
