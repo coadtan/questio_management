@@ -3,14 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Login</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<?=script_tag('assets/jquery/jquery-2.2.0.min.js')?>
-<?=script_tag('assets/bootstrap/js/bootstrap.js')?>
-<?=link_tag('assets/bootstrap/css/bootstrap.min.css')?>
-<?=link_tag('assets/questio/questio.css')?>
+	<meta charset="utf-8">
+	<title>Login</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<?=script_tag('assets/jquery/jquery-2.2.0.min.js')?>
+	<?=script_tag('assets/bootstrap/js/bootstrap.js')?>
+	<?=link_tag('assets/bootstrap/css/bootstrap.min.css')?>
+	<?=link_tag('assets/questio/questio.css')?>
 </head>
 <body>
 	<div class="container-fluid" style="overflow:hidden">
@@ -116,7 +115,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="col-md-6" style ="margin-top : 20px">
 				<h3 class="text-white">Still for looking for ? Download application and have fun </h3>
 				<br>
-				<img  src="<?= base_url()?>assets/images/playstore.png" alt="">
+				<img src="<?= base_url()?>assets/images/playstore.png" alt="">
 			</div>
 			<div class="col-md-3"></div>
 		</div>

@@ -1,3 +1,22 @@
+@font-face {
+    font-family: 'thai_sans_literegular';
+    src: url('../thaisanslite_r1-webfont.eot');
+    src: url('../thaisanslite_r1-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../thaisanslite_r1-webfont.woff2') format('woff2'),
+         url('../thaisanslite_r1-webfont.woff') format('woff'),
+         url('../thaisanslite_r1-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+html,body{
+	height: 100%;
+	font-family: 'thai_sans_literegular','arial';
+}
+.shadow{
+	-webkit-box-shadow: 0 8px 6px -6px black;
+	-moz-box-shadow: 0 8px 6px -6px black;
+	box-shadow: 0 8px 6px -6px black;
+}
 .col-md-1{
 	position: relative;
 	overflow: hidden;
@@ -92,6 +111,9 @@
 	margin-top: 50px;
 }
 .form-control{
+	-webkit-box-shadow: 0 8px 6px -6px black;
+	-moz-box-shadow: 0 8px 6px -6px black;
+	box-shadow: 0 8px 6px -6px black;
 	margin-top: 10%;
 	width: 60%;
 }
@@ -144,6 +166,9 @@
 	max-height: 900px;
 	border-radius: 15px;
 }
+.font-white{
+	color: white;
+}
 .modal-title{
 	margin: auto;
 	text-align: center;
@@ -152,4 +177,82 @@
 	.r7 .form-control{
 		margin: auto;
 	}
+}
+.header-left{
+	text-align: center;
+	background-color: #39b5eb;
+	float: left;
+	height: 100%;
+	width: 200px;
+}
+.header-mid{
+	text-align: center;
+	background-color: white;
+	float: left;
+	padding-top: 15px;
+	height: 100%;
+	width: calc(100% - 400px);
+}
+.header-right{
+	text-align: center;
+	background-color: white;
+	float: right;
+	padding-top: 15px;
+	height: 100%;
+	width: 200px;
+}
+.header-float > *{
+	display: inline-block;
+	padding-top: 10px;
+}
+header{
+	height: 50px;
+	width: 100%;
+	background-color: black;
+}
+.wrapper{
+	height: calc(100% - 50px);
+	border-top: solid 1px gray;
+}
+.wrapper-l{
+	padding-top: 15px;
+	padding-bottom: 20px;
+	border-bottom: solid gray 1px;
+	width: 100%;
+}
+.wrapper-m{
+	padding-top: 15px;
+	padding-bottom: 20px;
+	border-bottom: solid gray 1px;
+	width: 100%;
+}
+.wrapper-r{
+	padding-top: 15px;
+	padding-bottom: 20px;
+	border-bottom: solid gray 1px;
+	width: 100%;
+}
+.wrapper-align-left{
+	text-align: center;
+	background-color: #404b5f;
+	float: left;
+	height: 100%;
+	width: 200px;
+}
+.wrapper-align-mid{
+	text-align: center;
+	background-color: #edf2f6;
+	float: left;
+	padding-top: 15px;
+	height: 100%;
+	width: calc(100% - 400px);
+}
+.wrapper-align-right{
+	text-align: center;
+	background-color: white;
+	float: right;
+	padding-top: 15px;
+	float: left;
+	height: 100%;
+	width: 200px;
 }
