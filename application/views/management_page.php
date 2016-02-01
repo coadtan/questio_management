@@ -129,7 +129,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</div>
 				<!--Place management end here :D-->
 			</div>
-
 		</div>
 		<div class ="wrapper-align-right header-floatwrapper-m wrapper-r">
 			<div class ="wrapper-r">

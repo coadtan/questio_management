@@ -12,8 +12,9 @@ $(document).ready(function(){
     $('#header-logo').css('cursor', 'pointer');
 });
 </script>
+
 <div class="row" style="background-color:white; height:50px;padding:8px 5px" >
-    <div class="col-md-3 col-xs-6">
+    <div class="col-md-3 col-xs-6" id="header-logo">
         <img class="questio-mini-logo" src="<?= base_url()?>assets/images/logo.png" alt="">
         <font style="font-size:20px" class="text-questio-title">Questio</font>
     </div>
