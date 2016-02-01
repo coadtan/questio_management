@@ -74,7 +74,7 @@ class Quest_model extends CI_Model{
 				$zonename = $row['zonename'];
 				$difftype = $row['difftype'];
 				$rewardname = $row['rewardname'];
-				$quests[$i++] = 
+				$quests[$i++] =
 					array(
 						'questno'=>$i,
 						'questid'=>$questid,
@@ -107,7 +107,7 @@ class Quest_model extends CI_Model{
 				$zonename = $row['zonename'];
 				$difftype = $row['difftype'];
 				$rewardname = $row['rewardname'];
-				$quests[$i++] = 
+				$quests[$i++] =
 					array(
 						'questno'=>$i,
 						'questname'=>$questname,
@@ -129,6 +129,7 @@ class Quest_model extends CI_Model{
 		$this->db->join('Zone','quest.zoneid = zone.zoneid','left');
 		$this->db->join('Difficulty','quest.diffid = difficulty.diffid','left');
 		$this->db->join('Rewards','quest.rewardid = rewards.rewardid','left');
+		$this->db->where('quest.zoneid',$zoneid);
 		$this->db->order_by('questid','asc');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
@@ -141,7 +142,7 @@ class Quest_model extends CI_Model{
 				$zonename = $row['zonename'];
 				$difftype = $row['difftype'];
 				$rewardname = $row['rewardname'];
-				$quests[$i++] = 
+				$quests[$i++] =
 					array(
 						'questid'=>$questid,
 						'questname'=>$questname,
@@ -175,7 +176,7 @@ class Quest_model extends CI_Model{
 				$typename = $row['typename'];
 				$difftype = $row['difftype'];
 				$rewardname = $row['rewardname'];
-				$quests[$i++] = 
+				$quests[$i++] =
 					array(
 						'questname'=>$questname,
 						'questdetails'=>$questdetails,
@@ -337,6 +338,6 @@ class Quest_model extends CI_Model{
 			echo "No data in query at 'getsensorid'";
 		}
 		return $sensorid;
-	}	
+	}
 
 }
