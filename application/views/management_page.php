@@ -72,14 +72,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<ul class ="align-menu">
 					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/profile.png" alt="">&nbsp&nbsp PROFILE</li>
 					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/quest.png" alt="">&nbsp&nbsp QUEST</li>
-					<li><a href = "<?=base_url('addreward')?>"><img class="questio-menu-logo" src="<?= base_url()?>assets/images/rewards.png" alt="">&nbsp&nbsp REWARD</a></li>
-					<li><a href = "<?=base_url('additem')?>"><img class="questio-menu-logo" src="<?= base_url()?>assets/images/item.png" alt="">&nbsp&nbsp ITEM</a></li>
+					<a href = "<?=base_url('addreward')?>"><li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/rewards.png" alt="">&nbsp&nbsp REWARD</li></a>
+					<a href = "<?=base_url('additem')?>"><li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/item.png" alt="">&nbsp&nbsp ITEM</li></a>
 					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/news.png" alt="">&nbsp&nbsp NEWS</li>
 				</ul>
 			</div>
 			<div class ="wrapper-l text-white" >
 				<ul class ="align-menu">
-					<li><a href = "<?=base_url('statistic')?>"><img class="questio-menu-logo" src="<?= base_url()?>assets/images/stats.png" alt="">&nbsp&nbsp STATISTICS</a></li>
+					<a href = "<?=base_url('statistic')?>"><li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/stats.png" alt="">&nbsp&nbsp STATISTICS</li></a>
 					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/adventurer.png" alt="">&nbsp&nbsp ADVENTURER</li>
 					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/paper.png" alt="">&nbsp&nbsp QUEST</li>
 					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/rank.png" alt="">&nbsp&nbsp SCORE</li>

@@ -12,6 +12,12 @@ html,body{
 	height: 100%;
 	font-family: 'thai_sans_literegular','arial';
 }
+a {text-decoration: none !important;}
+a {color:white;}      
+a:visited {color:white;} 
+a:hover {color:white;}  
+a:active {color:white;}  
+
 .shadow{
 	-webkit-box-shadow: 0 8px 6px -6px black;
 	-moz-box-shadow: 0 8px 6px -6px black;
@@ -314,6 +320,7 @@ li{
 }
 .container-fluid{
 	text-align: center;
+
 }
 .register-margin{
 	margin-top: 5px;
@@ -351,4 +358,10 @@ li{
 }
 .container-fluid {
 	padding :0px;
+}
+.forget-footer{
+	margin-top: 215px;
+	height: 200px;
+	width: 100%;
+	background-color: #f2f2f2;
 }

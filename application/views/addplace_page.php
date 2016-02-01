@@ -60,15 +60,13 @@ function placeMarker(location, map) {
 </script>
 </head>
 <body>
-
+<?php $this->load->view('header', array('title' => 'Add Places'));?>
 <div class="container-fluid">
-	<div class ="addplace">
-	<?php $this->load->view('header', array('title' => 'Add Places'));?>
-	<h2 style='color:red'><?=$message?></h2>
-	<?= form_open('addplace/addplacecheck')?>
 	<div class ="r1-add-place">
 		<h1 class ="text-white"style="margin-top:50px !important">Add Place ของคุณ</h1>
 	</div>
+	<h2 style='color:red'><?=$message?></h2>
+	<?= form_open('addplace/addplacecheck')?>
 	<div style ="margin-top:35px">
 	<input type="text" 
 			class ="register-margin register-box" 
@@ -133,7 +131,6 @@ function placeMarker(location, map) {
 	<?=form_close()?>
 	<br>
 	<a href="<?=base_url('mainpage')?>">Go Back</a>
-</div>
 </div>
 <br>
 </div>

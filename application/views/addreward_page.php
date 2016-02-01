@@ -13,19 +13,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?=link_tag('assets/questio/questio.css')?>
 </head>
 <body>
-<div class="container-fluid">
 	<?php $this->load->view('header', array('title' => 'Add Reward'));?>
+	<div class ="r1-register">
+		<h1 class ="text-white"style="margin-top:50px !important">สร้างรางวัลให้กับผู้เล่นของคุณ</h1>
+	</div>
+<div class="container-fluid">
+	
 	<h2 style='color:red'><?=$message?></h2>
 	<?= form_open('addreward/addrewardcheck')?>
-		Reward Name*:
-		<i>Must be less than 50 characters</i>
-		 <input type="text" name="rewardname" id="rewardname" size="50"><br>
-		Description*:
-		<i>Must be less than 200 characters</i>
-		<input type="text" name="description" id="description" size="100"><br> 
-		Reward Type*:
+	Reward Name*:
+		<input type="text" 
+			class ="register-margin register-box" 
+			name="rewardname" 
+			id="rewardname" 
+			size ="100" 
+			placeholder ="&nbsp  Must be less than 50 characters"><br>
+	Description*:
+		<input type="text" 
+			class ="register-margin register-box" 
+			name="description" 
+			id="description" 
+			size ="103" 
+			placeholder ="&nbsp  Must be less than 200 characters"><br>
+	Reward Type*:
 		<?= form_dropdown('rewardtype',$rewardtypedata); ?>
-		 <br>
+		 <br><br>
 		<input type="submit" value="Submit">
 	<?=form_close()?>
 	<a href="<?=base_url('mainpage')?>">Go Back</a>

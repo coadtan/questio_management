@@ -13,19 +13,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?=link_tag('assets/questio/questio.css')?>
 </head>
 <body>
-<div class="container-fluid">
 	<?php $this->load->view('header', array('title' => 'Add Item'));?>
+	<div class ="r1-register">
+		<h1 class ="text-white"style="margin-top:50px !important"> สร้างอุปกรณ์ให้กับตัวละคร</h1>
+	</div>
+<div class="container-fluid">
 	<h2 style='color:red'><?=$message?></h2>
 	<?= form_open('additem/additemcheck')?>
-		Item Name*:
-		<i>Must be less than 30 characters</i>
-		 <input type="text" name="itemname" id="itemname" size="30"><br>
+		Item Name*: 
+		<input type="text" 
+			class ="register-margin register-box" 
+			name="itemname" 
+			id="itemname" 
+			size ="100" 
+			placeholder ="&nbsp Must be less than 30 characters"><br>
 		Item Collection*:
-		<i>Must be less than 50 characters</i>
-		<input type="text" name="itemcollection" id="itemcollection" size="50"><br> 
+		<input type="text" 
+			class ="register-margin register-box" 
+			name="itemcollection" 
+			id="itemcollection" 
+			size ="97" 
+			placeholder ="&nbsp  Must be less than 50 characters"><br>
 		Position to Equip*:
 		<?= form_dropdown('positionid',$position); ?>
-		 <br>
+		 <br><br>
 		<input type="submit" value="Submit">
 	<?=form_close()?>
 	<a href="<?=base_url('mainpage')?>">Go Back</a>

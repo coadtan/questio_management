@@ -64,6 +64,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			class ="register-margin" 
 			value="Submit">
 		<?=form_close()?>
+		<div class="forget-footer" style ="margin-top:20px !important">
+		</div>
+	</div>
 	</div>
 </body>
 </html>
