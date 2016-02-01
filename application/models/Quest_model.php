@@ -129,7 +129,7 @@ class Quest_model extends CI_Model{
 		$this->db->join('Zone','quest.zoneid = zone.zoneid','left');
 		$this->db->join('Difficulty','quest.diffid = difficulty.diffid','left');
 		$this->db->join('Rewards','quest.rewardid = rewards.rewardid','left');
-		$this->db->where('quest.zoneid',$zoneid);
+		$this->db->where('Quest.zoneid',$zoneid);
 		$this->db->order_by('questid','asc');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){

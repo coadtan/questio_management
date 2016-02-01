@@ -3,9 +3,9 @@
     </div>
     <script>
         <?php if(!empty($x) && !empty($y)):?>
-        var date_arr = [];
-        <?php foreach($x as $date):?>
-            date_arr.push('<?=$date?>');
+        var questname_arr = [];
+        <?php foreach($x as $questname):?>
+            questname_arr.push('<?=$questname?>');
         <?php endforeach;?>
         var number_arr = [];
         <?php foreach($y as $number):?>
@@ -13,9 +13,9 @@
         <?php endforeach;?>
         var data = [
           {
-            x : date_arr,
+            x : questname_arr,
             y : number_arr,
-            type: 'scatter'
+            type: 'bar'
           }
         ];
 
