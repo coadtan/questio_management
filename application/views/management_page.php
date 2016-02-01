@@ -38,15 +38,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div style="float:left;margin-left:10px;width: calc(100% - 180px);">
 				<input type ="text" class ="input-search">
 			</div>
-			<div style ="float:right;padding-right:20px"><input type ="button" value ="Search" id ="search" class ="button-search" >
-			</div>
 		</div>
 		<div class ="header-right header-float">
-			<div style ="float:left"><img class="questio-menu-logo" src="<?= base_url()?>assets/images/clock_gray.png" alt="">
-				<img class="questio-menu-logo" src="<?= base_url()?>assets/images/news_gray.png" alt="">
-				<img class="style-mail-icon"  src="<?= base_url()?>assets/images/mail_gray.png" alt="">
-			</div>
-			<div>ICON NEWS &nbsp
+			<div>
+				<?php if($this->session->userdata('logged_in') != NULL) :?>
+				        <font style="font-size:20px;color:gray;padding-left:30px">
+				            <?=$this->session->userdata('logged_in')['firstname'];?>
+				        </font>
+				       	<a href="<?=base_url('mainpage/logout')?>">
+				        <button
+				            type="button"
+				            class="btn btn-default">
+				            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+				        </button>
+				    	</a>
+				<?php else :?>
+				    <button
+				    	type="button"
+				    	class="btn btn-default"
+				    	data-toggle="modal"
+				    	data-target="#login">
+				    	Login
+					</button>
+				<?php endif; ?>
+
 			</div>
 		</div>
 	</header>
