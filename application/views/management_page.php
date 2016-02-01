@@ -22,7 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class ="header-mid header-float">
 			<div style ="float:left;padding-left:20px"><img class="questio-menu-logo" src="<?= base_url()?>assets/images/magnifier.png" alt="">
 			</div>
-			<div>
+			<div style="float:left;margin-left:10px;width: calc(100% - 180px);">
 				<input type ="text" class ="input-search">
 			</div>
 			<div style ="float:right;padding-right:20px"><input type ="button" value ="Search" id ="search" class ="button-search" >
