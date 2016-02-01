@@ -71,8 +71,6 @@ class Statistics_model extends CI_Model{
         return $enterdate;
     }
 
-    //SELECT questid, count(adventurerid) from questprogress where statusid in (3,4) and zoneid in (select zoneid from zone where floorid in (select floorid from floor where buildingid in (select buildingid from building where placeid = $placeid))) group by questid)
-
     public function getCountQuestPlayedByPlaceId($placeid){
         $questcount = null;
         $this->db->select('buildingid');
@@ -92,6 +90,7 @@ class Statistics_model extends CI_Model{
         $this->db->where('QuestProgress.zoneid IN ('.$subquery3.')', null, false);
         $this->db->where_in('statusid', array('3','4'));
         $this->db->group_by('questid');
+        $this->db->order_by('count(adventurerid)','desc');
         $query = $this->db->get();
         if ($query->num_rows() >= 1){
             $i = 1;
@@ -122,6 +121,106 @@ class Statistics_model extends CI_Model{
         $this->db->where('QuestProgress.zoneid IN ('.$subquery3.')', null, false);
         $this->db->where_in('statusid', array('3','4'));
         $this->db->group_by('QuestProgress.questid');
+        $this->db->order_by('count(adventurerid)','desc');
+        $query = $this->db->get();
+        if ($query->num_rows() >= 1){
+            $i = 1;
+            foreach($query->result_array() as $row){
+                $questname[$i] = $row['questname'];
+                $i++;
+            }
+        }
+        return $questname;
+    }
+    //SELECT count(adventurerid) FROM explorerprogress WHERE isentered = 1 and placeid = 1 group by zoneid
+    public function getExplorerCountByPlaceId($placeid){
+        $explorercount = null;
+        $this->db->select('count(adventurerid) as explorercount');
+        $this->db->from('ExplorerProgress');
+        $this->db->where('isentered','1');
+        $this->db->where('placeid',$placeid);
+        $this->db->group_by('zoneid');
+        $this->db->order_by('count(adventurerid)','desc');
+        $query = $this->db->get();
+        if ($query->num_rows() >= 1){
+            $i = 1;
+            foreach($query->result_array() as $row){
+                $explorercount[$i] = $row['explorercount'];
+                $i++;
+            }
+        }
+        return $explorercount;
+    }
+    public function getZoneNameByPlaceId($placeid){
+        $zonename = null;
+        $this->db->select('zonename');
+        $this->db->from('ExplorerProgress');
+        $this->db->join('Zone','Zone.zoneid=ExplorerProgress.zoneid');
+        $this->db->where('isentered','1');
+        $this->db->where('placeid',$placeid);
+        $this->db->group_by('ExplorerProgress.zoneid');
+        $this->db->order_by('count(adventurerid)','desc');
+        $query = $this->db->get();
+        if ($query->num_rows() >= 1){
+            $i = 1;
+            foreach($query->result_array() as $row){
+                $zonename[$i] = $row['zonename'];
+                $i++;
+            }
+        }
+        return $zonename;
+    }
+    public function getAverageScoreByPlaceId($placeid){
+        $averagescore = null;
+        $this->db->select('buildingid');
+        $this->db->from('Building');
+        $this->db->where('placeid',$placeid);
+        $subquery = $this->db->get_compiled_select();
+        $this->db->select('floorid');
+        $this->db->from('Floor');
+        $this->db->where('buildingid IN ('.$subquery.')', null, false);
+        $subquery2 = $this->db->get_compiled_select();
+        $this->db->select('zoneid');
+        $this->db->from('Zone');
+        $this->db->where('floorid IN ('.$subquery2.')', null, false);
+        $subquery3 = $this->db->get_compiled_select();
+        $this->db->select_avg('score','averagescore');
+        $this->db->from('QuestProgress');
+        $this->db->where('QuestProgress.zoneid IN ('.$subquery3.')', null, false);
+        $this->db->where_in('statusid', array('3','4'));
+        $this->db->group_by('questid');
+        $this->db->order_by('avg(score)','desc');
+        $query = $this->db->get();
+        if ($query->num_rows() >= 1){
+            $i = 1;
+            foreach($query->result_array() as $row){
+                $averagescore[$i] = $row['averagescore'];
+                $i++;
+            }
+        }
+        return $averagescore;
+    }
+    public function getQuestNameScoreByPlaceId($placeid){
+        $questname = null;
+        $this->db->select('buildingid');
+        $this->db->from('Building');
+        $this->db->where('placeid',$placeid);
+        $subquery = $this->db->get_compiled_select();
+        $this->db->select('floorid');
+        $this->db->from('Floor');
+        $this->db->where('buildingid IN ('.$subquery.')', null, false);
+        $subquery2 = $this->db->get_compiled_select();
+        $this->db->select('zoneid');
+        $this->db->from('Zone');
+        $this->db->where('floorid IN ('.$subquery2.')', null, false);
+        $subquery3 = $this->db->get_compiled_select();
+        $this->db->select('questname');
+        $this->db->from('QuestProgress');
+        $this->db->join('Quest','Quest.questid=QuestProgress.questid');
+        $this->db->where('QuestProgress.zoneid IN ('.$subquery3.')', null, false);
+        $this->db->where_in('statusid', array('3','4'));
+        $this->db->group_by('QuestProgress.questid');
+        $this->db->order_by('avg(score)','desc');
         $query = $this->db->get();
         if ($query->num_rows() >= 1){
             $i = 1;

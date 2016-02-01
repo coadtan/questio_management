@@ -39,4 +39,26 @@ class Statistic extends CI_Controller {
                                         'y' => $y
                                     ));
     }
+    public function explorercount(){
+        $statistics = $this->Statistics_model;
+        $placeid = $_GET['placeid'];
+        $x = $statistics->getZoneNameByPlaceId($placeid);
+        $y = $statistics->getExplorerCountByPlaceId($placeid);
+
+        $this->load->view('quest_played', array(
+                                        'x' => $x,
+                                        'y' => $y
+                                    ));
+    }
+    public function averagescore(){
+        $statistics = $this->Statistics_model;
+        $placeid = $_GET['placeid'];
+        $x = $statistics->getQuestNameScoreByPlaceId($placeid);
+        $y = $statistics->getAverageScoreByPlaceId($placeid);
+
+        $this->load->view('average_score', array(
+                                        'x' => $x,
+                                        'y' => $y
+                                    ));
+    }
 }
