@@ -16,7 +16,7 @@ class Mainpage extends CI_Controller {
 	public function index(){
 		if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
-			$this->load->view('main_page', array(
+			$this->load->view('management_page', array(
 					'firstname' => $session_data['firstname'],
 					'lastname' => $session_data['lastname'],
 					'keeperplace' => $this->Place_model->showPlaceManagement($session_data['keeperid'])

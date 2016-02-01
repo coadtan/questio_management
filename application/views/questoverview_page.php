@@ -17,11 +17,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<?php $this->load->view('header', array('title' => 'Quest List'));?>
 	<a href = "<?=base_url('addquest/add/'.$zoneid)?>">Add Quest</a>
 	<?php
-		$this->table->set_heading('ID','Quest name','Type','Zone','Difficulty','Reward','');
+		$this->table->set_heading('Quest name','Type','Zone','Difficulty','Reward','');
 
 		if(!empty($questdata)){
 			foreach($questdata as $quest){
-				$this->table->add_row($quest['questno'],$quest['questname'],$quest['typename'],$quest['zonename'],$quest['difftype'],$quest['rewardname'],"Edit");
+				$this->table->add_row($quest['questname'],$quest['typename'],$quest['zonename'],$quest['difftype'],$quest['rewardname'],"<span class='glyphicon glyphicon-asterisk'></span>");
 			}
 			echo $this->table->generate();
 		}else{

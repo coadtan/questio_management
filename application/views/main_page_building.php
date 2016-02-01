@@ -37,7 +37,7 @@ $('.keeperbuilding').click(function(){
 		    href="<?=base_url('addbuilding')?>"
 		    class="thumbnail"
 		>
-			<span class="fui-plus" style="font-size:100px"></span>
+			<span class="glyphicon glyphicon-plus" style="font-size:100px"></span>
 		</a>
 	</div>
 </div>
