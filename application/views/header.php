@@ -1,10 +1,9 @@
 <script type="text/javascript">
 $(document).ready(function(){
-    $("#register-modal").hide();
+    
     $('#register-link').click(function(){
         var id = this.id;
-         $("#login-modal").hide();
-         $("#register-modal").show();
+        window.location.replace("<?=base_url('register')?>");
     });
     $('#header-logo').click(function(){
         var id = this.id;
@@ -70,23 +69,6 @@ $(document).ready(function(){
         <a href="#" id="register-link">Register</a>
         <br>
         <a href="<?=base_url('forgotpassword')?>">Forgot password?</a>
-    </div>
-    <!-- Register -->
-    <div class="modal-body " id = "register-modal">
-    <?= form_open('register/updatecheck')?>
-        Username*:
-        <i>Must be 3-16 characters</i>
-         <input type="text" name="username" id="username"><br>
-        Password*:
-        <i>Must be 8-12 characters</i>
-         <input type="password" name="password" id="password"><br>
-        Password Confirmation*: <input type="password" name="passwordconf" id="passwordconf"><br>
-        First Name*: <input type="text" name="fname" id="fname" size="50"><br>
-        Last Name*: <input type="text" name="lname" id="lname" size="50"><br>
-        Telephone*: <input type="tel" name="telephone" id="telephone"><br>
-        E-Mail*: <input type="email" name="email" id="email" size="70"><br>
-        <input type="submit" value="Submit">
-    <?=form_close()?>
     </div>
 
     <div class="modal-footer">

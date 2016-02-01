@@ -22,77 +22,92 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class ="header-mid header-float">
 			<div style ="float:left;padding-left:20px"><img class="questio-menu-logo" src="<?= base_url()?>assets/images/magnifier.png" alt="">
 			</div>
-			<div style="float:left;margin-left:10px;width: calc(100% - 180px);">
+			<div style="float:left;margin-left:10px;width: calc(100% - 150px);">
 				<input type ="text" class ="input-search">
-			</div>
-			<div style ="float:right;padding-right:20px"><input type ="button" value ="Search" id ="search" class ="button-search" >
 			</div>
 		</div>
 		<div class ="header-right header-float">
-			<div style ="float:left"><img class="questio-menu-logo" src="<?= base_url()?>assets/images/clock_gray.png" alt="">
-				<img class="questio-menu-logo" src="<?= base_url()?>assets/images/news_gray.png" alt="">
-				<img class="style-mail-icon"  src="<?= base_url()?>assets/images/mail_gray.png" alt="">
-			</div>
-			<div>ICON NEWS &nbsp
-			</div>
-		</div>
-	</header>
-	<div class ="wrapper">
-		<div class ="wrapper-align-left header-float wrapper-l">
-			<div class ="wrapper-l text-white">
-				<p>MENU</p>
-				<ul class ="align-menu">
-					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/profile.png" alt="">&nbsp&nbsp PROFILE</li>
-					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/quest.png" alt="">&nbsp&nbsp QUEST</li>
-					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/rewards.png" alt="">&nbsp&nbsp REWARD</li>
-					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/item.png" alt="">&nbsp&nbsp ITEM</li>
-					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/news.png" alt="">&nbsp&nbsp NEWS</li>
-				</ul>
-			</div>
-			<div class ="wrapper-l text-white" >
-				<ul class ="align-menu">
-					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/stats.png" alt="">&nbsp&nbsp STATISTICAL</li>
-					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/adventurer.png" alt="">&nbsp&nbsp ADVENTURER</li>
-					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/paper.png" alt="">&nbsp&nbsp QUEST</li>
-					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/rank.png" alt="">&nbsp&nbsp SCORE</li>
-					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/top.png" alt="">&nbsp&nbsp POPULAR ZONE</li>
-				</ul>
-			</div>
-			<div class ="wrapper-l text-white">
-				<ul class ="align-menu">
-					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/phone.png" alt="">&nbsp &nbsp CONTACT</li>
-					<li><img class="style-mail-icon" src="<?= base_url()?>assets/images/mail.png" alt="">&nbsp&nbsp EMAIL ADDRESS</li>
-				</ul>
+			<div>
+				<?php if($this->session->userdata('logged_in') != NULL) :?>
+				        <font style="font-size:20px;color:gray;padding-left:30px">
+				            <?=$this->session->userdata('logged_in')['firstname'];?>
+				        </font>
+				       	<a href="<?=base_url('mainpage/logout')?>">
+				        <button
+				            type="button"
+				            class="btn btn-default">
+				            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+				        </button>
+				    	</a>
+				<?php else :?>
+				    <button
+				    	type="button"
+				    	class="btn btn-default"
+				    	data-toggle="modal"
+				    	data-target="#login">
+				    	Login
+					</button>
+				<?php endif; ?>
 			</div>
 		</div>
-		<div class ="wrapper-align-mid header-float wrapper-m">
-			<div class ="wrapper-m">
-				xxxxxxxxxxxxxxxx
-			</div>
-			
+</header>
+<div class ="wrapper">
+	<div class ="wrapper-align-left header-float wrapper-l">
+		<div class ="wrapper-l text-white">
+			<p>MENU</p>
+			<ul class ="align-menu">
+				<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/profile.png" alt="">&nbsp&nbsp PROFILE</li>
+				<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/quest.png" alt="">&nbsp&nbsp QUEST</li>
+				<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/rewards.png" alt="">&nbsp&nbsp REWARD</li>
+				<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/item.png" alt="">&nbsp&nbsp ITEM</li>
+				<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/news.png" alt="">&nbsp&nbsp NEWS</li>
+			</ul>
 		</div>
-		<div class ="wrapper-align-right header-floatwrapper-m wrapper-r">
-			<div class ="wrapper-r">
-				<p>MENU</p>
-				<ul>
-					<li>xxx</li>
-					<li>xxx</li>
-					<li>xxx</li>
-					<li>xxx</li>
-				</ul>
-			</div>
-			<div class ="wrapper-r">
-				<p>MENU</p>
-				<ul>
-					<li>xxx</li>
-					<li>xxx</li>
-					<li>xxx</li>
-					<li>xxx</li>
-				</ul>
-			</div>
+		<div class ="wrapper-l text-white" >
+			<ul class ="align-menu">
+				<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/stats.png" alt="">&nbsp&nbsp STATISTICAL</li>
+				<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/adventurer.png" alt="">&nbsp&nbsp ADVENTURER</li>
+				<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/paper.png" alt="">&nbsp&nbsp QUEST</li>
+				<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/rank.png" alt="">&nbsp&nbsp SCORE</li>
+				<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/top.png" alt="">&nbsp&nbsp POPULAR ZONE</li>
+			</ul>
+		</div>
+		<div class ="wrapper-l text-white">
+			<ul class ="align-menu">
+				<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/phone.png" alt="">&nbsp &nbsp CONTACT</li>
+				<li><img class="style-mail-icon" src="<?= base_url()?>assets/images/mail.png" alt="">&nbsp&nbsp EMAIL ADDRESS</li>
+			</ul>
 		</div>
 	</div>
-	<div class="footer">
+	<div class ="wrapper-align-mid header-float wrapper-m">
+		<div class ="wrapper-m">
+			xxxxxxxxxxxxxxxx
+		</div>
+
 	</div>
+	<div class ="wrapper-align-right header-floatwrapper-m wrapper-r">
+		<div class ="wrapper-r">
+			<p>MENU</p>
+			<ul>
+				<li>xxx</li>
+				<li>xxx</li>
+				<li>xxx</li>
+				<li>xxx</li>
+			</ul>
+		</div>
+		<div class ="wrapper-r">
+			<p>MENU</p>
+			<ul>
+				<li>xxx</li>
+				<li>xxx</li>
+				<li>xxx</li>
+				<li>xxx</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="footer">
+
+</div>
 </body>
 </html>
