@@ -34,12 +34,13 @@ class Puzzle_model extends CI_Model{
         return $this->correctanswer;
     }
 
-    public function addpuzzle($imageurl, $helperanswer, $correctanswer){
+    public function addpuzzle($puzzleid, $imageurl, $helperanswer, $correctanswer){
                 $puzzle_obj = array(
-            'imageurl' => $imageurl,
-            'helperanswer' => $helperanswer,
-            'correctanswer' => $correctanswer
-            );
+                    'puzzleid' => $puzzleid,
+                    'imageurl' => $imageurl,
+                    'helperanswer' => $helperanswer,
+                    'correctanswer' => $correctanswer
+                );
         $this->db->trans_start();
         $this->db->insert('PicturePuzzle',$puzzle_obj);
         $this->db->trans_complete();

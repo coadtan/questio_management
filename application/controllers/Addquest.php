@@ -9,6 +9,7 @@ class Addquest extends CI_Controller {
 		$this->load->model('Rewards_model');
 		$this->load->model('Quiz_model');
 		$this->load->model('Riddle_model');
+		$this->load->model('Puzzle_model');
 		$this->load->helper('form');
 	}
 
@@ -48,13 +49,11 @@ class Addquest extends CI_Controller {
 
 		if ($this->form_validation->run()==TRUE){
 			if($quest->addquest($questname, $questdetails, $questtypeid, $zoneid, $diffid, $rewardid)==TRUE){
+				$questdata = $this->Quest_model->getQuestByZone($zoneid);
 				$this->load->view(
-					'addquest_page',array(
-					'message' => 'Add quest successful.',
-					'zoneid' => $zoneid,
-					'questtype' => $questtype,
-					'difficulty' => $difficulty,
-					'reward' => $reward
+					'questoverview_page',array(
+						'zoneid' => $zoneid,
+						'questdata' => $questdata
 					)
 				);
 			}else{
@@ -104,19 +103,19 @@ class Addquest extends CI_Controller {
 		$choiced = $_POST['choiced'];
 		$answerid = $_POST['answerid'];
 		$this->form_validation->set_rules('question', 'question', 'required');
-		$this->form_validation->set_rules('choicea', 'choicea', 'required');
-		$this->form_validation->set_rules('choiceb', 'choiceb', 'required');
-		$this->form_validation->set_rules('choicec', 'choicec', 'required');
-		$this->form_validation->set_rules('choiced', 'choiced', 'required');
+		$this->form_validation->set_rules('choicea', 'choicea', 'required|max_length[100]');
+		$this->form_validation->set_rules('choiceb', 'choiceb', 'required|max_length[100]');
+		$this->form_validation->set_rules('choicec', 'choicec', 'max_length[100]');
+		$this->form_validation->set_rules('choiced', 'choiced', 'max_length[100]');
 
 		if ($this->form_validation->run()==TRUE){
 			if($quiz->addquiz($questid, $seqid, $question, $choicea, $choiceb, $choicec, $choiced, $answerid)==TRUE){
-				$seqid = $this->Quiz_model->getseqidfromquestid($questid);
+				$zoneid = $this->Quest_model->getZoneIdByQuestId($questid);
+				$questdata = $this->Quest_model->getQuestByZone($zoneid);
 				$this->load->view(
-					'add_quiz',array(
-					'message' => 'Add quiz successful.',
-					'questid' => $questid,
-					'seqid' => $seqid
+					'questoverview_page',array(
+						'zoneid' => $zoneid,
+						'questdata' => $questdata
 					)
 				);
 			}else{
@@ -150,17 +149,110 @@ class Addquest extends CI_Controller {
 		$this->load->view(
 			'add_riddle',array(
 				'message' => "",
+				'ridid' => $ridid,
 				'qrcode' => $qrcode,
 				'sensorid' => $sensorid
 			)
 		);
 	}
 
+	public function addRiddleCheck(){
+		$riddle = $this->Riddle_model;
+		$ridid = $_POST['ridid'];
+		$riddetails = $_POST['riddetails'];
+		$qrcode = $_POST['qrcode'];
+		$sensorid = $_POST['sensorid'];
+		$scanlimit = $_POST['scanlimit'];
+		$hint1 = $_POST['hint1'];
+		$hint2 = $_POST['hint2'];
+		$hint3 = $_POST['hint3'];
+		$this->form_validation->set_rules('riddetails', 'riddetails', 'required');
+		$this->form_validation->set_rules('hint1', 'hint1', 'max_length[100]');
+		$this->form_validation->set_rules('hint2', 'hint2', 'max_length[100]');
+		$this->form_validation->set_rules('hint3', 'hint3', 'max_length[100]');
+
+		if ($this->form_validation->run()==TRUE){
+			if($riddle->addriddle($ridid, $riddetails, $qrcode, $sensorid, $scanlimit, $hint1, $hint2, $hint3)==TRUE){
+				$zoneid = $this->Quest_model->getZoneIdByQuestId($ridid);
+				$questdata = $this->Quest_model->getQuestByZone($zoneid);
+				$this->load->view(
+					'questoverview_page',array(
+						'zoneid' => $zoneid,
+						'questdata' => $questdata
+					)
+				);
+			}else{
+				$qrcode = $riddle->getqrcode();
+				$sensorid = $riddle->getsensorid();
+				$this->load->view(
+					'add_riddle',array(
+						'message' => 'Add riddle failed.',
+						'ridid' => $ridid,
+						'qrcode' => $qrcode,
+						'sensorid' => $sensorid
+					)
+				);
+			}
+
+		}else{
+			$qrcode = $riddle->getqrcode();
+			$sensorid = $riddle->getsensorid();
+			$this->load->view(
+			'add_riddle',array(
+				'message' => 'Form validation error. please check again.',
+				'ridid' => $ridid,
+				'qrcode' => $qrcode,
+				'sensorid' => $sensorid
+				)
+			);
+		}
+	}
+
 	public function addPuzzle($puzzleid){
 		$this->load->view(
 			'add_puzzle',array(
-				'message' => ""
+				'message' => "",
+				'puzzleid' => $puzzleid
 			)
 		);
+	}
+
+	public function addPuzzleCheck(){
+		$puzzle = $this->Puzzle_model;
+		$puzzleid = $_POST['puzzleid'];
+		$imageurl = '/puzzlepic/blank.png';
+		$helperanswer = $_POST['helperanswer'];
+		$correctanswer = $_POST['correctanswer'];
+		
+		$this->form_validation->set_rules('helperanswer', 'helperanswer', 'max_length[100]');
+		$this->form_validation->set_rules('correctanswer', 'correctanswer', 'required|max_length[100]');
+
+		if ($this->form_validation->run()==TRUE){
+			if($puzzle->addpuzzle($puzzleid, $imageurl, $helperanswer, $correctanswer)==TRUE){
+				$zoneid = $this->Quest_model->getZoneIdByQuestId($puzzleid);
+				$questdata = $this->Quest_model->getQuestByZone($zoneid);
+				$this->load->view(
+					'questoverview_page',array(
+						'zoneid' => $zoneid,
+						'questdata' => $questdata
+					)
+				);
+			}else{
+				$this->load->view(
+					'add_puzzle',array(
+						'message' => 'Add puzzle failed.',
+						'puzzleid' => $puzzleid
+					)
+				);
+			}
+
+		}else{
+			$this->load->view(
+			'add_puzzle',array(
+				'message' => 'Form validation error. please check again.',
+				'puzzleid' => $puzzleid
+				)
+			);
+		}
 	}
 }

@@ -84,7 +84,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<ul class ="align-menu">
 					<a href = "#" id="place"><li>Place</li></a>
 					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/profile.png" alt="">&nbsp&nbsp PROFILE</li>
-					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/quest.png" alt="">&nbsp&nbsp QUEST</li>
 					<a href = "<?=base_url('addreward')?>"><li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/rewards.png" alt="">&nbsp&nbsp REWARD</li></a>
 					<a href = "<?=base_url('additem')?>"><li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/item.png" alt="">&nbsp&nbsp ITEM</li></a>
 					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/news.png" alt="">&nbsp&nbsp NEWS</li>

@@ -62,8 +62,9 @@ class Riddle_model extends CI_Model{
         return $this->hint3;
     }
 
-    public function addriddle($riddetails, $qrcode, $sensorid, $scanlimit, $hint1, $hint2, $hint3){
+    public function addriddle($ridid, $riddetails, $qrcode, $sensorid, $scanlimit, $hint1, $hint2, $hint3){
         $riddle_obj = array(
+            'ridid' => $ridid,
             'riddetails' => $riddetails,
             'qrcode' => $qrcode,
             'sensorid' => $sensorid,

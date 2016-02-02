@@ -1,4 +1,4 @@
-<?php if(!isset($riddledata)) :?>
+<?php if(empty($riddledata)) :?>
 <a href = "<?=base_url('addquest/addriddle/'.$ridid)?>" style="color:black">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     </a>

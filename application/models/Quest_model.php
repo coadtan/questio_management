@@ -186,8 +186,6 @@ class Quest_model extends CI_Model{
 			foreach($query->result_array() as $row){
 				$questtype[$row['questtypeid']] = $row['typename'];
 			}
-		}else{
-			echo "No data in query at 'getquesttypedata'";
 		}
 		return $questtype;
 	}
@@ -200,10 +198,21 @@ class Quest_model extends CI_Model{
 			foreach($query->result_array() as $row){
 				$difficulty[$row['diffid']] = $row['difftype'];
 			}
-		}else{
-			echo "No data in query at 'getdifficulty'";
 		}
 		return $difficulty;
+	}
+
+	public function getZoneIdByQuestId($questid){
+		$zoneid = null;
+		$this->db->select('zoneid');
+		$this->db->from('Quest');
+		$this->db->where('questid',$questid);
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			$row = $query->row_array();
+			$zoneid = $row['zoneid'];
+		}
+		return $zoneid;
 	}
 
 }

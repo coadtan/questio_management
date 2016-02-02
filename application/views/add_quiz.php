@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Add Quest</title>
+<title>Add Quiz</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <?=script_tag('assets/jquery/jquery-2.2.0.min.js')?>
@@ -21,13 +21,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <input type="hidden" name="seqid" value="<?=$seqid?>">
         Question*:
         <input type="text" name="question" size="100"><br>
-        Choice 1*:
+        Choice 1*:<i>Must not longer than 100 characters</i>
         <input type="text" name="choicea" size="100"><br>
-        Choice 2*:
+        Choice 2*:<i>Must not longer than 100 characters</i>
         <input type="text" name="choiceb" size="100"><br>
-        Choice 3*:
+        Choice 3:<i>Must not longer than 100 characters</i>
         <input type="text" name="choicec" size="100"><br>
-        Choice 4*:
+        Choice 4:<i>Must not longer than 100 characters</i>
         <input type="text" name="choiced" size="100"><br>
         Answer*
         <input type="radio" name="answerid" value="1" checked>1

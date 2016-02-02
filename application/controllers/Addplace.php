@@ -53,7 +53,7 @@ class Addplace extends CI_Controller {
 
 
 		$this->form_validation->set_rules('placename', 'placename', 'required|max_length[50]');
-		$this->form_validation->set_rules('placefullname', 'placefullname', 'required|max_length[255]');
+		$this->form_validation->set_rules('placefullname', 'placefullname', 'required');
 		$this->form_validation->set_rules('latitude', 'latitude', 'required|numeric');
 		$this->form_validation->set_rules('longitude', 'longitude', 'required|numeric');
 		$this->form_validation->set_rules('radius', 'radius', 'required|numeric');

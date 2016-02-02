@@ -1,5 +1,5 @@
-<?php if(!isset($puzzledata)) :?>
-<a href = "<?=base_url('addquest/addriddle/'.$puzzleid)?>" style="color:black">
+<?php if(empty($puzzledata)) :?>
+<a href = "<?=base_url('addquest/addpuzzle/'.$puzzleid)?>" style="color:black">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     </a>
     <?php endif;?>
