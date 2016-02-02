@@ -66,6 +66,24 @@ $(document).ready(function(){
         scrollTop: $("#graph").offset().top},
         'slow');
     });
+    $('#explorer-count').click(function(){
+        $('#graph').load(
+            "<?=base_url('statistic/explorercount?placeid=')?>"+placeid
+        );
+
+        $('html,body').animate({
+        scrollTop: $("#graph").offset().top},
+        'slow');
+    });
+    $('#average-score').click(function(){
+        $('#graph').load(
+            "<?=base_url('statistic/averagescore?placeid=')?>"+placeid
+        );
+
+        $('html,body').animate({
+        scrollTop: $("#graph").offset().top},
+        'slow');
+    });
 });
 </script>
 </head>
@@ -108,10 +126,10 @@ $(document).ready(function(){
             <a href="#fakelink" class="btn btn-block btn-lg btn-primary" id="quest-played">Quest played</a>
         </div>
         <div class="col-md-2">
-            <a href="#fakelink" class="btn btn-block btn-lg btn-primary">Average score</a>
+            <a href="#fakelink" class="btn btn-block btn-lg btn-primary" id="average-score">Average score</a>
         </div>
         <div class="col-md-2">
-            <a href="#fakelink" class="btn btn-block btn-lg btn-primary">Zone visited</a>
+            <a href="#fakelink" class="btn btn-block btn-lg btn-primary" id="explorer-count">Zone visited</a>
         </div>
     <br>
     <br>

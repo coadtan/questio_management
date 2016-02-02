@@ -56,7 +56,7 @@ class Addzone extends CI_Controller {
 			$rewardid = null;
 		}
 
-		$this->form_validation->set_rules('zonename', 'zonename', 'required|max_length[100]');
+		$this->form_validation->set_rules('zonename', 'zonename', 'required|max_length[100]|alpha_numeric');
 
 		if ($this->form_validation->run()==TRUE){
 			if($zone->addzone($floorid, $zonetypeid, $zonename, $zonedetails, $qrcode, $sensorid, null, null, $itemid, $rewardid)==TRUE){
