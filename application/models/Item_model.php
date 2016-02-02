@@ -131,8 +131,15 @@ class Item_model extends CI_Model{
     		$this->db->trans_rollback();
     		return false;
 		}else{
-			$this->db->trans_commit();
-			return true;
+			$session_data = $this->session->userdata('logged_in');
+			$keeperid = $session_data['keeperid'];
+			if($this->addmanagement($keeperid, $this->getitemid()) === TRUE){
+				$this->db->trans_commit();
+				return true;
+			}else{
+				$this->db->trans_rollback();
+    			return false;
+			}
 		}
 	}
 	public function getposition(){
@@ -148,5 +155,34 @@ class Item_model extends CI_Model{
 			echo "No data in query at 'getposition'";
 		}
 		return $position;
+	}
+	public function addmanagement($keeperid, $itemid){
+		$management_obj = array(
+			'keeperid' => $keeperid,
+			'itemid' => $itemid
+			);
+		$this->db->trans_start();
+		$this->db->insert('management_item',$management_obj);
+		$this->db->trans_complete();
+		if ($this->db->trans_status() === FALSE){
+    		$this->db->trans_rollback();
+    		return false;
+		}else{
+			$this->db->trans_commit();
+			return true;
+		}
+	}
+	public function getitemid(){
+		$itemid = null;
+		$this->db->select_max('itemid', 'currentid');
+		$this->db->from('Item');
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			$row = $query->row_array();
+			$itemid = $row['currentid'];
+		}else{
+			echo "No data in query at 'getitemid'";
+		}
+		return $itemid;
 	}
 }

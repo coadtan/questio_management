@@ -123,8 +123,15 @@ class Rewards_model extends CI_Model{
     		$this->db->trans_rollback();
     		return false;
 		}else{
-			$this->db->trans_commit();
-			return true;
+			$session_data = $this->session->userdata('logged_in');
+			$keeperid = $session_data['keeperid'];
+			if($this->addmanagement($keeperid, $this->getrewardid()) === TRUE){
+				$this->db->trans_commit();
+				return true;
+			}else{
+				$this->db->trans_rollback();
+    			return false;
+			}
 		}
 	}
 	public function getrewardtype(){
@@ -140,5 +147,34 @@ class Rewards_model extends CI_Model{
 			echo "No data in query at 'getrewardtype'";
 		}
 		return $position;
-	}	
+	}
+	public function addmanagement($keeperid, $rewardid){
+		$management_obj = array(
+			'keeperid' => $keeperid,
+			'rewardid' => $rewardid
+			);
+		$this->db->trans_start();
+		$this->db->insert('management_reward',$management_obj);
+		$this->db->trans_complete();
+		if ($this->db->trans_status() === FALSE){
+    		$this->db->trans_rollback();
+    		return false;
+		}else{
+			$this->db->trans_commit();
+			return true;
+		}
+	}
+	public function getrewardid(){
+		$rewardid = null;
+		$this->db->select_max('rewardid', 'currentid');
+		$this->db->from('Rewards');
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			$row = $query->row_array();
+			$rewardid = $row['currentid'];
+		}else{
+			echo "No data in query at 'getrewardid'";
+		}
+		return $rewardid;
+	}
 }
