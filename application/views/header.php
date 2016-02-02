@@ -20,15 +20,12 @@ $(document).ready(function(){
     </div>
     <div class="col-md-3 col-md-push-6 col-xs-3 col-xs-push-3">
         <?php if($this->session->userdata('logged_in') != NULL) :?>
-        <font style="font-size:20px;color:white">
-            <?=$this->session->userdata('logged_in')['firstname'];?>
-            <?=$this->session->userdata('logged_in')['lastname'];?>
-        </font>
         <a href="<?=base_url('mainpage/logout')?>">
             <button
             type="button"
             class="btn btn-default">
-            Logout
+            <?=$this->session->userdata('logged_in')['firstname'];?>
+            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
         </button>
     </a>
 <?php else :?>
@@ -67,9 +64,9 @@ $(document).ready(function(){
          <!--
         <a href="<?=base_url('register')?>">Register</a>
         -->
-        <a href="#" id="register-link">Register</a>
+        <a href="#" id="register-link" style ="color:gray">Register</a>
         <br>
-        <a href="<?=base_url('forgotpassword')?>">Forgot password?</a>
+        <a href="<?=base_url('forgotpassword')?>" style ="color:gray">Forgot password?</a>
     </div>
 
     <div class="modal-footer">

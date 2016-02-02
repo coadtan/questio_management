@@ -12,12 +12,6 @@ html,body{
 	height: 100%;
 	font-family: 'thai_sans_literegular','arial';
 }
-a {text-decoration: none !important;}
-a {color:white;}      
-a:visited {color:white;} 
-a:hover {color:white;}  
-a:active {color:white;}  
-
 .shadow{
 	-webkit-box-shadow: 0 8px 6px -6px black;
 	-moz-box-shadow: 0 8px 6px -6px black;
@@ -184,6 +178,14 @@ a:active {color:white;}
 	margin: auto;
 	text-align: center;
 }
+ 
+
+a {text-decoration: none !important;}
+a {color:white;}      
+a:visited {color:white;} 
+a:hover {color:white;}  
+a:active {color:white;}  
+
 @media only screen and (max-width: 990px) {
 	.r7 .form-control{
 		margin: auto;
