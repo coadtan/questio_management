@@ -10,18 +10,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<?=script_tag('assets/bootstrap/js/bootstrap.js')?>
 	<?=link_tag('assets/bootstrap/css/bootstrap.min.css')?>
 	<?=link_tag('assets/questio/questio.css')?>
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-    		$('.keeperplace').click(function(){
-        	var placeid = this.getAttribute("placeid");
-        	$('#buildinglist').load(
-            	"<?=base_url('mainpage/getbuilding')?>"+ "/"+ placeid
-        	);
-        	$('html,body').animate({
-        		scrollTop: $("#buildinglist").offset().top},
-        	'slow');
+			$('#place').click(function(){
+		        $('#mainarea').load(
+            		"<?=base_url('mainpage/getplace')?>"
+        		);
+
+		        $('html,body').animate({
+		        scrollTop: $("#mainarea").offset().top},
+		        'slow');
+    		});
+
+        	$('#statistics').click(function(){
+		        $('#mainarea').load(
+		            "<?=base_url('statistic')?>"
+		        );
+
+		        $('html,body').animate({
+		        scrollTop: $("#mainarea").offset().top},
+		        'slow');
+    		});
+
     	});
-	});
 </script>
 </head>
 <body>
@@ -70,20 +82,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class ="wrapper-l text-white">
 				<p>MENU</p>
 				<ul class ="align-menu">
+					<a href = "#" id="place"><li>Place</li></a>
 					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/profile.png" alt="">&nbsp&nbsp PROFILE</li>
 					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/quest.png" alt="">&nbsp&nbsp QUEST</li>
 					<a href = "<?=base_url('addreward')?>"><li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/rewards.png" alt="">&nbsp&nbsp REWARD</li></a>
 					<a href = "<?=base_url('additem')?>"><li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/item.png" alt="">&nbsp&nbsp ITEM</li></a>
 					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/news.png" alt="">&nbsp&nbsp NEWS</li>
-				</ul>
-			</div>
-			<div class ="wrapper-l text-white" >
-				<ul class ="align-menu">
-					<a href = "<?=base_url('statistic')?>"><li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/stats.png" alt="">&nbsp&nbsp STATISTICS</li></a>
-					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/adventurer.png" alt="">&nbsp&nbsp ADVENTURER</li>
-					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/paper.png" alt="">&nbsp&nbsp QUEST</li>
-					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/rank.png" alt="">&nbsp&nbsp SCORE</li>
-					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/top.png" alt="">&nbsp&nbsp POPULAR ZONE</li>
+					<a href = "#" id="statistics"><li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/stats.png" alt="" >&nbsp&nbsp STATISTICS</li></a>
 				</ul>
 			</div>
 			<div class ="wrapper-l text-white">
@@ -94,43 +99,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</div>
 		</div>
 		<div class ="wrapper-align-mid header-float wrapper-m">
-			<div class ="wrapper-m">
-					<div class="row">
-					<!--Place management start here :D-->
-						<?php if(!empty($keeperplace)):?>
-							<?php foreach($keeperplace as $place):?>
-            					<div class="col-xs-6 col-md-3">
-	            					<a
-	            						href="#"
-	            						class="thumbnail keeperplace"
-	            						id="place_<?=$place['placeid']?>"
-	            						placeid="<?=$place['placeid']?>"
-	            					>
-			      						<img
-			      							src="http://52.74.64.61/<?=$place['imageurl']?>"
-			      							alt="<?=$place['placename']?>">
-			    					</a>
-			    					<?=$place['placename']?>
-			    					<a href="<?=base_url('editplace/edit/'.$place["placeid"])?>">Edit</a>
-			    					<a href="<?=base_url('mainpage/deleteplace/'.$place["placeid"])?>">Delete</a>
-		  						</div>
-        					<?php endforeach;?>
-						<?php endif;?>
-						<div class="col-xs-6 col-md-3" style="text-align:center">
-							<a
-			    				href="<?=base_url('addplace')?>"
-			    				class="thumbnail"
-							>
-								<span class="glyphicon glyphicon-plus" style="font-size:100px"></span>
-							</a>
-						</div>
-					</div>
-					<div id="buildinglist">
-					</div>
-				<!--Place management end here :D-->
+			<div class ="wrapper-m" id="mainarea">
 			</div>
-		</div>
-		<div class ="wrapper-align-right header-floatwrapper-m wrapper-r">
+		<!--<div class ="wrapper-align-right header-floatwrapper-m wrapper-r">
 			<div class ="wrapper-r">
 				<p>MENU</p>
 				<ul>
@@ -149,7 +120,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<li>xxx</li>
 				</ul>
 			</div>
-		</div>
+		</div>-->
 	</div>
 	<div class="footer">
 	</div>

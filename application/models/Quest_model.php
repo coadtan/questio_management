@@ -149,45 +149,13 @@ class Quest_model extends CI_Model{
 						'typename'=>$typename,
 						'zonename'=>$zonename,
 						'difftype'=>$difftype,
-						'rewardname'=>$rewardname,
+						'rewardname'=>$rewardname
 					);
 			}
 		}
 		return $quests;
 	}
 
-	public function getQuestByQuest($questid){
-	$quests = null;
-		$this->db->select('questname, questdetails, typename, difftype, rewardname');
-		$this->db->from('Quest');
-		$this->db->join('QuestType','Quest.questtypeid = QuestType.questtypeid','left');
-		$this->db->join('Zone','Quest.zoneid = Zone.zoneid','left');
-		$this->db->join('Difficulty','Quest.diffid = Difficulty.diffid','left');
-		$this->db->join('Rewards','Quest.rewardid = Rewards.rewardid','left');
-		$this->db->where('questid',$questid);
-		$this->db->order_by('questid','asc');
-		$query = $this->db->get();
-		if ($query->num_rows() >= 1){
-			$quests = array();
-			$i = 0;
-			foreach($query->result_array() as $row){
-				$questname = $row['questname'];
-				$questdetails = $row['questdetails'];
-				$typename = $row['typename'];
-				$difftype = $row['difftype'];
-				$rewardname = $row['rewardname'];
-				$quests[$i++] =
-					array(
-						'questname'=>$questname,
-						'questdetails'=>$questdetails,
-						'typename'=>$typename,
-						'difftype'=>$difftype,
-						'rewardname'=>$rewardname,
-					);
-			}
-		}
-		return $quests;
-	}
 	public function addquest($questname, $questdetails, $questtypeid, $zoneid, $diffid, $rewardid){
 		$quest_obj = array(
 			'questname' => $questname,
@@ -208,66 +176,7 @@ class Quest_model extends CI_Model{
 			return true;
 		}
 	}
-	public function addquest_quiz($questid, $seqid, $question, $choicea, $choiceb, $choicec, $choiced, $answerid){
-		$quiz_obj = array(
-			'questid' => $questid,
-			'seqid' => $seqid,
-			'question' => $question,
-			'choicea' => $choicea,
-			'choiceb' => $choiceb,
-			'choicec' => $choicec,
-			'choiced' => $choiced,
-			'answerid' => $answerid
-			);
-		$this->db->trans_start();
-		$this->db->insert('Quiz',$quiz_obj);
-		$this->db->trans_complete();
-		if ($this->db->trans_status() === FALSE){
-    		$this->db->trans_rollback();
-    		return false;
-		}else{
-			$this->db->trans_commit();
-			return true;
-		}
-	}
-	public function addquest_riddle($riddetails, $qrcode, $sensorid, $scanlimit, $hint1, $hint2, $hint3){
-		$riddle_obj = array(
-			'riddetails' => $riddetails,
-			'qrcode' => $qrcode,
-			'sensorid' => $sensorid,
-			'scanlimit' => $scanlimit,
-			'hint1' => $hint1,
-			'hint2' => $hint2,
-			'hint3' => $hint3
-			);
-		$this->db->trans_start();
-		$this->db->insert('Riddle',$riddle_obj);
-		$this->db->trans_complete();
-		if ($this->db->trans_status() === FALSE){
-    		$this->db->trans_rollback();
-    		return false;
-		}else{
-			$this->db->trans_commit();
-			return true;
-		}
-	}
-	public function addquest_puzzle($imageurl, $helperanswer, $correctanswer){
-				$puzzle_obj = array(
-			'imageurl' => $imageurl,
-			'helperanswer' => $helperanswer,
-			'correctanswer' => $correctanswer
-			);
-		$this->db->trans_start();
-		$this->db->insert('PicturePuzzle',$puzzle_obj);
-		$this->db->trans_complete();
-		if ($this->db->trans_status() === FALSE){
-    		$this->db->trans_rollback();
-    		return false;
-		}else{
-			$this->db->trans_commit();
-			return true;
-		}
-	}
+
 	public function getquesttypedata(){
 		$questtype = null;
 		$this->db->select('*');
@@ -295,49 +204,6 @@ class Quest_model extends CI_Model{
 			echo "No data in query at 'getdifficulty'";
 		}
 		return $difficulty;
-	}
-
-	public function getquestid(){
-		$questid = null;
-		$this->db->select_max('questid', 'currentid');
-		$this->db->from('Quest');
-		$query = $this->db->get();
-		if ($query->num_rows() >= 1){
-			$row = $query->row_array();
-			$questid = $row['currentid'];
-		}else{
-			echo "No data in query at 'getquestid'";
-		}
-		return $questid;
-	}
-	public function getqrcode(){
-		$qrcode = null;
-		$this->db->select_max('qrcode', 'currentqr');
-		$this->db->from('Riddle');
-		$query = $this->db->get();
-		if ($query->num_rows() >= 1){
-			$row = $query->row_array();
-			$qrcode = $row['currentqr'];
-			$qrcode++;
-		}else{
-			echo "No data in query at 'getqrcode'";
-		}
-		return $qrcode;
-	}
-
-	public function getsensorid(){
-		$sensorid = null;
-		$this->db->select_max('sensorid', 'currentsensor');
-		$this->db->from('Riddle');
-		$query = $this->db->get();
-		if ($query->num_rows() >= 1){
-			$row = $query->row_array();
-			$sensorid = $row['currentsensor'];
-			$sensorid++;
-		}else{
-			echo "No data in query at 'getsensorid'";
-		}
-		return $sensorid;
 	}
 
 }

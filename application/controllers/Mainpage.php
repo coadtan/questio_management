@@ -32,6 +32,17 @@ class Mainpage extends CI_Controller {
 		redirect('mainpage','refresh');
 	}
 
+	public function getplace(){
+		if($this->session->userdata('logged_in')){
+			$session_data = $this->session->userdata('logged_in');
+			$this->load->view('place_management', array(
+					'keeperplace' => $this->Place_model->showPlaceManagement($session_data['keeperid'])
+					));
+		}else{
+			redirect('login','refresh');
+		}
+	}
+
 	public function getbuilding($placeid){
 		$data = $this->Building_model->showBuildingManagement($placeid);
 		$this->load->view('main_page_building', array(

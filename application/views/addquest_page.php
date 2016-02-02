@@ -35,7 +35,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 <br>
 		<input type="submit" value="Submit">
 	<?=form_close()?>
-	<a href="<?=base_url('mainpage')?>">Go Back</a>
+	<a href="<?=base_url('questoverview/'.$zoneid)?>">Go Back</a>
 </div>
 </body>
 </html>

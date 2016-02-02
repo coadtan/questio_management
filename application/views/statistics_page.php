@@ -1,18 +1,3 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>Statistics</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<?=script_tag('assets/jquery/jquery-2.2.0.min.js')?>
-<?=link_tag('assets/bootstrap/css/bootstrap.min.css')?>
-<?=script_tag('assets/bootstrap/js/bootstrap.js')?>
-<?=link_tag('assets/questio/questio.css')?>
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-
 <script type="text/javascript">
 $(document).ready(function(){
     var placeid = $('#placechoose').val();
@@ -86,10 +71,6 @@ $(document).ready(function(){
     });
 });
 </script>
-</head>
-<body>
-    <div class="container-fluid">
-    <?php $this->load->view('header', array('title' => 'Statistics'));?>
     <div class="row">
         <div class="col-md-9">
         </div>
@@ -115,7 +96,7 @@ $(document).ready(function(){
     <div class="row" >
         <div class="col-md-4">
             <div class="btn-group" role="group" aria-label="...">
-            <button type="button" class="btn btn-primary" style="pointer-events: none;">Adventurer Count</button>
+            <button type="button" class="btn btn-primary" style="pointer-events: none;"><img class="questio-menu-logo" src="<?= base_url()?>assets/images/adventurer.png" alt="">Adventurer Count</button>
             <button type="button" class="btn btn-default" id="adventurer-count-day">Day</button>
             <button type="button" class="btn btn-default" id="adventurer-count-week">Week</button>
             <button type="button" class="btn btn-default" id="adventurer-count-month">Month</button>
@@ -123,13 +104,13 @@ $(document).ready(function(){
             </div>
         </div>
         <div class="col-md-2">
-            <a href="#fakelink" class="btn btn-block btn-lg btn-primary" id="quest-played">Quest played</a>
+            <a href="#fakelink" class="btn btn-block btn-lg btn-primary" id="quest-played"><img class="questio-menu-logo" src="<?= base_url()?>assets/images/paper.png" alt="">Quest played</a>
         </div>
         <div class="col-md-2">
-            <a href="#fakelink" class="btn btn-block btn-lg btn-primary" id="average-score">Average score</a>
+            <a href="#fakelink" class="btn btn-block btn-lg btn-primary" id="average-score"><img class="questio-menu-logo" src="<?= base_url()?>assets/images/rank.png" alt="">Average score</a>
         </div>
         <div class="col-md-2">
-            <a href="#fakelink" class="btn btn-block btn-lg btn-primary" id="explorer-count">Zone visited</a>
+            <a href="#fakelink" class="btn btn-block btn-lg btn-primary" id="explorer-count"><img class="questio-menu-logo" src="<?= base_url()?>assets/images/top.png" alt="">Zone visited</a>
         </div>
     <br>
     <br>
