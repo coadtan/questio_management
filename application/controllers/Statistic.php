@@ -45,7 +45,7 @@ class Statistic extends CI_Controller {
         $x = $statistics->getZoneNameByPlaceId($placeid);
         $y = $statistics->getExplorerCountByPlaceId($placeid);
 
-        $this->load->view('quest_played', array(
+        $this->load->view('explorer_count', array(
                                         'x' => $x,
                                         'y' => $y
                                     ));

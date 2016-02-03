@@ -13,7 +13,7 @@
         </tr>
     </thead>
     <tbody>
-    <?php if(isset($puzzledata)) :?>
+    <?php if(!empty($puzzledata)) :?>
         <?php foreach($puzzledata as $puzzle):?>
         <tr>
             <td><img
@@ -33,7 +33,7 @@
         </tr>
         <?php endforeach;?>
     <?php else: ?>
-        echo "<h2 style='color:red'>Riddle not found</h2>";
+        echo "<h2 style='color:red'>Puzzle not found</h2>";
     <?php endif;?>
     </tbody>
 </table>

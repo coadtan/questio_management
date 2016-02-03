@@ -177,4 +177,36 @@ class Rewards_model extends CI_Model{
 		}
 		return $rewardid;
 	}
+	public function getRewardFromKeeperId($keeperid){
+		$rewards = null;
+		$this->db->select('rewardid');
+		$this->db->from('management_reward');
+		$this->db->where('keeperid',$keeperid);
+		$subquery = $this->db->get_compiled_select();
+		$this->db->select('*');
+		$this->db->from('Rewards');
+		$this->db->join('RewardType','rewardtype.rewardtypeid = rewards.rewardtype');
+		$this->db->where('rewardid IN ('.$subquery.')', null, false);
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			$rewards = array();
+			$i = 0;
+			foreach($query->result_array() as $row){
+				$rewardid = $row['rewardid'];
+				$rewardname = $row['rewardname'];
+				$description = $row['description'];
+				$rewardtypename = $row['rewardtypename'];
+				$rewardpic = $row['rewardpic'];
+				$rewards[$i++] = 
+					array(
+						'rewardid'=>$rewardid,
+						'rewardname'=>$rewardname,
+						'description'=>$description,
+						'rewardtypename'=>$rewardtypename,
+						'rewardpic'=>$rewardpic
+					);
+			}
+		}
+		return $rewards;
+	}
 }

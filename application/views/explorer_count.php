@@ -13,9 +13,10 @@
         <?php endforeach;?>
         var data = [
           {
-            x : zonename_arr,
-            y : number_arr,
-            type: 'bar'
+            x : number_arr,
+            y : zonename_arr,
+            type: 'bar',
+            orientation: 'h'
           }
         ];
 

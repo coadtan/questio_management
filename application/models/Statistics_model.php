@@ -90,7 +90,7 @@ class Statistics_model extends CI_Model{
         $this->db->where('QuestProgress.zoneid IN ('.$subquery3.')', null, false);
         $this->db->where_in('statusid', array('3','4'));
         $this->db->group_by('questid');
-        $this->db->order_by('count(adventurerid)','desc');
+        $this->db->order_by('count(adventurerid)','asc');
         $query = $this->db->get();
         if ($query->num_rows() >= 1){
             $i = 1;
@@ -121,7 +121,7 @@ class Statistics_model extends CI_Model{
         $this->db->where('QuestProgress.zoneid IN ('.$subquery3.')', null, false);
         $this->db->where_in('statusid', array('3','4'));
         $this->db->group_by('QuestProgress.questid');
-        $this->db->order_by('count(adventurerid)','desc');
+        $this->db->order_by('count(adventurerid)','asc');
         $query = $this->db->get();
         if ($query->num_rows() >= 1){
             $i = 1;
@@ -140,7 +140,7 @@ class Statistics_model extends CI_Model{
         $this->db->where('isentered','1');
         $this->db->where('placeid',$placeid);
         $this->db->group_by('zoneid');
-        $this->db->order_by('count(adventurerid)','desc');
+        $this->db->order_by('count(adventurerid)','asc');
         $query = $this->db->get();
         if ($query->num_rows() >= 1){
             $i = 1;
@@ -159,7 +159,7 @@ class Statistics_model extends CI_Model{
         $this->db->where('isentered','1');
         $this->db->where('placeid',$placeid);
         $this->db->group_by('ExplorerProgress.zoneid');
-        $this->db->order_by('count(adventurerid)','desc');
+        $this->db->order_by('count(adventurerid)','asc');
         $query = $this->db->get();
         if ($query->num_rows() >= 1){
             $i = 1;
@@ -189,7 +189,7 @@ class Statistics_model extends CI_Model{
         $this->db->where('QuestProgress.zoneid IN ('.$subquery3.')', null, false);
         $this->db->where_in('statusid', array('3','4'));
         $this->db->group_by('questid');
-        $this->db->order_by('avg(score)','desc');
+        $this->db->order_by('avg(score)','asc');
         $query = $this->db->get();
         if ($query->num_rows() >= 1){
             $i = 1;
@@ -220,7 +220,7 @@ class Statistics_model extends CI_Model{
         $this->db->where('QuestProgress.zoneid IN ('.$subquery3.')', null, false);
         $this->db->where_in('statusid', array('3','4'));
         $this->db->group_by('QuestProgress.questid');
-        $this->db->order_by('avg(score)','desc');
+        $this->db->order_by('avg(score)','asc');
         $query = $this->db->get();
         if ($query->num_rows() >= 1){
             $i = 1;

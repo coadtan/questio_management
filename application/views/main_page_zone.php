@@ -2,7 +2,12 @@
 $(document).ready(function(){
     $('.keeperzone').click(function(){
         var zoneid = this.getAttribute("zoneid");
-        window.location = "<?=base_url('questoverview/getquest')?>"+ "/"+ zoneid;
+        $('#mainarea').load(
+        	"<?=base_url('questoverview/getquest')?>"+ "/"+ zoneid
+        );
+        $('html,body').animate({
+        scrollTop: $("#mainarea").offset().top},
+        'slow');
     });
 });
 </script>
