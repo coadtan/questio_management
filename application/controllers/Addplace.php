@@ -6,6 +6,7 @@ class Addplace extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Place_model');
 		$this->load->model('Rewards_model');
+		$this->load->library('upload');
 	}
 
 	public function index(){
@@ -50,6 +51,22 @@ class Addplace extends CI_Controller {
 			$rewardid = null;
 		}
 
+
+
+		$config['upload_path'] = './pictures/place';
+		$config['allowed_types'] = 'gif|jpg|jpeg|png';
+		$config['max_size'] = '1000';
+		$config['max_width'] = '1920';
+		$config['max_height'] = '1280';
+
+		$this->load->library('upload', $config);
+		$this->upload->initialize($config);
+
+
+		if ( ! $this->upload->do_upload('placepic')){
+			$error = array('error' => $this->upload->display_errors());
+			var_dump($error) ;
+		}
 
 
 		$this->form_validation->set_rules('placename', 'placename', 'required|max_length[50]');
