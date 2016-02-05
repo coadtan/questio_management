@@ -23,7 +23,7 @@ $(document).ready(function(){
 	            	zoneid="<?=$zone['zoneid']?>"
 	            >
 			      <img
-			      	src="http://52.74.64.61/questio_management/<?=$zone['imageurl']?>"
+			      	src="http://52.74.64.61/questio_management<?=$zone['imageurl']?>"
 			      	alt="<?=$zone['zonename']?>">
 			    </a>
 			    <?=$zone['zonename']?>

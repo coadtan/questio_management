@@ -8,6 +8,7 @@ class Editfloor extends CI_Controller {
 		$this->load->model('Building_model');
 		$this->load->model('Floor_model');
 		$this->load->helper('form');
+		$this->load->library('upload');
 	}
 
 	public function edit($floorid){
@@ -30,24 +31,25 @@ class Editfloor extends CI_Controller {
 		$floorname = $_POST['floorname'];
 		$imageurl = $_POST['imageurl'];
 
-		$config['upload_path'] = './pictures/floor';
-		$config['allowed_types'] = 'gif|jpg|jpeg|png';
-		$config['max_size'] = '1000';
-		$config['max_width'] = '1920';
-		$config['max_height'] = '1280';
+		if(!empty($_FILES['floorpic']['name'])){
+			$config['upload_path'] = './pictures/floor';
+			$config['allowed_types'] = 'gif|jpg|jpeg|png';
+			$config['max_size'] = '1000';
+			$config['max_width'] = '1920';
+			$config['max_height'] = '1280';
 
 
-		$this->load->library('upload', $config);
-		$this->upload->initialize($config);
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
 
 
-		if (!$this->upload->do_upload('floorpic')){
-			$error = array('error' => $this->upload->display_errors());
-			var_dump($error) ;
-		}else{
-			$uploaddata = $this->upload->data();
-			$imageurl = substr($uploaddata['full_path'], strpos($uploaddata['full_path'],"questio_management")+18);
-		}
+			if (!$this->upload->do_upload('floorpic')){
+				$error = array('error' => $this->upload->display_errors());
+				var_dump($error) ;
+			}else{
+				$uploaddata = $this->upload->data();
+				$imageurl = substr($uploaddata['full_path'], strpos($uploaddata['full_path'],"questio_management")+18);
+			}
 
 		$this->form_validation->set_rules('floorname', 'floorname', 'required|max_length[100]');
 

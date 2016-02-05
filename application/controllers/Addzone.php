@@ -10,6 +10,7 @@ class Addzone extends CI_Controller {
 		$this->load->model('Item_model');
 		$this->load->model('Rewards_model');
 		$this->load->helper('form');
+		$this->load->library('upload');
 	}
 
 	public function index(){
@@ -59,37 +60,32 @@ class Addzone extends CI_Controller {
 		$imageurl = null;
 		$minimapurl = null;
 
-		$config['upload_path'] = './pictures/item';
-		$config['allowed_types'] = 'gif|jpg|jpeg|png';
-		$config['max_size'] = '1000';
-		$config['max_width'] = '1920';
-		$config['max_height'] = '1280';
-		$this->load->library('upload', $config, 'zonepicupload');
-		$this->zonepicupload->initialize($config);
+		if(!empty($_FILES['zonepic']['name'])){
+			$config['upload_path'] = './pictures/zone';
+			$config['allowed_types'] = 'gif|jpg|jpeg|png';
+			$config['max_size'] = '1000';
+			$config['max_width'] = '1920';
+			$config['max_height'] = '1280';
+			$this->upload->initialize($config);
 
-		$config['upload_path'] = './pictures/item';
-		$config['allowed_types'] = 'gif|jpg|jpeg|png';
-		$config['max_size'] = '1000';
-		$config['max_width'] = '1920';
-		$config['max_height'] = '1280';
-		$this->load->library('upload', $config, 'zoneminimapupload');
-		$this->zoneminimapupload->initialize($config);
+			if ($this->upload->do_upload('zonepic')){
+				$zonedata = $this->zonepicupload->data();
+				$imageurl = substr($zonedata['full_path'], strpos($zonedata['full_path'],"questio_management")+18);
+			}
+		}
 
-		$upload_zone = $this->upload->do_upload('zonepic');
-		$upload_minimap = $this->upload->do_upload('minimappic');
+		if(!empty($_FILES['minimappic']['name'])){
+			$config['upload_path'] = './pictures/zone_minimap';
+			$config['allowed_types'] = 'gif|jpg|jpeg|png';
+			$config['max_size'] = '1000';
+			$config['max_width'] = '1920';
+			$config['max_height'] = '1280';
+			$this->upload->initialize($config);
 
-		if ($upload_zone && $upload_minimap){
-			$zonedata = $this->zonepicupload->data();
-			$minimapdata = $this->zoneminimapupload->data();
-			$imageurl = substr($zonedata['full_path'], strpos($zonedata['full_path'],"questio_management")+18);
-			$minimapurl = substr($minimapdata['full_path'], strpos($minimapdata['full_path'],"questio_management")+18);
-		}else{
-			$error = array(
-				'zoneerror' => $this->zonepicupload->display_errors(),
-				'minimaperror' => $this->zoneminimapupload->display_errors()
-				);
-			var_dump($error);
-
+			if ($this->upload->do_upload('minimappic')){
+				$minimapdata = $this->zoneminimapupload->data();
+				$minimapurl = substr($minimapdata['full_path'], strpos($minimapdata['full_path'],"questio_management")+18);
+			}
 		}
 
 		$this->form_validation->set_rules('zonename', 'zonename', 'required|max_length[100]|alpha_numeric');

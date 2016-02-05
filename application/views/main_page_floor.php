@@ -23,7 +23,7 @@ $('.keeperfloor').click(function(){
             	floorid="<?=$floor['floorid']?>"
             >
 		      <img
-		      	src="http://52.74.64.61/questio_management/<?=$floor['imageurl']?>"
+		      	src="http://52.74.64.61/questio_management<?=$floor['imageurl']?>"
 		      	alt="<?=$floor['floorname']?>">
 		    </a>
 		    <?=$floor['floorname']?>

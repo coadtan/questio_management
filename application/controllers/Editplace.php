@@ -7,6 +7,7 @@ class Editplace extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Place_model');
 		$this->load->model('Rewards_model');
+		$this->load->library('upload');
 	}
 
 	public function edit($placeid){
@@ -47,30 +48,26 @@ class Editplace extends CI_Controller {
 			$rewardid = null;
 		}
 
-		if(!is_null($_POST['imageurl'])){
-			$imageurl = $_POST['imageurl'];
-		}else{
-			$imageurl = null;
-		}
-		
+		$imageurl = $_POST['imageurl'];
 
-		$config['upload_path'] = './pictures/place';
-		$config['allowed_types'] = 'gif|jpg|jpeg|png';
-		$config['max_size'] = '1000';
-		$config['max_width'] = '1920';
-		$config['max_height'] = '1280';
+		if(!empty($_FILES['placepic']['name'])){
+
+			$config['upload_path'] = './pictures/place';
+			$config['allowed_types'] = 'gif|jpg|jpeg|png';
+			$config['max_size'] = '1000';
+			$config['max_width'] = '1920';
+			$config['max_height'] = '1280';
 
 
-		$this->load->library('upload', $config);
-		$this->upload->initialize($config);
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
 
 
-		if (!$this->upload->do_upload('placepic')){
-			$error = array('error' => $this->upload->display_errors());
-			var_dump($error) ;
-		}else{
-			$uploaddata = $this->upload->data();
-			$imageurl = substr($uploaddata['full_path'], strpos($uploaddata['full_path'],"questio_management")+18);
+			if ($this->upload->do_upload('placepic')){
+				$uploaddata = $this->upload->data();
+				$imageurl = substr($uploaddata['full_path'], strpos($uploaddata['full_path'],"questio_management")+18);
+			}
+
 		}
 		
 		
@@ -87,7 +84,7 @@ class Editplace extends CI_Controller {
 				$placedata = $place->getPlaceById($placeid);
 				$this->load->view(
 					'editplace_page',array(
-					'message' => 'Edd Place successful.',
+					'message' => 'Edit Place successful.',
 					'enterrewarddata' => $enterrewarddata,
 					'rewarddata' => $rewarddata,
 				'placedata' => $placedata
@@ -97,7 +94,7 @@ class Editplace extends CI_Controller {
 				$placedata = $place->getPlaceById($placeid);
 				$this->load->view(
 					'editplace_page',array(
-					'message' => 'Edd Place failed.',
+					'message' => 'Edit Place failed.',
 					'enterrewarddata' => $enterrewarddata,
 					'rewarddata' => $rewarddata,
 				'placedata' => $placedata

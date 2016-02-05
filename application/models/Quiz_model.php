@@ -147,4 +147,60 @@ class Quiz_model extends CI_Model{
         }
         return $seqid;
     }
+
+    public function updateQuiz($quizid, $question, $choicea, $choiceb, $choicec, $choiced, $answerid){
+        $quiz_obj = array(
+            'question' => $question,
+            'choicea' => $choicea,
+            'choiceb' => $choiceb,
+            'choicec' => $choicec,
+            'choiced' => $choiced,
+            'answerid' => $answerid
+        );
+        $this->db->trans_start();
+        $this->db->where('quizid', $quizid);
+        $this->db->update('Quiz', $quiz_obj);
+        $this->db->trans_complete();
+        if ($this->db->trans_status() === FALSE){
+            $this->db->trans_rollback();
+            return false;
+        }else{
+            $this->db->trans_commit();
+            return true;
+        }
+    }
+
+    public function getQuizByQuizId($quizid){
+        $quizzes = null;
+        $this->db->select('*');
+        $this->db->from('Quiz');
+        $this->db->where('quizid',$quizid);
+        $this->db->order_by('seqid','asc');
+        $query = $this->db->get();
+        if ($query->num_rows() >= 1){
+            $quizzes = array();
+            foreach($query->result_array() as $row){
+                $quizid = $row['quizid'];
+                $questid = $row['questid'];
+                $question = $row['question'];
+                $choicea = $row['choicea'];
+                $choiceb = $row['choiceb'];
+                $choicec = $row['choicec'];
+                $choiced = $row['choiced'];
+                $answerid = $row['answerid'];
+                $quizzes =
+                    array(
+                        'quizid'=>$quizid,
+                        'questid'=>$questid,
+                        'question'=>$question,
+                        'choicea'=>$choicea,
+                        'choiceb'=>$choiceb,
+                        'choicec'=>$choicec,
+                        'choiced'=>$choiced,
+                        'answerid'=>$answerid
+                    );
+            }
+        }
+        return $quizzes;
+    }
 }

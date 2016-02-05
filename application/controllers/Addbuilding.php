@@ -8,6 +8,7 @@ class Addbuilding extends CI_Controller {
 		$this->load->model('Building_model');
 		$this->load->model('Place_model');
 		$this->load->helper('form');
+		$this->load->library('upload');
 	}
 
 	public function index(){
@@ -31,23 +32,22 @@ class Addbuilding extends CI_Controller {
 
 		$imageurl = null;
 
-		$config['upload_path'] = './pictures/building';
-		$config['allowed_types'] = 'gif|jpg|jpeg|png';
-		$config['max_size'] = '1000';
-		$config['max_width'] = '1920';
-		$config['max_height'] = '1280';
+		if(!empty($_FILES['buildingpic']['name'])){
+			$config['upload_path'] = './pictures/building';
+			$config['allowed_types'] = 'gif|jpg|jpeg|png';
+			$config['max_size'] = '1000';
+			$config['max_width'] = '1920';
+			$config['max_height'] = '1280';
 
 
-		$this->load->library('upload', $config);
-		$this->upload->initialize($config);
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
 
 
-		if (!$this->upload->do_upload('buildingpic')){
-			$error = array('error' => $this->upload->display_errors());
-			var_dump($error) ;
-		}else{
-			$uploaddata = $this->upload->data();
-			$imageurl = substr($uploaddata['full_path'], strpos($uploaddata['full_path'],"questio_management")+18);
+			if ($this->upload->do_upload('buildingpic')){
+				$uploaddata = $this->upload->data();
+				$imageurl = substr($uploaddata['full_path'], strpos($uploaddata['full_path'],"questio_management")+18);
+			}
 		}
 
 		$this->form_validation->set_rules('buildingname', 'buildingname', 'required|max_length[140]');

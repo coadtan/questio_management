@@ -123,7 +123,7 @@ class Quest_model extends CI_Model{
 
 	public function getQuestByZone($zoneid){
 		$quests = null;
-		$this->db->select('questid, questname, typename, zonename, difftype, rewardname');
+		$this->db->select('questid, questname, questdetails, typename, zonename, difftype, rewardname');
 		$this->db->from('Quest');
 		$this->db->join('QuestType','quest.questtypeid = questtype.questtypeid','left');
 		$this->db->join('Zone','quest.zoneid = zone.zoneid','left');
@@ -138,6 +138,7 @@ class Quest_model extends CI_Model{
 			foreach($query->result_array() as $row){
 				$questid = $row['questid'];
 				$questname = $row['questname'];
+				$questdetails = $row['questdetails'];
 				$typename = $row['typename'];
 				$zonename = $row['zonename'];
 				$difftype = $row['difftype'];
@@ -146,6 +147,7 @@ class Quest_model extends CI_Model{
 					array(
 						'questid'=>$questid,
 						'questname'=>$questname,
+						'questdetails'=>$questdetails,
 						'typename'=>$typename,
 						'zonename'=>$zonename,
 						'difftype'=>$difftype,
@@ -213,6 +215,55 @@ class Quest_model extends CI_Model{
 			$zoneid = $row['zoneid'];
 		}
 		return $zoneid;
+	}
+
+	public function updateQuest($questid, $questname, $questdetails, $diffid, $rewardid){
+        $quest_obj = array(
+            'questname' => $questname,
+            'questdetails' => $questdetails,
+            'diffid' => $diffid,
+            'rewardid' => $rewardid
+        );
+        $this->db->trans_start();
+        $this->db->where('questid', $questid);
+        $this->db->update('Quest', $quest_obj);
+        $this->db->trans_complete();
+        if ($this->db->trans_status() === FALSE){
+            $this->db->trans_rollback();
+            return false;
+        }else{
+            $this->db->trans_commit();
+            return true;
+        }
+    }
+
+    public function getQuestFromQuestId($questid){
+		$quests = null;
+		$this->db->select('*');
+		$this->db->from('Quest');
+		$this->db->where('questid',$questid);
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			$quests = array();
+			foreach($query->result_array() as $row){
+				$questid = $row['questid'];
+				$questname = $row['questname'];
+				$questdetails = $row['questdetails'];
+				$questtypeid = $row['questtypeid'];
+				$diffid = $row['diffid'];
+				$rewardid = $row['rewardid'];
+				$quests =
+					array(
+						'questid'=>$questid,
+						'questname'=>$questname,
+						'questdetails'=>$questdetails,
+						'questtypeid'=>$questtypeid,
+						'diffid'=>$diffid,
+						'rewardid'=>$rewardid
+					);
+			}
+		}
+		return $quests;
 	}
 
 }

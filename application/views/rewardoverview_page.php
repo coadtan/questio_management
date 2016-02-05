@@ -22,17 +22,19 @@
             
             <td><?= $reward['description']?></td>
             <td><img
-                src="http://52.74.64.61/questio_management/<?=$reward['rewardpic']?>"
+                src="http://52.74.64.61/questio_management<?=$reward['rewardpic']?>"
                 alt="<?= $reward['rewardpic']?>"
                 style="width:50px;
                         height:50px;"></td>
             <td><?= $reward['rewardtypename']?></td>
             <td>
-                <span
-                    data="<?=$reward['rewardid']?>"
-                    class="glyphicon glyphicon-asterisk"
-                    style="cursor: pointer">
-                </span>
+                <a href="<?=base_url('editreward/edit').'/'.$reward['rewardid']?>">
+                    <span
+                        data="<?=$reward['rewardid']?>"
+                        class="glyphicon glyphicon-asterisk"
+                        style="cursor: pointer">
+                    </span>
+                </a>
             </td>
         </tr>
         <?php endforeach;?>

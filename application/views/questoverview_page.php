@@ -40,6 +40,7 @@ $(document).ready(function(){
 	    <tr>
 	        <th>#</th>
 	        <th>Quest Name</th>
+	        <th>Details</th>
 	        <th>Type</th>
 	        <th>Zone</th>
 	        <th>Difficulty</th>
@@ -54,6 +55,7 @@ $(document).ready(function(){
 	    <tr>
 	        <td><?= $i++?></td>
 	        <td><?= $quest['questname']?></td>
+	        <td><?= $quest['questdetails']?></td>
 	        <td><?= $quest['typename']?></td>
 	        <td><?= $quest['zonename']?></td>
 	        <td><?= $quest['difftype']?></td>

@@ -219,4 +219,54 @@ class Item_model extends CI_Model{
 		}
 		return $items;
 	}
+
+	public function getItemFromItemId($itemid){
+		$items = null;
+		$this->db->select('*');
+		$this->db->from('Item');
+		$this->db->where('itemid',$itemid);
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			$items = array();
+			foreach($query->result_array() as $row){
+				$itemid = $row['itemid'];
+				$itemname = $row['itemname'];
+				$itempicpath = $row['itempicpath'];
+				$equipspritepath = $row['equipspritepath'];
+				$itemcollection = $row['itemcollection'];
+				$positionid = $row['positionid'];
+				$items = 
+					array(
+						'itemid'=>$itemid,
+						'itemname'=>$itemname,
+						'itempicpath'=>$itempicpath,
+						'equipspritepath'=>$equipspritepath,
+						'itemcollection'=>$itemcollection,
+						'positionid'=>$positionid
+					);
+			}
+		}
+		return $items;
+	}
+
+	public function updateItem($itemid, $itemname, $itempicpath, $equipspritepath, $itemcollection, $positionid){
+		$item_obj = array(
+			'itemname' => $itemname,
+			'itempicpath' => $itempicpath,
+			'equipspritepath' => $equipspritepath,
+			'itemcollection' => $itemcollection,
+			'positionid' => $positionid
+		);
+		$this->db->trans_start();
+		$this->db->where('itemid', $itemid);
+		$this->db->update('Item', $item_obj);
+		$this->db->trans_complete();
+		if ($this->db->trans_status() === FALSE){
+    		$this->db->trans_rollback();
+    		return false;
+		}else{
+			$this->db->trans_commit();
+			return true;
+		}
+	}
 }

@@ -17,7 +17,7 @@
         <?php foreach($puzzledata as $puzzle):?>
         <tr>
             <td><img
-                src="http://52.74.64.61/questio_management/<?=$puzzle['imageurl']?>"
+                src="http://52.74.64.61/questio_management<?=$puzzle['imageurl']?>"
                 alt="<?= $puzzle['imageurl']?>"
                 style="width:100px;
                         height:100px;"></td>

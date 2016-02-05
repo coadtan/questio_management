@@ -7,6 +7,7 @@ class Addreward extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Rewards_model');
 		$this->load->helper('form');
+		$this->load->library('upload');
 	}
 
 	public function index(){
@@ -25,32 +26,31 @@ class Addreward extends CI_Controller {
 		$rewardname = $_POST['rewardname'];
 		$description = $_POST['description'];
 		$rewardtype = $_POST['rewardtype'];
-		$imageurl = null;
+		$rewardpic = null;
 
-		$config['upload_path'] = './pictures/floor';
-		$config['allowed_types'] = 'gif|jpg|jpeg|png';
-		$config['max_size'] = '1000';
-		$config['max_width'] = '1920';
-		$config['max_height'] = '1280';
-
-
-		$this->load->library('upload', $config);
-		$this->upload->initialize($config);
+		if(!empty($_FILES['rewardpic']['name'])){
+			$config['upload_path'] = './pictures/reward';
+			$config['allowed_types'] = 'gif|jpg|jpeg|png';
+			$config['max_size'] = '1000';
+			$config['max_width'] = '1920';
+			$config['max_height'] = '1280';
 
 
-		if (!$this->upload->do_upload('rewardpic')){
-			$error = array('error' => $this->upload->display_errors());
-			var_dump($error) ;
-		}else{
-			$uploaddata = $this->upload->data();
-			$imageurl = substr($uploaddata['full_path'], strpos($uploaddata['full_path'],"questio_management")+18);
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
+
+
+			if ($this->upload->do_upload('rewardpic')){
+				$uploaddata = $this->upload->data();
+				$rewardpic = substr($uploaddata['full_path'], strpos($uploaddata['full_path'],"questio_management")+18);
+			}
 		}
 
 		$this->form_validation->set_rules('rewardname', 'rewardname', 'required|max_length[50]');
 		$this->form_validation->set_rules('description', 'description', 'required|max_length[200]');
 
 		if ($this->form_validation->run()==TRUE){
-			if($reward->addreward($rewardname, $description, $rewardtype, $imageurl)==TRUE){
+			if($reward->addreward($rewardname, $description, $rewardtype, $rewardpic)==TRUE){
 				$this->load->view(
 					'addreward_page',array(
 					'message' => 'Add reward successful.',

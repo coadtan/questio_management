@@ -209,4 +209,51 @@ class Rewards_model extends CI_Model{
 		}
 		return $rewards;
 	}
+
+	public function updateReward($rewardid, $rewardname, $description, $rewardtype, $rewardpic){
+		$reward_obj = array(	
+			'rewardname' => $rewardname,
+			'description' => $description,
+			'rewardtype' => $rewardtype,
+			'rewardpic' => $rewardpic
+		);
+		$this->db->trans_start();
+		$this->db->where('rewardid', $rewardid);
+		$this->db->update('Rewards', $reward_obj);
+		$this->db->trans_complete();
+		if ($this->db->trans_status() === FALSE){
+    		$this->db->trans_rollback();
+    		return false;
+		}else{
+			$this->db->trans_commit();
+			return true;
+		}
+	}
+
+	public function getRewardFromRewardId($rewardid){
+		$rewards = null;
+		$this->db->select('*');
+		$this->db->from('Rewards');
+		$this->db->where('rewardid',$rewardid);
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			$rewards = array();
+			foreach($query->result_array() as $row){
+				$rewardid = $row['rewardid'];
+				$rewardname = $row['rewardname'];
+				$description = $row['description'];
+				$rewardtype = $row['rewardtype'];
+				$rewardpic = $row['rewardpic'];
+				$rewards = 
+					array(
+						'rewardid'=>$rewardid,
+						'rewardname'=>$rewardname,
+						'description'=>$description,
+						'rewardtype'=>$rewardtype,
+						'rewardpic'=>$rewardpic
+					);
+			}
+		}
+		return $rewards;
+	}
 }

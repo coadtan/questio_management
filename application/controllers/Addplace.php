@@ -53,23 +53,24 @@ class Addplace extends CI_Controller {
 
 		$imageurl = null;
 
-		$config['upload_path'] = './pictures/place';
-		$config['allowed_types'] = 'gif|jpg|jpeg|png';
-		$config['max_size'] = '1000';
-		$config['max_width'] = '1920';
-		$config['max_height'] = '1280';
+		if(!empty($_FILES['placepic']['name'])){
+
+			$config['upload_path'] = './pictures/place';
+			$config['allowed_types'] = 'gif|jpg|jpeg|png';
+			$config['max_size'] = '1000';
+			$config['max_width'] = '1920';
+			$config['max_height'] = '1280';
 
 
-		$this->load->library('upload', $config);
-		$this->upload->initialize($config);
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
 
 
-		if (!$this->upload->do_upload('placepic')){
-			$error = array('error' => $this->upload->display_errors());
-			var_dump($error);
-		}else{
-			$uploaddata = $this->upload->data();
-			$imageurl = substr($uploaddata['full_path'], strpos($uploaddata['full_path'],"questio_management")+18);
+			if ($this->upload->do_upload('placepic')){
+				$uploaddata = $this->upload->data();
+				$imageurl = substr($uploaddata['full_path'], strpos($uploaddata['full_path'],"questio_management")+18);
+			}
+
 		}
 
 

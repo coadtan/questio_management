@@ -23,7 +23,7 @@ $('.keeperbuilding').click(function(){
             	buildingid="<?=$building['buildingid']?>"
             >
 		      <img
-		      	src="http://52.74.64.61/questio_management/<?=$building['imageurl']?>"
+		      	src="http://52.74.64.61/questio_management<?=$building['imageurl']?>"
 		      	alt="<?=$building['buildingname']?>">
 		    </a>
 		    <?=$building['buildingname']?>

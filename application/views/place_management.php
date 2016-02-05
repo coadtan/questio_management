@@ -23,7 +23,7 @@
                     placeid="<?=$place['placeid']?>"
                 >
                     <img
-                        src="http://52.74.64.61/questio_management/<?=$place['imageurl']?>"
+                        src="http://52.74.64.61/questio_management<?=$place['imageurl']?>"
                         alt="<?=$place['placename']?>">
                 </a>
                 <?=$place['placename']?>

@@ -20,23 +20,23 @@
             <td><?= $i++?></td>
             <td><?= $item['itemname']?></td>
             <td><img
-                src="http://52.74.64.61/questio_management/<?=$item['itempicpath']?>"
+                src="http://52.74.64.61/questio_management<?=$item['itempicpath']?>"
                 alt="<?= $item['itempicpath']?>"
                 style="width:100px;
                         height:100px;"></td>
             <td><?= $item['itemcollection']?></td>
             <td><?= $item['positionname']?></td>
             <td>
-                <span
+                <a href="<?=base_url('edititem/edit').'/'.$item['itemid']?>"><span
                     data="<?=$item['itemid']?>"
                     class="glyphicon glyphicon-asterisk"
                     style="cursor: pointer">
-                </span>
+                </span></a>
             </td>
         </tr>
         <?php endforeach;?>
     <?php else: ?>
-        echo "<h2 style='color:red'>Item not found</h2>";
+        <h2 style='color:red'>Item not found</h2>
     <?php endif;?>
     </tbody>
 </table>

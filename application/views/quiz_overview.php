@@ -15,7 +15,7 @@
         </tr>
     </thead>
     <tbody>
-    <?php if(empty($quizdata)) :?>
+    <?php if(!empty($quizdata)) :?>
         <?php foreach($quizdata as $quiz):?>
         <tr>
             <td><?= $quiz['seqid']?></td>
@@ -26,11 +26,13 @@
             <td><?= $quiz['choiced']?></td>
             <td><?= $quiz['answerid']?></td>
             <td>
-                <span
-                    data="<?=$quiz['quizid']?>"
-                    class="glyphicon glyphicon-asterisk"
-                    style="cursor: pointer">
-                </span>
+                <a href="<?=base_url('editquest/editquiz').'/'.$quiz['quizid']?>">
+                    <span
+                        data="<?=$quiz['quizid']?>"
+                        class="glyphicon glyphicon-asterisk"
+                        style="cursor: pointer">
+                    </span>
+                </a>
             </td>
         </tr>
         <?php endforeach;?>
