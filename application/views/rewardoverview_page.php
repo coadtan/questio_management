@@ -22,7 +22,7 @@
             
             <td><?= $reward['description']?></td>
             <td><img
-                src="http://52.74.64.61/<?=$reward['rewardpic']?>"
+                src="http://52.74.64.61/questio_management/<?=$reward['rewardpic']?>"
                 alt="<?= $reward['rewardpic']?>"
                 style="width:50px;
                         height:50px;"></td>

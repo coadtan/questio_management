@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="container-fluid">
 	<?php $this->load->view('header', array('title' => 'Add Floors'));?>
 	<h2 style='color:red'><?=$message?></h2>
-	<?= form_open('addfloor/addfloorcheck')?>
+	<?= form_open_multipart('addfloor/addfloorcheck')?>
 		Floor Name*:
 		<i>Must be less than 100 characters</i>
 		 <input type="text" name="floorname" id="floorname" size="50"><br>
@@ -28,6 +28,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		Sensor ID:
 		<input type="text" name="sensorid" id="sensorid" value="<?=$sensorid?>" readonly><br>
 		<input type="submit" value="Submit">
+		Floor Image: <input type="file"
+			class ="register-margin register-box"
+			name="floorpic"
+			id="floorpic"
+			size ="999">
+			<br>
 	<?=form_close()?>
 	<a href="<?=base_url('mainpage')?>">Go Back</a>
 </div>

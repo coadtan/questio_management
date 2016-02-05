@@ -123,11 +123,11 @@ function placeMarker(location, map) {
 			size ="100"
 			placeholder ="&nbsp Place Type*: Must be less than 30 characters">
 			<br>
-	<input type="file"
+	Place Image: <input type="file"
 			class ="register-margin register-box"
 			name="placepic"
 			id="placepic"
-			size ="999"
+			size ="999">
 			<br>
 		Enter Rewards:
 		<?= form_dropdown('enter_rewardid',$enterrewarddata); ?>

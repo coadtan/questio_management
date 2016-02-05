@@ -20,7 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="container-fluid">
 	
 	<h2 style='color:red'><?=$message?></h2>
-	<?= form_open('addreward/addrewardcheck')?>
+	<?= form_open_multipart('addreward/addrewardcheck')?>
 	Reward Name*:
 		<input type="text" 
 			class ="register-margin register-box" 
@@ -35,6 +35,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			id="description" 
 			size ="103" 
 			placeholder ="&nbsp  Must be less than 200 characters"><br>
+	Reward Picture: <input type="file"
+			class ="register-margin register-box"
+			name="rewardpic"
+			id="rewardpic"
+			size ="999">
+			<br>
 	Reward Type*:
 		<?= form_dropdown('rewardtype',$rewardtypedata); ?>
 		 <br><br>

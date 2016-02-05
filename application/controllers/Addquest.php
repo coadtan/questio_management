@@ -220,9 +220,29 @@ class Addquest extends CI_Controller {
 	public function addPuzzleCheck(){
 		$puzzle = $this->Puzzle_model;
 		$puzzleid = $_POST['puzzleid'];
-		$imageurl = '/puzzlepic/blank.png';
 		$helperanswer = $_POST['helperanswer'];
 		$correctanswer = $_POST['correctanswer'];
+
+		$imageurl = null;
+
+		$config['upload_path'] = './pictures/floor';
+		$config['allowed_types'] = 'gif|jpg|jpeg|png';
+		$config['max_size'] = '1000';
+		$config['max_width'] = '1920';
+		$config['max_height'] = '1280';
+
+
+		$this->load->library('upload', $config);
+		$this->upload->initialize($config);
+
+
+		if (!$this->upload->do_upload('puzzlepic')){
+			$error = array('error' => $this->upload->display_errors());
+			var_dump($error) ;
+		}else{
+			$uploaddata = $this->upload->data();
+			$imageurl = substr($uploaddata['full_path'], strpos($uploaddata['full_path'],"questio_management")+18)
+		}
 		
 		$this->form_validation->set_rules('helperanswer', 'helperanswer', 'max_length[100]');
 		$this->form_validation->set_rules('correctanswer', 'correctanswer', 'required|max_length[100]');

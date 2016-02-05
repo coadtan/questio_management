@@ -31,6 +31,27 @@ class Editbuilding extends CI_Controller {
 		$longitude = $_POST['longitude'];
 		$radius = $_POST['radius'];
 
+		$imageurl = null;
+
+		$config['upload_path'] = './pictures/floor';
+		$config['allowed_types'] = 'gif|jpg|jpeg|png';
+		$config['max_size'] = '1000';
+		$config['max_width'] = '1920';
+		$config['max_height'] = '1280';
+
+
+		$this->load->library('upload', $config);
+		$this->upload->initialize($config);
+
+
+		if (!$this->upload->do_upload('buildingpic')){
+			$error = array('error' => $this->upload->display_errors());
+			var_dump($error) ;
+		}else{
+			$uploaddata = $this->upload->data();
+			$imageurl = substr($uploaddata['full_path'], strpos($uploaddata['full_path'],"questio_management")+18);
+		}
+
 		$this->form_validation->set_rules('buildingname', 'buildingname', 'required|max_length[140]');
 		$this->form_validation->set_rules('latitude', 'latitude', 'required|numeric');
 		$this->form_validation->set_rules('longitude', 'longitude', 'required|numeric');

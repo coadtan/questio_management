@@ -51,7 +51,7 @@ class Addplace extends CI_Controller {
 			$rewardid = null;
 		}
 
-
+		$imageurl = null;
 
 		$config['upload_path'] = './pictures/place';
 		$config['allowed_types'] = 'gif|jpg|jpeg|png';
@@ -59,13 +59,17 @@ class Addplace extends CI_Controller {
 		$config['max_width'] = '1920';
 		$config['max_height'] = '1280';
 
+
 		$this->load->library('upload', $config);
 		$this->upload->initialize($config);
 
 
-		if ( ! $this->upload->do_upload('placepic')){
+		if (!$this->upload->do_upload('placepic')){
 			$error = array('error' => $this->upload->display_errors());
-			var_dump($error) ;
+			var_dump($error);
+		}else{
+			$uploaddata = $this->upload->data();
+			$imageurl = substr($uploaddata['full_path'], strpos($uploaddata['full_path'],"questio_management")+18);
 		}
 
 
@@ -77,7 +81,7 @@ class Addplace extends CI_Controller {
 		$this->form_validation->set_rules('placetype', 'placetype', 'required|alpha_numeric');
 
 		if ($this->form_validation->run()==TRUE){
-			if($place->addplace($placename, $placefullname, $qrcode, $sensorid, $latitude, $longitude, $radius, $placetype, null, $enter_rewardid, $rewardid)==TRUE){
+			if($place->addplace($placename, $placefullname, $qrcode, $sensorid, $latitude, $longitude, $radius, $placetype, $imageurl, $enter_rewardid, $rewardid)==TRUE){
 				$qrcode = $place->getqrcode();
 				$sensorid = $place->getsensorid();
 				$this->load->view(

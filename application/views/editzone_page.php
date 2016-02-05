@@ -16,10 +16,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="container-fluid">
 	<?php $this->load->view('header', array('title' => 'Edit Zones'));?>
 	<h2 style='color:red'><?=$message?></h2>
-	<?= form_open('editzone/editzonecheck/'.$zonedata["zoneid"])?>
+	<?= form_open_multipart('editzone/editzonecheck/'.$zonedata["zoneid"])?>
 		Zone Name*:
 		<i>Must be less than 100 characters</i>
-		 <input type="text" name="zonename" id="zonename" size="50" value="<?=$zonedata["zonename"]?>"><br>
+		 <input type="text" name="zonename" id="zonename" size="50" value=<?=$zonedata["zonename"]?>><br>
 		Floor Name*:
 		<?php echo form_dropdown('floorid',$floordata,$zonedata["floorid"]); ?>
 		 <br>
@@ -30,6 +30,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<textarea name="zonedetails" rows="5" cols="50">
 		<?=$zonedata["zonedetails"]?>
 		</textarea><br>
+		<input type="hidden" name="imageurl" value=<?=$zonedata["imageurl"]?>>
+		<input type="hidden" name="minimapurl" value=<?=$zonedata["minimapurl"]?>>
+		Zone Picture: <input type="file"
+			class ="register-margin register-box"
+			name="zonepic"
+			id="zonepic"
+			size ="999">
+			<br>
+		Minimap Picture: <input type="file"
+			class ="register-margin register-box"
+			name="minimappic"
+			id="minimappic"
+			size ="999">
+			<br>
 		Items:
 		<?= form_dropdown('itemid',$itemdata,$zonedata["itemid"]); ?><br>
 		Rewards:

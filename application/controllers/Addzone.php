@@ -56,10 +56,46 @@ class Addzone extends CI_Controller {
 			$rewardid = null;
 		}
 
+		$imageurl = null;
+		$minimapurl = null;
+
+		$config['upload_path'] = './pictures/item';
+		$config['allowed_types'] = 'gif|jpg|jpeg|png';
+		$config['max_size'] = '1000';
+		$config['max_width'] = '1920';
+		$config['max_height'] = '1280';
+		$this->load->library('upload', $config, 'zonepicupload');
+		$this->zonepicupload->initialize($config);
+
+		$config['upload_path'] = './pictures/item';
+		$config['allowed_types'] = 'gif|jpg|jpeg|png';
+		$config['max_size'] = '1000';
+		$config['max_width'] = '1920';
+		$config['max_height'] = '1280';
+		$this->load->library('upload', $config, 'zoneminimapupload');
+		$this->zoneminimapupload->initialize($config);
+
+		$upload_zone = $this->upload->do_upload('zonepic');
+		$upload_minimap = $this->upload->do_upload('minimappic');
+
+		if ($upload_zone && $upload_minimap){
+			$zonedata = $this->zonepicupload->data();
+			$minimapdata = $this->zoneminimapupload->data();
+			$imageurl = substr($zonedata['full_path'], strpos($zonedata['full_path'],"questio_management")+18);
+			$minimapurl = substr($minimapdata['full_path'], strpos($minimapdata['full_path'],"questio_management")+18);
+		}else{
+			$error = array(
+				'zoneerror' => $this->zonepicupload->display_errors(),
+				'minimaperror' => $this->zoneminimapupload->display_errors()
+				);
+			var_dump($error);
+
+		}
+
 		$this->form_validation->set_rules('zonename', 'zonename', 'required|max_length[100]|alpha_numeric');
 
 		if ($this->form_validation->run()==TRUE){
-			if($zone->addzone($floorid, $zonetypeid, $zonename, $zonedetails, $qrcode, $sensorid, null, null, $itemid, $rewardid)==TRUE){
+			if($zone->addzone($floorid, $zonetypeid, $zonename, $zonedetails, $qrcode, $sensorid, $imageurl, $minimapurl, $itemid, $rewardid)==TRUE){
 				$qrcode = $zone->getqrcode();
 				$sensorid = $zone->getsensorid();
 				$this->load->view(

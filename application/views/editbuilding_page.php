@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="container-fluid">
 	<?php $this->load->view('header', array('title' => 'Edit Building'));?>
 	<h2 style='color:red'><?=$message?></h2>
-	<?= form_open('editbuilding/editbuildingcheck/'.$buildingdata["buildingid"])?>
+	<?= form_open_multipart('editbuilding/editbuildingcheck/'.$buildingdata["buildingid"])?>
 		Building Name*:
 		<i>Must be less than 140 characters</i>
 		 <input type="text" name="buildingname" id="buildingname" size="50" value=<?=$buildingdata["buildingname"]?>><br>
@@ -29,6 +29,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<input type="text" name="longitude" id="longitude" value=<?=$buildingdata["longitude"]?>><br>
 		Radius*:
 		<input type="text" name="radius" id="radius" value=<?=$buildingdata["radius"]?>><br>
+		<input type="hidden" name="imageurl" value=<?=$buildingdata["imageurl"]?>>
+		Building Image: <input type="file"
+			class ="register-margin register-box"
+			name="buildingpic"
+			id="buildingpic"
+			size ="999">
+			<br>
 		<input type="submit" value="Submit">
 	<?=form_close()?>
 	<a href="<?=base_url('mainpage')?>">Go Back</a>

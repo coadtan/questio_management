@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</div>
 <div class="container-fluid">
 	<h2 style='color:red'><?=$message?></h2>
-	<?= form_open('additem/additemcheck')?>
+	<?= form_open_multipart('additem/additemcheck')?>
 		Item Name*: 
 		<input type="text" 
 			class ="register-margin register-box" 
@@ -34,6 +34,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			id="itemcollection" 
 			size ="97" 
 			placeholder ="&nbsp  Must be less than 50 characters"><br>
+		Item Picture: <input type="file"
+			class ="register-margin register-box"
+			name="itempic"
+			id="itempic"
+			size ="999">
+			<br>
+		Item Sprite: <input type="file"
+			class ="register-margin register-box"
+			name="spritepic"
+			id="spritepic"
+			size ="999">
+			<br>
 		Position to Equip*:
 		<?= form_dropdown('positionid',$position); ?>
 		 <br><br>

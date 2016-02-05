@@ -1,5 +1,5 @@
 	<h2 style='color:red'><?=$message?></h2>
-	<?= form_open('editplace/editplacecheck/'.$placedata["placeid"])?>
+	<?= form_open_multipart('editplace/editplacecheck/'.$placedata["placeid"])?>
 		Place Name*:
 		<i>Must be less than 50 characters</i>
 		 <input type="text" name="placename" id="placename" value=<?=$placedata["placename"]?> size="30"><br>
@@ -15,6 +15,13 @@
 		Place Type*:
 		<i>Must be less than 30 characters</i>
 		<input type="text" name="placetype" id="placetype" size="30" value=<?=$placedata["placetype"]?>><br>
+		<input type="hidden" name="imageurl" value=<?=$placedata["imageurl"]?>>
+		Place Image: <input type="file"
+			class ="register-margin register-box"
+			name="placepic"
+			id="placepic"
+			size ="999"
+			<br>
 		Enter Rewards:
 		<?= form_dropdown('enter_rewardid',$enterrewarddata,$placedata["enter_rewardid"]); ?><br>
 		Rewards:

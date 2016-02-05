@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="container-fluid">
 	<?php $this->load->view('header', array('title' => 'Add Zones'));?>
 	<h2 style='color:red'><?=$message?></h2>
-	<?= form_open('addzone/addzonecheck')?>
+	<?= form_open_multipart('addzone/addzonecheck')?>
 		Zone Name*:
 		<i>Must be less than 100 characters</i>
 		 <input type="text" name="zonename" id="zonename" size="50"><br>
@@ -33,6 +33,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<input type="text" name="qrcode" id="qrcode" value="<?=$qrcode?>" readonly><br>
 		Sensor ID:
 		<input type="text" name="sensorid" id="sensorid" value="<?=$sensorid?>" readonly><br>
+		Zone Picture: <input type="file"
+			class ="register-margin register-box"
+			name="zonepic"
+			id="zonepic"
+			size ="999">
+			<br>
+		Minimap Picture: <input type="file"
+			class ="register-margin register-box"
+			name="minimappic"
+			id="minimappic"
+			size ="999">
+			<br>
 		Items:
 		<?= form_dropdown('itemid',$itemdata); ?><br>
 		Rewards:

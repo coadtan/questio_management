@@ -20,7 +20,7 @@
             <td><?= $i++?></td>
             <td><?= $item['itemname']?></td>
             <td><img
-                src="http://52.74.64.61/<?=$item['itempicpath']?>"
+                src="http://52.74.64.61/questio_management/<?=$item['itempicpath']?>"
                 alt="<?= $item['itempicpath']?>"
                 style="width:100px;
                         height:100px;"></td>

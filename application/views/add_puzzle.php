@@ -16,8 +16,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="container-fluid">
     <?php $this->load->view('header', array('title' => 'Add Riddle'));?>
     <h2 style='color:red'><?=$message?></h2>
-    <?= form_open('addquest/addpuzzlecheck')?>
+    <?= form_open_multipart('addquest/addpuzzlecheck')?>
         <input type="hidden" name="puzzleid" value="<?=$puzzleid?>">
+        Puzzle Picture: <input type="file"
+            class ="register-margin register-box"
+            name="puzzlepic"
+            id="puzzlepic"
+            size ="999">
+            <br>
         Helper Answer:<i>Must not longer than 100 characters</i>
         <input type="text" name="helperanswer" size="100"><br>
         Correct Answer*:<i>Must not longer than 100 characters</i>
