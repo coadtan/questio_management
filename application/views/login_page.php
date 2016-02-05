@@ -166,10 +166,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<div class="col-md-2">.col-md-2</div>
 			</div>
 		</div>
-		<a href="<?=base_url('placelist')?>">Place list</a>
-		<a href="<?=base_url('itemlist')?>">Item list</a>
-		<a href="<?=base_url('questlist')?>">Quest list</a>
-		<a href="<?=base_url('rewardlist')?>">Reward list</a>
+		<a href="<?=base_url('placelist')?>" style ="color:black">Place list</a>
+		<a href="<?=base_url('itemlist')?>" style ="color:black">Item list</a>
+		<a href="<?=base_url('questlist')?>" style ="color:black">Quest list</a>
+		<a href="<?=base_url('rewardlist')?>" style ="color:black">Reward list</a>
 	</div>
 </div>
 </div>
