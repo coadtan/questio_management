@@ -238,6 +238,7 @@ header{
 	padding-top: 15px;
 	padding-bottom: 20px;
 	border-bottom: solid gray 1px;
+	overflow: scroll;
 	width: 100%;
 }
 .wrapper-r{

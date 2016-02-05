@@ -102,12 +102,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class ="wrapper-l text-white">
 				<p>MENU</p>
 				<ul class ="align-menu">
-					<a href = "#" id="place"><li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/place.png" alt="" >&nbsp&nbsp PLACE</li></a>
+					<a href = "#" id="place" style ="color:white"><li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/place.png" alt="" >&nbsp&nbsp PLACE</li></a>
 					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/profile.png" alt="">&nbsp&nbsp PROFILE</li>
 					<a href = "#" id="reward"><li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/rewards.png" alt="">&nbsp&nbsp REWARD</li></a>
 					<a href = "#" id="item"><li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/item.png" alt="">&nbsp&nbsp ITEM</li></a>
 					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/news.png" alt="">&nbsp&nbsp NEWS</li>
-					<a href = "#" id="statistics"><li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/stats.png" alt="" >&nbsp&nbsp STATISTICS</li></a>
+					<a href = "#" id="statistics" style ="color:white"><li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/stats.png" alt="" >&nbsp&nbsp STATISTICS</li></a>
 				</ul>
 			</div>
 			<div class ="wrapper-l text-white">
