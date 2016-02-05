@@ -33,6 +33,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		        'slow');
     		});
 
+    		$('#item').click(function(){
+		        $('#mainarea').load(
+		            "<?=base_url('itemoverview')?>"
+		        );
+
+		        $('html,body').animate({
+		        scrollTop: $("#mainarea").offset().top},
+		        'slow');
+    		});
+
+    		$('#reward').click(function(){
+		        $('#mainarea').load(
+		            "<?=base_url('rewardoverview')?>"
+		        );
+
+		        $('html,body').animate({
+		        scrollTop: $("#mainarea").offset().top},
+		        'slow');
+    		});
+
     	});
 </script>
 </head>
@@ -84,8 +104,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<ul class ="align-menu">
 					<a href = "#" id="place" style ="color:white"><li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/place.png" alt="" >&nbsp&nbsp PLACE</li></a>
 					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/profile.png" alt="">&nbsp&nbsp PROFILE</li>
-					<a href = "<?=base_url('addreward')?>"><li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/rewards.png" alt="">&nbsp&nbsp REWARD</li></a>
-					<a href = "<?=base_url('additem')?>"><li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/item.png" alt="">&nbsp&nbsp ITEM</li></a>
+					<a href = "#" id="reward"><li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/rewards.png" alt="">&nbsp&nbsp REWARD</li></a>
+					<a href = "#" id="item"><li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/item.png" alt="">&nbsp&nbsp ITEM</li></a>
 					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/news.png" alt="">&nbsp&nbsp NEWS</li>
 					<a href = "#" id="statistics" style ="color:white"><li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/stats.png" alt="" >&nbsp&nbsp STATISTICS</li></a>
 				</ul>

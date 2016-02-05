@@ -5,12 +5,10 @@ class Questoverview extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->library('table');
 		$this->load->model('Quest_model');
 		$this->load->model('Quiz_model');
 		$this->load->model('Riddle_model');
 		$this->load->model('Puzzle_model');
-		$this->load->helper('form');
 	}
 
 	public function getquest($zoneid){

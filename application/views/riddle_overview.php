@@ -15,7 +15,7 @@
         </tr>
     </thead>
     <tbody>
-    <?php if(isset($riddledata)) :?>
+    <?php if(!empty($riddledata)) :?>
         <?php foreach($riddledata as $riddle):?>
         <tr>
             <td><?= $riddle['riddetails']?></td>

@@ -15,7 +15,7 @@
         </tr>
     </thead>
     <tbody>
-    <?php if(isset($quizdata)) :?>
+    <?php if(empty($quizdata)) :?>
         <?php foreach($quizdata as $quiz):?>
         <tr>
             <td><?= $quiz['seqid']?></td>

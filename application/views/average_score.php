@@ -13,9 +13,10 @@
         <?php endforeach;?>
         var data = [
           {
-            x : questname_arr,
-            y : score_arr,
-            type: 'bar'
+            x : score_arr,
+            y : questname_arr,
+            type: 'bar',
+            orientation: 'h'
           }
         ];
 

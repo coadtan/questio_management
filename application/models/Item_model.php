@@ -185,4 +185,38 @@ class Item_model extends CI_Model{
 		}
 		return $itemid;
 	}
+	public function getItemFromKeeperId($keeperid){
+		$items = null;
+		$this->db->select('itemid');
+		$this->db->from('management_item');
+		$this->db->where('keeperid',$keeperid);
+		$subquery = $this->db->get_compiled_select();
+		$this->db->select('*');
+		$this->db->from('Item');
+		$this->db->join('Position','Position.positionid = Item.positionid');
+		$this->db->where('itemid IN ('.$subquery.')', null, false);
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1){
+			$items = array();
+			$i = 0;
+			foreach($query->result_array() as $row){
+				$itemid = $row['itemid'];
+				$itemname = $row['itemname'];
+				$itempicpath = $row['itempicpath'];
+				$equipspritepath = $row['equipspritepath'];
+				$itemcollection = $row['itemcollection'];
+				$positionname = $row['positionname'];
+				$items[$i++] = 
+					array(
+						'itemid'=>$itemid,
+						'itemname'=>$itemname,
+						'itempicpath'=>$itempicpath,
+						'equipspritepath'=>$equipspritepath,
+						'itemcollection'=>$itemcollection,
+						'positionname'=>$positionname
+					);
+			}
+		}
+		return $items;
+	}
 }
