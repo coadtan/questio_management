@@ -168,97 +168,143 @@ class Editquest extends CI_Controller {
 
 	}
 
-	public function addRiddle($ridid){
-		$riddle = $this->Riddle_model;
-		$qrcode = $riddle->getqrcode();
-		$sensorid = $riddle->getsensorid();
+	public function editRiddle($ridid){
+		$riddledata = $this->Riddle_model->getRiddleFromRidId($ridid);
+		$quest = $this->Quest_model;
+		$questtype = $quest->getquesttypedata();
+		$difficulty = $quest->getdifficulty();
+		$reward = $this->Rewards_model->getRewardFromType(4);
+		$questdata = $quest->getQuestFromQuestId($ridid);
 		$this->load->view(
-			'add_riddle',array(
+			'editquest_riddle_page',array(
 				'message' => "",
-				'ridid' => $ridid,
-				'qrcode' => $qrcode,
-				'sensorid' => $sensorid
+				'questtype' => $questtype,
+				'difficulty' => $difficulty,
+				'reward' => $reward,
+				'riddledata' => $riddledata[0],
+				'questdata' => $questdata
 			)
 		);
 	}
 
-	public function addRiddleCheck(){
+	public function editRiddleCheck(){
 		$riddle = $this->Riddle_model;
+		$quest = $this->Quest_model;
+		$questname = $_POST['questname'];
+		$questdetails = $_POST['questdetails'];
+		$diffid = $_POST['diffid'];
+		if($_POST['rewardid'] != 0){
+			$rewardid = $_POST['rewardid'];
+		}else{
+			$rewardid = null;
+		}
 		$ridid = $_POST['ridid'];
 		$riddetails = $_POST['riddetails'];
-		$qrcode = $_POST['qrcode'];
-		$sensorid = $_POST['sensorid'];
 		$scanlimit = $_POST['scanlimit'];
 		$hint1 = $_POST['hint1'];
 		$hint2 = $_POST['hint2'];
 		$hint3 = $_POST['hint3'];
+		$this->form_validation->set_rules('questname', 'questname', 'required|max_length[100]');
 		$this->form_validation->set_rules('riddetails', 'riddetails', 'required');
 		$this->form_validation->set_rules('hint1', 'hint1', 'max_length[100]');
 		$this->form_validation->set_rules('hint2', 'hint2', 'max_length[100]');
 		$this->form_validation->set_rules('hint3', 'hint3', 'max_length[100]');
 
 		if ($this->form_validation->run()==TRUE){
-			if($riddle->addriddle($ridid, $riddetails, $qrcode, $sensorid, $scanlimit, $hint1, $hint2, $hint3)==TRUE){
-				$zoneid = $this->Quest_model->getZoneIdByQuestId($ridid);
-				$questdata = $this->Quest_model->getQuestByZone($zoneid);
-				$this->load->view(
-					'questoverview_page',array(
-						'zoneid' => $zoneid,
-						'questdata' => $questdata
-					)
+			if($quest->updateQuest($ridid, $questname, $questdetails, $diffid, $rewardid)==TRUE && $riddle->updateRiddle($ridid, $riddetails, $scanlimit, $hint1, $hint2, $hint3)==TRUE){
+					$riddledata = $this->Riddle_model->getRiddleFromRidId($ridid);
+					$quest = $this->Quest_model;
+					$questtype = $quest->getquesttypedata();
+					$difficulty = $quest->getdifficulty();
+					$reward = $this->Rewards_model->getRewardFromType(4);
+					$questdata = $quest->getQuestFromQuestId($ridid);
+					$this->load->view(
+						'editquest_riddle_page',array(
+							'message' => 'Edit riddle successful.',
+							'questtype' => $questtype,
+							'difficulty' => $difficulty,
+							'reward' => $reward,
+							'riddledata' => $riddledata[0],
+							'questdata' => $questdata
+						)
 				);
 			}else{
-				$qrcode = $riddle->getqrcode();
-				$sensorid = $riddle->getsensorid();
+				$riddledata = $this->Riddle_model->getRiddleFromRidId($ridid);
+				$quest = $this->Quest_model;
+				$questtype = $quest->getquesttypedata();
+				$difficulty = $quest->getdifficulty();
+				$reward = $this->Rewards_model->getRewardFromType(4);
+				$questdata = $quest->getQuestFromQuestId($ridid);
 				$this->load->view(
-					'add_riddle',array(
-						'message' => 'Add riddle failed.',
-						'ridid' => $ridid,
-						'qrcode' => $qrcode,
-						'sensorid' => $sensorid
+					'editquest_riddle_page',array(
+						'message' => 'Edit riddle failed.',
+						'questtype' => $questtype,
+						'difficulty' => $difficulty,
+						'reward' => $reward,
+						'riddledata' => $riddledata[0],
+						'questdata' => $questdata
 					)
 				);
 			}
 
 		}else{
-			$qrcode = $riddle->getqrcode();
-			$sensorid = $riddle->getsensorid();
+			$riddledata = $this->Riddle_model->getRiddleFromRidId($ridid);
+			$quest = $this->Quest_model;
+			$questtype = $quest->getquesttypedata();
+			$difficulty = $quest->getdifficulty();
+			$reward = $this->Rewards_model->getRewardFromType(4);
+			$questdata = $quest->getQuestFromQuestId($ridid);
 			$this->load->view(
-			'add_riddle',array(
-				'message' => 'Form validation error. please check again.',
-				'ridid' => $ridid,
-				'qrcode' => $qrcode,
-				'sensorid' => $sensorid
+			'editquest_riddle_page',array(
+					'message' => 'Form validation error. please check again.',
+					'questtype' => $questtype,
+					'difficulty' => $difficulty,
+					'reward' => $reward,
+					'riddledata' => $riddledata[0],
+					'questdata' => $questdata
 				)
 			);
 		}
 	}
 
-	public function addPuzzle($puzzleid){
+	public function editPuzzle($puzzleid){
+		$puzzledata = $this->Puzzle_model->getPuzzleFromPuzzleId($puzzleid);
+		$quest = $this->Quest_model;
+		$questtype = $quest->getquesttypedata();
+		$difficulty = $quest->getdifficulty();
+		$reward = $this->Rewards_model->getRewardFromType(4);
+		$questdata = $quest->getQuestFromQuestId($puzzleid);
 		$this->load->view(
-			'add_puzzle',array(
+			'editquest_puzzle_page',array(
 				'message' => "",
-				'puzzleid' => $puzzleid
+				'questtype' => $questtype,
+				'difficulty' => $difficulty,
+				'reward' => $reward,
+				'puzzledata' => $puzzledata[0],
+				'questdata' => $questdata
 			)
 		);
 	}
 
-	public function addPuzzleCheck(){
+	public function editPuzzleCheck(){
 		$puzzle = $this->Puzzle_model;
+		$quest = $this->Quest_model;
+		$questname = $_POST['questname'];
+		$questdetails = $_POST['questdetails'];
+		$diffid = $_POST['diffid'];
+		if($_POST['rewardid'] != 0){
+			$rewardid = $_POST['rewardid'];
+		}else{
+			$rewardid = null;
+		}
 		$puzzleid = $_POST['puzzleid'];
 		$helperanswer = $_POST['helperanswer'];
 		$correctanswer = $_POST['correctanswer'];
 
-		$imageurl = null;
+		$imageurl = $_POST['imageurl'];
 
-		if(empty($_FILES['puzzlepic']['name'])){
-			$imageurl = "/pictures/puzzle/blank.png";
-			$this->form_validation->set_rules('puzzlepic', 'puzzlepic', 'required');
-		}
-		$this->form_validation->set_rules('helperanswer', 'helperanswer', 'max_length[100]');
-		$this->form_validation->set_rules('correctanswer', 'correctanswer', 'required|max_length[100]');
-
-		if ($this->form_validation->run()==TRUE){
+		if(!empty($_FILES['puzzlepic']['name'])){
+			
 			$config['upload_path'] = './pictures/puzzle';
 			$config['allowed_types'] = 'gif|jpg|jpeg|png';
 			$config['max_size'] = '1000';
@@ -269,36 +315,68 @@ class Editquest extends CI_Controller {
 			$this->load->library('upload', $config);
 			$this->upload->initialize($config);
 
-			if (!$this->upload->do_upload('puzzlepic')){
-				$error = array('error' => $this->upload->display_errors());
-				var_dump($error) ;
-			}else{
+			if ($this->upload->do_upload('puzzlepic')){
 				$uploaddata = $this->upload->data();
 				$imageurl = substr($uploaddata['full_path'], strpos($uploaddata['full_path'],"questio_management")+18);
 			}
-			if($puzzle->addpuzzle($puzzleid, $imageurl, $helperanswer, $correctanswer)==TRUE){
-					$zoneid = $this->Quest_model->getZoneIdByQuestId($puzzleid);
-					$questdata = $this->Quest_model->getQuestByZone($zoneid);
+		}
+
+		$this->form_validation->set_rules('helperanswer', 'helperanswer', 'max_length[100]');
+		$this->form_validation->set_rules('correctanswer', 'correctanswer', 'required|max_length[100]');
+
+		if ($this->form_validation->run()==TRUE){
+			
+			if($quest->updateQuest($puzzleid, $questname, $questdetails, $diffid, $rewardid)==TRUE && $puzzle->updatePuzzle($puzzleid, $imageurl, $helperanswer, $correctanswer)==TRUE){
+					$puzzledata = $this->Puzzle_model->getPuzzleFromPuzzleId($puzzleid);
+					$quest = $this->Quest_model;
+					$questtype = $quest->getquesttypedata();
+					$difficulty = $quest->getdifficulty();
+					$reward = $this->Rewards_model->getRewardFromType(4);
+					$questdata = $quest->getQuestFromQuestId($puzzleid);
 					$this->load->view(
-						'questoverview_page',array(
-						'zoneid' => $zoneid,
-						'questdata' => $questdata
-					)
-				);
+						'editquest_puzzle_page',array(
+							'message' => "Edit puzzle successful.",
+							'questtype' => $questtype,
+							'difficulty' => $difficulty,
+							'reward' => $reward,
+							'puzzledata' => $puzzledata[0],
+							'questdata' => $questdata
+						)
+					);
 			}else{
+				$puzzledata = $this->Puzzle_model->getPuzzleFromPuzzleId($puzzleid);
+				$quest = $this->Quest_model;
+				$questtype = $quest->getquesttypedata();
+				$difficulty = $quest->getdifficulty();
+				$reward = $this->Rewards_model->getRewardFromType(4);
+				$questdata = $quest->getQuestFromQuestId($puzzleid);
 				$this->load->view(
-					'add_puzzle',array(
-						'message' => 'Add puzzle failed.',
-						'puzzleid' => $puzzleid
+					'editquest_puzzle_page',array(
+						'message' => "Edit puzzle failed.",
+						'questtype' => $questtype,
+						'difficulty' => $difficulty,
+						'reward' => $reward,
+						'puzzledata' => $puzzledata[0],
+						'questdata' => $questdata
 					)
 				);
 			}
 
 		}else{
+			$puzzledata = $this->Puzzle_model->getPuzzleFromPuzzleId($puzzleid);
+			$quest = $this->Quest_model;
+			$questtype = $quest->getquesttypedata();
+			$difficulty = $quest->getdifficulty();
+			$reward = $this->Rewards_model->getRewardFromType(4);
+			$questdata = $quest->getQuestFromQuestId($puzzleid);
 			$this->load->view(
-			'add_puzzle',array(
-				'message' => 'Form validation error. please check again.',
-				'puzzleid' => $puzzleid
+				'editquest_puzzle_page',array(
+					'message' => 'Form validation error. please check again.',
+					'questtype' => $questtype,
+					'difficulty' => $difficulty,
+					'reward' => $reward,
+					'puzzledata' => $puzzledata[0],
+					'questdata' => $questdata
 				)
 			);
 		}

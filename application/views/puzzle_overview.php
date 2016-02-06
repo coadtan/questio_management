@@ -24,11 +24,13 @@
             <td><?= $puzzle['helperanswer']?></td>
             <td><?= $puzzle['correctanswer']?></td>
             <td>
-                <span
-                    data="<?=$puzzle['puzzleid']?>"
-                    class="glyphicon glyphicon-asterisk"
-                    style="cursor: pointer">
-                </span>
+                <a href="<?=base_url('editquest/editpuzzle').'/'.$puzzle['puzzleid']?>">
+                    <span
+                        data="<?=$puzzle['puzzleid']?>"
+                        class="glyphicon glyphicon-asterisk"
+                        style="cursor: pointer">
+                    </span>
+                </a>
             </td>
         </tr>
         <?php endforeach;?>

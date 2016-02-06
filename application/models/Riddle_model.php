@@ -135,4 +135,25 @@ class Riddle_model extends CI_Model{
         }
         return $riddle;
     }
+
+    public function updateRiddle($ridid, $riddetails, $scanlimit, $hint1, $hint2, $hint3){
+        $riddle_obj = array(
+            'riddetails' => $riddetails,
+            'scanlimit' => $scanlimit,
+            'hint1' => $hint1,
+            'hint2' => $hint2,
+            'hint3' => $hint3
+            );
+        $this->db->trans_start();
+        $this->db->where('ridid', $ridid);
+        $this->db->update('Riddle', $riddle_obj);
+        $this->db->trans_complete();
+        if ($this->db->trans_status() === FALSE){
+            $this->db->trans_rollback();
+            return false;
+        }else{
+            $this->db->trans_commit();
+            return true;
+        }
+    }
 }

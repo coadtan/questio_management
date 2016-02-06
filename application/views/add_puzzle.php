@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Add Riddle</title>
+<title>Add Puzzle</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <?=script_tag('assets/jquery/jquery-2.2.0.min.js')?>
@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 <div class="container-fluid">
-    <?php $this->load->view('header', array('title' => 'Add Riddle'));?>
+    <?php $this->load->view('header', array('title' => 'Add Puzzle'));?>
     <h2 style='color:red'><?=$message?></h2>
     <?= form_open_multipart('addquest/addpuzzlecheck')?>
         <input type="hidden" name="puzzleid" value="<?=$puzzleid?>">

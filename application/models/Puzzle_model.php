@@ -35,12 +35,12 @@ class Puzzle_model extends CI_Model{
     }
 
     public function addpuzzle($puzzleid, $imageurl, $helperanswer, $correctanswer){
-                $puzzle_obj = array(
-                    'puzzleid' => $puzzleid,
-                    'imageurl' => $imageurl,
-                    'helperanswer' => $helperanswer,
-                    'correctanswer' => $correctanswer
-                );
+        $puzzle_obj = array(
+            'puzzleid' => $puzzleid,
+            'imageurl' => $imageurl,
+            'helperanswer' => $helperanswer,
+            'correctanswer' => $correctanswer
+        );
         $this->db->trans_start();
         $this->db->insert('PicturePuzzle',$puzzle_obj);
         $this->db->trans_complete();
@@ -69,5 +69,23 @@ class Puzzle_model extends CI_Model{
                     );
         }
         return $puzzle;
+    }
+    public function updatePuzzle($puzzleid, $imageurl, $helperanswer, $correctanswer){
+        $puzzle_obj = array(
+            'imageurl' => $imageurl,
+            'helperanswer' => $helperanswer,
+            'correctanswer' => $correctanswer
+        );
+        $this->db->trans_start();
+        $this->db->where('puzzleid', $puzzleid);
+        $this->db->update('PicturePuzzle', $puzzle_obj);
+        $this->db->trans_complete();
+        if ($this->db->trans_status() === FALSE){
+            $this->db->trans_rollback();
+            return false;
+        }else{
+            $this->db->trans_commit();
+            return true;
+        }
     }
 }

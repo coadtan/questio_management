@@ -226,14 +226,8 @@ class Addquest extends CI_Controller {
 
 		$imageurl = null;
 
-		if(empty($_FILES['puzzlepic']['name'])){
-			$imageurl = "/pictures/puzzle/blank.png";
-			$this->form_validation->set_rules('puzzlepic', 'puzzlepic', 'required');
-		}
-		$this->form_validation->set_rules('helperanswer', 'helperanswer', 'max_length[100]');
-		$this->form_validation->set_rules('correctanswer', 'correctanswer', 'required|max_length[100]');
-
-		if ($this->form_validation->run()==TRUE){
+		if(!empty($_FILES['puzzlepic']['name'])){
+			
 			$config['upload_path'] = './pictures/puzzle';
 			$config['allowed_types'] = 'gif|jpg|jpeg|png';
 			$config['max_size'] = '1000';
@@ -244,13 +238,16 @@ class Addquest extends CI_Controller {
 			$this->load->library('upload', $config);
 			$this->upload->initialize($config);
 
-			if (!$this->upload->do_upload('puzzlepic')){
-				$error = array('error' => $this->upload->display_errors());
-				var_dump($error) ;
-			}else{
+			if ($this->upload->do_upload('puzzlepic')){
 				$uploaddata = $this->upload->data();
 				$imageurl = substr($uploaddata['full_path'], strpos($uploaddata['full_path'],"questio_management")+18);
 			}
+		}
+		$this->form_validation->set_rules('helperanswer', 'helperanswer', 'max_length[100]');
+		$this->form_validation->set_rules('correctanswer', 'correctanswer', 'required|max_length[100]');
+
+		if ($this->form_validation->run()==TRUE){
+			
 				if($puzzle->addpuzzle($puzzleid, $imageurl, $helperanswer, $correctanswer)==TRUE){
 					$zoneid = $this->Quest_model->getZoneIdByQuestId($puzzleid);
 					$questdata = $this->Quest_model->getQuestByZone($zoneid);

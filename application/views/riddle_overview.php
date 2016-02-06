@@ -24,11 +24,13 @@
             <td><?= $riddle['hint2']?></td>
             <td><?= $riddle['hint3']?></td>
             <td>
-                <span
-                    data="<?=$riddle['ridid']?>"
-                    class="glyphicon glyphicon-asterisk"
-                    style="cursor: pointer">
-                </span>
+                <a href="<?=base_url('editquest/editriddle').'/'.$riddle['ridid']?>">
+                    <span
+                        data="<?=$riddle['ridid']?>"
+                        class="glyphicon glyphicon-asterisk"
+                        style="cursor: pointer">
+                    </span>
+                </a>
             </td>
         </tr>
         <?php endforeach;?>
