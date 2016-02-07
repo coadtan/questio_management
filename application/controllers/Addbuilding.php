@@ -53,7 +53,7 @@ class Addbuilding extends CI_Controller {
 		$this->form_validation->set_rules('buildingname', 'buildingname', 'required|max_length[140]');
 		$this->form_validation->set_rules('latitude', 'latitude', 'required|numeric');
 		$this->form_validation->set_rules('longitude', 'longitude', 'required|numeric');
-		$this->form_validation->set_rules('radius', 'radius', 'required|numeric');
+		$this->form_validation->set_rules('radius', 'radius', 'required|greater_than[1]|less_than[2000]');
 
 		if ($this->form_validation->run()==TRUE){
 			if($building->addbuilding($placeid, $buildingname, $latitude,$longitude, $radius, $imageurl)==TRUE){

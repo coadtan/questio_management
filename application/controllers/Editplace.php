@@ -76,7 +76,7 @@ class Editplace extends CI_Controller {
 		$this->form_validation->set_rules('placefullname', 'placefullname', 'required|max_length[255]');
 		$this->form_validation->set_rules('latitude', 'latitude', 'required|numeric');
 		$this->form_validation->set_rules('longitude', 'longitude', 'required|numeric');
-		$this->form_validation->set_rules('radius', 'radius', 'required|numeric');
+		$this->form_validation->set_rules('radius', 'radius', 'required|greater_than[1]|less_than[2000]');
 		$this->form_validation->set_rules('placetype', 'placetype', 'required|alpha_numeric');
 
 		if ($this->form_validation->run()==TRUE){
