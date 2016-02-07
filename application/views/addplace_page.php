@@ -98,24 +98,14 @@ function placeMarker(location, map) {
 			id="radius"
 			size ="20"
 			placeholder ="&nbsp Radius*:*:">&nbsp Metres &nbsp
-			QR Code:
-	<input type="text"
+	<input type="hidden"
 			class ="register-margin register-box"
 			name="qrcode"
-			id="qrcode"
-			value="<?=$qrcode?>"
-			readonly
-			size ="20"
-			placeholder ="&nbsp QR Code:">
-			&nbsp Sensor ID: &nbsp
-	<input type="text"
+			value="<?=$qrcode?>">
+	<input type="hidden"
 			class ="register-margin register-box"
 			name="sensorid"
-			id="sensorid"
-			value="<?=$sensorid?>"
-			readonly
-			size ="20"
-			placeholder ="&nbsp Sensor ID:"><br>
+			value="<?=$sensorid?>"><br>
 	<input type="text"
 			class ="register-margin register-box"
 			name="placetype"

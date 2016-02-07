@@ -29,10 +29,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		Zone Details:<br>
 		<textarea name="zonedetails" rows="5" cols="50">
 		</textarea><br>
-		QR Code:
-		<input type="text" name="qrcode" id="qrcode" value="<?=$qrcode?>" readonly><br>
-		Sensor ID:
-		<input type="text" name="sensorid" id="sensorid" value="<?=$sensorid?>" readonly><br>
+		<input type="hidden" name="qrcode" value="<?=$qrcode?>"><br>
+		<input type="hidden" name="sensorid" value="<?=$sensorid?>"><br>
 		Zone Picture: <input type="file"
 			class ="register-margin register-box"
 			name="zonepic"
