@@ -29,6 +29,9 @@
                 <?=$place['placename']?>
                 <a href="<?=base_url('editplace/edit/'.$place["placeid"])?>">Edit</a>
                 <a href="<?=base_url('mainpage/deleteplace/'.$place["placeid"])?>">Delete</a>
+                <a href="<?=base_url('addplace/addEditPlaceDetail/'.$place["placeid"])?>">
+                Add/Edit Placedetail
+                </a>
             </div>
         <?php endforeach;?>
     <?php endif;?>

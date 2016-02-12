@@ -6,6 +6,7 @@ class Editplace extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('Place_model');
+		$this->load->model('Placedetail_model');
 		$this->load->model('Rewards_model');
 		$this->load->library('upload');
 	}
@@ -109,6 +110,73 @@ class Editplace extends CI_Controller {
 				'enterrewarddata' => $enterrewarddata,
 					'rewarddata' => $rewarddata,
 				'placedata' => $placedata
+				)
+			);
+		}
+	}
+	public function editPlaceDetailCheck(){
+		$placedet = $this->Placedetail_model;
+		$placeid = $_POST['placeid'];
+		$placedetails = $_POST['placedetails'];
+		$phonecontact1 = $_POST['phonecontact1'];
+		$phonecontact2 = $_POST['phonecontact2'];
+		$website = $_POST['website'];
+		$email = $_POST['email'];
+		$imageurl = $_POST['imageurl'];
+
+		if(!empty($_FILES['placepic']['name'])){
+
+			$config['upload_path'] = './pictures/place';
+			$config['allowed_types'] = 'gif|jpg|jpeg|png';
+			$config['max_size'] = '1000';
+			$config['max_width'] = '1920';
+			$config['max_height'] = '1280';
+
+
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
+
+
+			if ($this->upload->do_upload('placepic')){
+				$uploaddata = $this->upload->data();
+				$imageurl = substr($uploaddata['full_path'], strpos($uploaddata['full_path'],"questio_management")+18);
+			}
+
+		}
+
+
+		$this->form_validation->set_rules('placedetails', 'placedetails', 'required');
+		$this->form_validation->set_rules('phonecontact1', 'phonecontact1', 'required|numeric|max_length[10]');
+		$this->form_validation->set_rules('phonecontact2', 'phonecontact2', 'numeric|max_length[10]');
+		$this->form_validation->set_rules('email', 'email', 'valid_email');
+
+		if ($this->form_validation->run()==TRUE){
+			if($placedet->updatePlaceDetail($placeid, $placedetails, $phonecontact1, $phonecontact2, $website, $email, $imageurl)==TRUE){
+				$placedetaildata = $placedet->getPlaceDetailByPlaceId($placeid);
+				$this->load->view(
+					'editplacedetail_page',array(
+					'message' => 'Add Place Detail successful.',
+					'placeid' => $placeid,
+					'placedetaildata' => $placedetaildata
+					)
+				);
+			}else{
+				$placedetaildata = $placedet->getPlaceDetailByPlaceId($placeid);
+				$this->load->view(
+					'editplacedetail_page',array(
+					'message' => 'Add Place Detail failed.',
+					'placeid' => $placeid,
+					'placedetaildata' => $placedetaildata
+					)
+				);
+			}
+		}else{
+			$placedetaildata = $placedet->getPlaceDetailByPlaceId($placeid);
+			$this->load->view(
+			'editplacedetail_page',array(
+				'message' => 'Form validation error. please check again.',
+				'placeid' => $placeid,
+				'placedetaildata' => $placedetaildata
 				)
 			);
 		}
