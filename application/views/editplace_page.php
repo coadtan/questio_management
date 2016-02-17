@@ -29,9 +29,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<input type="text" name="longitude" id="longitude" value=<?=$placedata["longitude"]?>><br>
 		Radius*:
 		<input type="text" name="radius" id="radius" value=<?=$placedata["radius"]?>><br>
-		Place Type*:
-		<i>Must be less than 30 characters</i>
-		<input type="text" name="placetype" id="placetype" size="30" value=<?=$placedata["placetype"]?>><br>
+	<select name="placetype">
+		<option value="University" <?=$placedata["placetype"]=="University"?'selected':''?>>University</option>
+		<option value="Museum" <?=$placedata["placetype"]=="Museum"?'selected':''?>>Museum</option>
+		<option value="Temple" <?=$placedata["placetype"]=="Temple"?'selected':''?>>Temple</option>
+	</select>
 		<input type="hidden" name="imageurl" value=<?=$placedata["imageurl"]?>>
 		Place Image: <input type="file"
 			class ="register-margin register-box"

@@ -106,13 +106,11 @@ function placeMarker(location, map) {
 			class ="register-margin register-box"
 			name="sensorid"
 			value="<?=$sensorid?>"><br>
-	<input type="text"
-			class ="register-margin register-box"
-			name="placetype"
-			id="placetype"
-			size ="100"
-			placeholder ="&nbsp Place Type*: Must be less than 30 characters">
-			<br>
+	<select name="placetype">
+		<option value="University">University</option>
+		<option value="Museum">Museum</option>
+		<option value="Temple">Temple</option>
+	</select>
 	Place Image: <input type="file"
 			class ="register-margin register-box"
 			name="placepic"
