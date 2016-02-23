@@ -35,12 +35,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			size ="97" 
 			placeholder ="&nbsp  Must be less than 50 characters"><br>
 		Item Picture: <input type="file"
+			style ="margin:auto;margin-top:5px!important"
 			class ="register-margin register-box"
 			name="itempic"
 			id="itempic"
 			size ="999">
 			<br>
 		Item Sprite: <input type="file"
+			style ="margin:auto;margin-top:5px!important"
 			class ="register-margin register-box"
 			name="spritepic"
 			id="spritepic"

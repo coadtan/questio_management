@@ -36,6 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			size ="103" 
 			placeholder ="&nbsp  Must be less than 200 characters"><br>
 	Reward Picture: <input type="file"
+			style ="margin:auto;margin-top:5px!important"
 			class ="register-margin register-box"
 			name="rewardpic"
 			id="rewardpic"
