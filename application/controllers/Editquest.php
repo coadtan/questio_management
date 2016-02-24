@@ -14,15 +14,31 @@ class Editquest extends CI_Controller {
 		$this->load->library('upload');
 	}
 
-	public function addquestcheck(){
+	public function edit($questid){
+		$quest = $this->Quest_model;
+		$questdata = $quest->getQuestFromQuestId($questid);
+		$questtype = $quest->getquesttypedata();
+		$difficulty = $quest->getdifficulty();
+		$reward = $this->Rewards_model->getRewardFromType(4);
+		$this->load->view(
+			'editquest_page',array(
+				'message' => "",
+				'questtype' => $questtype,
+				'difficulty' => $difficulty,
+				'reward' => $reward,
+				'questdata' => $questdata
+			)
+		);
+	}
+
+	public function editquestcheck(){
 		$quest = $this->Quest_model;
 		$questtype = $quest->getquesttypedata();
 		$difficulty = $quest->getdifficulty();
 		$reward = $this->Rewards_model->getRewardFromType(4);
+		$questid = $_POST['questid'];
 		$questname = $_POST['questname'];
 		$questdetails = $_POST['questdetails'];
-		$questtypeid = $_POST['questtypeid'];
-		$zoneid = $_POST['zoneid'];
 		$diffid = $_POST['diffid'];
 		if($_POST['rewardid'] != 0){
 			$rewardid = $_POST['rewardid'];
@@ -33,34 +49,37 @@ class Editquest extends CI_Controller {
 		$this->form_validation->set_rules('questname', 'questname', 'required|max_length[100]');
 
 		if ($this->form_validation->run()==TRUE){
-			if($quest->addquest($questname, $questdetails, $questtypeid, $zoneid, $diffid, $rewardid)==TRUE){
+			if($quest->updateQuest($questid, $questname, $questdetails, $diffid, $rewardid)==TRUE){
 				$questdata = $this->Quest_model->getQuestByZone($zoneid);
 				$this->load->view(
-					'questoverview_page',array(
-						'zoneid' => $zoneid,
-						'questdata' => $questdata
+					'editquest_page',array(
+					'message' => "",
+					'questtype' => $questtype,
+					'difficulty' => $difficulty,
+					'reward' => $reward,
+					'questdata' => $questdata
 					)
 				);
 			}else{
 				$this->load->view(
-					'addquest_page',array(
-					'message' => 'Add quest failed.',
-					'zoneid' => $zoneid,
+					'editquest_page',array(
+					'message' => "Edit quest failed",
 					'questtype' => $questtype,
 					'difficulty' => $difficulty,
-					'reward' => $reward
+					'reward' => $reward,
+					'questdata' => $questdata
 					)
 				);
 			}
 
 		}else{
 			$this->load->view(
-			'addquest_page',array(
-				'message' => 'Form validation error. please check again.',
-				'zoneid' => $zoneid,
-				'questtype' => $questtype,
-				'difficulty' => $difficulty,
-				'reward' => $reward
+			'editquest_page',array(
+					'message' => "Form validation error. please check again.",
+					'questtype' => $questtype,
+					'difficulty' => $difficulty,
+					'reward' => $reward,
+					'questdata' => $questdata
 				)
 			);
 		}
@@ -68,19 +87,10 @@ class Editquest extends CI_Controller {
 
 	public function editQuiz($quizid){
 		$quizdata = $this->Quiz_model->getQuizByQuizId($quizid);
-		$quest = $this->Quest_model;
-		$questtype = $quest->getquesttypedata();
-		$difficulty = $quest->getdifficulty();
-		$reward = $this->Rewards_model->getRewardFromType(4);
-		$questdata = $quest->getQuestFromQuestId($quizdata['questid']);
 		$this->load->view(
 			'editquest_quiz_page',array(
 				'message' => "",
-				'questtype' => $questtype,
-				'difficulty' => $difficulty,
-				'reward' => $reward,
-				'quizdata' => $quizdata,
-				'questdata' => $questdata
+				'quizdata' => $quizdata
 			)
 		);
 	}
@@ -88,15 +98,6 @@ class Editquest extends CI_Controller {
 	public function editQuizCheck(){
 		$quiz = $this->Quiz_model;
 		$quest = $this->Quest_model;
-		$questid = $_POST['questid'];
-		$questname = $_POST['questname'];
-		$questdetails = $_POST['questdetails'];
-		$diffid = $_POST['diffid'];
-		if($_POST['rewardid'] != 0){
-			$rewardid = $_POST['rewardid'];
-		}else{
-			$rewardid = null;
-		}
 		$quizid = $_POST['quizid'];
 		$question = $_POST['question'];
 		$choicea = $_POST['choicea'];
@@ -113,7 +114,7 @@ class Editquest extends CI_Controller {
 		$this->form_validation->set_rules('choiced', 'choiced', 'max_length[100]');
 
 		if ($this->form_validation->run()==TRUE){
-			if($quest->updateQuest($questid, $questname, $questdetails, $diffid, $rewardid)==TRUE && $quiz->updateQuiz($quizid, $question, $choicea, $choiceb, $choicec, $choiced, $answerid)==TRUE){
+			if($quiz->updateQuiz($quizid, $question, $choicea, $choiceb, $choicec, $choiced, $answerid)==TRUE){
 						$quizdata = $quiz->getQuizByQuizId($quizid);
 						$questtype = $quest->getquesttypedata();
 						$difficulty = $quest->getdifficulty();
@@ -129,7 +130,7 @@ class Editquest extends CI_Controller {
 								'questdata' => $questdata
 						)
 					);
-				
+
 			}else{
 				$quizdata = $quiz->getQuizByQuizId($quizid);
 				$questtype = $quest->getquesttypedata();
@@ -304,7 +305,7 @@ class Editquest extends CI_Controller {
 		$imageurl = $_POST['imageurl'];
 
 		if(!empty($_FILES['puzzlepic']['name'])){
-			
+
 			$config['upload_path'] = './pictures/puzzle';
 			$config['allowed_types'] = 'gif|jpg|jpeg|png';
 			$config['max_size'] = '1000';
@@ -325,7 +326,7 @@ class Editquest extends CI_Controller {
 		$this->form_validation->set_rules('correctanswer', 'correctanswer', 'required|max_length[100]');
 
 		if ($this->form_validation->run()==TRUE){
-			
+
 			if($quest->updateQuest($puzzleid, $questname, $questdetails, $diffid, $rewardid)==TRUE && $puzzle->updatePuzzle($puzzleid, $imageurl, $helperanswer, $correctanswer)==TRUE){
 					$puzzledata = $this->Puzzle_model->getPuzzleFromPuzzleId($puzzleid);
 					$quest = $this->Quest_model;

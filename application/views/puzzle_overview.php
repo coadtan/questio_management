@@ -1,5 +1,30 @@
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#addpuzzle').click(function(){
+        var puzzleid = this.getAttribute("puzzleid");
+        $('#puzzlemanage').load(
+            "<?=base_url('addquest/addpuzzle')?>"+'/'+puzzleid
+        );
+        $('html,body').animate({
+        scrollTop: $("#puzzlemanage").offset().top},
+        'slow');
+    });
+    $('.editpuzzle').click(function(){
+        var puzzleid = this.getAttribute("puzzleid");
+        $('#puzzlemanage').load(
+            "<?=base_url('editquest/editpuzzle')?>"+'/'+puzzleid
+        );
+        $('html,body').animate({
+        scrollTop: $("#puzzlemanage").offset().top},
+        'slow');
+    });
+    $('.goback').click(function(){
+        $('#loading').empty();
+    });
+});
+</script>
 <?php if(empty($puzzledata)) :?>
-<a href = "<?=base_url('addquest/addpuzzle/'.$puzzleid)?>" style="color:black">
+<a href = "#" id="addpuzzle" style="color:black" puzzleid="<?=$puzzleid?>">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     </a>
     <?php endif;?>
@@ -24,9 +49,8 @@
             <td><?= $puzzle['helperanswer']?></td>
             <td><?= $puzzle['correctanswer']?></td>
             <td>
-                <a href="<?=base_url('editquest/editpuzzle').'/'.$puzzle['puzzleid']?>">
+                <a href="#" class="editpuzzle" puzzleid="<?=$puzzle['puzzleid']?>">
                     <span
-                        data="<?=$puzzle['puzzleid']?>"
                         class="glyphicon glyphicon-asterisk"
                         style="cursor: pointer">
                     </span>
@@ -39,3 +63,6 @@
     <?php endif;?>
     </tbody>
 </table>
+<a class="goback" href="#">Go Back</a>
+<div id="puzzlemanage"></div>
+

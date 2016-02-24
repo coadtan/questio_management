@@ -1,5 +1,42 @@
-<a href = "<?=base_url('addquest/addquiz/'.$questid)?>" style="color:black">
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#addquiz').click(function(){
+        var questid = this.getAttribute("questid");
+        $('#quizmanage').load(
+            "<?=base_url('addquest/addquiz')?>"+'/'+questid
+        );
+        $('html,body').animate({
+        scrollTop: $("#quizmanage").offset().top},
+        'slow');
+    });
+    $('.editquiz').click(function(){
+        var quizid = this.getAttribute("quizid");
+        $('#quizmanage').load(
+            "<?=base_url('editquest/editquiz')?>"+'/'+quizid
+        );
+        $('html,body').animate({
+        scrollTop: $("#quizmanage").offset().top},
+        'slow');
+    });
+    $('#editquest').click(function(){
+        var questid = this.getAttribute("questid");
+        $('#quizmanage').load(
+            "<?=base_url('editquest/edit')?>"+'/'+questid
+        );
+        $('html,body').animate({
+        scrollTop: $("#quizmanage").offset().top},
+        'slow');
+    });
+    $('.goback').click(function(){
+        $('#loading').empty();
+    });
+});
+</script>
+<a href = "#" style="color:black" id="addquiz" questid="<?=$questid?>">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    </a>
+<a href = "#" style="color:black" id="editquest" questid="<?=$questid?>">
+        <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>
     </a>
     <table class="table">
     <thead>
@@ -26,9 +63,8 @@
             <td><?= $quiz['choiced']?></td>
             <td><?= $quiz['answerid']?></td>
             <td>
-                <a href="<?=base_url('editquest/editquiz').'/'.$quiz['quizid']?>">
+                <a href="#" quizid="<?=$quiz['quizid']?>" class="editquiz">
                     <span
-                        data="<?=$quiz['quizid']?>"
                         class="glyphicon glyphicon-asterisk"
                         style="cursor: pointer">
                     </span>
@@ -41,3 +77,4 @@
     <?php endif;?>
     </tbody>
 </table>
+<div id="quizmanage"></div>

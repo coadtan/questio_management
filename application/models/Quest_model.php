@@ -58,10 +58,10 @@ class Quest_model extends CI_Model{
 		$quests = null;
 		$this->db->select('questid, questname, typename, zonename, difftype, rewardname');
 		$this->db->from('Quest');
-		$this->db->join('QuestType','quest.questtypeid = questtype.questtypeid','left');
-		$this->db->join('Zone','quest.zoneid = zone.zoneid','left');
-		$this->db->join('Difficulty','quest.diffid = difficulty.diffid','left');
-		$this->db->join('Rewards','quest.rewardid = rewards.rewardid','left');
+		$this->db->join('QuestType','Quest.questtypeid = QuestType.questtypeid','left');
+		$this->db->join('Zone','Quest.zoneid = Zone.zoneid','left');
+		$this->db->join('Difficulty','Quest.diffid = Difficulty.diffid','left');
+		$this->db->join('Rewards','Quest.rewardid = Rewards.rewardid','left');
 		$this->db->order_by('questid','asc');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
@@ -92,10 +92,10 @@ class Quest_model extends CI_Model{
 		$quests = null;
 		$this->db->select('questname, typename, zonename, difftype, rewardname');
 		$this->db->from('Quest');
-		$this->db->join('QuestType','quest.questtypeid = questtype.questtypeid','left');
-		$this->db->join('Zone','quest.zoneid = zone.zoneid','left');
-		$this->db->join('Difficulty','quest.diffid = difficulty.diffid','left');
-		$this->db->join('Rewards','quest.rewardid = rewards.rewardid','left');
+		$this->db->join('QuestType','Quest.questtypeid = QuestType.questtypeid','left');
+		$this->db->join('Zone','Quest.zoneid = Zone.zoneid','left');
+		$this->db->join('Difficulty','Quest.diffid = Difficulty.diffid','left');
+		$this->db->join('Rewards','Quest.rewardid = Rewards.rewardid','left');
 		$this->db->like('questname',$namepart);
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
@@ -125,10 +125,10 @@ class Quest_model extends CI_Model{
 		$quests = null;
 		$this->db->select('questid, questname, questdetails, typename, zonename, difftype, rewardname');
 		$this->db->from('Quest');
-		$this->db->join('QuestType','quest.questtypeid = questtype.questtypeid','left');
-		$this->db->join('Zone','quest.zoneid = zone.zoneid','left');
-		$this->db->join('Difficulty','quest.diffid = difficulty.diffid','left');
-		$this->db->join('Rewards','quest.rewardid = rewards.rewardid','left');
+		$this->db->join('QuestType','Quest.QuestTypeid = QuestType.questtypeid','left');
+		$this->db->join('Zone','Quest.zoneid = Zone.zoneid','left');
+		$this->db->join('Difficulty','Quest.diffid = Difficulty.diffid','left');
+		$this->db->join('Rewards','Quest.rewardid = Rewards.rewardid','left');
 		$this->db->where('Quest.zoneid',$zoneid);
 		$this->db->order_by('questid','asc');
 		$query = $this->db->get();

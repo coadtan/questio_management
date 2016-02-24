@@ -94,7 +94,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<div class ="col-md-6">
 					<div class="center">
 						<img class="questio-temple" src="<?= base_url()?>assets/images/questio_temple.png" alt="">
-					</div>	
+					</div>
 				</div>
 				<div class ="col-md-6">
 					<div class="center">
@@ -127,7 +127,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<div class ="col-md-6">
 					<div class="center">
 						<img class="feat-dummy-logo" src="<?= base_url()?>assets/images/questio_sword.png" alt="">
-					</div>	
+					</div>
 				</div>
 				<div class ="col-md-6">
 					<div class="center">
@@ -166,10 +166,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<div class="col-md-2">.col-md-2</div>
 			</div>
 		</div>
-		<a href="<?=base_url('placelist')?>" style ="color:black">Place list</a>
-		<a href="<?=base_url('itemlist')?>" style ="color:black">Item list</a>
-		<a href="<?=base_url('questlist')?>" style ="color:black">Quest list</a>
-		<a href="<?=base_url('rewardlist')?>" style ="color:black">Reward list</a>
+		<a href="#" style ="color:black">Place list</a>
+		<a href="#" style ="color:black">Item list</a>
+		<a href="#" style ="color:black">Quest list</a>
+		<a href="#" style ="color:black">Reward list</a>
 	</div>
 </div>
 </div>

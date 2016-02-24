@@ -44,7 +44,7 @@ class Rewards_model extends CI_Model{
 		$rewards = null;
 		$this->db->select('rewardid, rewardname, description, rewardtypename');
 		$this->db->from('Rewards');
-		$this->db->join('RewardType','rewardtype.rewardtypeid = rewards.rewardtype');
+		$this->db->join('RewardType','RewardType.rewardtypeid = rewards.rewardtype');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
 			$rewards = array();
@@ -54,7 +54,7 @@ class Rewards_model extends CI_Model{
 				$rewardname = $row['rewardname'];
 				$description = $row['description'];
 				$rewardtypename = $row['rewardtypename'];
-				$rewards[$i++] = 
+				$rewards[$i++] =
 					array(
 						'rewardno'=>$i,
 						'rewardid'=>$rewardid,
@@ -70,7 +70,7 @@ class Rewards_model extends CI_Model{
 		$rewards = null;
 		$this->db->select('rewardname, description, rewardtypename');
 		$this->db->from('Rewards');
-		$this->db->join('RewardType','rewardtype.rewardtypeid = rewards.rewardtype');
+		$this->db->join('RewardType','RewardType.rewardtypeid = rewards.rewardtype');
 		$this->db->like('rewardname',$namepart);
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
@@ -80,7 +80,7 @@ class Rewards_model extends CI_Model{
 				$rewardname = $row['rewardname'];
 				$description = $row['description'];
 				$rewardtypename = $row['rewardtypename'];
-				$rewards[$i++] = 
+				$rewards[$i++] =
 					array(
 						'rewardno'=>$i,
 						'rewardname'=>$rewardname,
@@ -110,7 +110,7 @@ class Rewards_model extends CI_Model{
 		return $rewards;
 	}
 	public function addreward($rewardname, $description, $rewardtype, $rewardpic){
-		$reward_obj = array(	
+		$reward_obj = array(
 			'rewardname' => $rewardname,
 			'description' => $description,
 			'rewardtype' => $rewardtype,
@@ -185,7 +185,7 @@ class Rewards_model extends CI_Model{
 		$subquery = $this->db->get_compiled_select();
 		$this->db->select('*');
 		$this->db->from('Rewards');
-		$this->db->join('RewardType','rewardtype.rewardtypeid = rewards.rewardtype');
+		$this->db->join('RewardType','RewardType.rewardtypeid = rewards.rewardtype');
 		$this->db->where('rewardid IN ('.$subquery.')', null, false);
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
@@ -197,7 +197,7 @@ class Rewards_model extends CI_Model{
 				$description = $row['description'];
 				$rewardtypename = $row['rewardtypename'];
 				$rewardpic = $row['rewardpic'];
-				$rewards[$i++] = 
+				$rewards[$i++] =
 					array(
 						'rewardid'=>$rewardid,
 						'rewardname'=>$rewardname,
@@ -211,7 +211,7 @@ class Rewards_model extends CI_Model{
 	}
 
 	public function updateReward($rewardid, $rewardname, $description, $rewardtype, $rewardpic){
-		$reward_obj = array(	
+		$reward_obj = array(
 			'rewardname' => $rewardname,
 			'description' => $description,
 			'rewardtype' => $rewardtype,
@@ -244,7 +244,7 @@ class Rewards_model extends CI_Model{
 				$description = $row['description'];
 				$rewardtype = $row['rewardtype'];
 				$rewardpic = $row['rewardpic'];
-				$rewards = 
+				$rewards =
 					array(
 						'rewardid'=>$rewardid,
 						'rewardname'=>$rewardname,
