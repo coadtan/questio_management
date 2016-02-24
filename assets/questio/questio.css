@@ -260,7 +260,7 @@ header{
 	float: left;
 	padding-top: 15px;
 	height: 100%;
-	width: calc(100% - 400px);
+	width: calc(100% - 200px);
 }
 .wrapper-align-right{
 	text-align: center;
