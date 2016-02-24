@@ -122,7 +122,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class ="wrapper-l text-white">
 				<ul class ="align-menu">
 					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/phone.png" alt="">&nbsp &nbsp CONTACT</li>
-					<li><img class="style-mail-icon" src="<?= base_url()?>assets/images/mail.png" alt="">&nbsp&nbsp EMAIL ADDRESS</li>
 				</ul>
 			</div>
 		</div>
