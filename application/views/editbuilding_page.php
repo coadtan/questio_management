@@ -19,17 +19,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<?= form_open_multipart('editbuilding/editbuildingcheck/'.$buildingdata["buildingid"])?>
 		Building Name*:
 		<i>Must be less than 140 characters</i>
-		 <input type="text" name="buildingname" id="buildingname" size="50" value=<?=$buildingdata["buildingname"]?>><br>
+		 <input type="text" name="buildingname" id="buildingname" size="50" value='<?=$buildingdata["buildingname"]?>'><br>
 		Place Name*:
 		<?= form_dropdown('placeid',$placedata, $buildingdata['placeid']); ?>
 		 <br>
 		Latitude*:
-		<input type="text" name="latitude" id="latitude" value=<?=$buildingdata["latitude"]?>><br>
+		<input type="text" name="latitude" id="latitude" value='<?=$buildingdata["latitude"]?>'><br>
 		Longitude*:
-		<input type="text" name="longitude" id="longitude" value=<?=$buildingdata["longitude"]?>><br>
+		<input type="text" name="longitude" id="longitude" value='<?=$buildingdata["longitude"]?>'><br>
 		Radius*:
-		<input type="text" name="radius" id="radius" value=<?=$buildingdata["radius"]?>><br>
-		<input type="hidden" name="imageurl" value=<?=$buildingdata["imageurl"]?>>
+		<input type="text" name="radius" id="radius" value='<?=$buildingdata["radius"]?>'><br>
+		<input type="hidden" name="imageurl" value='<?=$buildingdata["imageurl"]?>'>
 		Building Image: <input type="file"
 			class ="register-margin register-box"
 			name="buildingpic"

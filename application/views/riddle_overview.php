@@ -1,5 +1,30 @@
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#addriddle').click(function(){
+        var ridid = this.getAttribute("ridid");
+        $('#riddlemanage').load(
+            "<?=base_url('addquest/addriddle')?>"+'/'+ridid
+        );
+        $('html,body').animate({
+        scrollTop: $("#riddlemanage").offset().top},
+        'slow');
+    });
+    $('.editriddle').click(function(){
+        var ridid = this.getAttribute("ridid");
+        $('#riddlemanage').load(
+            "<?=base_url('editquest/editriddle')?>"+'/'+ridid
+        );
+        $('html,body').animate({
+        scrollTop: $("#riddlemanage").offset().top},
+        'slow');
+    });
+    $('.goback').click(function(){
+        $('#loading').empty();
+    });
+});
+</script>
 <?php if(empty($riddledata)) :?>
-<a href = "<?=base_url('addquest/addriddle/'.$ridid)?>" style="color:black">
+<a href = "#" style="color:black" id="addriddle" ridid="<?=$ridid?>">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     </a>
     <?php endif;?>
@@ -24,9 +49,8 @@
             <td><?= $riddle['hint2']?></td>
             <td><?= $riddle['hint3']?></td>
             <td>
-                <a href="<?=base_url('editquest/editriddle').'/'.$riddle['ridid']?>">
+                <a href="#" class="editriddle" ridid="<?=$riddle['ridid']?>">
                     <span
-                        data="<?=$riddle['ridid']?>"
                         class="glyphicon glyphicon-asterisk"
                         style="cursor: pointer">
                     </span>
@@ -39,3 +63,7 @@
     <?php endif;?>
     </tbody>
 </table>
+<a class="goback" href="#">Go Back</a>
+<div id="riddlemanage">
+</div>
+

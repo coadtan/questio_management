@@ -74,7 +74,6 @@ $(document).ready(function(){
 	<?php endif;?>
 	</tbody>
 </table>
-	<a href="<?=base_url('login')?>">Go back</a>
 </div>
 
 <div id="loading"></div>

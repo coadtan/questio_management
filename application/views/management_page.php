@@ -62,6 +62,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		        scrollTop: $("#mainarea").offset().top},
 		        'slow');
     		});
+    		$('#contact').click(function(){
+		        $('#mainarea').load(
+		            "<?=base_url('management/load_contact')?>"
+		        );
+
+		        $('html,body').animate({
+		        scrollTop: $("#mainarea").offset().top},
+		        'slow');
+    		});
+
+    		$('#contact').css('cursor', 'pointer');
 
     	});
 </script>
@@ -121,7 +132,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</div>
 			<div class ="wrapper-l text-white">
 				<ul class ="align-menu">
-					<li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/phone.png" alt="">&nbsp &nbsp CONTACT</li>
+					<li id ="contact"><img class="questio-menu-logo" src="<?= base_url()?>assets/images/phone.png" alt="">&nbsp &nbsp CONTACT</li>
 				</ul>
 			</div>
 		</div>

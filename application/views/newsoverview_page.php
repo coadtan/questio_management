@@ -1,4 +1,25 @@
-<a href = "<?=base_url('addnews')?>" style="color:black">
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#addnews').click(function(){
+        $('#newsmanage').load(
+            "<?=base_url('addnews')?>"
+        );
+        $('html,body').animate({
+        scrollTop: $("#newsmanage").offset().top},
+        'slow');
+    });
+    $('.editnews').click(function(){
+        var newsid = this.getAttribute("newsid");
+        $('#newsmanage').load(
+            "<?=base_url('editnews/edit')?>"+"/"+newsid
+        );
+        $('html,body').animate({
+        scrollTop: $("#newsmanage").offset().top},
+        'slow');
+    });
+});
+</script>
+<a href = "#" style="color:black" id="addnews">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     </a>
     <table class="table">
@@ -25,8 +46,7 @@
             <td><?= $news['datestarted']?></td>
             <td><?= $news['dateended']?></td>
             <td>
-                <a href="<?=base_url('editnews/edit').'/'.$news['newsid']?>"><span
-                    data="<?=$news['newsid']?>"
+                <a href="#" newsid="<?=$news['newsid']?>" class="editnews"><span
                     class="glyphicon glyphicon-asterisk"
                     style="cursor: pointer">
                 </span></a>
@@ -38,3 +58,4 @@
     <?php endif;?>
     </tbody>
 </table>
+<div id="newsmanage"></div>
