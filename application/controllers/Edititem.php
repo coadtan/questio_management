@@ -72,34 +72,37 @@ class Edititem extends CI_Controller {
 		if ($this->form_validation->run()==TRUE){
 
 				if($item->updateItem($itemid, $itemname, $itempicpath, $equipspritepath, $itemcollection, $positionid)==TRUE){
-					$itemdata = $item->getItemFromItemId($itemid);
-					$this->load->view(
-						'edititem_page',array(
-						'message' => 'Edit item successful.',
-						'itemdata' => $itemdata,
-						'position' => $position
-						)
-					);
+					echo "edit_item_success";
+					//$itemdata = $item->getItemFromItemId($itemid);
+					//$this->load->view(
+					//	'edititem_page',array(
+					//	'message' => 'Edit item successful.',
+					//	'itemdata' => $itemdata,
+					//	'position' => $position
+					//	)
+					//);
 				}else{
-					$itemdata = $item->getItemFromItemId($itemid);
-					$this->load->view(
-						'edititem_page',array(
-						'message' => 'Edit item failed.',
-						'itemdata' => $itemdata,
-						'position' => $position
-						)
-					);
+					echo "edit_item_failed";
+					//$itemdata = $item->getItemFromItemId($itemid);
+					//$this->load->view(
+					//	'edititem_page',array(
+					//	'message' => 'Edit item failed.',
+					//	'itemdata' => $itemdata,
+					//	'position' => $position
+					//	)
+					//);
 				}
 
 		}else{
-			$itemdata = $item->getItemFromItemId($itemid);
-			$this->load->view(
-			'additem_page',array(
-				'message' => 'Form validation error. please check again.',
-				'itemdata' => $itemdata,
-				'position' => $position
-				)
-			);
+			echo "edit_item_error";
+			//$itemdata = $item->getItemFromItemId($itemid);
+			//$this->load->view(
+			//'additem_page',array(
+			//	'message' => 'Form validation error. please check again.',
+			//	'itemdata' => $itemdata,
+			//	'position' => $position
+			//	)
+			//);
 		}
 	}
 }

@@ -51,28 +51,31 @@ class Addreward extends CI_Controller {
 
 		if ($this->form_validation->run()==TRUE){
 			if($reward->addreward($rewardname, $description, $rewardtype, $rewardpic)==TRUE){
-				$this->load->view(
-					'addreward_page',array(
-					'message' => 'Add reward successful.',
-					'rewardtypedata' => $rewardtypedata
-					)
-				);
+				echo "add_reward_success";
+			//	$this->load->view(
+			//		'addreward_page',array(
+			//		'message' => 'Add reward successful.',
+			//		'rewardtypedata' => $rewardtypedata
+			//		)
+			//	);
 			}else{
-				$this->load->view(
-					'addreward_page',array(
-					'message' => 'Add reward failed.',
-					'rewardtypedata' => $rewardtypedata
-					)
-				);
+				echo "add_reward_failed";
+			//	$this->load->view(
+			//		'addreward_page',array(
+			//		'message' => 'Add reward failed.',
+			//		'rewardtypedata' => $rewardtypedata
+			//		)
+			//	);
 			}
 
 		}else{
-			$this->load->view(
-			'addreward_page',array(
-				'message' => 'Form validation error. please check again.',
-				'rewardtypedata' => $rewardtypedata
-				)
-			);
+			echo "add_reward_error";
+			//$this->load->view(
+			//'addreward_page',array(
+			//	'message' => 'Form validation error. please check again.',
+			//	'rewardtypedata' => $rewardtypedata
+			//	)
+			//);
 		}
 	}
 

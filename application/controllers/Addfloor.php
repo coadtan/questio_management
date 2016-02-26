@@ -61,39 +61,42 @@ class Addfloor extends CI_Controller {
 
 		if ($this->form_validation->run()==TRUE){
 			if($floor->addfloor($buildingid, $floorname, $imageurl, $qrcode, $sensorid)==TRUE){
-				$qrcode = $floor->getqrcode();
-				$sensorid = $floor->getsensorid();
-				$this->load->view(
-					'addfloor_page',array(
-					'message' => 'Add floor successful.',
-					'buildingdata' => $buildingdata,
-					'qrcode' => $qrcode,
-					'sensorid' => $sensorid
-					)
-				);
+				echo "add_floor_success";
+				//$qrcode = $floor->getqrcode();
+				//$sensorid = $floor->getsensorid();
+				//$this->load->view(
+				//	'addfloor_page',array(
+				//	'message' => 'Add floor successful.',
+				//	'buildingdata' => $buildingdata,
+				//	'qrcode' => $qrcode,
+				//	'sensorid' => $sensorid
+				//	)
+				//);
 			}else{
-				$qrcode = $floor->getqrcode();
-				$sensorid = $floor->getsensorid();
-				$this->load->view(
-					'addfloor_page',array(
-					'message' => 'Add floor failed.',
-					'buildingdata' => $buildingdata,
-					'qrcode' => $qrcode,
-					'sensorid' => $sensorid
-					)
-				);
+				echo "add_floor_failed";
+				//$qrcode = $floor->getqrcode();
+				//$sensorid = $floor->getsensorid();
+				//$this->load->view(
+				//	'addfloor_page',array(
+				//	'message' => 'Add floor failed.',
+				//	'buildingdata' => $buildingdata,
+				//	'qrcode' => $qrcode,
+				//	'sensorid' => $sensorid
+				//	)
+				//);
 			}
 		}else{
-			$qrcode = $floor->getqrcode();
-			$sensorid = $floor->getsensorid();
-			$this->load->view(
-			'addfloor_page',array(
-				'message' => 'Form validation error. please check again.',
-				'buildingdata' => $buildingdata,
-				'qrcode' => $qrcode,
-				'sensorid' => $sensorid
-				)
-			);
+			echo "add_floor_error";
+			//$qrcode = $floor->getqrcode();
+			//$sensorid = $floor->getsensorid();
+			//$this->load->view(
+			//'addfloor_page',array(
+			//	'message' => 'Form validation error. please check again.',
+			//	'buildingdata' => $buildingdata,
+			//	'qrcode' => $qrcode,
+			//	'sensorid' => $sensorid
+			//	)
+			//);
 		}
 	}
 

@@ -82,36 +82,39 @@ class Editplace extends CI_Controller {
 
 		if ($this->form_validation->run()==TRUE){
 			if($place->updatePlace($placeid, $placename, $placefullname, $latitude ,$longitude ,$radius, $placetype, $imageurl, $enter_rewardid, $rewardid)==TRUE){
-				$placedata = $place->getPlaceById($placeid);
-				$this->load->view(
-					'editplace_page',array(
-					'message' => 'Edit Place successful.',
-					'enterrewarddata' => $enterrewarddata,
-					'rewarddata' => $rewarddata,
-				'placedata' => $placedata
-					)
-				);
+				echo "edit_place_success";
+				//$placedata = $place->getPlaceById($placeid);
+				//$this->load->view(
+				//	'editplace_page',array(
+				//	'message' => 'Edit Place successful.',
+				//	'enterrewarddata' => $enterrewarddata,
+				//	'rewarddata' => $rewarddata,
+				//	'placedata' => $placedata
+				//	)
+				//);
 			}else{
-				$placedata = $place->getPlaceById($placeid);
-				$this->load->view(
-					'editplace_page',array(
-					'message' => 'Edit Place failed.',
-					'enterrewarddata' => $enterrewarddata,
-					'rewarddata' => $rewarddata,
-				'placedata' => $placedata
-					)
-				);
+				echo "edit_place_failed";
+				//$placedata = $place->getPlaceById($placeid);
+				//$this->load->view(
+				//	'editplace_page',array(
+				//	'message' => 'Edit Place failed.',
+				//	'enterrewarddata' => $enterrewarddata,
+				//	'rewarddata' => $rewarddata,
+				//	'placedata' => $placedata
+				//	)
+				//);
 			}
 		}else{
-			$placedata = $place->getPlaceById($placeid);
-			$this->load->view(
-			'editplace_page',array(
-				'message' => 'Form validation error. please check again.',
-				'enterrewarddata' => $enterrewarddata,
-					'rewarddata' => $rewarddata,
-				'placedata' => $placedata
-				)
-			);
+			echo "edit_place_error";
+			//$placedata = $place->getPlaceById($placeid);
+			//$this->load->view(
+			//'editplace_page',array(
+			//	'message' => 'Form validation error. please check again.',
+			//	'enterrewarddata' => $enterrewarddata,
+			//	'rewarddata' => $rewarddata,
+			//	'placedata' => $placedata
+			//	)
+			//);
 		}
 	}
 	public function editPlaceDetailCheck(){
@@ -152,33 +155,36 @@ class Editplace extends CI_Controller {
 
 		if ($this->form_validation->run()==TRUE){
 			if($placedet->updatePlaceDetail($placeid, $placedetails, $phonecontact1, $phonecontact2, $website, $email, $imageurl)==TRUE){
-				$placedetaildata = $placedet->getPlaceDetailByPlaceId($placeid);
-				$this->load->view(
-					'editplacedetail_page',array(
-					'message' => 'Add Place Detail successful.',
-					'placeid' => $placeid,
-					'placedetaildata' => $placedetaildata
-					)
-				);
+				echo "edit_placedetail_success";
+				//$placedetaildata = $placedet->getPlaceDetailByPlaceId($placeid);
+				//$this->load->view(
+				//	'editplacedetail_page',array(
+				//	'message' => 'Add Place Detail successful.',
+				//	'placeid' => $placeid,
+				//	'placedetaildata' => $placedetaildata
+				//	)
+				//);
 			}else{
-				$placedetaildata = $placedet->getPlaceDetailByPlaceId($placeid);
-				$this->load->view(
-					'editplacedetail_page',array(
-					'message' => 'Add Place Detail failed.',
-					'placeid' => $placeid,
-					'placedetaildata' => $placedetaildata
-					)
-				);
+				echo "edit_placedetail_failed";
+				//$placedetaildata = $placedet->getPlaceDetailByPlaceId($placeid);
+				//$this->load->view(
+				//	'editplacedetail_page',array(
+				//	'message' => 'Add Place Detail failed.',
+				//	'placeid' => $placeid,
+				//	'placedetaildata' => $placedetaildata
+				//	)
+				//);
 			}
 		}else{
-			$placedetaildata = $placedet->getPlaceDetailByPlaceId($placeid);
-			$this->load->view(
-			'editplacedetail_page',array(
-				'message' => 'Form validation error. please check again.',
-				'placeid' => $placeid,
-				'placedetaildata' => $placedetaildata
-				)
-			);
+			echo "edit_placedetail_error";
+			//$placedetaildata = $placedet->getPlaceDetailByPlaceId($placeid);
+			//$this->load->view(
+			//'editplacedetail_page',array(
+			//	'message' => 'Form validation error. please check again.',
+			//	'placeid' => $placeid,
+			//	'placedetaildata' => $placedetaildata
+			//	)
+			//);
 		}
 	}
 }

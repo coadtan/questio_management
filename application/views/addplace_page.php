@@ -1,17 +1,69 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>Add Place</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<?=script_tag('assets/jquery/jquery-2.2.0.min.js')?>
-<?=script_tag('assets/bootstrap/js/bootstrap.js')?>
-<?=link_tag('assets/bootstrap/css/bootstrap.min.css')?>
-<?=link_tag('assets/questio/questio.css')?>
 <script>
+$(document).ready(function(){
+    $('.goback').click(function(){
+        $('#mainarea').load(
+    		"<?=base_url('mainpage/getplace')?>"
+		);
+
+        $('html,body').animate({
+        scrollTop: $("#mainarea").offset().top},
+        'slow');
+    });
+    $(document).on("submit", "form", function(event){
+        event.preventDefault();
+            
+        var placename = $("#placename").val();
+        var placefullname = $("#placefullname").val();
+        var latitude = $("#latitude").val();
+        var longitude = $("#longitude").val();
+        var radius = $("#radius").val();
+        var qrcode = $("#qrcode").val();
+        var sensorid = $("#sensorid").val();
+        var placetype = $("#placetype").val();
+        var placepic = $("#placepic").val();
+        var enter_rewardid = $("#enter_rewardid").val();
+        var rewardid = $("#rewardid").val();
+
+
+        var url = "<?=base_url('addplace/addplacecheck')?>";
+        $.ajax({
+               type: "POST",
+               url: url,
+               data: {
+                placename: placename,
+                placefullname: placefullname,
+                latitude: latitude,
+                longitude: longitude,
+                radius: radius,
+                qrcode: qrcode,
+                sensorid: sensorid,
+                placetype: placetype,
+                placepic: placepic,
+                enter_rewardid: enter_rewardid,
+                rewardid: rewardid
+               }
+               , 
+               success: function(data){
+                   if(data == 'add_place_success'){
+                        $('#mainarea').load(
+                            "<?=base_url('mainpage/getplace')?>"
+                        );
+
+                        $('html,body').animate({
+                            scrollTop: $("#mainarea").offset().top},
+                            'slow'
+                        );
+                   }else if(data == 'add_place_failed'){
+                        alert('Add place failed');
+                   }else if(data == 'add_place_error'){
+                        alert('Error: Some field is not valid');
+                   }
+               }
+        });
+        return false;
+    });
+});
+
 
 var isMarked = false;
 var gmarkers = [];
@@ -58,55 +110,64 @@ function placeMarker(location, map) {
 	}
 }
 </script>
-</head>
-<body>
-<?php $this->load->view('header', array('title' => 'Add Places'));?>
 <div class="container-fluid">
 	<div class ="r1-add-place">
 		<h1 class ="text-white"style="margin-top:50px !important">Add Place ของคุณ</h1>
 	</div>
-	<h2 style='color:red'><?=$message?></h2>
-	<?= form_open_multipart('addplace/addplacecheck') ?>
+	<form enctype="multipart/form-data" method="post" accept-charset="utf-8">
 	<div style ="margin-top:35px">
 	<input type="text"
 			class ="register-margin register-box"
 			name="placename"
 			id="placename"
 			size ="100"
-			placeholder ="&nbsp Place Name*: Must be less than 50 characters"><br>
+			placeholder ="&nbsp Place Name*: Must be less than 50 characters"
+			required
+			maxlength="50"><br>
 	<input type="text"
 			class ="register-margin register-box"
 			name="placefullname"
 			id="placefullname"
 			size ="100"
-			placeholder ="&nbsp Place Full Name*: Must be less than 255 characters"><br>
+			placeholder ="&nbsp Place Full Name*: Must be less than 255 characters"
+			required
+			maxlength="255"><br>
 	<input type="text"
 			class ="register-margin register-box"
 			name="latitude"
 			id="latitude"
 			size ="48"
-			placeholder ="&nbsp Latitude*:">
+			placeholder ="&nbsp Latitude*:"
+			required
+			pattern="\d+(\.\d{1,15})?">
 	<input type="text"
 			class ="register-margin register-box"
 			name="longitude"
 			id="longitude"
 			size ="48"
-			placeholder ="&nbsp Longitude*:"><br>
+			placeholder ="&nbsp Longitude*:"
+			required
+			pattern="\d+(\.\d{1,15})?"><br>
 	<input type="number"
 			class ="register-margin register-box"
 			name="radius"
 			id="radius"
 			size ="20"
-			placeholder ="&nbsp Radius*:*:">&nbsp Metres &nbsp
+			placeholder ="&nbsp Radius*"
+			required
+			pattern="\d+(\.\d{1,4})?"
+			>&nbsp Metres &nbsp
 	<input type="hidden"
 			class ="register-margin register-box"
 			name="qrcode"
+			id="qrcode"
 			value="<?=$qrcode?>">
 	<input type="hidden"
 			class ="register-margin register-box"
 			name="sensorid"
+			id="sensorid"
 			value="<?=$sensorid?>">&nbsp
-	<select name="placetype">
+	<select name="placetype" id="placetype">
 		<option value="University">University</option>
 		<option value="Museum">Museum</option>
 		<option value="Temple">Temple</option>
@@ -119,14 +180,14 @@ function placeMarker(location, map) {
 			size ="999">
 			<br>
 		Enter Rewards:
-		<?= form_dropdown('enter_rewardid',$enterrewarddata); ?>
+		<?= form_dropdown('enter_rewardid',$enterrewarddata,'','id="enter_rewardid"'); ?>
 		Rewards:
-		<?= form_dropdown('rewardid',$rewarddata); ?><br><br>
+		<?= form_dropdown('rewardid',$rewarddata,'','id="rewardid"'); ?><br><br>
 
 		<input type="submit" value="Submit">
-	<?=form_close()?>
+	</div>
 	<br>
-	<a href="<?=base_url('mainpage')?>">Go Back</a>
+	<a href="#" class="goback">Go Back</a>
 </div>
 <br>
 </div>

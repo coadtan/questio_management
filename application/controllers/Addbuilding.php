@@ -57,28 +57,31 @@ class Addbuilding extends CI_Controller {
 
 		if ($this->form_validation->run()==TRUE){
 			if($building->addbuilding($placeid, $buildingname, $latitude,$longitude, $radius, $imageurl)==TRUE){
-				$this->load->view(
-					'addbuilding_page',array(
-					'message' => 'Add building successful.',
-					'placedata' => $placedata
-					)
-				);
+				echo "add_building_success";
+				//$this->load->view(
+				//	'addbuilding_page',array(
+				//	'message' => 'Add building successful.',
+				//	'placedata' => $placedata
+				//	)
+				//);
 			}else{
-				$this->load->view(
-					'addbuilding_page',array(
-					'message' => 'Add building failed.',
-					'placedata' => $placedata
-					)
-				);
+				echo "add_building_failed";
+				//$this->load->view(
+				//	'addbuilding_page',array(
+				//	'message' => 'Add building failed.',
+				//	'placedata' => $placedata
+				//	)
+				//);
 			}
 
 		}else{
-			$this->load->view(
-			'addbuilding_page',array(
-				'message' => 'Form validation error. please check again.',
-				'placedata' => $placedata
-				)
-			);
+			echo "add_building_error";
+			//$this->load->view(
+			//'addbuilding_page',array(
+			//	'message' => 'Form validation error. please check again.',
+			//	'placedata' => $placedata
+			//	)
+			//);
 		}
 	}
 

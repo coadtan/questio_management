@@ -101,43 +101,46 @@ class Editzone extends CI_Controller {
 
 		if ($this->form_validation->run()==TRUE){
 			if($zone->updateZone($zoneid, $floorid, $zonetypeid, $zonename, $zonedetails, $imageurl, $minimapurl, $itemid, $rewardid)==TRUE){
-				$zonedata = $zone->getZoneFromId($zoneid);
-				$this->load->view(
-					'editzone_page',array(
-					'message' => 'Edit zone successful.',
-					'floordata' => $floordata,
-					'zonetypedata' => $zonetypedata,
-					'itemdata' => $itemdata,
-					'rewarddata' => $rewarddata,
-					'zonedata' => $zonedata
-					)
-				);
+				echo "edit_zone_success";
+				//$zonedata = $zone->getZoneFromId($zoneid);
+				//$this->load->view(
+				//	'editzone_page',array(
+				//	'message' => 'Edit zone successful.',
+				//	'floordata' => $floordata,
+				//	'zonetypedata' => $zonetypedata,
+				//	'itemdata' => $itemdata,
+				//	'rewarddata' => $rewarddata,
+				//	'zonedata' => $zonedata
+				//	)
+				//);
 			}else{
-				$zonedata = $zone->getZoneFromId($zoneid);
-				$this->load->view(
-					'editzone_page',array(
-					'message' => 'Edit zone failed.',
-					'floordata' => $floordata,
-					'zonetypedata' => $zonetypedata,
-					'itemdata' => $itemdata,
-					'rewarddata' => $rewarddata,
-					'zonedata' => $zonedata
-					)
-				);
+				echo "edit_zone_failed";
+				//$zonedata = $zone->getZoneFromId($zoneid);
+				//$this->load->view(
+				//	'editzone_page',array(
+				//	'message' => 'Edit zone failed.',
+				//	'floordata' => $floordata,
+				//	'zonetypedata' => $zonetypedata,
+				//	'itemdata' => $itemdata,
+				//	'rewarddata' => $rewarddata,
+				//	'zonedata' => $zonedata
+				//	)
+				//);
 			}
 
 		}else{
-			$zonedata = $zone->getZoneFromId($zoneid);
-			$this->load->view(
-			'editzone_page',array(
-				'message' => 'Form validation error. please check again.',
-				'floordata' => $floordata,
-				'zonetypedata' => $zonetypedata,
-				'itemdata' => $itemdata,
-				'rewarddata' => $rewarddata,
-				'zonedata' => $zonedata
-				)
-			);
+			echo "edit_zone_error";
+			//$zonedata = $zone->getZoneFromId($zoneid);
+			//$this->load->view(
+			//'editzone_page',array(
+			//	'message' => 'Form validation error. please check again.',
+			//	'floordata' => $floordata,
+			//	'zonetypedata' => $zonetypedata,
+			//	'itemdata' => $itemdata,
+			//	'rewarddata' => $rewarddata,
+			//	'zonedata' => $zonedata
+			//	)
+			//);
 		}
 	}
 

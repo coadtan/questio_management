@@ -38,34 +38,37 @@ class Editnews extends CI_Controller {
 
 		if ($this->form_validation->run()==TRUE){
 			if($news->updateNews($newsid, $placeid, $newsheader, $newsdetails, $datestarted, $dateended)==TRUE){
-				$newsdata = $this->News_model->getNewsByNewsId($newsid);
-				$this->load->view(
-					'editnews_page',array(
-						'message' => 'Edit news successful.',
-						'placedata' => $placedata,
-						'newsdata' => $newsdata
-					)
-				);
+				echo "edit_news_success";
+				//$newsdata = $this->News_model->getNewsByNewsId($newsid);
+				//$this->load->view(
+				//	'editnews_page',array(
+				//		'message' => 'Edit news successful.',
+				//		'placedata' => $placedata,
+				//		'newsdata' => $newsdata
+				//	)
+				//);
 			}else{
-				$newsdata = $this->News_model->getNewsByNewsId($newsid);
-				$this->load->view(
-					'editnews_page',array(
-						'message' => 'Edit news failed.',
-						'placedata' => $placedata,
-						'newsdata' => $newsdata
-					)
-				);
+				echo "edit_news_failed";
+				//$newsdata = $this->News_model->getNewsByNewsId($newsid);
+				//$this->load->view(
+				//	'editnews_page',array(
+				//		'message' => 'Edit news failed.',
+				//		'placedata' => $placedata,
+				//		'newsdata' => $newsdata
+				//	)
+				//);
 			}
 
 		}else{
-			$newsdata = $this->News_model->getNewsByNewsId($newsid);
-			$this->load->view(
-			'editnews_page',array(
-				'message' => 'Form validation error. please check again.',
-				'placedata' => $placedata,
-				'newsdata' => $newsdata
-				)
-			);
+			echo "edit_news_error";
+			//$newsdata = $this->News_model->getNewsByNewsId($newsid);
+			//$this->load->view(
+			//'editnews_page',array(
+			//	'message' => 'Form validation error. please check again.',
+			//	'placedata' => $placedata,
+			//	'newsdata' => $newsdata
+			//	)
+			//);
 		}
 
 	}

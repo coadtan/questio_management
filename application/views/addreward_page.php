@@ -1,53 +1,86 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>Add Reward</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+$(document).ready(function(){
+    $('.goback').click(function(){
+        $('#mainarea').load(
+    		"<?=base_url('rewardoverview')?>"
+		);
 
-<?=script_tag('assets/jquery/jquery-2.2.0.min.js')?>
-<?=script_tag('assets/bootstrap/js/bootstrap.js')?>
-<?=link_tag('assets/bootstrap/css/bootstrap.min.css')?>
-<?=link_tag('assets/questio/questio.css')?>
-</head>
-<body>
-	<?php $this->load->view('header', array('title' => 'Add Reward'));?>
-	<div class ="r1-register">
-		<h1 class ="text-white"style="margin-top:50px !important">สร้างรางวัลให้กับผู้เล่นของคุณ</h1>
-	</div>
-<div class="container-fluid">
-	
-	<h2 style='color:red'><?=$message?></h2>
-	<?= form_open_multipart('addreward/addrewardcheck')?>
-	Reward Name*:
-		<input type="text" 
-			class ="register-margin register-box" 
-			name="rewardname" 
-			id="rewardname" 
-			size ="100" 
-			placeholder ="&nbsp  Must be less than 50 characters"><br>
-	Description*:
-		<input type="text" 
-			class ="register-margin register-box" 
-			name="description" 
-			id="description" 
-			size ="103" 
-			placeholder ="&nbsp  Must be less than 200 characters"><br>
-	Reward Picture: <input type="file"
-			style ="margin:auto;margin-top:5px!important"
-			class ="register-margin register-box"
-			name="rewardpic"
-			id="rewardpic"
-			size ="999">
-			<br>
-	Reward Type*:
-		<?= form_dropdown('rewardtype',$rewardtypedata); ?>
-		 <br><br>
-		<input type="submit" value="Submit">
-	<?=form_close()?>
-	<a href="<?=base_url('mainpage')?>">Go Back</a>
+        $('html,body').animate({
+        scrollTop: $("#mainarea").offset().top},
+        'slow');
+    });
+    $(document).on("submit", "form", function(event){
+        event.preventDefault();
+            
+        var rewardname = $("#rewardname").val();
+        var description = $("#description").val();
+        var rewardpic = $("#rewardpic").val();
+        var rewardtype = $("#rewardtype").val();
+
+        var url = "<?=base_url('addreward/addrewardcheck')?>"
+        $.ajax({
+               type: "POST",
+               url: url,
+               data: {
+                rewardname: rewardname,
+                description: description,
+                rewardpic: rewardpic,
+                rewardtype: rewardtype
+               }
+               , 
+               success: function(data){
+                   if(data == 'add_reward_success'){
+                        $('#mainarea').load(
+                            <?=base_url('rewardoverview')?>;
+                        );
+
+                        $('html,body').animate({
+                            scrollTop: $("#mainarea").offset().top},
+                            'slow'
+                        );
+                   }else if(data == 'add_reward_failed'){
+                        alert('Add reward failed');
+                   }else if(data == 'add_reward_error'){
+                        alert('Error: Some field is not valid');
+                   }
+               }
+        });
+        return false;
+    });
+});
+</script>
+<div class ="r1-register">
+	<h1 class ="text-white"style="margin-top:50px !important">สร้างรางวัลให้กับผู้เล่นของคุณ</h1>
 </div>
-</body>
-</html>
+<form enctype="multipart/form-data" method="post" accept-charset="utf-8">
+Reward Name*:
+	<input type="text" 
+		class ="register-margin register-box" 
+		name="rewardname" 
+		id="rewardname" 
+		size ="100" 
+		placeholder ="&nbsp  Must be less than 50 characters"
+		required
+		maxlength="50"><br>
+Description*:
+	<input type="text" 
+		class ="register-margin register-box" 
+		name="description" 
+		id="description" 
+		size ="100" 
+		placeholder ="&nbsp  Must be less than 200 characters"
+		required
+		maxlength="200"><br>
+Reward Picture: <input type="file"
+		style ="margin:auto;margin-top:5px!important"
+		class ="register-margin register-box"
+		name="rewardpic"
+		id="rewardpic"
+		size ="999">
+		<br>
+Reward Type*:
+	<?= form_dropdown('rewardtype',$rewardtypedata, '', 'id="rewardtype"'); ?>
+	 <br><br>
+	<input type="submit" value="Submit">
+<?=form_close()?>
+<a href="#" class="goback">Go Back</a>
