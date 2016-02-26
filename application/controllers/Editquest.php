@@ -50,38 +50,41 @@ class Editquest extends CI_Controller {
 
 		if ($this->form_validation->run()==TRUE){
 			if($quest->updateQuest($questid, $questname, $questdetails, $diffid, $rewardid)==TRUE){
-				$questdata = $this->Quest_model->getQuestByZone($zoneid);
-				$this->load->view(
-					'editquest_page',array(
-					'message' => "",
-					'questtype' => $questtype,
-					'difficulty' => $difficulty,
-					'reward' => $reward,
-					'questdata' => $questdata
-					)
-				);
+				echo "edit_quest_success";
+				//$questdata = $this->Quest_model->getQuestByZone($zoneid);
+				//$this->load->view(
+				//	'editquest_page',array(
+				//	'message' => "",
+				//	'questtype' => $questtype,
+				//	'difficulty' => $difficulty,
+				//	'reward' => $reward,
+				//	'questdata' => $questdata
+				//	)
+				//);
 			}else{
-				$this->load->view(
-					'editquest_page',array(
-					'message' => "Edit quest failed",
-					'questtype' => $questtype,
-					'difficulty' => $difficulty,
-					'reward' => $reward,
-					'questdata' => $questdata
-					)
-				);
+				echo "edit_quest_failed";
+				//$this->load->view(
+				//	'editquest_page',array(
+				//	'message' => "Edit quest failed",
+				//	'questtype' => $questtype,
+				//	'difficulty' => $difficulty,
+				//	'reward' => $reward,
+				//	'questdata' => $questdata
+				//	)
+				//);
 			}
 
 		}else{
-			$this->load->view(
-			'editquest_page',array(
-					'message' => "Form validation error. please check again.",
-					'questtype' => $questtype,
-					'difficulty' => $difficulty,
-					'reward' => $reward,
-					'questdata' => $questdata
-				)
-			);
+			echo "edit_quest_error";
+			//$this->load->view(
+			//'editquest_page',array(
+			//		'message' => "Form validation error. please check again.",
+			//		'questtype' => $questtype,
+			//		'difficulty' => $difficulty,
+			//		'reward' => $reward,
+			//		'questdata' => $questdata
+			//	)
+			//);
 		}
 	}
 
@@ -115,56 +118,59 @@ class Editquest extends CI_Controller {
 
 		if ($this->form_validation->run()==TRUE){
 			if($quiz->updateQuiz($quizid, $question, $choicea, $choiceb, $choicec, $choiced, $answerid)==TRUE){
-						$quizdata = $quiz->getQuizByQuizId($quizid);
-						$questtype = $quest->getquesttypedata();
-						$difficulty = $quest->getdifficulty();
-						$reward = $this->Rewards_model->getRewardFromType(4);
-						$questdata = $quest->getQuestFromQuestId($quizdata['questid']);
-						$this->load->view(
-							'editquest_quiz_page',array(
-								'message' => "Edit Quiz Successful.",
-								'questtype' => $questtype,
-								'difficulty' => $difficulty,
-								'reward' => $reward,
-								'quizdata' => $quizdata,
-								'questdata' => $questdata
-						)
-					);
+				echo "edit_quiz_success";
+					//$quizdata = $quiz->getQuizByQuizId($quizid);
+					//$questtype = $quest->getquesttypedata();
+					//$difficulty = $quest->getdifficulty();
+					//$reward = $this->Rewards_model->getRewardFromType(4);
+					//$questdata = $quest->getQuestFromQuestId($quizdata['questid']);
+					//$this->load->view(
+					//	'editquest_quiz_page',array(
+					//		'message' => "Edit Quiz Successful.",
+					//		'questtype' => $questtype,
+					//		'difficulty' => $difficulty,
+					//		'reward' => $reward,
+					//		'quizdata' => $quizdata,
+					//		'questdata' => $questdata
+					//)
+				//);
 
 			}else{
-				$quizdata = $quiz->getQuizByQuizId($quizid);
-				$questtype = $quest->getquesttypedata();
-				$difficulty = $quest->getdifficulty();
-				$reward = $this->Rewards_model->getRewardFromType(4);
-				$questdata = $quest->getQuestFromQuestId($quizdata['questid']);
-				$this->load->view(
-					'editquest_quiz_page',array(
-						'message' => "Edit Quiz Failed.",
-						'questtype' => $questtype,
-						'difficulty' => $difficulty,
-						'reward' => $reward,
-						'quizdata' => $quizdata,
-						'questdata' => $questdata
-					)
-				);
+				echo "edit_quiz_failed";
+				//$quizdata = $quiz->getQuizByQuizId($quizid);
+				//$questtype = $quest->getquesttypedata();
+				//$difficulty = $quest->getdifficulty();
+				//$reward = $this->Rewards_model->getRewardFromType(4);
+				//$questdata = $quest->getQuestFromQuestId($quizdata['questid']);
+				//$this->load->view(
+				//	'editquest_quiz_page',array(
+				//		'message' => "Edit Quiz Failed.",
+				//		'questtype' => $questtype,
+				//		'difficulty' => $difficulty,
+				//		'reward' => $reward,
+				//		'quizdata' => $quizdata,
+				//		'questdata' => $questdata
+				//	)
+				//);
 			}
 
 		}else{
-			$quizdata = $quiz->getQuizByQuizId($quizid);
-			$questtype = $quest->getquesttypedata();
-			$difficulty = $quest->getdifficulty();
-			$reward = $this->Rewards_model->getRewardFromType(4);
-			$questdata = $quest->getQuestFromQuestId($quizdata['questid']);
-			$this->load->view(
-			'editquest_quiz_page',array(
-				'message' => 'Form validation error. please check again.',
-				'questtype' => $questtype,
-				'difficulty' => $difficulty,
-				'reward' => $reward,
-				'quizdata' => $quizdata,
-				'questdata' => $questdata
-				)
-			);
+			echo "edit_quiz_error";
+			//$quizdata = $quiz->getQuizByQuizId($quizid);
+			//$questtype = $quest->getquesttypedata();
+			//$difficulty = $quest->getdifficulty();
+			//$reward = $this->Rewards_model->getRewardFromType(4);
+			//$questdata = $quest->getQuestFromQuestId($quizdata['questid']);
+			//$this->load->view(
+			//'editquest_quiz_page',array(
+			//	'message' => 'Form validation error. please check again.',
+			//	'questtype' => $questtype,
+			//	'difficulty' => $difficulty,
+			//	'reward' => $reward,
+			//	'quizdata' => $quizdata,
+			//	'questdata' => $questdata
+			//	)
+			//);
 		}
 
 	}
@@ -213,58 +219,61 @@ class Editquest extends CI_Controller {
 
 		if ($this->form_validation->run()==TRUE){
 			if($quest->updateQuest($ridid, $questname, $questdetails, $diffid, $rewardid)==TRUE && $riddle->updateRiddle($ridid, $riddetails, $scanlimit, $hint1, $hint2, $hint3)==TRUE){
-					$riddledata = $this->Riddle_model->getRiddleFromRidId($ridid);
-					$quest = $this->Quest_model;
-					$questtype = $quest->getquesttypedata();
-					$difficulty = $quest->getdifficulty();
-					$reward = $this->Rewards_model->getRewardFromType(4);
-					$questdata = $quest->getQuestFromQuestId($ridid);
-					$this->load->view(
-						'editquest_riddle_page',array(
-							'message' => 'Edit riddle successful.',
-							'questtype' => $questtype,
-							'difficulty' => $difficulty,
-							'reward' => $reward,
-							'riddledata' => $riddledata[0],
-							'questdata' => $questdata
-						)
-				);
+					echo "edit_riddle_success";
+					//$riddledata = $this->Riddle_model->getRiddleFromRidId($ridid);
+					//$quest = $this->Quest_model;
+					//$questtype = $quest->getquesttypedata();
+					//$difficulty = $quest->getdifficulty();
+					//$reward = $this->Rewards_model->getRewardFromType(4);
+					//$questdata = $quest->getQuestFromQuestId($ridid);
+					//$this->load->view(
+					//	'editquest_riddle_page',array(
+					//		'message' => 'Edit riddle successful.',
+					//		'questtype' => $questtype,
+					//		'difficulty' => $difficulty,
+					//		'reward' => $reward,
+					//		'riddledata' => $riddledata[0],
+					//		'questdata' => $questdata
+					//	)
+					//);
 			}else{
-				$riddledata = $this->Riddle_model->getRiddleFromRidId($ridid);
-				$quest = $this->Quest_model;
-				$questtype = $quest->getquesttypedata();
-				$difficulty = $quest->getdifficulty();
-				$reward = $this->Rewards_model->getRewardFromType(4);
-				$questdata = $quest->getQuestFromQuestId($ridid);
-				$this->load->view(
-					'editquest_riddle_page',array(
-						'message' => 'Edit riddle failed.',
-						'questtype' => $questtype,
-						'difficulty' => $difficulty,
-						'reward' => $reward,
-						'riddledata' => $riddledata[0],
-						'questdata' => $questdata
-					)
-				);
+				echo "edit_riddle_failed";
+				//$riddledata = $this->Riddle_model->getRiddleFromRidId($ridid);
+				//$quest = $this->Quest_model;
+				//$questtype = $quest->getquesttypedata();
+				//$difficulty = $quest->getdifficulty();
+				//$reward = $this->Rewards_model->getRewardFromType(4);
+				//$questdata = $quest->getQuestFromQuestId($ridid);
+				//$this->load->view(
+				//	'editquest_riddle_page',array(
+				//		'message' => 'Edit riddle failed.',
+				//		'questtype' => $questtype,
+				//		'difficulty' => $difficulty,
+				//		'reward' => $reward,
+				//		'riddledata' => $riddledata[0],
+				//		'questdata' => $questdata
+				//	)
+				//);
 			}
 
 		}else{
-			$riddledata = $this->Riddle_model->getRiddleFromRidId($ridid);
-			$quest = $this->Quest_model;
-			$questtype = $quest->getquesttypedata();
-			$difficulty = $quest->getdifficulty();
-			$reward = $this->Rewards_model->getRewardFromType(4);
-			$questdata = $quest->getQuestFromQuestId($ridid);
-			$this->load->view(
-			'editquest_riddle_page',array(
-					'message' => 'Form validation error. please check again.',
-					'questtype' => $questtype,
-					'difficulty' => $difficulty,
-					'reward' => $reward,
-					'riddledata' => $riddledata[0],
-					'questdata' => $questdata
-				)
-			);
+			echo "edit_riddle_error";
+			//$riddledata = $this->Riddle_model->getRiddleFromRidId($ridid);
+			//$quest = $this->Quest_model;
+			//$questtype = $quest->getquesttypedata();
+			//$difficulty = $quest->getdifficulty();
+			//$reward = $this->Rewards_model->getRewardFromType(4);
+			//$questdata = $quest->getQuestFromQuestId($ridid);
+			//$this->load->view(
+			//'editquest_riddle_page',array(
+			//		'message' => 'Form validation error. please check again.',
+			//		'questtype' => $questtype,
+			//		'difficulty' => $difficulty,
+			//		'reward' => $reward,
+			//		'riddledata' => $riddledata[0],
+			//		'questdata' => $questdata
+			//	)
+			//);
 		}
 	}
 
@@ -328,58 +337,61 @@ class Editquest extends CI_Controller {
 		if ($this->form_validation->run()==TRUE){
 
 			if($quest->updateQuest($puzzleid, $questname, $questdetails, $diffid, $rewardid)==TRUE && $puzzle->updatePuzzle($puzzleid, $imageurl, $helperanswer, $correctanswer)==TRUE){
-					$puzzledata = $this->Puzzle_model->getPuzzleFromPuzzleId($puzzleid);
-					$quest = $this->Quest_model;
-					$questtype = $quest->getquesttypedata();
-					$difficulty = $quest->getdifficulty();
-					$reward = $this->Rewards_model->getRewardFromType(4);
-					$questdata = $quest->getQuestFromQuestId($puzzleid);
-					$this->load->view(
-						'editquest_puzzle_page',array(
-							'message' => "Edit puzzle successful.",
-							'questtype' => $questtype,
-							'difficulty' => $difficulty,
-							'reward' => $reward,
-							'puzzledata' => $puzzledata[0],
-							'questdata' => $questdata
-						)
-					);
+					echo "edit_puzzle_success";
+					//$puzzledata = $this->Puzzle_model->getPuzzleFromPuzzleId($puzzleid);
+					//$quest = $this->Quest_model;
+					//$questtype = $quest->getquesttypedata();
+					//$difficulty = $quest->getdifficulty();
+					//$reward = $this->Rewards_model->getRewardFromType(4);
+					//$questdata = $quest->getQuestFromQuestId($puzzleid);
+					//$this->load->view(
+					//	'editquest_puzzle_page',array(
+					//		'message' => "Edit puzzle successful.",
+					//		'questtype' => $questtype,
+					//		'difficulty' => $difficulty,
+					//		'reward' => $reward,
+					//		'puzzledata' => $puzzledata[0],
+					//		'questdata' => $questdata
+					//	)
+					//);
 			}else{
-				$puzzledata = $this->Puzzle_model->getPuzzleFromPuzzleId($puzzleid);
-				$quest = $this->Quest_model;
-				$questtype = $quest->getquesttypedata();
-				$difficulty = $quest->getdifficulty();
-				$reward = $this->Rewards_model->getRewardFromType(4);
-				$questdata = $quest->getQuestFromQuestId($puzzleid);
-				$this->load->view(
-					'editquest_puzzle_page',array(
-						'message' => "Edit puzzle failed.",
-						'questtype' => $questtype,
-						'difficulty' => $difficulty,
-						'reward' => $reward,
-						'puzzledata' => $puzzledata[0],
-						'questdata' => $questdata
-					)
-				);
+				echo "edit_puzzle_failed";
+				//$puzzledata = $this->Puzzle_model->getPuzzleFromPuzzleId($puzzleid);
+				//$quest = $this->Quest_model;
+				//$questtype = $quest->getquesttypedata();
+				//$difficulty = $quest->getdifficulty();
+				//$reward = $this->Rewards_model->getRewardFromType(4);
+				//$questdata = $quest->getQuestFromQuestId($puzzleid);
+				//$this->load->view(
+				//	'editquest_puzzle_page',array(
+				//		'message' => "Edit puzzle failed.",
+				//		'questtype' => $questtype,
+				//		'difficulty' => $difficulty,
+				//		'reward' => $reward,
+				//		'puzzledata' => $puzzledata[0],
+				//		'questdata' => $questdata
+				//	)
+				//);
 			}
 
 		}else{
-			$puzzledata = $this->Puzzle_model->getPuzzleFromPuzzleId($puzzleid);
-			$quest = $this->Quest_model;
-			$questtype = $quest->getquesttypedata();
-			$difficulty = $quest->getdifficulty();
-			$reward = $this->Rewards_model->getRewardFromType(4);
-			$questdata = $quest->getQuestFromQuestId($puzzleid);
-			$this->load->view(
-				'editquest_puzzle_page',array(
-					'message' => 'Form validation error. please check again.',
-					'questtype' => $questtype,
-					'difficulty' => $difficulty,
-					'reward' => $reward,
-					'puzzledata' => $puzzledata[0],
-					'questdata' => $questdata
-				)
-			);
+			echo "edit_puzzle_error";
+			//$puzzledata = $this->Puzzle_model->getPuzzleFromPuzzleId($puzzleid);
+			//$quest = $this->Quest_model;
+			//$questtype = $quest->getquesttypedata();
+			//$difficulty = $quest->getdifficulty();
+			//$reward = $this->Rewards_model->getRewardFromType(4);
+			//$questdata = $quest->getQuestFromQuestId($puzzleid);
+			//$this->load->view(
+			//	'editquest_puzzle_page',array(
+			//		'message' => 'Form validation error. please check again.',
+			//		'questtype' => $questtype,
+			//		'difficulty' => $difficulty,
+			//		'reward' => $reward,
+			//		'puzzledata' => $puzzledata[0],
+			//		'questdata' => $questdata
+			//	)
+			//);
 		}
 	}
 }

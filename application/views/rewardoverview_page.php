@@ -1,4 +1,25 @@
-<a href = "<?=base_url('addreward')?>" style="color:black">
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#addreward').click(function(){
+        $('#rewardmanage').load(
+            "<?=base_url('addreward')?>"
+        );
+        $('html,body').animate({
+        scrollTop: $("#rewardmanage").offset().top},
+        'slow');
+    });
+    $('.editreward').click(function(){
+        var rewardid = this.getAttribute("rewardid");
+        $('#rewardmanage').load(
+            "<?=base_url('editreward/edit')?>"+'/'+rewardid
+        );
+        $('html,body').animate({
+        scrollTop: $("#rewardmanage").offset().top},
+        'slow');
+    });
+});
+</script>
+<a href = "#" style="color:black" id="addreward">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     </a>
     <table class="table">
@@ -28,7 +49,7 @@
                         height:50px;"></td>
             <td><?= $reward['rewardtypename']?></td>
             <td>
-                <a href="<?=base_url('editreward/edit').'/'.$reward['rewardid']?>">
+                <a href="#" class="editreward" rewardid="<?=$reward['rewardid']?>">
                     <span
                         data="<?=$reward['rewardid']?>"
                         class="glyphicon glyphicon-asterisk"
@@ -43,3 +64,5 @@
     <?php endif;?>
     </tbody>
 </table>
+<div id="rewardmanage">
+</div>

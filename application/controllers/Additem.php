@@ -61,28 +61,31 @@ class Additem extends CI_Controller {
 		if ($this->form_validation->run()==TRUE){
 
 				if($item->additem($itemname, $itempicpath, $equipspritepath, $itemcollection, $positionid)==TRUE){
-					$this->load->view(
-						'additem_page',array(
-						'message' => 'Add item successful.',
-						'position' => $position
-						)
-					);
+					echo "add_item_success";
+					//$this->load->view(
+					//	'additem_page',array(
+					//	'message' => 'Add item successful.',
+					//	'position' => $position
+					//	)
+					//);
 				}else{
-					$this->load->view(
-						'additem_page',array(
-						'message' => 'Add item failed.',
-						'position' => $position
-						)
-					);
+					echo "add_item_failed";
+					//$this->load->view(
+					//	'additem_page',array(
+					//	'message' => 'Add item failed.',
+					//	'position' => $position
+					//	)
+					//);
 				}
 
 		}else{
-			$this->load->view(
-			'additem_page',array(
-				'message' => 'Form validation error. please check again.',
-				'position' => $position
-				)
-			);
+			echo "add_item_error";
+			//$this->load->view(
+			//'additem_page',array(
+			//	'message' => 'Form validation error. please check again.',
+			//	'position' => $position
+			//	)
+			//);
 		}
 	}
 

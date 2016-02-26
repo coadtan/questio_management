@@ -3,25 +3,57 @@ $(document).ready(function(){
     $('.goback').click(function(){
         $('#quizmanage').empty();
     });
+    $(document).on("submit", "form", function(event){
+        event.preventDefault();
+        
+        var questid = $("#questid").val();   
+        var questname = $("#questname").val();
+        var questdetails = $("#questdetails").val();
+        var diffid = $("#diffid").val();
+        var rewardid = $("#rewardid").val();
+
+        var url = "<?=base_url('editquest/editquestcheck')?>";
+        $.ajax({
+               type: "POST",
+               url: url,
+               data: {
+                questid: questid,
+                questname: questname,
+                questdetails: questdetails,
+                diffid: diffid,
+                rewardid: rewardid
+               }
+               , 
+               success: function(data){
+                   if(data == 'edit_quest_success'){
+                        $('#quizmanage').empty();
+                   }else if(data == 'edit_quest_failed'){
+                        alert('Edit quest failed');
+                   }else if(data == 'edit_quest_error'){
+                        alert('Error: Some field is not valid');
+                   }
+               }
+        });
+        return false;
+    });
 });
 </script>
-<h2 style='color:red'><?=$message?></h2>
-<?= form_open('editquest/editquestcheck')?>
-    <input type="hidden" name="questid" value="<?=$questdata['questid']?>">
+<form method="POST">
+    <input type="hidden" name="questid" id="questid" value="<?=$questdata['questid']?>">
     Quest Name*:
     <i>Must be less than 100 characters</i>
      <input type="text" name="questname" id="questname" size="100" value="<?=$questdata['questname']?>"><br>
     Quest Details*:
-    <textarea name="questdetails" rows="5" cols="50">
+    <textarea name="questdetails" id="questdetails" rows="5" cols="50">
     <?=$questdata['questdetails']?>
     </textarea><br>
      <br>
     Difficulty*:
-    <?= form_dropdown('diffid',$difficulty,$questdata['diffid']); ?>
+    <?= form_dropdown('diffid',$difficulty,$questdata['diffid'],'id="diffid"'); ?>
      <br>
     Rewards:
-    <?= form_dropdown('rewardid',$reward,$questdata['rewardid']); ?>
+    <?= form_dropdown('rewardid',$reward,$questdata['rewardid'],'id="rewardid"'); ?>
      <br>
     <input type="submit" value="Submit">
-<?=form_close()?>
+</form>
 <a href="#" class="goback">Go Back</a>

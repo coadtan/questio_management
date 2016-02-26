@@ -32,7 +32,7 @@ class Editreward extends CI_Controller {
 		$rewardtype = $_POST['rewardtype'];
 		$rewardpic = $_POST['rewardpic'];
 
-		if(!empty($_FILES['rewardpic']['name'])){
+		if(!empty($_FILES['rewardurl']['name'])){
 			$config['upload_path'] = './pictures/reward';
 			$config['allowed_types'] = 'gif|jpg|jpeg|png';
 			$config['max_size'] = '1000';
@@ -44,7 +44,7 @@ class Editreward extends CI_Controller {
 			$this->upload->initialize($config);
 
 
-			if ($this->upload->do_upload('rewardpic')){
+			if ($this->upload->do_upload('rewardurl')){
 				$uploaddata = $this->upload->data();
 				$rewardpic = substr($uploaddata['full_path'], strpos($uploaddata['full_path'],"questio_management")+18);
 			}
@@ -55,34 +55,37 @@ class Editreward extends CI_Controller {
 
 		if ($this->form_validation->run()==TRUE){
 			if($reward->updateReward($rewardid, $rewardname, $description, $rewardtype, $rewardpic)==TRUE){
-				$rewarddata = $reward->getRewardFromRewardId($rewardid);
-				$this->load->view(
-					'editreward_page',array(
-					'message' => 'Edit reward successful.',
-					'rewarddata' => $rewarddata,
-					'rewardtypedata' => $rewardtypedata
-					)
-				);
+				echo "edit_reward_success";
+				//$rewarddata = $reward->getRewardFromRewardId($rewardid);
+				//$this->load->view(
+				//	'editreward_page',array(
+				//	'message' => 'Edit reward successful.',
+				//	'rewarddata' => $rewarddata,
+				//	'rewardtypedata' => $rewardtypedata
+				//	)
+				//);
 			}else{
-				$rewarddata = $reward->getRewardFromRewardId($rewardid);
-				$this->load->view(
-					'editreward_page',array(
-					'message' => 'Edit reward failed.',
-					'rewarddata' => $rewarddata,
-					'rewardtypedata' => $rewardtypedata
-					)
-				);
+				echo "edit_reward_failed";
+				//$rewarddata = $reward->getRewardFromRewardId($rewardid);
+				//$this->load->view(
+				//	'editreward_page',array(
+				//	'message' => 'Edit reward failed.',
+				//	'rewarddata' => $rewarddata,
+				//	'rewardtypedata' => $rewardtypedata
+				//	)
+				//);
 			}
 
 		}else{
-			$rewarddata = $reward->getRewardFromRewardId($rewardid);
-			$this->load->view(
-			'editreward_page',array(
-				'message' => 'Form validation error. please check again.',
-				'rewarddata' => $rewarddata,
-				'rewardtypedata' => $rewardtypedata
-				)
-			);
+			echo "edit_reward_error";
+			//$rewarddata = $reward->getRewardFromRewardId($rewardid);
+			//$this->load->view(
+			//'editreward_page',array(
+			//	'message' => 'Form validation error. please check again.',
+			//	'rewarddata' => $rewarddata,
+			//	'rewardtypedata' => $rewardtypedata
+			//	)
+			//);
 		}
 	}
 

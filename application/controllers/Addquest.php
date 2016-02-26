@@ -51,34 +51,37 @@ class Addquest extends CI_Controller {
 		if ($this->form_validation->run()==TRUE){
 			if($quest->addquest($questname, $questdetails, $questtypeid, $zoneid, $diffid, $rewardid)==TRUE){
 				$questdata = $this->Quest_model->getQuestByZone($zoneid);
-				$this->load->view(
-					'questoverview_page',array(
-						'zoneid' => $zoneid,
-						'questdata' => $questdata
-					)
-				);
+				echo "add_quest_success";
+				//$this->load->view(
+				//	'questoverview_page',array(
+				//		'zoneid' => $zoneid,
+				//		'questdata' => $questdata
+				//	)
+				//);
 			}else{
-				$this->load->view(
-					'addquest_page',array(
-					'message' => 'Add quest failed.',
-					'zoneid' => $zoneid,
-					'questtype' => $questtype,
-					'difficulty' => $difficulty,
-					'reward' => $reward
-					)
-				);
+				echo "add_quest_failed";
+				//$this->load->view(
+				//	'addquest_page',array(
+				//	'message' => 'Add quest failed.',
+				//	'zoneid' => $zoneid,
+				//	'questtype' => $questtype,
+				//	'difficulty' => $difficulty,
+				//	'reward' => $reward
+				//	)
+				//);
 			}
 
 		}else{
-			$this->load->view(
-			'addquest_page',array(
-				'message' => 'Form validation error. please check again.',
-				'zoneid' => $zoneid,
-				'questtype' => $questtype,
-				'difficulty' => $difficulty,
-				'reward' => $reward
-				)
-			);
+			echo "add_quest_error";
+			//$this->load->view(
+			//'addquest_page',array(
+			//	'message' => 'Form validation error. please check again.',
+			//	'zoneid' => $zoneid,
+			//	'questtype' => $questtype,
+			//	'difficulty' => $difficulty,
+			//	'reward' => $reward
+			//	)
+			//);
 		}
 	}
 
@@ -111,34 +114,37 @@ class Addquest extends CI_Controller {
 
 		if ($this->form_validation->run()==TRUE){
 			if($quiz->addquiz($questid, $seqid, $question, $choicea, $choiceb, $choicec, $choiced, $answerid)==TRUE){
-				$zoneid = $this->Quest_model->getZoneIdByQuestId($questid);
-				$questdata = $this->Quest_model->getQuestByZone($zoneid);
-				$this->load->view(
-					'questoverview_page',array(
-						'zoneid' => $zoneid,
-						'questdata' => $questdata
-					)
-				);
+				echo "add_quiz_success";
+				//$zoneid = $this->Quest_model->getZoneIdByQuestId($questid);
+				//$questdata = $this->Quest_model->getQuestByZone($zoneid);
+				//$this->load->view(
+				//	'questoverview_page',array(
+				//		'zoneid' => $zoneid,
+				//		'questdata' => $questdata
+				//	)
+				//);
 			}else{
-				$seqid = $this->Quiz_model->getseqidfromquestid($questid);
-				$this->load->view(
-					'add_quiz',array(
-					'message' => 'Add quiz failed.',
-					'questid' => $questid,
-					'seqid' => $seqid
-					)
-				);
+				echo "add_quiz_failed";
+				//$seqid = $this->Quiz_model->getseqidfromquestid($questid);
+				//$this->load->view(
+				//	'add_quiz',array(
+				//	'message' => 'Add quiz failed.',
+				//	'questid' => $questid,
+				//	'seqid' => $seqid
+				//	)
+				//);
 			}
 
 		}else{
-			$seqid = $this->Quiz_model->getseqidfromquestid($questid);
-			$this->load->view(
-			'add_quiz',array(
-				'message' => 'Form validation error. please check again.',
-				'questid' => $questid,
-				'seqid' => $seqid
-				)
-			);
+			echo "add_quiz_error";
+			//$seqid = $this->Quiz_model->getseqidfromquestid($questid);
+			//$this->load->view(
+			//'add_quiz',array(
+			//	'message' => 'Form validation error. please check again.',
+			//	'questid' => $questid,
+			//	'seqid' => $seqid
+			//	)
+			//);
 		}
 
 	}
@@ -174,38 +180,41 @@ class Addquest extends CI_Controller {
 
 		if ($this->form_validation->run()==TRUE){
 			if($riddle->addriddle($ridid, $riddetails, $qrcode, $sensorid, $scanlimit, $hint1, $hint2, $hint3)==TRUE){
-				$zoneid = $this->Quest_model->getZoneIdByQuestId($ridid);
-				$questdata = $this->Quest_model->getQuestByZone($zoneid);
-				$this->load->view(
-					'questoverview_page',array(
-						'zoneid' => $zoneid,
-						'questdata' => $questdata
-					)
-				);
+				echo "add_riddle_success";
+				//$zoneid = $this->Quest_model->getZoneIdByQuestId($ridid);
+				//$questdata = $this->Quest_model->getQuestByZone($zoneid);
+				//$this->load->view(
+				//	'questoverview_page',array(
+				//		'zoneid' => $zoneid,
+				//		'questdata' => $questdata
+				//	)
+				//);
 			}else{
-				$qrcode = $riddle->getqrcode();
-				$sensorid = $riddle->getsensorid();
-				$this->load->view(
-					'add_riddle',array(
-						'message' => 'Add riddle failed.',
-						'ridid' => $ridid,
-						'qrcode' => $qrcode,
-						'sensorid' => $sensorid
-					)
-				);
+				echo "add_riddle_failed";
+				//$qrcode = $riddle->getqrcode();
+				//$sensorid = $riddle->getsensorid();
+				//$this->load->view(
+				//	'add_riddle',array(
+				//		'message' => 'Add riddle failed.',
+				//		'ridid' => $ridid,
+				//		'qrcode' => $qrcode,
+				//		'sensorid' => $sensorid
+				//	)
+				//);
 			}
 
 		}else{
-			$qrcode = $riddle->getqrcode();
-			$sensorid = $riddle->getsensorid();
-			$this->load->view(
-			'add_riddle',array(
-				'message' => 'Form validation error. please check again.',
-				'ridid' => $ridid,
-				'qrcode' => $qrcode,
-				'sensorid' => $sensorid
-				)
-			);
+			echo "add_riddle_error";
+			//$qrcode = $riddle->getqrcode();
+			//$sensorid = $riddle->getsensorid();
+			//$this->load->view(
+			//'add_riddle',array(
+			//	'message' => 'Form validation error. please check again.',
+			//	'ridid' => $ridid,
+			//	'qrcode' => $qrcode,
+			//	'sensorid' => $sensorid
+			//	)
+			//);
 		}
 	}
 
@@ -249,30 +258,33 @@ class Addquest extends CI_Controller {
 		if ($this->form_validation->run()==TRUE){
 			
 				if($puzzle->addpuzzle($puzzleid, $imageurl, $helperanswer, $correctanswer)==TRUE){
-					$zoneid = $this->Quest_model->getZoneIdByQuestId($puzzleid);
-					$questdata = $this->Quest_model->getQuestByZone($zoneid);
-					$this->load->view(
-						'questoverview_page',array(
-						'zoneid' => $zoneid,
-						'questdata' => $questdata
-					)
+					echo "add_puzzle_success";
+					//$zoneid = $this->Quest_model->getZoneIdByQuestId($puzzleid);
+					//$questdata = $this->Quest_model->getQuestByZone($zoneid);
+					//$this->load->view(
+					//	'questoverview_page',array(
+					//	'zoneid' => $zoneid,
+					//	'questdata' => $questdata
+					//)
 				);
 			}else{
-				$this->load->view(
-					'add_puzzle',array(
-						'message' => 'Add puzzle failed.',
-						'puzzleid' => $puzzleid
-					)
-				);
+				echo "add_puzzle_failed";
+				//$this->load->view(
+				//	'add_puzzle',array(
+				//		'message' => 'Add puzzle failed.',
+				//		'puzzleid' => $puzzleid
+				//	)
+				//);
 			}
 
 		}else{
-			$this->load->view(
-			'add_puzzle',array(
-				'message' => 'Form validation error. please check again.',
-				'puzzleid' => $puzzleid
-				)
-			);
+			echo "add_puzzle_error";
+			//$this->load->view(
+			//'add_puzzle',array(
+			//	'message' => 'Form validation error. please check again.',
+			//	'puzzleid' => $puzzleid
+			//	)
+			//);
 		}
 	}
 }

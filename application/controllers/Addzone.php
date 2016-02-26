@@ -92,49 +92,52 @@ class Addzone extends CI_Controller {
 
 		if ($this->form_validation->run()==TRUE){
 			if($zone->addzone($floorid, $zonetypeid, $zonename, $zonedetails, $qrcode, $sensorid, $imageurl, $minimapurl, $itemid, $rewardid)==TRUE){
-				$qrcode = $zone->getqrcode();
-				$sensorid = $zone->getsensorid();
-				$this->load->view(
-					'addzone_page',array(
-					'message' => 'Add zone successful.',
-					'floordata' => $floordata,
-					'zonetypedata' => $zonetypedata,
-					'qrcode' => $qrcode,
-					'sensorid' => $sensorid,
-					'itemdata' => $itemdata,
-					'rewarddata' => $rewarddata
-					)
-				);
+				echo "add_zone_success";
+				//$qrcode = $zone->getqrcode();
+				//$sensorid = $zone->getsensorid();
+				//$this->load->view(
+				//	'addzone_page',array(
+				//	'message' => 'Add zone successful.',
+				//	'floordata' => $floordata,
+				//	'zonetypedata' => $zonetypedata,
+				//	'qrcode' => $qrcode,
+				//	'sensorid' => $sensorid,
+				//	'itemdata' => $itemdata,
+				//	'rewarddata' => $rewarddata
+				//	)
+				//);
 			}else{
-				$qrcode = $zone->getqrcode();
-				$sensorid = $zone->getsensorid();
-				$this->load->view(
-					'addzone_page',array(
-					'message' => 'Add zone failed.',
-					'floordata' => $floordata,
-					'zonetypedata' => $zonetypedata,
-					'qrcode' => $qrcode,
-					'sensorid' => $sensorid,
-					'itemdata' => $itemdata,
-					'rewarddata' => $rewarddata
-					)
-				);
+				echo "add_zone_failed";
+				//$qrcode = $zone->getqrcode();
+				//$sensorid = $zone->getsensorid();
+				//$this->load->view(
+				//	'addzone_page',array(
+				//	'message' => 'Add zone failed.',
+				//	'floordata' => $floordata,
+				//	'zonetypedata' => $zonetypedata,
+				//	'qrcode' => $qrcode,
+				//	'sensorid' => $sensorid,
+				//	'itemdata' => $itemdata,
+				//	'rewarddata' => $rewarddata
+				//	)
+				//);
 			}
 
 		}else{
-			$qrcode = $zone->getqrcode();
-			$sensorid = $zone->getsensorid();
-			$this->load->view(
-			'addzone_page',array(
-				'message' => 'Form validation error. please check again.',
-				'floordata' => $floordata,
-				'zonetypedata' => $zonetypedata,
-				'qrcode' => $qrcode,
-				'sensorid' => $sensorid,
-				'itemdata' => $itemdata,
-				'rewarddata' => $rewarddata
-				)
-			);
+			echo "add_zone_error";
+			//$qrcode = $zone->getqrcode();
+			//$sensorid = $zone->getsensorid();
+			//$this->load->view(
+			//'addzone_page',array(
+			//	'message' => 'Form validation error. please check again.',
+			//	'floordata' => $floordata,
+			//	'zonetypedata' => $zonetypedata,
+			//	'qrcode' => $qrcode,
+			//	'sensorid' => $sensorid,
+			//	'itemdata' => $itemdata,
+			//	'rewarddata' => $rewarddata
+			//	)
+			//);
 		}
 	}
 

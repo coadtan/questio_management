@@ -1,43 +1,78 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>Add Building</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+$(document).ready(function(){
+    $('.goback').click(function(){
+        $('#mainarea').load(
+    		"<?=base_url('mainpage/getplace')?>"
+		);
 
-<?=script_tag('assets/jquery/jquery-2.2.0.min.js')?>
-<?=script_tag('assets/bootstrap/js/bootstrap.js')?>
-<?=link_tag('assets/bootstrap/css/bootstrap.min.css')?>
-<?=link_tag('assets/questio/questio.css')?>
-</head>
-<body>
-<div class="container-fluid">
-	<?php $this->load->view('header', array('title' => 'Add Building'));?>
-	<h2 style='color:red'><?=$message?></h2>
-	<?= form_open_multipart('addbuilding/addbuildingcheck')?>
-		Building Name*:
-		<i>Must be less than 140 characters</i>
-		 <input type="text" name="buildingname" id="buildingname" size="50"><br>
-		Place Name*:
-		<?= form_dropdown('placeid',$placedata); ?>
-		 <br>
-		Latitude*:
-		<input type="text" name="latitude" id="latitude"><br>
-		Longitude*:
-		<input type="text" name="longitude" id="longitude"><br>
-		Radius*:
-		<input type="text" name="radius" id="radius"><br>
-		Building Image: <input type="file"
-			class ="register-margin register-box"
-			name="buildingpic"
-			id="buildingpic"
-			size ="999">
-			<br>
-		<input type="submit" value="Submit">
-	<?=form_close()?>
-	<a href="<?=base_url('mainpage')?>">Go Back</a>
-</div>
-</body>
-</html>
+        $('html,body').animate({
+        scrollTop: $("#mainarea").offset().top},
+        'slow');
+    });
+    $(document).on("submit", "form", function(event){
+        event.preventDefault();
+            
+        var buildingname = $("#buildingname").val();
+        var placeid = $("#placeid").val();
+        var latitude = $("#latitude").val();
+        var longitude = $("#longitude").val();
+        var radius = $("#radius").val();
+        var buildingpic = $("#buildingpic").val();
+
+
+        var url = "<?=base_url('addbuilding/addbuildingcheck')?>";
+        $.ajax({
+               type: "POST",
+               url: url,
+               data: {
+                buildingname: buildingname,
+                placeid: placeid,
+                latitude: latitude,
+                longitude: longitude,
+                radius: radius,
+                buildingpic: buildingpic
+               }
+               , 
+               success: function(data){
+                   if(data == 'add_building_success'){
+                        $('#mainarea').load(
+                            "<?=base_url('mainpage/getplace')?>"
+                        );
+
+                        $('html,body').animate({
+                            scrollTop: $("#mainarea").offset().top},
+                            'slow'
+                        );
+                   }else if(data == 'add_building_failed'){
+                        alert('Add building failed');
+                   }else if(data == 'add_building_error'){
+                        alert('Error: Some field is not valid');
+                   }
+               }
+        });
+        return false;
+    });
+});
+</script>
+<form enctype="multipart/form-data" method="post" accept-charset="utf-8">
+	Building Name*:
+	<i>Must be less than 140 characters</i>
+	 <input type="text" name="buildingname" id="buildingname" size="50" required maxlength="140"><br>
+	Place Name*:
+	<?= form_dropdown('placeid',$placedata,'','id="placeid"'); ?>
+	 <br>
+	Latitude*:
+	<input type="text" name="latitude" id="latitude" required pattern="\d+(\.\d{1,15})?" title="Decimal number"><br>
+	Longitude*:
+	<input type="text" name="longitude" id="longitude" required pattern="\d+(\.\d{1,15})?" title="Decimal number"><br>
+	Radius*:
+	<input type="text" name="radius" id="radius" required pattern="\d+(\.\d{1,4})?" title="Decimal number"><br>
+	Building Image: <input type="file"
+		class ="register-margin register-box"
+		name="buildingpic"
+		id="buildingpic"
+		size ="999">
+		<br>
+	<input type="submit" value="Submit">
+</form>
+<a href="#" class="goback">Go Back</a>

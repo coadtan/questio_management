@@ -59,34 +59,37 @@ class Editbuilding extends CI_Controller {
 
 		if ($this->form_validation->run()==TRUE){
 			if($building->updateBuilding($buildingid,$placeid,$buildingname,$latitude,$longitude,$radius,null)==TRUE){
-				$buildingdata = $building->getBuildingFromId($buildingid);
-				$this->load->view(
-					'editbuilding_page',array(
-					'message' => 'Edit building successful.',
-					'buildingdata' => $buildingdata,
-					'placedata' => $placedata
-					)
-				);
+				echo "edit_building_success";
+				//$buildingdata = $building->getBuildingFromId($buildingid);
+				//$this->load->view(
+				//	'editbuilding_page',array(
+				//	'message' => 'Edit building successful.',
+				//	'buildingdata' => $buildingdata,
+				//	'placedata' => $placedata
+				//	)
+				//);
 			}else{
-				$buildingdata = $building->getBuildingFromId($buildingid);
-				$this->load->view(
-					'editbuilding_page',array(
-					'message' => 'Edit building failed.',
-					'buildingdata' => $buildingdata,
-					'placedata' => $placedata
-					)
-				);
+				echo "edit_building_failed";
+				//$buildingdata = $building->getBuildingFromId($buildingid);
+				//$this->load->view(
+				//	'editbuilding_page',array(
+				//	'message' => 'Edit building failed.',
+				//	'buildingdata' => $buildingdata,
+				//	'placedata' => $placedata
+				//	)
+				//);
 			}
 
 		}else{
-			$buildingdata = $building->getBuildingFromId($buildingid);
-			$this->load->view(
-			'editbuilding_page',array(
-				'message' => 'Form validation error. please check again.',
-				'buildingdata' => $buildingdata,
-				'placedata' => $placedata
-				)
-			);
+			echo "edit_building_error";
+			//$buildingdata = $building->getBuildingFromId($buildingid);
+			//$this->load->view(
+			//'editbuilding_page',array(
+			//	'message' => 'Form validation error. please check again.',
+			//	'buildingdata' => $buildingdata,
+			//	'placedata' => $placedata
+			//	)
+			//);
 		}
 	}
 

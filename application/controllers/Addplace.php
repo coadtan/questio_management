@@ -84,42 +84,45 @@ class Addplace extends CI_Controller {
 
 		if ($this->form_validation->run()==TRUE){
 			if($place->addplace($placename, $placefullname, $qrcode, $sensorid, $latitude, $longitude, $radius, $placetype, $imageurl, $enter_rewardid, $rewardid)==TRUE){
-				$qrcode = $place->getqrcode();
-				$sensorid = $place->getsensorid();
-				$this->load->view(
-					'addplace_page',array(
-					'message' => 'Add Place successful.',
-					'qrcode' => $qrcode,
-					'sensorid' => $sensorid,
-					'enterrewarddata' => $enterrewarddata,
-					'rewarddata' => $rewarddata
-					)
-				);
+				echo "add_place_success";
+				//$qrcode = $place->getqrcode();
+				//$sensorid = $place->getsensorid();
+				//$this->load->view(
+				//	'addplace_page',array(
+				//	'message' => 'Add Place successful.',
+				//	'qrcode' => $qrcode,
+				//	'sensorid' => $sensorid,
+				//	'enterrewarddata' => $enterrewarddata,
+				//	'rewarddata' => $rewarddata
+				//	)
+				//);
 			}else{
-				$qrcode = $place->getqrcode();
-				$sensorid = $place->getsensorid();
-				$this->load->view(
-					'addplace_page',array(
-					'message' => 'Add Place failed.',
-					'qrcode' => $qrcode,
-					'sensorid' => $sensorid,
-					'enterrewarddata' => $enterrewarddata,
-					'rewarddata' => $rewarddata
-					)
-				);
+				echo "add_place_failed";
+				//$qrcode = $place->getqrcode();
+				//$sensorid = $place->getsensorid();
+				//$this->load->view(
+				//	'addplace_page',array(
+				//	'message' => 'Add Place failed.',
+				//	'qrcode' => $qrcode,
+				//	'sensorid' => $sensorid,
+				//	'enterrewarddata' => $enterrewarddata,
+				//	'rewarddata' => $rewarddata
+				//	)
+				//);
 			}
 		}else{
-			$qrcode = $place->getqrcode();
-				$sensorid = $place->getsensorid();
-			$this->load->view(
-			'addplace_page',array(
-				'message' => 'Form validation error. please check again.',
-				'qrcode' => $qrcode,
-					'sensorid' => $sensorid,
-					'enterrewarddata' => $enterrewarddata,
-					'rewarddata' => $rewarddata
-				)
-			);
+			echo "add_place_error";
+			//$qrcode = $place->getqrcode();
+			//$sensorid = $place->getsensorid();
+			//$this->load->view(
+			//'addplace_page',array(
+			//	'message' => 'Form validation error. please check again.',
+			//	'qrcode' => $qrcode,
+			//		'sensorid' => $sensorid,
+			//		'enterrewarddata' => $enterrewarddata,
+			//		'rewarddata' => $rewarddata
+			//	)
+			//);
 		}
 	}
 
@@ -182,26 +185,29 @@ class Addplace extends CI_Controller {
 
 		if ($this->form_validation->run()==TRUE){
 			if($placedet->addPlaceDetail($placeid, $placedetails, $phonecontact1, $phonecontact2, $website, $email, $imageurl)==TRUE){
-				$this->load->view(
-					'management_page',array(
-					'message' => 'Add Place Detail successful.'
-					)
-				);
+				echo "add_placedetail_success";
+				//$this->load->view(
+				//	'management_page',array(
+				//	'message' => 'Add Place Detail successful.'
+				//	)
+				//);
 			}else{
-				$this->load->view(
-					'addplacedetail_page',array(
-					'message' => 'Add Place Detail failed.',
-					'placeid' => $placeid
-					)
-				);
+				echo "add_placedetail_failed";
+				//$this->load->view(
+				//	'addplacedetail_page',array(
+				//	'message' => 'Add Place Detail failed.',
+				//	'placeid' => $placeid
+				//	)
+				//);
 			}
 		}else{
-			$this->load->view(
-			'addplacedetail_page',array(
-				'message' => 'Form validation error. please check again.',
-				'placeid' => $placeid
-				)
-			);
+			echo "add_placedetail_error";
+			//$this->load->view(
+			//'addplacedetail_page',array(
+			//	'message' => 'Form validation error. please check again.',
+			//	'placeid' => $placeid
+			//	)
+			//);
 		}
 	}
 }

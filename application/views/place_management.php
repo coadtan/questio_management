@@ -1,12 +1,47 @@
 <script type="text/javascript">
-        $(document).ready(function(){
-            $('.keeperplace').click(function(){
+    $(document).ready(function(){
+        $('.keeperplace').click(function(){
             var placeid = this.getAttribute("placeid");
             $('#buildinglist').load(
                 "<?=base_url('mainpage/getbuilding')?>"+ "/"+ placeid
             );
             $('html,body').animate({
                 scrollTop: $("#buildinglist").offset().top},
+            'slow');
+        });
+        $('#addplace').click(function(){
+            $('#mainarea').load(
+                "<?=base_url('addplace')?>"
+            );
+            $('html,body').animate({
+                scrollTop: $("#mainarea").offset().top},
+            'slow');
+        });
+        $('.editplace').click(function(){
+            var placeid = this.getAttribute("placeid");
+            $('#mainarea').load(
+                "<?=base_url('editplace/edit')?>"+ "/"+ placeid
+            );
+            $('html,body').animate({
+                scrollTop: $("#mainarea").offset().top},
+            'slow');
+        });
+        $('.deleteplace').click(function(){
+            var placeid = this.getAttribute("placeid");
+            $('#mainarea').load(
+                "<?=base_url('mainpage/deleteplace')?>"+ "/"+ placeid
+            );
+            $('html,body').animate({
+                scrollTop: $("#mainarea").offset().top},
+            'slow');
+        });
+        $('.manageplacedetail').click(function(){
+            var placeid = this.getAttribute("placeid");
+            $('#mainarea').load(
+                "<?=base_url('addplace/addEditPlaceDetail')?>"+ "/"+ placeid
+            );
+            $('html,body').animate({
+                scrollTop: $("#mainarea").offset().top},
             'slow');
         });
     });
@@ -27,9 +62,9 @@
                         alt="<?=$place['placename']?>">
                 </a>
                 <?=$place['placename']?>
-                <a href="<?=base_url('editplace/edit/'.$place["placeid"])?>">Edit</a>
-                <a href="<?=base_url('mainpage/deleteplace/'.$place["placeid"])?>">Delete</a>
-                <a href="<?=base_url('addplace/addEditPlaceDetail/'.$place["placeid"])?>">
+                <a href="#" class="editplace" placeid="<?=$place['placeid']?>">Edit</a>
+                <a href="#" class="deleteplace" placeid="<?=$place['placeid']?>">Delete</a>
+                <a href="#" class="manageplacedetail" placeid="<?=$place['placeid']?>">
                 Add/Edit Placedetail
                 </a>
             </div>
@@ -37,8 +72,9 @@
     <?php endif;?>
     <div class="col-xs-6 col-md-3" style="text-align:center">
         <a
-            href="<?=base_url('addplace')?>"
+            href="#"
             class="thumbnail"
+            id="addplace"
         >
             <span class="glyphicon glyphicon-plus" style="font-size:100px"></span>
         </a>

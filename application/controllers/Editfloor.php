@@ -53,35 +53,39 @@ class Editfloor extends CI_Controller {
 
 		$this->form_validation->set_rules('floorname', 'floorname', 'required|max_length[100]');
 
-		if ($this->form_validation->run()==TRUE){
-			if($floor->updateFloor($floorid, $buildingid, $floorname, $imageurl)==TRUE){
-				$floordata = $floor->getFloorFromId($floorid);
-				$this->load->view(
-					'editfloor_page',array(
-					'message' => 'Edit floor successful.',
-					'buildingdata' => $buildingdata,
-					'floordata' => $floordata
-					)
-				);
+			if ($this->form_validation->run()==TRUE){
+				if($floor->updateFloor($floorid, $buildingid, $floorname, $imageurl)==TRUE){
+					echo "edit_floor_success";
+					//$floordata = $floor->getFloorFromId($floorid);
+					//$this->load->view(
+					//	'editfloor_page',array(
+					//	'message' => 'Edit floor successful.',
+					//	'buildingdata' => $buildingdata,
+					//	'floordata' => $floordata
+					//	)
+					//);
+				}else{
+					echo "edit_floor_failed";
+					//$floordata = $floor->getFloorFromId($floorid);
+					//$this->load->view(
+					//	'editfloor_page',array(
+					//	'message' => 'Edit floor failed.',
+					//	'buildingdata' => $buildingdata,
+					//	'floordata' => $floordata
+					//	)
+					//);
+				}
 			}else{
-				$floordata = $floor->getFloorFromId($floorid);
-				$this->load->view(
-					'editfloor_page',array(
-					'message' => 'Edit floor failed.',
-					'buildingdata' => $buildingdata,
-					'floordata' => $floordata
-					)
-				);
+				echo "edit_floor_error";
+				//$floordata = $floor->getFloorFromId($floorid);
+				//$this->load->view(
+				//'editfloor_page',array(
+				//	'message' => 'Form validation error. please check again.',
+				//	'buildingdata' => $buildingdata,
+				//	'floordata' => $floordata
+				//	)
+				//);
 			}
-		}else{
-			$floordata = $floor->getFloorFromId($floorid);
-			$this->load->view(
-			'editfloor_page',array(
-				'message' => 'Form validation error. please check again.',
-				'buildingdata' => $buildingdata,
-				'floordata' => $floordata
-				)
-			);
 		}
 	}
 

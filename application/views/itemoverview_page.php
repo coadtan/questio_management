@@ -1,4 +1,25 @@
-<a href = "<?=base_url('additem')?>" style="color:black">
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#additem').click(function(){
+        $('#itemmanage').load(
+            "<?=base_url('additem')?>"
+        );
+        $('html,body').animate({
+        scrollTop: $("#itemmanage").offset().top},
+        'slow');
+    });
+    $('.edititem').click(function(){
+        var itemid = this.getAttribute("itemid");
+        $('#itemmanage').load(
+            "<?=base_url('edititem/edit')?>"+'/'+itemid
+        );
+        $('html,body').animate({
+        scrollTop: $("#itemmanage").offset().top},
+        'slow');
+    });
+});
+</script>
+<a href = "#" style="color:black" id="additem">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     </a>
     <table class="table">
@@ -27,7 +48,7 @@
             <td><?= $item['itemcollection']?></td>
             <td><?= $item['positionname']?></td>
             <td>
-                <a href="<?=base_url('edititem/edit').'/'.$item['itemid']?>"><span
+                <a href="#" class="edititem" itemid="<?=$item['itemid']?>"><span
                     data="<?=$item['itemid']?>"
                     class="glyphicon glyphicon-asterisk"
                     style="cursor: pointer">
@@ -40,3 +61,5 @@
     <?php endif;?>
     </tbody>
 </table>
+<div id="itemmanage">
+</div>

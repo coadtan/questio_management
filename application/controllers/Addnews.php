@@ -33,31 +33,40 @@ class Addnews extends CI_Controller {
 		$this->form_validation->set_rules('datestarted', 'datestarted', 'required');
 		$this->form_validation->set_rules('dateended', 'dateended', 'required');
 
+		
 		if ($this->form_validation->run()==TRUE){
 			if($news->addNews($placeid, $newsheader, $newsdetails, $datestarted, $dateended)==TRUE){
-				$this->load->view(
-					'addnews_page',array(
-						'message' => 'Add news successful.',
-						'placedata' => $placedata
-					)
-				);
+
+				echo "add_news_success";
+				// $this->load->view(
+				// 	'addnews_page',array(
+				// 		'message' => 'Add news successful.',
+				// 		'placedata' => $placedata
+				// 	)
+				// );
 			}else{
-				$this->load->view(
-					'addnews_page',array(
-						'message' => 'Add news failed.',
-						'placedata' => $placedata
-					)
-				);
+
+				echo "add_news_failed";
+				// $this->load->view(
+				// 	'addnews_page',array(
+				// 		'message' => 'Add news failed.',
+				// 		'placedata' => $placedata
+				// 	)
+				// );
 			}
 
 		}else{
-			$this->load->view(
-			'addnews_page',array(
-				'message' => 'Form validation error. please check again.',
-				'placedata' => $placedata
-				)
-			);
+
+			echo "add_news_error";
+			// $this->load->view(
+			// 'addnews_page',array(
+			// 	'message' => 'Form validation error. please check again.',
+			// 	'placedata' => $placedata
+			// 	)
+			// );
 		}
+		
+		
 
 	}
 
