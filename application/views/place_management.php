@@ -75,6 +75,7 @@
             href="#"
             class="thumbnail"
             id="addplace"
+            style="color:black"
         >
             <span class="glyphicon glyphicon-plus" style="font-size:100px"></span>
         </a>
