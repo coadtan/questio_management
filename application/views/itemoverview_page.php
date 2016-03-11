@@ -1,20 +1,20 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $('#additem').click(function(){
-        $('#itemmanage').load(
+        $('#mainarea').load(
             "<?=base_url('additem')?>"
         );
         $('html,body').animate({
-        scrollTop: $("#itemmanage").offset().top},
+        scrollTop: $("#mainarea").offset().top},
         'slow');
     });
     $('.edititem').click(function(){
         var itemid = this.getAttribute("itemid");
-        $('#itemmanage').load(
+        $('#mainarea').load(
             "<?=base_url('edititem/edit')?>"+'/'+itemid
         );
         $('html,body').animate({
-        scrollTop: $("#itemmanage").offset().top},
+        scrollTop: $("#mainarea").offset().top},
         'slow');
     });
 });
@@ -61,5 +61,3 @@ $(document).ready(function(){
     <?php endif;?>
     </tbody>
 </table>
-<div id="itemmanage">
-</div>

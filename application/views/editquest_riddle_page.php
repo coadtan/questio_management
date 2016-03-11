@@ -1,7 +1,13 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $('.goback').click(function(){
-        $('#riddlemanage').empty();
+        var zoneid = this.getAttribute("zoneid");
+        $('#mainarea').load(
+          "<?=base_url('questoverview/getquest')?>"+ "/"+ zoneid
+        );
+        $('html,body').animate({
+        scrollTop: $("#mainarea").offset().top},
+        'slow');
     });
     $(document).on("submit", "form", function(event){
         event.preventDefault();
@@ -83,4 +89,4 @@ $(document).ready(function(){
     <input type="text" name="hint3" id="hint3" size="100" value="<?=$riddledata['hint3']?>" required maxlength="100"><br>
     <input type="submit" value="Submit">
 </form>
-<a href="#" class="goback">Go Back</a>
+<a href="#" class="goback" zoneid="<?=$zoneid?>">Go Back</a>

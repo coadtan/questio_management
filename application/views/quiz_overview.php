@@ -2,33 +2,30 @@
 $(document).ready(function(){
     $('#addquiz').click(function(){
         var questid = this.getAttribute("questid");
-        $('#quizmanage').load(
+        $('#mainarea').load(
             "<?=base_url('addquest/addquiz')?>"+'/'+questid
         );
         $('html,body').animate({
-        scrollTop: $("#quizmanage").offset().top},
+        scrollTop: $("#mainarea").offset().top},
         'slow');
     });
     $('.editquiz').click(function(){
         var quizid = this.getAttribute("quizid");
-        $('#quizmanage').load(
+        $('#mainarea').load(
             "<?=base_url('editquest/editquiz')?>"+'/'+quizid
         );
         $('html,body').animate({
-        scrollTop: $("#quizmanage").offset().top},
+        scrollTop: $("#mainarea").offset().top},
         'slow');
     });
     $('#editquest').click(function(){
         var questid = this.getAttribute("questid");
-        $('#quizmanage').load(
+        $('#mainarea').load(
             "<?=base_url('editquest/edit')?>"+'/'+questid
         );
         $('html,body').animate({
-        scrollTop: $("#quizmanage").offset().top},
+        scrollTop: $("#mainarea").offset().top},
         'slow');
-    });
-    $('.goback').click(function(){
-        $('#loading').empty();
     });
 });
 </script>

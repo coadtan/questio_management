@@ -2,24 +2,21 @@
 $(document).ready(function(){
     $('#addpuzzle').click(function(){
         var puzzleid = this.getAttribute("puzzleid");
-        $('#puzzlemanage').load(
+        $('#mainarea').load(
             "<?=base_url('addquest/addpuzzle')?>"+'/'+puzzleid
         );
         $('html,body').animate({
-        scrollTop: $("#puzzlemanage").offset().top},
+        scrollTop: $("#mainarea").offset().top},
         'slow');
     });
     $('.editpuzzle').click(function(){
         var puzzleid = this.getAttribute("puzzleid");
-        $('#puzzlemanage').load(
+        $('#mainarea').load(
             "<?=base_url('editquest/editpuzzle')?>"+'/'+puzzleid
         );
         $('html,body').animate({
-        scrollTop: $("#puzzlemanage").offset().top},
+        scrollTop: $("#mainarea").offset().top},
         'slow');
-    });
-    $('.goback').click(function(){
-        $('#loading').empty();
     });
 });
 </script>
@@ -63,6 +60,4 @@ $(document).ready(function(){
     <?php endif;?>
     </tbody>
 </table>
-<a class="goback" href="#">Go Back</a>
-<div id="puzzlemanage"></div>
 
