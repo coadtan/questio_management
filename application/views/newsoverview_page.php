@@ -1,20 +1,20 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $('#addnews').click(function(){
-        $('#newsmanage').load(
+        $('#mainarea').load(
             "<?=base_url('addnews')?>"
         );
         $('html,body').animate({
-        scrollTop: $("#newsmanage").offset().top},
+        scrollTop: $("#mainarea").offset().top},
         'slow');
     });
     $('.editnews').click(function(){
         var newsid = this.getAttribute("newsid");
-        $('#newsmanage').load(
+        $('#mainarea').load(
             "<?=base_url('editnews/edit')?>"+"/"+newsid
         );
         $('html,body').animate({
-        scrollTop: $("#newsmanage").offset().top},
+        scrollTop: $("#mainarea").offset().top},
         'slow');
     });
 });
@@ -58,4 +58,3 @@ $(document).ready(function(){
     <?php endif;?>
     </tbody>
 </table>
-<div id="newsmanage"></div>

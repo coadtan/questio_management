@@ -87,11 +87,13 @@ class Addquest extends CI_Controller {
 
 	public function addQuiz($questid){
 		$seqid = $this->Quiz_model->getseqidfromquestid($questid);
+		$zoneid = $this->Quest_model->getZoneIdByQuestId($questid);
 		$this->load->view(
 			'add_quiz',array(
 				'message' => "",
 				'questid' => $questid,
-				'seqid' => $seqid
+				'seqid' => $seqid,
+				'zoneid' => $zoneid
 			)
 		);
 	}
@@ -153,12 +155,14 @@ class Addquest extends CI_Controller {
 		$riddle = $this->Riddle_model;
 		$qrcode = $riddle->getqrcode();
 		$sensorid = $riddle->getsensorid();
+		$zoneid = $this->Quest_model->getZoneIdByQuestId($ridid);
 		$this->load->view(
 			'add_riddle',array(
 				'message' => "",
 				'ridid' => $ridid,
 				'qrcode' => $qrcode,
-				'sensorid' => $sensorid
+				'sensorid' => $sensorid,
+				'zoneid' => $zoneid
 			)
 		);
 	}
@@ -219,10 +223,12 @@ class Addquest extends CI_Controller {
 	}
 
 	public function addPuzzle($puzzleid){
+		$zoneid = $this->Quest_model->getZoneIdByQuestId($puzzleid);
 		$this->load->view(
 			'add_puzzle',array(
 				'message' => "",
-				'puzzleid' => $puzzleid
+				'puzzleid' => $puzzleid,
+				'zoneid' => $zoneid
 			)
 		);
 	}
@@ -266,7 +272,7 @@ class Addquest extends CI_Controller {
 					//	'zoneid' => $zoneid,
 					//	'questdata' => $questdata
 					//)
-				);
+					//);
 			}else{
 				echo "add_puzzle_failed";
 				//$this->load->view(

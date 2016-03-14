@@ -44,7 +44,7 @@ class Rewards_model extends CI_Model{
 		$rewards = null;
 		$this->db->select('rewardid, rewardname, description, rewardtypename');
 		$this->db->from('Rewards');
-		$this->db->join('RewardType','RewardType.rewardtypeid = rewards.rewardtype');
+		$this->db->join('RewardType','RewardType.rewardtypeid = Rewards.rewardtype');
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
 			$rewards = array();
@@ -70,7 +70,7 @@ class Rewards_model extends CI_Model{
 		$rewards = null;
 		$this->db->select('rewardname, description, rewardtypename');
 		$this->db->from('Rewards');
-		$this->db->join('RewardType','RewardType.rewardtypeid = rewards.rewardtype');
+		$this->db->join('RewardType','RewardType.rewardtypeid = Rewards.rewardtype');
 		$this->db->like('rewardname',$namepart);
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
@@ -185,7 +185,7 @@ class Rewards_model extends CI_Model{
 		$subquery = $this->db->get_compiled_select();
 		$this->db->select('*');
 		$this->db->from('Rewards');
-		$this->db->join('RewardType','RewardType.rewardtypeid = rewards.rewardtype');
+		$this->db->join('RewardType','RewardType.rewardtypeid = Rewards.rewardtype');
 		$this->db->where('rewardid IN ('.$subquery.')', null, false);
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){

@@ -30,9 +30,19 @@ $(document).ready(function(){
 				'slow'
 		);
 	});
+	$('.Quest').click(function(){
+		var zoneid = this.getAttribute("zoneid");
+		$('#mainarea').load(
+    		"<?=base_url('addquest/add')?>"+ "/"+ zoneid
+		);
+		$('html,body').animate({
+				scrollTop: $("#mainarea").offset().top},
+				'slow'
+		);
+	});
 });
 </script>
-	<a href = "<?=base_url('addquest/add/'.$zoneid)?>" style="color:black">
+	<a class="Quest" href="#" zoneid="<?=$zoneid?>" style="color:black">
 		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 	</a>
 	<table class="table">

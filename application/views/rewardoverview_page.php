@@ -1,20 +1,20 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $('#addreward').click(function(){
-        $('#rewardmanage').load(
+        $('#mainarea').load(
             "<?=base_url('addreward')?>"
         );
         $('html,body').animate({
-        scrollTop: $("#rewardmanage").offset().top},
+        scrollTop: $("#mainarea").offset().top},
         'slow');
     });
     $('.editreward').click(function(){
         var rewardid = this.getAttribute("rewardid");
-        $('#rewardmanage').load(
+        $('#mainarea').load(
             "<?=base_url('editreward/edit')?>"+'/'+rewardid
         );
         $('html,body').animate({
-        scrollTop: $("#rewardmanage").offset().top},
+        scrollTop: $("#mainarea").offset().top},
         'slow');
     });
 });

@@ -2,24 +2,21 @@
 $(document).ready(function(){
     $('#addriddle').click(function(){
         var ridid = this.getAttribute("ridid");
-        $('#riddlemanage').load(
+        $('#mainarea').load(
             "<?=base_url('addquest/addriddle')?>"+'/'+ridid
         );
         $('html,body').animate({
-        scrollTop: $("#riddlemanage").offset().top},
+        scrollTop: $("#mainarea").offset().top},
         'slow');
     });
     $('.editriddle').click(function(){
         var ridid = this.getAttribute("ridid");
-        $('#riddlemanage').load(
+        $('#mainarea').load(
             "<?=base_url('editquest/editriddle')?>"+'/'+ridid
         );
         $('html,body').animate({
-        scrollTop: $("#riddlemanage").offset().top},
+        scrollTop: $("#mainarea").offset().top},
         'slow');
-    });
-    $('.goback').click(function(){
-        $('#loading').empty();
     });
 });
 </script>
@@ -63,7 +60,6 @@ $(document).ready(function(){
     <?php endif;?>
     </tbody>
 </table>
-<a class="goback" href="#">Go Back</a>
 <div id="riddlemanage">
 </div>
 
