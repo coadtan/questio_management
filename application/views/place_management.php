@@ -47,6 +47,10 @@
     });
 </script>
 <!--Place management start here :D-->
+<div class ="r1-add-place">
+        <h1 class ="text-white"style="margin-top:50px !important">Place Managemet </h1>
+</div>
+<br><br>
 <div class="row">
     <?php if(!empty($keeperplace)):?>
         <?php foreach($keeperplace as $place):?>

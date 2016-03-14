@@ -71,6 +71,10 @@ $(document).ready(function(){
     });
 });
 </script>
+<div class ="r1-add-place">
+        <h1 class ="text-white"style="margin-top:50px !important">Statistic Managemet </h1>
+</div>
+<br><br>
     <div class="row">
         <div class="col-md-9">
         </div>
@@ -112,11 +116,7 @@ $(document).ready(function(){
         <div class="col-md-2">
             <a href="#fakelink" class="btn btn-block btn-lg btn-primary" id="explorer-count"><img class="questio-menu-logo" src="<?= base_url()?>assets/images/top.png" alt="">Zone visited</a>
         </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div id="graph">
+    <div id="graph" style ="margin:100px">
 
 
     </div><!-- end of graph-->

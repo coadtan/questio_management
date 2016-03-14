@@ -19,6 +19,10 @@ $(document).ready(function(){
     });
 });
 </script>
+<div class ="r1-add-place">
+        <h1 class ="text-white"style="margin-top:50px !important">Reward Managemet </h1>
+</div>
+<br><br>
 <a href = "#" style="color:black" id="addreward">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     </a>
