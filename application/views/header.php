@@ -54,6 +54,7 @@ $(document).ready(function(){
     </div>
     <!-- Login -->
     <div class="modal-body" id = "login-modal">
+        <?=validation_errors();?>
         <?=form_open('login')?>
         <input type="text" size="20" id="username" name="username" placeholder ="Username" style ="margin-bottom:5px;width:300px;" required />
         <input type="password" size="20" id="password" name="password" placeholder ="Password"style ="width:300px;" required/>
