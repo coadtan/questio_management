@@ -131,7 +131,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<a href = "#" id="item"><li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/item.png" alt="">&nbsp&nbsp ITEM</li></a>
 					<a href = "#" id="news"><li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/news.png" alt="">&nbsp&nbsp NEWS</li></a>
 					<a href = "#" id="statistics" style ="color:white"><li><img class="questio-menu-logo" src="<?= base_url()?>assets/images/stats.png" alt="" >&nbsp&nbsp STATISTICS</li></a>
+					<ul>
 					<div id="stat-menu"></div>
+					</ul>
 				</ul>
 			</div>
 			<div class ="wrapper-l text-white">
