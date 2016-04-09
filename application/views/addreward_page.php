@@ -2,8 +2,8 @@
 $(document).ready(function(){
     $('.goback').click(function(){
         $('#mainarea').load(
-    		"<?=base_url('rewardoverview')?>"
-		);
+    	   	"<?=base_url('rewardoverview')?>"
+		    );
 
         $('html,body').animate({
         scrollTop: $("#mainarea").offset().top},
@@ -17,7 +17,7 @@ $(document).ready(function(){
         var rewardpic = $("#rewardpic").val();
         var rewardtype = $("#rewardtype").val();
 
-        var url = "<?=base_url('addreward/addrewardcheck')?>"
+        var url = "<?=base_url('addreward/addrewardcheck')?>";  
         $.ajax({
                type: "POST",
                url: url,
@@ -31,7 +31,7 @@ $(document).ready(function(){
                success: function(data){
                    if(data == 'add_reward_success'){
                         $('#mainarea').load(
-                            <?=base_url('rewardoverview')?>;
+                            "<?=base_url('rewardoverview')?>"
                         );
 
                         $('html,body').animate({
@@ -81,6 +81,9 @@ Reward Picture: <input type="file"
 Reward Type*:
 	<?= form_dropdown('rewardtype',$rewardtypedata, '', 'id="rewardtype"'); ?>
 	 <br><br>
-	<input type="submit" value="Submit">
-<?=form_close()?>
-<a href="#" class="goback">Go Back</a>
+   <input type="button" class="goback" value ="Go Back"/>
+	 <input type="submit" value="Submit"/>
+</form>
+
+
+
