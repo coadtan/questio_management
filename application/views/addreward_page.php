@@ -31,7 +31,7 @@ $(document).ready(function(){
                success: function(data){
                    if(data == 'add_reward_success'){
                         $('#mainarea').load(
-                            <?=base_url('rewardoverview')?>;
+                            "<?=base_url('rewardoverview')?>"
                         );
 
                         $('html,body').animate({
