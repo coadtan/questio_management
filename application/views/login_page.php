@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</div>
 		</div>
 		<div class="row">
-			<div class ="r2">
+			<div class ="r2" style ="padding-top:25px">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
 					<div class="center">
@@ -57,17 +57,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</div>
 		</div>
 		<div class="row">
-			<div class ="r3">
+			<div class ="r3"  style ="padding-top:80px" >
 				<div class="col-md-2"></div>
 				<div class="col-md-8">
 					<div class ="col-md-6">
 						<div class="center">
 							<h1>Adventurer Info</h1>
 						</br>
-						<p>ผู้เล่นจะต้องออกเดินทางไปตามสถานที่ต่างๆ โดยใช้ App นี้</p>
-						<p>เพื่อเล่นภารกิจและรับรางวัลและไอเทม้ต่างๆ</p>
-						<p>สำหรับเอาไปอวดเพื่อนๆ</p>
-						<p>เพียงแค่คุณมีมือถือและ App ของคุณ</p>
+						<h3>ผู้เล่นจะต้องออกเดินทางไปตามสถานที่ต่างๆ</h3>
+						<h3>เพื่อเล่นภารกิจและรับรางวัลและไอเทมต่างๆ</h3>
+						<h3>สำหรับเอาไปอวดเพื่อนๆ</h3>
+						<h3>เพียงแค่คุณมีมือถือและ App ของคุณ</h3>
 					</div>
 				</div>
 				<div class ="col-md-6">
@@ -80,7 +80,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
 	</div>
 	<div class="row">
-		<div class ="r4">
+		<div class ="r4"  style ="padding-top:80px">
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
 				<div class ="col-md-6">
@@ -92,9 +92,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class="center">
 						<h1>Keeper Info</h1>
 					</br>
-					<p>ผู้ดูแลสามารถสร้างและดูแลสถานที่ได้ต่างๆ มากมาย</p>
-					<p>รวมไปถึงภารกิจ เครื่องแต่งกาย และรางวัล</p>
-					<p>เพียงแค่ปลายนิ้วของคุณ</p>
+					<h3>ผู้ดูแลสามารถสร้างและดูแลสถานที่ได้ต่างๆ มากมาย</h3>
+					<h3>รวมไปถึงภารกิจ เครื่องแต่งกาย และรางวัล</h3>
+					<h3>เพียงแค่ปลายนิ้วของคุณ</h3>
 				</div>
 			</div>
 		</div>
@@ -111,30 +111,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="col-md-3"></div>
 		</div>
 	</div>
-	<!--
-	<div class="row">
-		<div class ="r6">
-			<div class="col-md-2"></div>
-			<div class="col-md-8">
-				<div class ="col-md-6">
-					<div class="center">
-						<img class="feat-dummy-logo" src="<?= base_url()?>assets/images/questio_sword.png" alt="">
-					</div>
-				</div>
-				<div class ="col-md-6">
-					<div class="center">
-						<h1>Feature Dummy</h1>
-					</br>
-					<p>xxxxxxxxxxxxxxxxxxxxxxxxx</p>
-					<p>xxxxxxxxxxxxxxxxxxxxxxxxx</p>
-					<p>xxxxxxxxxxxxxxxxxxxxxxxxx</p>
-					<p>xxxxxxxxxxxxxxxxxxxxxxxxx</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	-->
-	<div class="row">
+	<!-- <div class="row">
 		<div class ="r7">
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
@@ -150,13 +127,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div>
 			</div>
 			<div class="col-md-2"></div>
-		</div>
+		</div> -->
 		<div class="row">
 			<div class ="r8">
-				<div class="col-md-2">.col-md-2</div>
-				<div class="col-md-5">.col-md-5</div>
-				<div class="col-md-3">.col-md-3</div>
-				<div class="col-md-2">.col-md-2</div>
+				<div class="col-md-2" style ="color:white"></div>
+				<div class="col-md-8" style ="color:white">
+					<h1 style ="text-align:left;margin-top:50px">Questio</h1>
+					<div class ="detail-questio">
+						<div class ="tropic" style ="text-align:left;margin-top:25px">
+							<div class="col-md-2" style ="color:white"><h4>Home</div>
+							<div class="col-md-2" style ="color:white"><h4>About</div>
+							<div class="col-md-2" style ="color:white"><h4>Facebook</div>
+							<div class="col-md-2" style ="color:white"><h4>Blog</div>
+							<div class="col-md-2" style ="color:white"><h4>Contact</div>
+							<div class="col-md-2" style ="color:white"><h4></div>
+						</div>
+					</div>
+					<br>				
+					<div class ="copyright" style ="text-align:left">
+						<hr>
+						<p> &nbsp&nbsp © copyright Questio Application for Adventure project KMUTT</p>
+					</div>
+				</div>
+				<div class="col-md-2" style ="color:white"></div>
 			</div>
 		</div>
 	</div>

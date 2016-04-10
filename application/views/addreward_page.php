@@ -83,4 +83,4 @@ Reward Type*:
 	 <br><br>
 	<input type="submit" value="Submit">
 <?=form_close()?>
-<a href="#" class="goback">Go Back</a>
+<a href="#" class="goback"style ="color:black">Go Back</a>

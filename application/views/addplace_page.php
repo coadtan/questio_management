@@ -187,7 +187,7 @@ function placeMarker(location, map) {
 		<input type="submit" value="Submit">
 	</div>
 	<br>
-	<a href="#" class="goback">Go Back</a>
+	<a href="#" class="goback"style ="color:black">Go Back</a>
 </div>
 <br>
 </div>

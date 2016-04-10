@@ -31,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			echo "<h2 style='color:red'>Reward not found</h2>";
 		}
 	?>
-	<a href="<?=base_url('login')?>">Go back</a>
+	<a href="<?=base_url('login')?>" style ="color:black">Go back</a>
 </div>
 </body>
 </html>

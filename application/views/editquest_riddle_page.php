@@ -89,4 +89,4 @@ $(document).ready(function(){
     <input type="text" name="hint3" id="hint3" size="100" value="<?=$riddledata['hint3']?>" required maxlength="100"><br>
     <input type="submit" value="Submit">
 </form>
-<a href="#" class="goback" zoneid="<?=$zoneid?>">Go Back</a>
+<a href="#" class="goback" zoneid="<?=$zoneid?>"style ="color:black">Go Back</a>

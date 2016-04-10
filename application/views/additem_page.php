@@ -93,4 +93,4 @@ $(document).ready(function(){
 	 <br><br>
 	<input type="submit" value="Submit">
 </form>
-<a href="#" class="goback">Go Back</a>
+<a href="#" class="goback"style ="color:black">Go Back</a>
