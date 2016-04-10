@@ -1,6 +1,22 @@
 <script type="text/javascript">
 $(document).ready(function(){
-    
+    $("#login-form").submit(function(e) {
+        var url = "<?=base_url('login/login_action')?>";
+        $.ajax({
+               type: "POST",
+               url: url,
+               data: $("#login-form").serialize(),
+               success: function(data)
+               {
+                    if (data == "LOGIN_SUCCESSED"){
+                        window.location.replace("<?=base_url('mainpage')?>");
+                    }else if(data == "LOGIN_FAILED"){
+                        $('#form-error').text('Invalid username or password.')
+                    }
+               }
+             });
+        e.preventDefault();
+    });
     $('#register-link').click(function(){
         var id = this.id;
         window.location.replace("<?=base_url('register')?>");
@@ -54,17 +70,19 @@ $(document).ready(function(){
     </div>
     <!-- Login -->
     <div class="modal-body" id = "login-modal">
+        <p id="form-error" style="color:red"></p>
         <?=validation_errors();?>
+<<<<<<< HEAD
         <?=form_open('login')?>
+=======
+        <form id="login-form">
+>>>>>>> 13b5d01c3dce196340ed7a5fb07c891a38564d42
         <input type="text" size="20" id="username" name="username" placeholder ="Username" style ="margin-bottom:5px;width:300px;" required />
         <input type="password" size="20" id="password" name="password" placeholder ="Password"style ="width:300px;" required/>
         <br/> <br/>
         <input class ="btn btn-info" type="submit" value="login">
-        <?=form_close()?>
+        </form>
         <br>
-         <!--
-        <a href="<?=base_url('register')?>">Register</a>
-        -->
         <a href="#" id="register-link" style ="color:gray">Register</a>
         <br>
         <a href="<?=base_url('forgotpassword')?>" style ="color:gray">Forgot password?</a>

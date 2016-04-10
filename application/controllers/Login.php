@@ -9,6 +9,7 @@ class Login extends CI_Controller {
 	}
 
 	public function index(){
+<<<<<<< HEAD
 		$this->form_validation->set_rules('username','username','trim|required');
   		$this->form_validation->set_rules('password','password','trim|required|callback_dbcheck');
   
@@ -17,9 +18,21 @@ class Login extends CI_Controller {
   		}else{
   			redirect('mainpage','refresh');
   		}
+=======
+		$this->load->view('login_page');
+>>>>>>> 13b5d01c3dce196340ed7a5fb07c891a38564d42
 	}
 
+	public function login_action(){
+		$this->form_validation->set_rules('username','username','trim|required');
+  		$this->form_validation->set_rules('password','password','trim|required|callback_dbcheck');
 
+  		if($this->form_validation->run() == false){
+  			echo "LOGIN_FAILED";
+  		}else{
+  			echo "LOGIN_SUCCESSED";
+  		}
+	}
 
 	public function dbcheck($password){
 		$keeper = $this->Keeper_model;
