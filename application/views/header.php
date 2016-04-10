@@ -72,11 +72,7 @@ $(document).ready(function(){
     <div class="modal-body" id = "login-modal">
         <p id="form-error" style="color:red"></p>
         <?=validation_errors();?>
-<<<<<<< HEAD
-        <?=form_open('login')?>
-=======
         <form id="login-form">
->>>>>>> 13b5d01c3dce196340ed7a5fb07c891a38564d42
         <input type="text" size="20" id="username" name="username" placeholder ="Username" style ="margin-bottom:5px;width:300px;" required />
         <input type="password" size="20" id="password" name="password" placeholder ="Password"style ="width:300px;" required/>
         <br/> <br/>

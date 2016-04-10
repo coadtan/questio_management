@@ -184,10 +184,10 @@ function placeMarker(location, map) {
 		Rewards:
 		<?= form_dropdown('rewardid',$rewarddata,'','id="rewardid"'); ?><br><br>
 
-		<input type="button" class="goback" value ="Go Back"/>
-	 	<input type="submit" value="Submit"/>
+		<input type="submit" value="Submit">
 	</div>
 	<br>
+	<a href="#" class="goback"style ="color:black">Go Back</a>
 </div>
 <br>
 </div>

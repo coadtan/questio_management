@@ -73,5 +73,5 @@ $(document).ready(function(){
      <br>
     <input type="submit" value="Submit">
 </form>
-<a href="#" class="goback" zoneid="<?=$zoneid?>">Go Back</a>
+<a href="#" class="goback" zoneid="<?=$zoneid?>"style ="color:black">Go Back</a>
 

@@ -89,4 +89,4 @@ $(document).ready(function(){
     <input type="text" name="correctanswer" id="correctanswer" size="100" value="<?=$puzzledata['correctanswer']?>"><br>
     <input type="submit" value="Submit">
 </form>
-<a href="#" class="goback" zoneid="<?=$zoneid?>">Go Back</a>
+<a href="#" class="goback" zoneid="<?=$zoneid?>"style ="color:black">Go Back</a>

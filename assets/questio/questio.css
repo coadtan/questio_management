@@ -149,8 +149,10 @@ html,body{
 	height: 320px;
 }
 .questio-avatar{
-	width: 122px;
-	height: 265px;
+
+	max-width: 122px;
+	max-height: 265px;
+	margin-bottom: 30px;
 }
 .questio-temple{
 	width: 282px;

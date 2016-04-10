@@ -91,6 +91,6 @@ $(document).ready(function(){
 	Position to Equip*:
 	<?= form_dropdown('positionid',$position,'','id="positionid"'); ?>
 	 <br><br>
-	<input type="button" class="goback" value ="Go Back"/>
-   <input type="submit" value="Submit"/>
+	<input type="submit" value="Submit">
 </form>
+<a href="#" class="goback"style ="color:black">Go Back</a>

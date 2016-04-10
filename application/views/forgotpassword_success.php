@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="container-fluid">
     <?php $this->load->view('header', array('title' => 'Forgot Password'));?>
 	<h2>E-Mail has been sent.</h2>
-	<a href="<?=base_url('login')?>">Back</a>
+	<a href="<?=base_url('login')?>"style ="color:black">Back</a>
 </div>
 </body>
 </html>
