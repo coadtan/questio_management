@@ -29,36 +29,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class="center">
 						<img class="questio-sword" src="<?= base_url()?>assets/images/questio_sword.png" alt="">
 						<br><br>
-						<p>xxxxxxxxxxxxxxx</p>
-						<p>xxxxxxxxxxxxxxx</p>
-						<p>xxxxxxxxxxxxxxx</p>
+						<p>การไปเรียนรู้ตามสถานที่ต่างๆ จะไม่น่าเบื่ออีกต่อไป</p>
 					</div>
 				</div>
 				<div class="col-md-2">
 					<div class="center">
 						<img class="questio-sword" src="<?= base_url()?>assets/images/questio_sword.png" alt="">
 						<br><br>
-						<p>xxxxxxxxxxxxxxx</p>
-						<p>xxxxxxxxxxxxxxx</p>
-						<p>xxxxxxxxxxxxxxx</p>
+						<p>เล่นภารกืจต่างๆ ตามสถานที่</p>
 					</div>
 				</div>
 				<div class="col-md-2">
 					<div class="center">
 						<img class="questio-sword" src="<?= base_url()?>assets/images/questio_sword.png" alt="">
 						<br><br>
-						<p>xxxxxxxxxxxxxxx</p>
-						<p>xxxxxxxxxxxxxxx</p>
-						<p>xxxxxxxxxxxxxxx</p>
+						<p>แต่งตัวเพื่อเอาไปอวดเพื่อนๆ</p>
 					</div>
 				</div>
 				<div class="col-md-2">
 					<div class="center">
 						<img class="questio-sword" src="<?= base_url()?>assets/images/questio_sword.png" alt="">
 						<br><br>
-						<p>xxxxxxxxxxxxxxx</p>
-						<p>xxxxxxxxxxxxxxx</p>
-						<p>xxxxxxxxxxxxxxx</p>
+						<p>รวบรวมรางวัลเพื่อให้กลายเป็น Adventurer Master</p>
 					</div>
 				</div>
 				<div class="col-md-2"></div>
@@ -72,10 +64,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<div class="center">
 							<h1>Adventurer Info</h1>
 						</br>
-						<p>xxxxxxxxxxxxxxxxxxxxxxxxx</p>
-						<p>xxxxxxxxxxxxxxxxxxxxxxxxx</p>
-						<p>xxxxxxxxxxxxxxxxxxxxxxxxx</p>
-						<p>xxxxxxxxxxxxxxxxxxxxxxxxx</p>
+						<p>ผู้เล่นจะต้องออกเดินทางไปตามสถานที่ต่างๆ โดยใช้ App นี้</p>
+						<p>เพื่อเล่นภารกิจและรับรางวัลและไอเทม้ต่างๆ</p>
+						<p>สำหรับเอาไปอวดเพื่อนๆ</p>
+						<p>เพียงแค่คุณมีมือถือและ App ของคุณ</p>
 					</div>
 				</div>
 				<div class ="col-md-6">
@@ -100,10 +92,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class="center">
 						<h1>Keeper Info</h1>
 					</br>
-					<p>xxxxxxxxxxxxxxxxxxxxxxxxx</p>
-					<p>xxxxxxxxxxxxxxxxxxxxxxxxx</p>
-					<p>xxxxxxxxxxxxxxxxxxxxxxxxx</p>
-					<p>xxxxxxxxxxxxxxxxxxxxxxxxx</p>
+					<p>ผู้ดูแลสามารถสร้างและดูแลสถานที่ได้ต่างๆ มากมาย</p>
+					<p>รวมไปถึงภารกิจ เครื่องแต่งกาย และรางวัล</p>
+					<p>เพียงแค่ปลายนิ้วของคุณ</p>
 				</div>
 			</div>
 		</div>
@@ -120,6 +111,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="col-md-3"></div>
 		</div>
 	</div>
+	<!--
 	<div class="row">
 		<div class ="r6">
 			<div class="col-md-2"></div>
@@ -141,6 +133,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</div>
 		</div>
 	</div>
+	-->
 	<div class="row">
 		<div class ="r7">
 			<div class="col-md-2"></div>
@@ -166,10 +159,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<div class="col-md-2">.col-md-2</div>
 			</div>
 		</div>
-		<a href="#" style ="color:black">Place list</a>
-		<a href="#" style ="color:black">Item list</a>
-		<a href="#" style ="color:black">Quest list</a>
-		<a href="#" style ="color:black">Reward list</a>
 	</div>
 </div>
 </div>

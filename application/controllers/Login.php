@@ -10,13 +10,13 @@ class Login extends CI_Controller {
 
 	public function index(){
 		$this->form_validation->set_rules('username','username','trim|required');
-		$this->form_validation->set_rules('password','password','trim|required|callback_dbcheck');
-
-		if($this->form_validation->run() == false){
-			$this->load->view('login_page');
-		}else{
-			redirect('mainpage','refresh');
-		}
+  		$this->form_validation->set_rules('password','password','trim|required|callback_dbcheck');
+  
+  		if($this->form_validation->run() == false){
+  			$this->load->view('login_page');
+  		}else{
+  			redirect('mainpage','refresh');
+  		}
 	}
 
 
@@ -41,7 +41,7 @@ class Login extends CI_Controller {
 		}
 		else{
 			$this->form_validation->set_message('dbcheck', 'invalid username or password.');
-			return false;
+ 			return false;
 		}
 	}
 

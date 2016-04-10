@@ -16,6 +16,10 @@ class Statistic extends CI_Controller {
                     ));
     }
 
+    public function statMenu(){
+        $this->load->view('stat_menu');
+    }
+
     public function adventurercount(){
         $statistics = $this->Statistics_model;
         $type = $_GET['type'];
