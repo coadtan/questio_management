@@ -2,7 +2,9 @@
     <div id="myDiv">
     </div>
     <script>
+    $(document).ready(function(){
         <?php if(!empty($x) && !empty($y)):?>
+        $('#error').text("");
         var date_arr = [];
         <?php foreach($x as $date):?>
             date_arr.push('<?=$date?>');
@@ -20,7 +22,9 @@
         ];
 
         Plotly.newPlot('myDiv', data);
+        <?php else:?>
+            $('#error').text("No data available.");
         <?php endif;?>
-
+    });
     </script>
 </div>

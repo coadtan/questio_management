@@ -17,6 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		        $('#mainarea').load(
             		"<?=base_url('mainpage/getplace')?>"
         		);
+        		$('#stat-menu').empty();
 
 		        $('html,body').animate({
 		        scrollTop: $("#mainarea").offset().top},
@@ -40,6 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		        $('#mainarea').load(
 		            "<?=base_url('itemoverview')?>"
 		        );
+		        $('#stat-menu').empty();
 
 		        $('html,body').animate({
 		        scrollTop: $("#mainarea").offset().top},
@@ -50,6 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		        $('#mainarea').load(
 		            "<?=base_url('rewardoverview')?>"
 		        );
+		        $('#stat-menu').empty();
 
 		        $('html,body').animate({
 		        scrollTop: $("#mainarea").offset().top},
@@ -60,6 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		        $('#mainarea').load(
 		            "<?=base_url('newsoverview')?>"
 		        );
+		        $('#stat-menu').empty();
 
 		        $('html,body').animate({
 		        scrollTop: $("#mainarea").offset().top},
@@ -69,6 +73,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		        $('#mainarea').load(
 		            "<?=base_url('management/load_contact')?>"
 		        );
+		        $('#stat-menu').empty();
 
 		        $('html,body').animate({
 		        scrollTop: $("#mainarea").offset().top},

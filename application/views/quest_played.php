@@ -2,7 +2,9 @@
     <div id="myDiv">
     </div>
     <script>
+    $(document).ready(function(){
         <?php if(!empty($x) && !empty($y)):?>
+        $('#error').text("");
         var questname_arr = [];
         <?php foreach($x as $questname):?>
             questname_arr.push('<?=$questname?>');
@@ -21,7 +23,9 @@
         ];
 
         Plotly.newPlot('myDiv', data);
+        <?php else:?>
+            $('#error').text("No data available.");
         <?php endif;?>
-
+    });
     </script>
 </div>

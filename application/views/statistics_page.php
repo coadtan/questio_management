@@ -35,6 +35,7 @@
     <?php endif;?>
         </div>
     </div>
+    <h1 id="error" style='color:red'></h1>
     <div id="graph" style ="margin:100px">
 
 
