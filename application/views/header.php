@@ -73,8 +73,10 @@ $(document).ready(function(){
         <p id="form-error" style="color:red"></p>
         <?=validation_errors();?>
         <form id="login-form">
-        <input type="text" size="20" id="username" name="username" placeholder ="Username" style ="margin-bottom:5px;width:300px;" required />
-        <input type="password" size="20" id="password" name="password" placeholder ="Password"style ="width:300px;" required/>
+        <input type="text" id="username" name="username" placeholder ="Username" style ="margin-bottom:5px;width:80%;" required />
+        <div class="clear"></div>
+        <input type="password" id="password" name="password" placeholder ="Password"style ="width:80%;" required/>
+        <div class="clear"></div>
         <br/> <br/>
         <input class ="btn btn-info" type="submit" value="login">
         </form>

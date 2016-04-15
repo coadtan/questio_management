@@ -100,16 +100,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
 		<div class="col-md-2"></div>
 	</div>
-	<div class="row">
-		<div class ="r5">
+	<div class="row r5">
 			<div class="col-md-3"></div>
 			<div class="col-md-6" style ="margin-top : 20px">
 				<h3 class="text-white">Still for looking for ? Download application and have fun </h3>
 				<br>
 				<img src="<?= base_url()?>assets/images/playstore.png" alt="">
 			</div>
-			<div class="col-md-3"></div>
-		</div>
 	</div>
 	<!-- <div class="row">
 		<div class ="r7">
@@ -128,13 +125,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</div>
 			<div class="col-md-2"></div>
 		</div> -->
-		<div class="row">
-			<div class ="r8">
-				<div class="col-md-2" style ="color:white"></div>
-				<div class="col-md-8" style ="color:white">
-					<h1 style ="text-align:left;margin-top:50px">Questio</h1>
+		<div class="row r8">
+				<!-- <div class="col-md-2" style ="color:white"></div> -->
+				<div class="col-md-8 col-md-push-2" style ="color:white">
+					<h1 style ="text-align:center;margin-top:50px">Questio</h1>
 					<div class ="detail-questio">
-						<div class ="tropic" style ="text-align:left;margin-top:25px">
+						<div class ="tropic">
 							<div class="col-md-2" style ="color:white"><h4>Home</div>
 							<div class="col-md-2" style ="color:white"><h4>About</div>
 							<div class="col-md-2" style ="color:white"><h4>Facebook</div>
@@ -144,15 +140,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</div>
 					</div>
 					<br>				
-					<div class ="copyright" style ="text-align:left">
+					<div class ="copyright">
 						<hr>
 						<p> &nbsp&nbsp © copyright Questio Application for Adventure project KMUTT</p>
 					</div>
 				</div>
-				<div class="col-md-2" style ="color:white"></div>
+				<!-- <div class="col-md-2" style ="color:white"></div> -->
 			</div>
 		</div>
-	</div>
 </div>
 </div>
 </body>

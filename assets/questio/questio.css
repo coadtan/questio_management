@@ -12,6 +12,9 @@ html,body{
 	height: 100%;
 	font-family: 'thai_sans_literegular','arial';
 }
+.clear{
+	clear:both;
+}
 .shadow{
 	-webkit-box-shadow: 0 8px 6px -6px black;
 	-moz-box-shadow: 0 8px 6px -6px black;
@@ -145,8 +148,10 @@ html,body{
 	margin-bottom: 5px;
 }
 .questio-logo{
-	width: 320px;
-	height: 320px;
+	width: 100%;
+	height: 100%;
+	max-width: 320px;
+	max-height: 320px;
 }
 .questio-avatar{
 
@@ -368,4 +373,26 @@ li{
 	height: 200px;
 	width: 100%;
 	background-color: #f2f2f2;
+}
+.tropic{
+	text-align:left;
+	margin-top:25px;
+}
+.copyright{
+	text-align:left;
+}
+@media screen and (max-width: 1136px) {
+    .tropic{
+        text-align: center;
+    }
+    .questio-logo {
+    	width: 50%;
+    	height: 50%;
+    }
+    .footer-questio{
+    	margin: center;
+    }
+    .copyright{
+    	text-align: center;
+    }
 }
