@@ -155,7 +155,7 @@ class Building_model extends CI_Model{
 	public function getBuildingFromId($buildingid){
 		$building = null;
 		$this->db->select('*');
-		$this->db->from('building');
+		$this->db->from('Building');
 		$this->db->where('Buildingid',$buildingid);
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
