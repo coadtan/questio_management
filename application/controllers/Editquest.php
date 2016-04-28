@@ -27,7 +27,8 @@ class Editquest extends CI_Controller {
 				'questtype' => $questtype,
 				'difficulty' => $difficulty,
 				'reward' => $reward,
-				'questdata' => $questdata
+				'questdata' => $questdata,
+				'zoneid' => $zoneid 
 			)
 		);
 	}
@@ -112,7 +113,6 @@ class Editquest extends CI_Controller {
 		$choiced = $_POST['choiced'];
 		$answerid = $_POST['answerid'];
 
-		$this->form_validation->set_rules('questname', 'questname', 'required|max_length[100]');
 		$this->form_validation->set_rules('question', 'question', 'required');
 		$this->form_validation->set_rules('choicea', 'choicea', 'required|max_length[100]');
 		$this->form_validation->set_rules('choiceb', 'choiceb', 'required|max_length[100]');
@@ -298,7 +298,8 @@ class Editquest extends CI_Controller {
 				'reward' => $reward,
 				'puzzledata' => $puzzledata[0],
 				'questdata' => $questdata,
-				'puzzleid' => $puzzleid
+				'puzzleid' => $puzzleid,
+				'zoneid' => $zoneid
 			)
 		);
 	}
