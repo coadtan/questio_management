@@ -239,7 +239,7 @@ class Addquest extends CI_Controller {
 		$helperanswer = $_POST['helperanswer'];
 		$correctanswer = $_POST['correctanswer'];
 
-		$imageurl = null;
+		$imageurl = '/pictures/puzzle/blank.png';
 
 		if(!empty($_FILES['puzzlepic']['name'])){
 			

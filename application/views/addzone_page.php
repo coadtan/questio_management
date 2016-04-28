@@ -13,6 +13,7 @@ $(document).ready(function(){
         event.preventDefault();
             
         var floorid = $("#floorid").val();
+        var zonename = $("#zonename").val();
         var zonetype = $("#zonetype").val();
         var zonedetails = $("#zonedetails").val();
         var qrcode = $("#qrcode").val();
@@ -29,6 +30,7 @@ $(document).ready(function(){
                url: url,
                data: {
                 floorid: floorid,
+                zonename: zonename,
                 zonetype: zonetype,
                 zonedetails: zonedetails,
                 qrcode: qrcode,
@@ -71,6 +73,7 @@ $(document).ready(function(){
 	 <br>
 	Zone Details:<br>
 	<textarea name="zonedetails" id="zonedetails" rows="5" cols="50">
+
 	</textarea><br>
 	<input type="hidden" name="qrcode" id="qrcode" value="<?=$qrcode?>"><br>
 	<input type="hidden" name="sensorid" id="sensorid" value="<?=$sensorid?>"><br>

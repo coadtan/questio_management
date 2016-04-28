@@ -35,7 +35,7 @@ $(document).ready(function(){
                success: function(data){
                    if(data == 'edit_reward_success'){
                         $('#mainarea').load(
-                            <?=base_url('rewardoverview')?>;
+                            "<?=base_url('rewardoverview')?>"
                         );
 
                         $('html,body').animate({
@@ -89,7 +89,7 @@ Reward Picture: <input type="file"
             style="width:100px;
                     height:100px;">
 		<br>
-<input type="hidden" name="rewardpic" value="<?=$rewarddata['rewardpic']?>">
+<input type="hidden" name="rewardpic" id="rewardpic" value="<?=$rewarddata['rewardpic']?>">
 Reward Type*:
 	<?= form_dropdown('rewardtype',$rewardtypedata, $rewarddata['rewardtype'],'id="rewardtype"'); ?>
 	 <br><br>

@@ -12,7 +12,8 @@ $(document).ready(function(){
     $(document).on("submit", "form", function(event){
         event.preventDefault();
         
-        var questid = $("#questid").val();   
+        var questid = $("#questid").val();
+        var zoneid = $("#zoneid").val();   
         var questname = $("#questname").val();
         var questdetails = $("#questdetails").val();
         var diffid = $("#diffid").val();
@@ -32,7 +33,12 @@ $(document).ready(function(){
                , 
                success: function(data){
                    if(data == 'edit_quest_success'){
-                        $('#quizmanage').empty();
+                        $('#mainarea').load(
+                          "<?=base_url('questoverview/getquest')?>"+ "/"+ zoneid
+                        );
+                        $('html,body').animate({
+                        scrollTop: $("#mainarea").offset().top},
+                        'slow');
                    }else if(data == 'edit_quest_failed'){
                         alert('Edit quest failed');
                    }else if(data == 'edit_quest_error'){
@@ -46,6 +52,7 @@ $(document).ready(function(){
 </script>
 <form method="POST">
     <input type="hidden" name="questid" id="questid" value="<?=$questdata['questid']?>">
+    <input type="hidden" name="zoneid" id="zoneid" value="<?=$zoneid?>">
     Quest Name*:
     <i>Must be less than 100 characters</i>
      <input type="text" name="questname" id="questname" size="100" value="<?=$questdata['questname']?>"><br>

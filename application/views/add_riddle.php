@@ -13,6 +13,7 @@ $(document).ready(function(){
         event.preventDefault();
             
         var ridid = $("#ridid").val();
+        var zoneid = $("#zoneid").val();
         var qrcode = $("#qrcode").val();
         var sensorid = $("#sensorid").val();
         var riddetails = $("#riddetails").val();
@@ -39,7 +40,12 @@ $(document).ready(function(){
                , 
                success: function(data){
                    if(data == 'add_riddle_success'){
-                        $('#riddlemanage').empty();
+                        $('#mainarea').load(
+                          "<?=base_url('questoverview/getquest')?>"+ "/"+ zoneid
+                        );
+                        $('html,body').animate({
+                        scrollTop: $("#mainarea").offset().top},
+                        'slow');
                    }else if(data == 'add_riddle_failed'){
                         alert('Add riddle failed');
                    }else if(data == 'add_riddle_error'){

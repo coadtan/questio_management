@@ -13,6 +13,7 @@ $(document).ready(function(){
         event.preventDefault();
             
         var quizid = $("#quizid").val();
+        var zoneid = $("#zoneid").val();
         var question = $("#question").val();
         var choicea = $("#choicea").val();
         var choiceb = $("#choiceb").val();
@@ -37,7 +38,12 @@ $(document).ready(function(){
                , 
                success: function(data){
                    if(data == 'edit_quiz_success'){
-                        $('#quizmanage').empty();
+                        $('#mainarea').load(
+                          "<?=base_url('questoverview/getquest')?>"+ "/"+ zoneid
+                        );
+                        $('html,body').animate({
+                        scrollTop: $("#mainarea").offset().top},
+                        'slow');
                    }else if(data == 'edit_quiz_failed'){
                         alert('Edit quiz failed');
                    }else if(data == 'edit_quiz_error'){
@@ -52,6 +58,7 @@ $(document).ready(function(){
 <h2 style='color:red'><?=$message?></h2>
 <form method="POST">
 	<input type="hidden" name="quizid" id="quizid" value="<?=$quizdata['quizid']?>">
+  <input type="hidden" name="zoneid" id="zoneid" value="<?=$zoneid?>">
     Question*:
     <input type="text" name="question" id="question" size="100" value="<?=$quizdata['question']?>" required><br>
     Choice 1*:<i>Must not longer than 100 characters</i>

@@ -13,6 +13,7 @@ $(document).ready(function(){
         event.preventDefault();
             
         var ridid = $("#ridid").val();
+        var zoneid = $("#zoneid").val();
         var qrcode = $("#qrcode").val();
         var sensorid = $("#sensorid").val();
         var riddetails = $("#riddetails").val();
@@ -49,7 +50,12 @@ $(document).ready(function(){
                , 
                success: function(data){
                    if(data == 'edit_riddle_success'){
-                        $('#riddlemanage').empty();
+                        $('#mainarea').load(
+                          "<?=base_url('questoverview/getquest')?>"+ "/"+ zoneid
+                        );
+                        $('html,body').animate({
+                        scrollTop: $("#mainarea").offset().top},
+                        'slow');
                    }else if(data == 'edit_riddle_failed'){
                         alert('Edit riddle failed');
                    }else if(data == 'edit_riddle_error'){
@@ -63,6 +69,7 @@ $(document).ready(function(){
 </script>
 <form method="POST">
     <input type="hidden" name="ridid" id="ridid" value="<?=$riddledata['ridid']?>">
+    <input type="hidden" name="zoneid" id="zoneid" value="<?=$zoneid?>">
     Quest Name*:
     <i>Must be less than 100 characters</i>
      <input type="text" name="questname" id="questname" size="100" value="<?=$questdata['questname']?>" required maxlength="100"><br>

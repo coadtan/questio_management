@@ -15,8 +15,6 @@ $(document).ready(function(){
         var floorid = $("#floorid").val();
         var floorname = $("#floorname").val();
         var buildingid = $("#buildingid").val();
-        var qrcode = $("#qrcode").val();
-        var sensorid = $("#sensorid").val();
         var floorpic = $("#floorpic").val();
         var imageurl = $("#imageurl").val();
 
@@ -28,8 +26,6 @@ $(document).ready(function(){
                data: {
                 floorname: floorname,
                 buildingid: buildingid,
-                qrcode: qrcode,
-                sensorid: sensorid,
                 floorpic: floorpic,
                 imageurl: imageurl
                }
@@ -56,21 +52,21 @@ $(document).ready(function(){
 });
 </script>
 <form enctype="multipart/form-data" method="post" accept-charset="utf-8">
-	<input type="hidden" name="floorid" id="floorid" value="<?=$floordata["floorid"]?>">
+	<input type="hidden" name="floorid" id="floorid" value="<?=$floordata['floorid']?>">
 	Floor Name*:
 	<i>Must be less than 100 characters</i>
-	 <input type="text" name="floorname" id="floorname" size="50" value="<?=$floordata["floorname"]?>" required maxlength="100"><br>
+	 <input type="text" name="floorname" id="floorname" size="50" value="<?=$floordata['floorname']?>" required maxlength="100"><br>
 	Building Name*:
-	<?php echo form_dropdown('buildingid',$buildingdata, $floordata["buildingid"], 'id="buildingid"'); ?>
+	<?php echo form_dropdown('buildingid',$buildingdata, $floordata['buildingid'], 'id="buildingid"'); ?>
 	 <br>
-	<input type="hidden" name="imageurl" id="imageurl" value="<?=$floordata["imageurl"]?>">
+	<input type="hidden" name="imageurl" id="imageurl" value="<?=$floordata['imageurl']?>">
 	Floor Image: <input type="file"
 		class ="register-margin register-box"
 		name="floorpic"
 		id="floorpic"
 		size ="999">
 		<img
-            src="http://52.74.64.61/questio_management<?=$floordata["imageurl"]?>"
+            src="http://52.74.64.61/questio_management<?=$floordata['imageurl']?>"
             alt="<?= $floordata["imageurl"]?>"
             style="width:100px;
                     height:100px;">

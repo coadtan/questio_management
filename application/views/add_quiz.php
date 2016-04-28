@@ -13,6 +13,7 @@ $(document).ready(function(){
         event.preventDefault();
             
         var questid = $("#questid").val();
+        var zoneid = $("#zoneid").val();
         var seqid = $("#seqid").val();
         var question = $("#question").val();
         var choicea = $("#choicea").val();
@@ -39,7 +40,12 @@ $(document).ready(function(){
                , 
                success: function(data){
                    if(data == 'add_quiz_success'){
-                        $('#quizmanage').empty();
+                        $('#mainarea').load(
+                          "<?=base_url('questoverview/getquest')?>"+ "/"+ zoneid
+                        );
+                        $('html,body').animate({
+                        scrollTop: $("#mainarea").offset().top},
+                        'slow');
                    }else if(data == 'add_quiz_failed'){
                         alert('Add quiz failed');
                    }else if(data == 'add_quiz_error'){
@@ -54,6 +60,7 @@ $(document).ready(function(){
 <h2 style='color:red'><?=$message?></h2>
 <form method="POST">
     <input type="hidden" name="questid" id="questid" value="<?=$questid?>">
+    <input type="hidden" name="zoneid" id="zoneid" value="<?=$zoneid?>">
     <input type="hidden" name="seqid" id="seqid" value="<?=$seqid?>">
     Question*:
     <input type="text" name="question" id="question" size="100" required><br>

@@ -13,11 +13,10 @@ $(document).ready(function(){
         event.preventDefault();
             
         var zoneid = $("#zoneid").val();
+        var zonename = $("#zonename").val();
         var floorid = $("#floorid").val();
         var zonetype = $("#zonetype").val();
         var zonedetails = $("#zonedetails").val();
-        var qrcode = $("#qrcode").val();
-        var sensorid = $("#sensorid").val();
         var imageurl = $("#imageurl").val();
         var zonepic = $("#zonepic").val();
         var minimapurl = $("#minimapurl").val();
@@ -31,11 +30,10 @@ $(document).ready(function(){
                type: "POST",
                url: url,
                data: {
+                zonename: zonename,
                 floorid: floorid,
                 zonetype: zonetype,
                 zonedetails: zonedetails,
-                qrcode: qrcode,
-                sensorid: sensorid,
                 imageurl: imageurl,
                 zonepic: zonepic,
                 minimapurl: minimapurl,
@@ -45,17 +43,17 @@ $(document).ready(function(){
                }
                , 
                success: function(data){
-                if(data == 'add_zone_success'){
-                    $('#mainarea').load(
-			    		       "<?=base_url('mainpage/getplace')?>"
-					           );
+                if(data == 'edit_zone_success'){
+                   $('#mainarea').load(
+                        "<?=base_url('mainpage/getplace')?>"
+                    );
 
-			        $('html,body').animate({
-			        scrollTop: $("#mainarea").offset().top},
-			        'slow');
-                   }else if(data == 'add_zone_failed'){
-                        alert('Add zone failed');
-                   }else if(data == 'add_zone_error'){
+                    $('html,body').animate({
+                    scrollTop: $("#mainarea").offset().top},
+                    'slow');
+                   }else if(data == 'edit_zone_failed'){
+                        alert('Edit zone failed');
+                   }else if(data == 'edit_zone_error'){
                         alert('Error: Some field is not valid');
                    }
                }
@@ -73,11 +71,11 @@ $(document).ready(function(){
 	<?php echo form_dropdown('floorid',$floordata,$zonedata["floorid"],'id="floorid"'); ?>
 	 <br>
 	Zone Type*:
-	<?php echo form_dropdown('zonetype',$zonetypedata,$zonedata["zonetypeid"],'id="zonetypeid"'); ?>
+	<?php echo form_dropdown('zonetype',$zonetypedata,$zonedata["zonetypeid"],'id="zonetype"'); ?>
 	 <br>
 	Zone Details:<br>
 	<textarea name="zonedetails" id="zonedetails" rows="5" cols="50">
-	<?=$zonedata["zonedetails"]?>
+<?=$zonedata["zonedetails"]?>
 	</textarea><br>
 	<input type="hidden" name="imageurl" id="imageurl" value="<?=$zonedata['imageurl']?>">
 	<input type="hidden" name="minimapurl" id="minimapurl" value="<?=$zonedata['minimapurl']?>">

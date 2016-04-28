@@ -29,7 +29,7 @@ class Editfloor extends CI_Controller {
 		$floor = $this->Floor_model;
 		$buildingid = $_POST['buildingid'];
 		$floorname = $_POST['floorname'];
-		$imageurl = $_POST['imageurl'];
+		$imageurl = $_POST['imageurl']
 
 		if(!empty($_FILES['floorpic']['name'])){
 			$config['upload_path'] = './pictures/floor';
@@ -43,49 +43,46 @@ class Editfloor extends CI_Controller {
 			$this->upload->initialize($config);
 
 
-			if (!$this->upload->do_upload('floorpic')){
-				$error = array('error' => $this->upload->display_errors());
-				var_dump($error) ;
-			}else{
+			if ($this->upload->do_upload('floorpic')){
 				$uploaddata = $this->upload->data();
 				$imageurl = substr($uploaddata['full_path'], strpos($uploaddata['full_path'],"questio_management")+18);
 			}
+		}
 
 		$this->form_validation->set_rules('floorname', 'floorname', 'required|max_length[100]');
 
-			if ($this->form_validation->run()==TRUE){
-				if($floor->updateFloor($floorid, $buildingid, $floorname, $imageurl)==TRUE){
-					echo "edit_floor_success";
-					//$floordata = $floor->getFloorFromId($floorid);
-					//$this->load->view(
-					//	'editfloor_page',array(
-					//	'message' => 'Edit floor successful.',
-					//	'buildingdata' => $buildingdata,
-					//	'floordata' => $floordata
-					//	)
-					//);
-				}else{
-					echo "edit_floor_failed";
-					//$floordata = $floor->getFloorFromId($floorid);
-					//$this->load->view(
-					//	'editfloor_page',array(
-					//	'message' => 'Edit floor failed.',
-					//	'buildingdata' => $buildingdata,
-					//	'floordata' => $floordata
-					//	)
-					//);
-				}
-			}else{
-				echo "edit_floor_error";
+		if ($this->form_validation->run()==TRUE){
+			if($floor->updateFloor($floorid, $buildingid, $floorname, $imageurl)==TRUE){
+				echo "edit_floor_success";
 				//$floordata = $floor->getFloorFromId($floorid);
 				//$this->load->view(
-				//'editfloor_page',array(
-				//	'message' => 'Form validation error. please check again.',
+				//	'editfloor_page',array(
+				//	'message' => 'Edit floor successful.',
+				//	'buildingdata' => $buildingdata,
+				//	'floordata' => $floordata
+				//	)
+				//);
+			}else{
+				echo "edit_floor_failed";
+				//$floordata = $floor->getFloorFromId($floorid);
+				//$this->load->view(
+				//	'editfloor_page',array(
+				//	'message' => 'Edit floor failed.',
 				//	'buildingdata' => $buildingdata,
 				//	'floordata' => $floordata
 				//	)
 				//);
 			}
+		}else{
+			echo "edit_floor_error";
+			//$floordata = $floor->getFloorFromId($floorid);
+			//$this->load->view(
+			//'editfloor_page',array(
+			//	'message' => 'Form validation error. please check again.',
+			//	'buildingdata' => $buildingdata,
+			//	'floordata' => $floordata
+			//	)
+			//);
 		}
 	}
 

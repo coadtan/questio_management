@@ -13,6 +13,7 @@ $(document).ready(function(){
         event.preventDefault();
             
         var puzzleid = $("#puzzleid").val();
+        var zoneid = $("#zoneid").val();
         var imageurl = $("#imageurl").val();
         var puzzlepic = $("#puzzlepic").val();
         var helperanswer = $("#helperanswer").val();
@@ -43,7 +44,12 @@ $(document).ready(function(){
                , 
                success: function(data){
                    if(data == 'edit_puzzle_success'){
-                        $('#puzzlemanage').empty();
+                        $('#mainarea').load(
+                          "<?=base_url('questoverview/getquest')?>"+ "/"+ zoneid
+                        );
+                        $('html,body').animate({
+                        scrollTop: $("#mainarea").offset().top},
+                        'slow');
                    }else if(data == 'edit_puzzle_failed'){
                         alert('Edit puzzle failed');
                    }else if(data == 'edit_puzzle_error'){
@@ -57,6 +63,7 @@ $(document).ready(function(){
 </script>
 <form enctype="multipart/form-data" method="post" accept-charset="utf-8">
     <input type="hidden" name="puzzleid" id="puzzleid" value="<?=$puzzledata['puzzleid']?>">
+    <input type="hidden" name="zoneid" id="zoneid" value="<?=$zoneid?>">
     Quest Name*:
     <i>Must be less than 100 characters</i>
      <input type="text" name="questname" id="questname" size="100" value="<?=$questdata['questname']?>" required maxlength="100"><br>

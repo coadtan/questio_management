@@ -35,7 +35,7 @@ $(document).ready(function(){
                success: function(data){
                    if(data == 'add_quest_success'){
                         $('#mainarea').load(
-                            "<?=base_url('questoverview')?>"+"/"+zoneid
+                            "<?=base_url('questoverview/getquest')?>"+"/"+zoneid
                         );
 
                         $('html,body').animate({

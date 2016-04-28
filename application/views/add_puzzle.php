@@ -13,6 +13,7 @@ $(document).ready(function(){
         event.preventDefault();
             
         var puzzleid = $("#puzzleid").val();
+        var zoneid = $("#zoneid").val();
         var puzzlepic = $("#puzzlepic").val();
         var helperanswer = $("#helperanswer").val();
         var correctanswer = $("#correctanswer").val();
@@ -31,7 +32,12 @@ $(document).ready(function(){
                , 
                success: function(data){
                    if(data == 'add_puzzle_success'){
-                        $('#puzzlemanage').empty();
+                        $('#mainarea').load(
+                          "<?=base_url('questoverview/getquest')?>"+ "/"+ zoneid
+                        );
+                        $('html,body').animate({
+                        scrollTop: $("#mainarea").offset().top},
+                        'slow');
                    }else if(data == 'add_puzzle_failed'){
                         alert('Add puzzle failed');
                    }else if(data == 'add_puzzle_error'){
@@ -46,6 +52,7 @@ $(document).ready(function(){
 <h2 style='color:red'><?=$message?></h2>
 <form enctype="multipart/form-data" method="post" accept-charset="utf-8">
     <input type="hidden" name="puzzleid" id="puzzleid" value="<?=$puzzleid?>">
+    <input type="hidden" name="zoneid" id="zoneid" value="<?=$zoneid?>">
     Puzzle Picture: <input type="file"
         class ="register-margin register-box"
         name="puzzlepic"

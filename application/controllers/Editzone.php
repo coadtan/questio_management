@@ -83,20 +83,6 @@ class Editzone extends CI_Controller {
 			}
 		}
 
-		if ($upload_zone && $upload_minimap){
-			$zonedata = $this->zonepicupload->data();
-			$minimapdata = $this->zoneminimapupload->data();
-			$imageurl = substr($zonedata['full_path'], strpos($zonedata['full_path'],"questio_management")+18);
-			$minimapurl = substr($minimapdata['full_path'], strpos($minimapdata['full_path'],"questio_management")+18);
-		}else{
-			$error = array(
-				'zoneerror' => $this->zonepicupload->display_errors(),
-				'minimaperror' => $this->zoneminimapupload->display_errors()
-				);
-			var_dump($error);
-
-		}
-
 		$this->form_validation->set_rules('zonename', 'zonename', 'required|max_length[100]');
 
 		if ($this->form_validation->run()==TRUE){
