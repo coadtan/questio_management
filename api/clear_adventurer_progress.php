@@ -2,13 +2,13 @@
 header("content-type:text/javascript;charset=utf-8");
 $con=mysqli_connect('localhost','root','adminpwd','questio')or die(mysqli_error()); 
 mysqli_set_charset($con, "utf8");
-$sql="DELETE FROM QuizProgress WHERE adventurerid = ".$_POST["aid"].";";
-$sql2="DELETE FROM PuzzleProgress WHERE adventurerid = ".$_POST["aid"].";";
-$sql3="DELETE FROM RiddleProgress WHERE adventurerid = ".$_POST["aid"].";";
-$sql4="DELETE FROM QuestProgress WHERE adventurerid = ".$_POST["aid"].";";
-$sql5="DELETE FROM HallOfFame WHERE adventurerid = ".$_POST["aid"].";";
-$sql6="DELETE FROM Inventory WHERE adventurerid = ".$_POST["aid"].";";
-$sql7="DELETE FROM ExplorerProgress WHERE adventurerid = ".$_POST["aid"].";";
+$sql="DELETE FROM QuizProgress WHERE adventurerid = ".$_REQUEST["aid"].";";
+$sql2="DELETE FROM PuzzleProgress WHERE adventurerid = ".$_REQUEST["aid"].";";
+$sql3="DELETE FROM RiddleProgress WHERE adventurerid = ".$_REQUEST["aid"].";";
+$sql4="DELETE FROM QuestProgress WHERE adventurerid = ".$_REQUEST["aid"].";";
+$sql5="DELETE FROM HallOfFame WHERE adventurerid = ".$_REQUEST["aid"].";";
+$sql6="DELETE FROM Inventory WHERE adventurerid = ".$_REQUEST["aid"].";";
+$sql7="DELETE FROM ExplorerProgress WHERE adventurerid = ".$_REQUEST["aid"].";";
 if($_REQUEST["key"]=="asdlaekqwekasdlkxzc"){
 	if(mysqli_query($con,$sql)){
 	   	echo "[{\"status\":\"1\"}]";
