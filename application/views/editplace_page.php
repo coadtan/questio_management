@@ -72,13 +72,13 @@ $(document).ready(function(){
 	<i>Must be less than 255 characters</i>
 	 <input type="text" name="placefullname" id="placefullname" value="<?=$placedata['placefullname']?>" size="50" required maxlength="255"><br>
 	Latitude*:
-	<input type="text" name="latitude" id="latitude" value='<?=$placedata["latitude"]?>' required
+	<input type="number" name="latitude" id="latitude" value='<?=$placedata["latitude"]?>' required
 			pattern="\d+(\.\d{1,15})?"><br>
 	Longitude*:
-	<input type="text" name="longitude" id="longitude" value='<?=$placedata["longitude"]?>' required
+	<input type="number" name="longitude" id="longitude" value='<?=$placedata["longitude"]?>' required
 			pattern="\d+(\.\d{1,15})?"><br>
 	Radius*:
-	<input type="text" name="radius" id="radius" value='<?=$placedata["radius"]?>' required
+	<input type="number" name="radius" id="radius" value='<?=$placedata["radius"]?>' required
 			pattern="\d+(\.\d{1,4})?"><br>
 <select name="placetype" id="placetype">
 	<option value="University" <?=$placedata["placetype"]=="University"?'selected':''?>>University</option>

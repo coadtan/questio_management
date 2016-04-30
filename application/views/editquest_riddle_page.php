@@ -87,7 +87,7 @@ $(document).ready(function(){
     Riddle Details*:
     <input type="text" name="riddetails" id="riddetails" size="100" value="<?=$riddledata['riddetails']?>" required><br>
     Scan Limit*:
-    <input type="text" name="scanlimit" id="scanlimit" value="4" value="<?=$riddledata['scanlimit']?>" required pattern="[0-9]"><br>
+    <input type="number" name="scanlimit" id="scanlimit" value="4" value="<?=$riddledata['scanlimit']?>" required pattern="[0-9]"><br>
     Hint 1:<i>Must not longer than 100 characters</i>
     <input type="text" name="hint1" id="hint1" size="100" value="<?=$riddledata['hint1']?>" required maxlength="100"><br>
     Hint 2:<i>Must not longer than 100 characters</i>

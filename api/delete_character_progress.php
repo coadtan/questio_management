@@ -6,7 +6,7 @@ $sql="DELETE FROM QuizProgress WHERE adventurerid = ".$_POST["adventurerid"];
 $sql="DELETE FROM PuzzleProgress WHERE adventurerid = ".$_POST["adventurerid"];
 $sql="DELETE FROM RiddleProgress WHERE adventurerid = ".$_POST["adventurerid"];
 $sql="DELETE FROM QuestProgress WHERE adventurerid = ".$_POST["adventurerid"];
-if($_POST["key"]=="asdlaekqwekasdlkxzc"){
+if($_REQUEST["key"]=="asdlaekqwekasdlkxzc"){
 	if(mysqli_multi_query($con,$sql)){
 	   	echo "[{\"status\":\"1\"}]";
 	}else{
