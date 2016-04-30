@@ -56,7 +56,7 @@ $(document).ready(function(){
         </tr>
         <?php endforeach;?>
     <?php else: ?>
-        echo "<h2 style='color:red'>Puzzle not found</h2>";
+        <h2 style='color:red'>Puzzle not found</h2>"
     <?php endif;?>
     </tbody>
 </table>
