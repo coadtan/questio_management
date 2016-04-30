@@ -65,7 +65,8 @@ $(document).ready(function(){
 		class ="register-margin register-box"
 		name="floorpic"
 		id="floorpic"
-		size ="999">
+		size ="999"
+    accept="image/*">
 		<br>
 	<input type="submit" value="Submit">
 </form>

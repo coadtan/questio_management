@@ -82,7 +82,8 @@ Reward Picture: <input type="file"
 		class ="register-margin register-box"
 		name="rewardurl"
 		id="rewardurl"
-		size ="999">
+		size ="999"
+    accept="image/*">
 		<img
             src="http://52.74.64.61/questio_management<?=$rewarddata['rewardpic']?>"
             alt="<?= $rewarddata['rewardpic']?>"

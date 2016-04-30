@@ -64,7 +64,8 @@ $(document).ready(function(){
 		class ="register-margin register-box"
 		name="floorpic"
 		id="floorpic"
-		size ="999">
+		size ="999"
+    accept="image/*">
 		<img
             src="http://52.74.64.61/questio_management<?=$floordata['imageurl']?>"
             alt="<?= $floordata["imageurl"]?>"

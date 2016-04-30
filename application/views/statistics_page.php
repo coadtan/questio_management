@@ -3,9 +3,73 @@
     $(document).ready(function(){
 
         var placeid = sessionStorage.setItem('placeid', $('#placechoose').val());
-
     $('#placechoose').on('change', function() {
         placeid = sessionStorage.setItem('placeid', $('#placechoose').val());
+        var mode = sessionStorage.getItem('mode');
+        if(mode=='adventurercountday'){
+            placeid = sessionStorage.getItem('placeid');
+            $('#graph').load(
+                "<?=base_url('statistic/adventurercount?type=d&placeid=')?>"+placeid
+            );
+
+            $('html,body').animate({
+            scrollTop: $("#graph").offset().top},
+            'slow');
+        }else if(mode=='adventurercountweek'){
+            placeid = sessionStorage.getItem('placeid');
+            $('#graph').load(
+                "<?=base_url('statistic/adventurercount?type=w&placeid=')?>"+placeid
+            );
+
+            $('html,body').animate({
+            scrollTop: $("#graph").offset().top},
+            'slow');
+        }else if(mode=='adventurercountmonth'){
+            placeid = sessionStorage.getItem('placeid');
+            $('#graph').load(
+                "<?=base_url('statistic/adventurercount?type=m&placeid=')?>"+placeid
+            );
+
+            $('html,body').animate({
+            scrollTop: $("#graph").offset().top},
+            'slow');
+        }else if(mode=='adventurercountyear'){
+            placeid = sessionStorage.getItem('placeid');
+            $('#graph').load(
+                "<?=base_url('statistic/adventurercount?type=y&placeid=')?>"+placeid
+            );
+
+            $('html,body').animate({
+            scrollTop: $("#graph").offset().top},
+            'slow');
+        }else if(mode=='questplayed'){
+            placeid = sessionStorage.getItem('placeid');
+            $('#graph').load(
+                "<?=base_url('statistic/questplayed?placeid=')?>"+placeid
+            );
+
+            $('html,body').animate({
+            scrollTop: $("#graph").offset().top},
+            'slow');
+        }else if(mode=='explorercount'){
+            placeid = sessionStorage.getItem('placeid');
+            $('#graph').load(
+                "<?=base_url('statistic/explorercount?placeid=')?>"+placeid
+            );
+
+            $('html,body').animate({
+            scrollTop: $("#graph").offset().top},
+            'slow');
+        }else if(mode=='averagescore'){
+            placeid = sessionStorage.getItem('placeid');
+            $('#graph').load(
+                "<?=base_url('statistic/averagescore?placeid=')?>"+placeid
+            );
+
+            $('html,body').animate({
+            scrollTop: $("#graph").offset().top},
+            'slow');
+        }
     });
 
     

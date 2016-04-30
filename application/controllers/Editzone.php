@@ -58,9 +58,9 @@ class Editzone extends CI_Controller {
 		if(!empty($_FILES['zonepic']['name'])){
 			$config['upload_path'] = './pictures/zone';
 			$config['allowed_types'] = 'gif|jpg|jpeg|png';
-			$config['max_size'] = '1000';
+			$config['max_size'] = '2000';
 			$config['max_width'] = '1920';
-			$config['max_height'] = '1280';
+			$config['max_height'] = '1080';
 			$this->upload->initialize($config);
 
 			if ($this->upload->do_upload('zonepic')){
@@ -72,9 +72,9 @@ class Editzone extends CI_Controller {
 		if(!empty($_FILES['minimappic']['name'])){
 			$config['upload_path'] = './pictures/zone_minimap';
 			$config['allowed_types'] = 'gif|jpg|jpeg|png';
-			$config['max_size'] = '1000';
+			$config['max_size'] = '2000';
 			$config['max_width'] = '1920';
-			$config['max_height'] = '1280';
+			$config['max_height'] = '1080';
 			$this->upload->initialize($config);
 
 			if ($this->upload->do_upload('minimappic')){

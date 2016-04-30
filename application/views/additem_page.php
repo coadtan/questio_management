@@ -79,14 +79,16 @@ $(document).ready(function(){
 		class ="register-margin register-box"
 		name="itempic"
 		id="itempic"
-		size ="999">
+		size ="999"
+    accept="image/*">
 		<br>
 	Item Sprite: <input type="file"
 		style ="margin:auto;margin-top:5px!important"
 		class ="register-margin register-box"
 		name="spritepic"
 		id="spritepic"
-		size ="999">
+		size ="999"
+    accept="image/*">
 		<br>
 	Position to Equip*:
 	<?= form_dropdown('positionid',$position,'','id="positionid"'); ?>

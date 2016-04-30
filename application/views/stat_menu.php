@@ -5,6 +5,8 @@ var placeid = sessionStorage.getItem('placeid');
 
 $('#adventurer-count-day').on("click", function(e){
         e.preventDefault();
+        sessionStorage.setItem('mode','adventurercountday');
+        placeid = sessionStorage.getItem('placeid');
         $('#graph').load(
             "<?=base_url('statistic/adventurercount?type=d&placeid=')?>"+placeid
         );
@@ -15,6 +17,8 @@ $('#adventurer-count-day').on("click", function(e){
     });
     $('#adventurer-count-week').on("click", function(e){
         e.preventDefault();
+        sessionStorage.setItem('mode','adventurercountweek');
+        placeid = sessionStorage.getItem('placeid');
         $('#graph').load(
             "<?=base_url('statistic/adventurercount?type=w&placeid=')?>"+placeid
         );
@@ -25,6 +29,8 @@ $('#adventurer-count-day').on("click", function(e){
     });
     $('#adventurer-count-month').on("click", function(e){
         e.preventDefault();
+        sessionStorage.setItem('mode','adventurercountmonth');
+        placeid = sessionStorage.getItem('placeid');
         $('#graph').load(
             "<?=base_url('statistic/adventurercount?type=m&placeid=')?>"+placeid
         );
@@ -35,6 +41,8 @@ $('#adventurer-count-day').on("click", function(e){
     });
     $('#adventurer-count-year').on("click", function(e){
         e.preventDefault();
+        sessionStorage.setItem('mode','adventurercountyear');
+        placeid = sessionStorage.getItem('placeid');
         $('#graph').load(
             "<?=base_url('statistic/adventurercount?type=y&placeid=')?>"+placeid
         );
@@ -45,6 +53,8 @@ $('#adventurer-count-day').on("click", function(e){
     });
     $('#quest-played').on("click", function(e){
         e.preventDefault();
+        sessionStorage.setItem('mode','questplayed');
+        placeid = sessionStorage.getItem('placeid');
         $('#graph').load(
             "<?=base_url('statistic/questplayed?placeid=')?>"+placeid
         );
@@ -55,6 +65,8 @@ $('#adventurer-count-day').on("click", function(e){
     });
     $('#explorer-count').on("click", function(e){
         e.preventDefault();
+        sessionStorage.setItem('mode','explorercount');
+        placeid = sessionStorage.getItem('placeid');
         $('#graph').load(
             "<?=base_url('statistic/explorercount?placeid=')?>"+placeid
         );
@@ -65,6 +77,8 @@ $('#adventurer-count-day').on("click", function(e){
     });
     $('#average-score').on("click", function(e){
         e.preventDefault();
+        sessionStorage.setItem('mode','averagescore');
+        placeid = sessionStorage.getItem('placeid');
         $('#graph').load(
             "<?=base_url('statistic/averagescore?placeid=')?>"+placeid
         );

@@ -83,7 +83,8 @@ $(document).ready(function(){
 		class ="register-margin register-box"
 		name="zonepic"
 		id="zonepic"
-		size ="999">
+		size ="999"
+        accept="image/*">
 		<img
             src="http://52.74.64.61/questio_management<?=$zonedata['imageurl']?>"
             alt="<?= $zonedata['imageurl']?>"
@@ -94,7 +95,8 @@ $(document).ready(function(){
 		class ="register-margin register-box"
 		name="minimappic"
 		id="minimappic"
-		size ="999">
+		size ="999"
+        accept="image/*">
 		<img
             src="http://52.74.64.61/questio_management<?=$zonedata['minimapurl']?>"
             alt="<?= $zonedata['minimapurl']?>"

@@ -76,7 +76,8 @@ $(document).ready(function(){
 		class ="register-margin register-box"
 		name="buildingpic"
 		id="buildingpic"
-		size ="999">
+		size ="999"
+    accept="image/*">
 		<img
             src="http://52.74.64.61/questio_management<?=$buildingdata["imageurl"]?>"
             alt="<?= $buildingdata["imageurl"]?>"

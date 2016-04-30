@@ -57,8 +57,7 @@ $(document).ready(function(){
     <i>Must be less than 100 characters</i>
      <input type="text" name="questname" id="questname" size="100" value="<?=$questdata['questname']?>"><br>
     Quest Details*:
-    <textarea name="questdetails" id="questdetails" rows="5" cols="50">
-    <?=$questdata['questdetails']?>
+    <textarea name="questdetails" id="questdetails" rows="5" cols="50"><?=$questdata['questdetails']?>
     </textarea><br>
      <br>
     Difficulty*:

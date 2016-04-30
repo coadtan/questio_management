@@ -85,7 +85,8 @@ $(document).ready(function(){
 		class ="register-margin register-box"
 		name="itempic"
 		id="itempic"
-		size ="999">
+		size ="999"
+        accept="image/*">
 		<img
             src="http://52.74.64.61/questio_management<?=$itemdata['itempicpath']?>"
             alt="<?= $itemdata['itempicpath']?>"
@@ -96,7 +97,8 @@ $(document).ready(function(){
 		class ="register-margin register-box"
 		name="spritepic"
 		id="spritepic"
-		size ="999">
+		size ="999"
+        accept="image/*">
 		<img
             src="http://52.74.64.61/questio_management<?=$itemdata['equipspritepath']?>"
             alt="<?= $itemdata['equipspritepath']?>"

@@ -68,8 +68,7 @@ $(document).ready(function(){
     <i>Must be less than 100 characters</i>
      <input type="text" name="questname" id="questname" size="100" value="<?=$questdata['questname']?>" required maxlength="100"><br>
     Quest Details*:
-    <textarea name="questdetails" id="questdetails" rows="5" cols="50" required>
-    <?=$questdata['questdetails']?>
+    <textarea name="questdetails" id="questdetails" rows="5" cols="50" required><?=$questdata['questdetails']?>
     </textarea><br>
      <br>
     Difficulty*:
@@ -83,7 +82,8 @@ $(document).ready(function(){
         class ="register-margin register-box"
         name="puzzlepic"
         id="puzzlepic"
-        size ="999">
+        size ="999"
+        accept="image/*">
         <img
             src="http://52.74.64.61/questio_management<?=$puzzledata['imageurl']?>"
             alt="<?= $puzzledata['imageurl']?>"

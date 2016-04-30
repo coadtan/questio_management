@@ -81,13 +81,15 @@ $(document).ready(function(){
 		class ="register-margin register-box"
 		name="zonepic"
 		id="zonepic"
-		size ="999">
+		size ="999"
+    accept="image/*">
 		<br>
 	Minimap Picture: <input type="file"
 		class ="register-margin register-box"
 		name="minimappic"
 		id="minimappic"
-		size ="999">
+		size ="999"
+    accept="image/*">
 		<br>
 	Items:
 	<?= form_dropdown('itemid',$itemdata, '', 'id="itemid"'); ?><br>

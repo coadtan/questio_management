@@ -177,7 +177,8 @@ function placeMarker(location, map) {
 			class ="register-margin register-box"
 			name="placepic"
 			id="placepic"
-			size ="999">
+			size ="999"
+			accept="image/*">
 			<br>
 		Enter Rewards:
 		<?= form_dropdown('enter_rewardid',$enterrewarddata,'','id="enter_rewardid"'); ?>

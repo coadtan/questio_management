@@ -76,7 +76,8 @@ Reward Picture: <input type="file"
 		class ="register-margin register-box"
 		name="rewardpic"
 		id="rewardpic"
-		size ="999">
+		size ="999"
+    accept="image/*">
 		<br>
 Reward Type*:
 	<?= form_dropdown('rewardtype',$rewardtypedata, '', 'id="rewardtype"'); ?>

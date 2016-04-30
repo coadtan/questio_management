@@ -35,9 +35,9 @@ class Editreward extends CI_Controller {
 		if(!empty($_FILES['rewardurl']['name'])){
 			$config['upload_path'] = './pictures/reward';
 			$config['allowed_types'] = 'gif|jpg|jpeg|png';
-			$config['max_size'] = '1000';
+			$config['max_size'] = '2000';
 			$config['max_width'] = '1920';
-			$config['max_height'] = '1280';
+			$config['max_height'] = '1080';
 
 
 			$this->load->library('upload', $config);

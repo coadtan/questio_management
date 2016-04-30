@@ -35,9 +35,9 @@ class Addbuilding extends CI_Controller {
 		if(!empty($_FILES['buildingpic']['name'])){
 			$config['upload_path'] = './pictures/building';
 			$config['allowed_types'] = 'gif|jpg|jpeg|png';
-			$config['max_size'] = '1000';
+			$config['max_size'] = '2000';
 			$config['max_width'] = '1920';
-			$config['max_height'] = '1280';
+			$config['max_height'] = '1080';
 
 
 			$this->load->library('upload', $config);

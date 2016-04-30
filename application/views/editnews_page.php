@@ -74,9 +74,9 @@ $(document).ready(function(){
     News Details*:
     <input type="text" name="newsdetails" id="newsdetails" size="100" value="<?=$newsdata['newsdetails']?>" required><br>
     Date Started*:
-    <input type="datetime-local" name="datestarted" id="datestarted" value="<?=$newsdata['datestarted']?>" required><br>
+    <input type="datetime-local" name="datestarted" id="datestarted" value="<?=date_format(date_create($newsdata['datestarted']),"Y-m-d")."T".date_format(date_create($newsdata['datestarted']),"H:i:s")?>" required><br>
     Date Ended*:
-    <input type="datetime-local" name="dateended" id="dateended" value="<?=$newsdata['dateended']?>" required><br>
+    <input type="datetime-local" name="dateended" id="dateended" value="<?=date_format(date_create($newsdata['dateended']),"Y-m-d")."T".date_format(date_create($newsdata['dateended']),"H:i:s")?>" required><br>
     <input type="submit" value="Submit">
 </form>
 <a href="#" class="goback" style ="color:black">Go Back</a>

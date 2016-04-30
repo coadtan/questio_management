@@ -57,7 +57,8 @@ $(document).ready(function(){
         class ="register-margin register-box"
         name="puzzlepic"
         id="puzzlepic"
-        size ="999">
+        size ="999"
+        accept="image/*">
         <br>
     Helper Answer:<i>Must not longer than 100 characters</i>
     <input type="text" name="helperanswer" id="helperanswer" size="100" maxlength="100"><br>
