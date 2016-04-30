@@ -8,7 +8,7 @@ $sql3="DELETE FROM RiddleProgress WHERE adventurerid = ".$_POST["aid"].";";
 $sql4="DELETE FROM QuestProgress WHERE adventurerid = ".$_POST["aid"].";";
 $sql5="DELETE FROM HallOfFame WHERE adventurerid = ".$_POST["aid"].";";
 $sql6="DELETE FROM Inventory WHERE adventurerid = ".$_POST["aid"].";";
-if($_POST["key"]=="asdlaekqwekasdlkxzc"){
+if($_REQUEST["key"]=="asdlaekqwekasdlkxzc"){
 	if(mysqli_query($con,$sql)){
 	   	echo "[{\"status\":\"1\"}]";
 	}else{
