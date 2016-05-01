@@ -9,7 +9,9 @@ $(document).ready(function(){
         scrollTop: $("#mainarea").offset().top},
         'slow');
     });
+
     $(document).on("submit", "form", function(event){
+      
         event.preventDefault();
             
         var puzzleid = $("#puzzleid").val();
@@ -30,7 +32,8 @@ $(document).ready(function(){
                 correctanswer: correctanswer
                }
                , 
-               success: function(data){
+                success: function(data){
+                console.log("success: " + data);
                    if(data == 'add_puzzle_success'){
                         $('#mainarea').load(
                           "<?=base_url('questoverview/getquest')?>"+ "/"+ zoneid
@@ -43,7 +46,10 @@ $(document).ready(function(){
                    }else if(data == 'add_puzzle_error'){
                         alert('Error: Some field is not valid');
                    }
-               }
+               },
+                error: function(data){
+                  console.log("error: " + data);
+                }
         });
         return false;
     });
@@ -57,8 +63,9 @@ $(document).ready(function(){
         class ="register-margin register-box"
         name="puzzlepic"
         id="puzzlepic"
-        size ="999"
-        accept="image/*">
+        accept="image/*"
+        style="width:200px">
+
         <br>
     Helper Answer:<i>Must not longer than 100 characters</i>
     <input type="text" name="helperanswer" id="helperanswer" size="100" maxlength="100"><br>

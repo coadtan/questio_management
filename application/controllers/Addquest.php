@@ -235,9 +235,14 @@ class Addquest extends CI_Controller {
 
 	public function addPuzzleCheck(){
 		$puzzle = $this->Puzzle_model;
-		$puzzleid = $_POST['puzzleid'];
-		$helperanswer = $_POST['helperanswer'];
-		$correctanswer = $_POST['correctanswer'];
+		// $puzzleid = $_POST['puzzleid'];
+		//$helperanswer = $_POST['helperanswer'];
+		//$correctanswer = $_POST['correctanswer'];
+
+		$puzzleid = $this->input->post('puzzleid');
+		$helperanswer = $this->input->post('helperanswer');
+		$correctanswer = $this->input->post('correctanswer');
+		
 
 		$imageurl = '/pictures/puzzle/blank.png';
 
@@ -285,6 +290,8 @@ class Addquest extends CI_Controller {
 
 		}else{
 			echo "add_puzzle_error";
+			echo "</br>";
+			echo validation_errors();
 			//$this->load->view(
 			//'add_puzzle',array(
 			//	'message' => 'Form validation error. please check again.',
