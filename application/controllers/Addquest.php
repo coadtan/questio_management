@@ -290,8 +290,8 @@ class Addquest extends CI_Controller {
 
 		}else{
 			echo "add_puzzle_error";
-			echo "</br>";
-			echo validation_errors();
+			echo "----";
+			echo validation_errors(); 
 			//$this->load->view(
 			//'add_puzzle',array(
 			//	'message' => 'Form validation error. please check again.',

@@ -49,7 +49,7 @@ $(document).ready(function(){
                 <a href="#" class="editpuzzle" puzzleid="<?=$puzzle['puzzleid']?>">
                     <span
                         class="glyphicon glyphicon-asterisk"
-                        style="cursor: pointer">
+                        style="cursor: pointer; color:black">
                     </span>
                 </a>
             </td>
