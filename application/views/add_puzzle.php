@@ -11,27 +11,25 @@ $(document).ready(function(){
     });
 
     $(document).on("submit", "form", function(event){
-      
-        event.preventDefault();
-            
-        var puzzleid = $("#puzzleid").val();
-        var zoneid = $("#zoneid").val();
-        var puzzlepic = $("#puzzlepic").val();
-        var helperanswer = $("#helperanswer").val();
-        var correctanswer = $("#correctanswer").val();
+      event.preventDefault();
+        var inputFile = $('input[name=puzzlepic]');
+        var puzzlepic = inputFile[0].files[0];
+        
+
+        if (puzzlepic != 'undefined') {
+
+          var formElement = document.querySelector("form");
+          var formData = new FormData(formElement);
+          formData.append("puzzlepic", puzzlepic);
 
 
         var url = "<?=base_url('addquest/addpuzzlecheck')?>";
         $.ajax({
                type: "POST",
                url: url,
-               data: {
-                puzzleid: puzzleid,
-                puzzlepic: puzzlepic,
-                helperanswer: helperanswer,
-                correctanswer: correctanswer
-               }
-               , 
+               data: formData,
+               processData: false,
+               contentType: false, 
                 success: function(data){
                 console.log("success: " + data);
                    if(data == 'add_puzzle_success'){
@@ -51,6 +49,7 @@ $(document).ready(function(){
                   console.log("error: " + data);
                 }
         });
+      }
         return false;
     });
 });

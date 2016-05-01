@@ -12,25 +12,27 @@ $(document).ready(function(){
     $(document).on("submit", "form", function(event){
         event.preventDefault();
             
-        var itemname = $("#itemname").val();
-        var itemcollection = $("#itemcollection").val();
-        var itempic = $("#itempic").val();
-        var spritepic = $("#spritepic").val();
-        var positionid = $("#positionid").val();
+        var inputFile1 = $('input[name=itempic]');
+        var itempic = inputFile1[0].files[0];
+        var inputFile2 = $('input[name=spritepic]');
+        var spritepic = inputFile2[0].files[0];
+        
+
+        if (itempic != 'undefined' && spritepic != 'undefined') {
+
+          var formElement = document.querySelector("form");
+          var formData = new FormData(formElement);
+          formData.append("itempic", itempic);
+          formData.append("spritepic", spritepic);
 
 
         var url = "<?=base_url('additem/additemcheck')?>";
         $.ajax({
                type: "POST",
                url: url,
-               data: {
-                itemname: itemname,
-                itemcollection: itemcollection,
-                itempic: itempic,
-                spritepic: spritepic,
-                positionid: positionid
-               }
-               , 
+               data: formData,
+               processData: false,
+               contentType: false,
                success: function(data){
                    if(data == 'add_item_success'){
                         $('#mainarea').load(
@@ -49,6 +51,7 @@ $(document).ready(function(){
                }
         });
         return false;
+      }
     });
 });
 </script>

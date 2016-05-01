@@ -12,31 +12,29 @@ $(document).ready(function(){
     $(document).on("submit", "form", function(event){
         event.preventDefault();
             
-        var itemid = $("#itemid").val();
-        var itemname = $("#itemname").val();
-        var itemcollection = $("#itemcollection").val();
-        var itempic = $("#itempic").val();
-        var itempicpath = $("#itempicpath").val();
-        var spritepic = $("#spritepic").val();
-        var equipspritepath = $("#equipspritepath").val();
-        var positionid = $("#positionid").val();
+        var inputFile1 = $('input[name=itempic]');
+        var itempic = inputFile1[0].files[0];
+        var inputFile2 = $('input[name=spritepic]');
+        var spritepic = inputFile2[0].files[0];
+        
+
+        if (itempic != 'undefined' && spritepic != 'undefined') {
+
+          var formElement = document.querySelector("form");
+          var formData = new FormData(formElement);
+          formData.append("itempic", itempic);
+          formData.append("spritepic", spritepic);
+
+        }
 
 
         var url = "<?=base_url('edititem/edititemcheck')?>";
         $.ajax({
                type: "POST",
                url: url,
-               data: {
-                itemid: itemid,
-                itemname: itemname,
-                itemcollection: itemcollection,
-                itempic: itempic,
-                itempicpath: itempicpath,
-                spritepic: spritepic,
-                equipspritepath: equipspritepath,
-                positionid: positionid
-               }
-               , 
+               data: formData,
+               processData: false,
+               contentType: false,
                success: function(data){
                    if(data == 'edit_item_success'){
                         $('#mainarea').load(

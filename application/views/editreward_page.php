@@ -12,26 +12,23 @@ $(document).ready(function(){
     $(document).on("submit", "form", function(event){
         event.preventDefault();
             
-        var rewardid = $("#rewardid").val();
-        var rewardname = $("#rewardname").val();
-        var description = $("#description").val();
-        var rewardpic = $("#rewardpic").val();
-        var rewardurl = $("#rewardurl").val();
-        var rewardtype = $("#rewardtype").val();
+        var inputFile = $('input[name=rewardpic]');
+      var rewardpic = inputFile[0].files[0];
+      
+      var formElement = document.querySelector("form");
+      var formData = new FormData(formElement);
+          
+        if (rewardpic != 'undefined') {
+          formData.append("rewardpic", rewardpic);
+        }
 
         var url = "<?=base_url('editreward/editrewardcheck')?>"
         $.ajax({
                type: "POST",
                url: url,
-               data: {
-                rewardid: rewardid,
-                rewardname: rewardname,
-                description: description,
-                rewardpic: rewardpic,
-                rewardurl: rewardurl,
-                rewardtype: rewardtype
-               }
-               , 
+               data: formData,
+               processData: false,
+               contentType: false,
                success: function(data){
                    if(data == 'edit_reward_success'){
                         $('#mainarea').load(
@@ -84,11 +81,13 @@ Reward Picture: <input type="file"
 		id="rewardurl"
 		size ="999"
     accept="image/*">
+    <?php if(!empty($rewarddata['rewardpic'])):?>
 		<img
             src="http://52.74.64.61/questio_management<?=$rewarddata['rewardpic']?>"
             alt="<?= $rewarddata['rewardpic']?>"
             style="width:100px;
                     height:100px;">
+    <?php endif;?>
 		<br>
 <input type="hidden" name="rewardpic" id="rewardpic" value="<?=$rewarddata['rewardpic']?>">
 Reward Type*:

@@ -12,36 +12,24 @@ $(document).ready(function(){
     $(document).on("submit", "form", function(event){
         event.preventDefault();
             
-        var puzzleid = $("#puzzleid").val();
-        var zoneid = $("#zoneid").val();
-        var imageurl = $("#imageurl").val();
-        var puzzlepic = $("#puzzlepic").val();
-        var helperanswer = $("#helperanswer").val();
-        var correctanswer = $("#correctanswer").val();
-        var questname = $("#questname").val();
-        var questdetails = $("#questdetails").val();
-        var questtypeid = $("#questtypeid").val();
-        var diffid = $("#diffid").val();
-        var rewardid = $("#rewardid").val();
+        var inputFile = $('input[name=puzzlepic]');
+        var puzzlepic = inputFile[0].files[0];
 
+        var formElement = document.querySelector("form");
+        var formData = new FormData(formElement);
+        
+
+        if (puzzlepic != 'undefined') {
+            formData.append("puzzlepic", puzzlepic);
+        }
 
         var url = "<?=base_url('editquest/editpuzzlecheck')?>";
         $.ajax({
                type: "POST",
                url: url,
-               data: {
-                puzzleid: puzzleid,
-                imageurl: imageurl,
-                puzzlepic: puzzlepic,
-                helperanswer: helperanswer,
-                correctanswer: correctanswer,
-                questname: questname,
-                questdetails: questdetails,
-                questtypeid: questtypeid,
-                diffid: diffid,
-                rewardid: rewardid
-               }
-               , 
+               data: formData,
+               processData: false,
+               contentType: false, 
                success: function(data){
                    if(data == 'edit_puzzle_success'){
                         $('#mainarea').load(

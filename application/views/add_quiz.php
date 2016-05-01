@@ -12,32 +12,15 @@ $(document).ready(function(){
     $(document).on("submit", "form", function(event){
         event.preventDefault();
             
-        var questid = $("#questid").val();
-        var zoneid = $("#zoneid").val();
-        var seqid = $("#seqid").val();
-        var question = $("#question").val();
-        var choicea = $("#choicea").val();
-        var choiceb = $("#choiceb").val();
-        var choicec = $("#choicec").val();
-        var choiced = $("#choiced").val();
-        var answerid = $("#answerid").val();
+        var formElement = document.querySelector("form");
+        var formData = new FormData(formElement);
 
 
         var url = "<?=base_url('addquest/addquizcheck')?>";
         $.ajax({
                type: "POST",
                url: url,
-               data: {
-                questid: questid,
-                seqid: seqid,
-                question: question,
-                choicea: choicea,
-                choiceb: choiceb,
-                choicec: choicec,
-                choiced: choiced,
-                answerid: answerid
-               }
-               , 
+               data: formData,
                success: function(data){
                    if(data == 'add_quiz_success'){
                         $('#mainarea').load(

@@ -12,30 +12,15 @@ $(document).ready(function(){
     $(document).on("submit", "form", function(event){
         event.preventDefault();
             
-        var quizid = $("#quizid").val();
-        var zoneid = $("#zoneid").val();
-        var question = $("#question").val();
-        var choicea = $("#choicea").val();
-        var choiceb = $("#choiceb").val();
-        var choicec = $("#choicec").val();
-        var choiced = $("#choiced").val();
-        var answerid = $("#answerid").val();
+        var formElement = document.querySelector("form");
+        var formData = new FormData(formElement);
 
 
         var url = "<?=base_url('editquest/editquizcheck')?>";
         $.ajax({
                type: "POST",
                url: url,
-               data: {
-                quizid: quizid,
-                question: question,
-                choicea: choicea,
-                choiceb: choiceb,
-                choicec: choicec,
-                choiced: choiced,
-                answerid: answerid
-               }
-               , 
+               data: formData,
                success: function(data){
                    if(data == 'edit_quiz_success'){
                         $('#mainarea').load(

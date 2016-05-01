@@ -12,32 +12,15 @@ $(document).ready(function(){
     $(document).on("submit", "form", function(event){
         event.preventDefault();
             
-        var ridid = $("#ridid").val();
-        var zoneid = $("#zoneid").val();
-        var qrcode = $("#qrcode").val();
-        var sensorid = $("#sensorid").val();
-        var riddetails = $("#riddetails").val();
-        var scanlimit = $("#scanlimit").val();
-        var hint1 = $("#hint1").val();
-        var hint2 = $("#hint2").val();
-        var hint3 = $("#hint3").val();
+        var formElement = document.querySelector("form");
+        var formData = new FormData(formElement);
 
 
         var url = "<?=base_url('addquest/addriddlecheck')?>";
         $.ajax({
                type: "POST",
                url: url,
-               data: {
-                ridid: ridid,
-                qrcode: qrcode,
-                sensorid: sensorid,
-                riddetails: riddetails,
-                scanlimit: scanlimit,
-                hint1: hint1,
-                hint2: hint2,
-                hint3: hint3
-               }
-               , 
+               data: formData,
                success: function(data){
                    if(data == 'add_riddle_success'){
                         $('#mainarea').load(

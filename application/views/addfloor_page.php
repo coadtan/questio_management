@@ -12,25 +12,24 @@ $(document).ready(function(){
     $(document).on("submit", "form", function(event){
         event.preventDefault();
             
-        var floorname = $("#floorname").val();
-        var buildingid = $("#buildingid").val();
-        var qrcode = $("#qrcode").val();
-        var sensorid = $("#sensorid").val();
-        var floorpic = $("#floorpic").val();
+        var inputFile = $('input[name=floorpic]');
+        var floorpic = inputFile[0].files[0];
+
+        var formElement = document.querySelector("form");
+        var formData = new FormData(formElement);
+
+        if (floorpic != 'undefined') {
+          formData.append("floorpic", floorpic);
+        }
 
 
         var url = "<?=base_url('addfloor/addfloorcheck')?>";
         $.ajax({
                type: "POST",
                url: url,
-               data: {
-                floorname: floorname,
-                buildingid: buildingid,
-                qrcode: qrcode,
-                sensorid: sensorid,
-                floorpic: floorpic
-               }
-               , 
+               data: formData,
+               processData: false,
+               contentType: false, 
                success: function(data){
                    if(data == 'add_floor_success'){
                         $('#mainarea').load(

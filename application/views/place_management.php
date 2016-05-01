@@ -61,9 +61,13 @@
                     id="place_<?=$place['placeid']?>"
                     placeid="<?=$place['placeid']?>"
                 >
+                <?php if(!empty($place['imageurl'])):?>
                     <img
                         src="http://52.74.64.61/questio_management<?=$place['imageurl']?>"
                         alt="<?=$place['placename']?>">
+                <?php else:?>
+                    <h3 style="color:black"><b><?=$place['placename']?></b></h3>
+                <?php endif;?>
                 </a>
                 <?=$place['placename']?>
                 <a href="#" class="editplace" placeid="<?=$place['placeid']?>">Edit</a>

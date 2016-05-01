@@ -12,42 +12,15 @@ $(document).ready(function(){
     $(document).on("submit", "form", function(event){
         event.preventDefault();
             
-        var ridid = $("#ridid").val();
-        var zoneid = $("#zoneid").val();
-        var qrcode = $("#qrcode").val();
-        var sensorid = $("#sensorid").val();
-        var riddetails = $("#riddetails").val();
-        var scanlimit = $("#scanlimit").val();
-        var hint1 = $("#hint1").val();
-        var hint2 = $("#hint2").val();
-        var hint3 = $("#hint3").val();
-        var questname = $("#questname").val();
-        var questdetails = $("#questdetails").val();
-        var questtypeid = $("#questtypeid").val();
-        var diffid = $("#diffid").val();
-        var rewardid = $("#rewardid").val();
+        var formElement = document.querySelector("form");
+        var formData = new FormData(formElement);
 
 
         var url = "<?=base_url('editquest/editriddlecheck')?>";
         $.ajax({
                type: "POST",
                url: url,
-               data: {
-                ridid: ridid,
-                qrcode: qrcode,
-                sensorid: sensorid,
-                riddetails: riddetails,
-                scanlimit: scanlimit,
-                hint1: hint1,
-                hint2: hint2,
-                hint3: hint3,
-                questname: questname,
-                questdetails: questdetails,
-                questtypeid: questtypeid,
-                diffid: diffid,
-                rewardid: rewardid
-               }
-               , 
+               data: formData,
                success: function(data){
                    if(data == 'edit_riddle_success'){
                         $('#mainarea').load(

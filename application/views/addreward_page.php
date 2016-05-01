@@ -10,24 +10,24 @@ $(document).ready(function(){
         'slow');
     });
     $(document).on("submit", "form", function(event){
-        event.preventDefault();
-            
-        var rewardname = $("#rewardname").val();
-        var description = $("#description").val();
-        var rewardpic = $("#rewardpic").val();
-        var rewardtype = $("#rewardtype").val();
+      event.preventDefault();
+      var inputFile = $('input[name=rewardpic]');
+      var rewardpic = inputFile[0].files[0];
+      
+      var formElement = document.querySelector("form");
+      var formData = new FormData(formElement);
+          
+        if (rewardpic != 'undefined') {
+          formData.append("rewardpic", rewardpic);
+        }
 
         var url = "<?=base_url('addreward/addrewardcheck')?>"
         $.ajax({
                type: "POST",
                url: url,
-               data: {
-                rewardname: rewardname,
-                description: description,
-                rewardpic: rewardpic,
-                rewardtype: rewardtype
-               }
-               , 
+               data: formData,
+               processData: false,
+               contentType: false,
                success: function(data){
                    if(data == 'add_reward_success'){
                         $('#mainarea').load(
@@ -45,6 +45,7 @@ $(document).ready(function(){
                    }
                }
         });
+      
         return false;
     });
 });

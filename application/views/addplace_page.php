@@ -12,37 +12,24 @@ $(document).ready(function(){
     $(document).on("submit", "form", function(event){
         event.preventDefault();
             
-        var placename = $("#placename").val();
-        var placefullname = $("#placefullname").val();
-        var latitude = $("#latitude").val();
-        var longitude = $("#longitude").val();
-        var radius = $("#radius").val();
-        var qrcode = $("#qrcode").val();
-        var sensorid = $("#sensorid").val();
-        var placetype = $("#placetype").val();
-        var placepic = $("#placepic").val();
-        var enter_rewardid = $("#enter_rewardid").val();
-        var rewardid = $("#rewardid").val();
+        var inputFile = $('input[name=placepic]');
+        var placepic = inputFile[0].files[0];
+
+        var formElement = document.querySelector("form");
+        var formData = new FormData(formElement);
+
+        if (placepic != 'undefined') {
+          formData.append("placepic", placepic);
+        }
 
 
         var url = "<?=base_url('addplace/addplacecheck')?>";
         $.ajax({
                type: "POST",
                url: url,
-               data: {
-                placename: placename,
-                placefullname: placefullname,
-                latitude: latitude,
-                longitude: longitude,
-                radius: radius,
-                qrcode: qrcode,
-                sensorid: sensorid,
-                placetype: placetype,
-                placepic: placepic,
-                enter_rewardid: enter_rewardid,
-                rewardid: rewardid
-               }
-               , 
+               data: formData,
+               processData: false,
+               contentType: false,  
                success: function(data){
                    if(data == 'add_place_success'){
                         $('#mainarea').load(

@@ -43,8 +43,6 @@ class Addfloor extends CI_Controller {
 			$config['max_width'] = '1920';
 			$config['max_height'] = '1080';
 
-
-			$this->load->library('upload', $config);
 			$this->upload->initialize($config);
 
 

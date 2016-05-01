@@ -12,30 +12,24 @@ $(document).ready(function(){
     $(document).on("submit", "form", function(event){
         event.preventDefault();
         
-        var buildingid = $("#buildingid").val();
-        var buildingname = $("#buildingname").val();
-        var placeid = $("#placeid").val();
-        var latitude = $("#latitude").val();
-        var longitude = $("#longitude").val();
-        var radius = $("#radius").val();
-        var buildingpic = $("#buildingpic").val();
-        var imageurl = $("#imageurl").val();
+        var inputFile = $('input[name=buildingpic]');
+        var buildingpic = inputFile[0].files[0];
+
+        var formElement = document.querySelector("form");
+        var formData = new FormData(formElement);
+
+        if (buildingpic != 'undefined') {
+          formData.append("buildingpic", buildingpic);
+        }
 
 
         var url = "<?=base_url('editbuilding/editbuildingcheck')?>"+"/"+buildingid;
         $.ajax({
                type: "POST",
                url: url,
-               data: {
-                buildingname: buildingname,
-                placeid: placeid,
-                latitude: latitude,
-                longitude: longitude,
-                radius: radius,
-                buildingpic: buildingpic,
-                imageurl: imageurl
-               }
-               , 
+               data: formData,
+               processData: false,
+               contentType: false,  
                success: function(data){
                    if(data == 'edit_building_success'){
                         $('#mainarea').load(
@@ -78,11 +72,13 @@ $(document).ready(function(){
 		id="buildingpic"
 		size ="999"
     accept="image/*">
+    <?php if(!empty($buildingdata["imageurl"])):?>
 		<img
             src="http://52.74.64.61/questio_management<?=$buildingdata["imageurl"]?>"
             alt="<?= $buildingdata["imageurl"]?>"
             style="width:100px;
                     height:100px;">
+    <?php endif;?>
 		<br>
 	<input type="submit" value="Submit">
 </form>

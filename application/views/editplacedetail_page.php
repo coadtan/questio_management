@@ -12,31 +12,24 @@ $(document).ready(function(){
     $(document).on("submit", "form", function(event){
         event.preventDefault();
             
-        var placeid = $("#placeid").val();
-        var placedetails = $("#placedetails").val();
-        var phonecontact1 = $("#phonecontact1").val();
-        var phonecontact2 = $("#phonecontact2").val();
-        var website = $("#website").val();
-        var email = $("#email").val();
-        var imageurl = $("#imageurl").val();
-        var placepic = $("#placepic").val();
+        var inputFile = $('input[name=placepic]');
+        var placepic = inputFile[0].files[0];
+
+        var formElement = document.querySelector("form");
+        var formData = new FormData(formElement);
+
+        if (placepic != 'undefined') {
+          formData.append("placepic", placepic);
+        }
 
 
         var url = "<?=base_url('editplace/editplacedetailcheck')?>";
         $.ajax({
                type: "POST",
                url: url,
-               data: {
-                placeid: placeid,
-                placedetails: placedetails,
-                phonecontact1: phonecontact1,
-                phonecontact2: phonecontact2,
-                website: website,
-                email: email,
-                imageurl: imageurl,
-                placepic: placepic
-               }
-               , 
+               data: formData,
+               processData: false,
+               contentType: false,
                success: function(data){
                    if(data == 'edit_placedetail_success'){
                         $('#mainarea').load(
@@ -78,11 +71,13 @@ $(document).ready(function(){
         id="placepic"
         size ="999"
         accept="image/*">
+        <?php if(!empty($placedetaildata['imageurl'])):?>
         <img
             src="http://52.74.64.61/questio_management<?=$placedetaildata['imageurl']?>"
             alt="<?= $placedetaildata['imageurl']?>"
             style="width:100px;
                     height:100px;">
+        <?php endif;?>
         <br>
     <input type="submit" value="Submit">
 </form>

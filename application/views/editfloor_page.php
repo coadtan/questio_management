@@ -12,24 +12,24 @@ $(document).ready(function(){
     $(document).on("submit", "form", function(event){
         event.preventDefault();
             
-        var floorid = $("#floorid").val();
-        var floorname = $("#floorname").val();
-        var buildingid = $("#buildingid").val();
-        var floorpic = $("#floorpic").val();
-        var imageurl = $("#imageurl").val();
+        var inputFile = $('input[name=floorpic]');
+        var floorpic = inputFile[0].files[0];
+
+        var formElement = document.querySelector("form");
+        var formData = new FormData(formElement);
+
+        if (floorpic != 'undefined') {
+          formData.append("floorpic", floorpic);
+        }
 
 
         var url = "<?=base_url('editfloor/editfloorcheck')?>"+"/"+floorid;
         $.ajax({
                type: "POST",
                url: url,
-               data: {
-                floorname: floorname,
-                buildingid: buildingid,
-                floorpic: floorpic,
-                imageurl: imageurl
-               }
-               , 
+               data: formData,
+               processData: false,
+               contentType: false,  
                success: function(data){
                    if(data == 'edit_floor_success'){
                         $('#mainarea').load(
@@ -66,11 +66,13 @@ $(document).ready(function(){
 		id="floorpic"
 		size ="999"
     accept="image/*">
+    <?php if(!empty($floordata['imageurl'])):?>
 		<img
             src="http://52.74.64.61/questio_management<?=$floordata['imageurl']?>"
             alt="<?= $floordata["imageurl"]?>"
             style="width:100px;
                     height:100px;">
+    <?php endif;?>
 		<br>
 	<input type="submit" value="Submit">
 </form>

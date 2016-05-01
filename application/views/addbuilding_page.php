@@ -12,27 +12,24 @@ $(document).ready(function(){
     $(document).on("submit", "form", function(event){
         event.preventDefault();
             
-        var buildingname = $("#buildingname").val();
-        var placeid = $("#placeid").val();
-        var latitude = $("#latitude").val();
-        var longitude = $("#longitude").val();
-        var radius = $("#radius").val();
-        var buildingpic = $("#buildingpic").val();
+        var inputFile = $('input[name=buildingpic]');
+        var buildingpic = inputFile[0].files[0];
+
+        var formElement = document.querySelector("form");
+        var formData = new FormData(formElement);
+
+        if (buildingpic != 'undefined') {
+          formData.append("buildingpic", buildingpic);
+        }
 
 
         var url = "<?=base_url('addbuilding/addbuildingcheck')?>";
         $.ajax({
                type: "POST",
                url: url,
-               data: {
-                buildingname: buildingname,
-                placeid: placeid,
-                latitude: latitude,
-                longitude: longitude,
-                radius: radius,
-                buildingpic: buildingpic
-               }
-               , 
+               data: formData,
+               processData: false,
+               contentType: false,  
                success: function(data){
                    if(data == 'add_building_success'){
                         $('#mainarea').load(

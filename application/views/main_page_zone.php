@@ -48,9 +48,13 @@ $(document).ready(function(){
             	id="zone_<?=$zone['zoneid']?>"
             	zoneid="<?=$zone['zoneid']?>"
             >
+            <?php if(!empty($zone['imageurl'])):?>
 		      <img
 		      	src="http://52.74.64.61/questio_management<?=$zone['imageurl']?>"
 		      	alt="<?=$zone['zonename']?>">
+            <?php else:?>
+                <h3 style="color:black"><b><?=$zone['zonename']?></b></h3>
+            <?php endif;?>
 		    </a>
 		    <?=$zone['zonename']?>
 		    <a href="#" class="editzone" zoneid="<?=$zone["zoneid"]?>">Edit</a>

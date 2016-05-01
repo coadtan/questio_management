@@ -48,9 +48,13 @@ $(document).ready(function(){
             	id="floor_<?=$floor['floorid']?>"
             	floorid="<?=$floor['floorid']?>"
             >
+            <?php if(!empty($floor['imageurl'])):?>
 		      <img
 		      	src="http://52.74.64.61/questio_management<?=$floor['imageurl']?>"
 		      	alt="<?=$floor['floorname']?>">
+            <?php else:?>
+                <h3 style="color:black"><b><?=$floor['floorname']?></b></h3>
+            <?php endif;?>
 		    </a>
 		    <?=$floor['floorname']?>
 		    <a href="#" class="editfloor" floorid="<?=$floor['floorid']?>">Edit</a>

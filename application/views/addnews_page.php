@@ -5,25 +5,15 @@
     $(document).on("submit", "form", function(event){
         event.preventDefault();
             
-        var placeid = $("#placeid").val();
-        var newsheader = $("#newsheader").val();
-        var newsdetails = $("#newsdetails").val();
-        var datestarted = $("#datestarted").val();
-        var dateended = $("#dateended").val();
+        var formElement = document.querySelector("form");
+        var formData = new FormData(formElement);
 
 
         var url = "<?=base_url('addnews/addnewscheck')?>";
         $.ajax({
                type: "POST",
                url: url,
-               data: {
-                placeid: placeid,
-                newsheader: newsheader,
-                newsdetails: newsdetails,
-                datestarted: datestarted,
-                dateended: dateended
-               }
-               , 
+               data: formData,
                success: function(data){
                    if(data == 'add_news_success'){
                         $('#mainarea').load(

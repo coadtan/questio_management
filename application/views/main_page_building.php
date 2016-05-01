@@ -48,9 +48,13 @@ $(document).ready(function(){
             	id="building_<?=$building['buildingid']?>"
             	buildingid="<?=$building['buildingid']?>"
             >
+            <?php if(!empty($building['imageurl'])):?>
 		      <img
 		      	src="http://52.74.64.61/questio_management<?=$building['imageurl']?>"
 		      	alt="<?=$building['buildingname']?>">
+            <?php else:?>
+                <h3 style="color:black"><b><?=$building['buildingname']?></b></h3>
+            <?php endif;?>
 		    </a>
 		    <?=$building['buildingname']?>
 		    <a href="#" class="editbuilding" buildingid="<?=$building['buildingid']?>">Edit</a>

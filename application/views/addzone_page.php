@@ -12,35 +12,29 @@ $(document).ready(function(){
     $(document).on("submit", "form", function(event){
         event.preventDefault();
             
-        var floorid = $("#floorid").val();
-        var zonename = $("#zonename").val();
-        var zonetype = $("#zonetype").val();
-        var zonedetails = $("#zonedetails").val();
-        var qrcode = $("#qrcode").val();
-        var sensorid = $("#sensorid").val();
-        var zonepic = $("#zonepic").val();
-        var minimappic = $("#minimappic").val();
-        var itemid = $("#itemid").val();
-        var rewardid = $("#rewardid").val();
+        var inputFile1 = $('input[name=zonepic]');
+        var zonepic = inputFile1[0].files[0];
+        var inputFile2 = $('input[name=minimappic]');
+        var minimappic = inputFile2[0].files[0];
+        var formElement = document.querySelector("form");
+        var formData = new FormData(formElement);
+
+        if (zonepic != 'undefined'){
+          formData.append("zonepic", zonepic);
+        }
+
+        if (minimappic != 'undefined'){
+          formData.append("minimappic", minimappic);
+        }
 
 
         var url = "<?=base_url('addzone/addzonecheck')?>";
         $.ajax({
                type: "POST",
                url: url,
-               data: {
-                floorid: floorid,
-                zonename: zonename,
-                zonetype: zonetype,
-                zonedetails: zonedetails,
-                qrcode: qrcode,
-                sensorid: sensorid,
-                zonepic: zonepic,
-                minimappic: minimappic,
-                itemid: itemid,
-                rewardid: rewardid
-               }
-               , 
+               data: formData,
+               processData: false,
+               contentType: false,
                success: function(data){
                 if(data == 'add_zone_success'){
                     $('#mainarea').load(
@@ -58,6 +52,7 @@ $(document).ready(function(){
                }
         });
         return false;
+        
     });
 });
 </script>

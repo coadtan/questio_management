@@ -12,36 +12,24 @@ $(document).ready(function(){
 	$(document).on("submit", "form", function(event){
         event.preventDefault();
         
-        var placeid = $("#placeid").val();
-        var placename = $("#placename").val();
-        var placefullname = $("#placefullname").val();
-        var latitude = $("#latitude").val();
-        var longitude = $("#longitude").val();
-        var radius = $("#radius").val();
-        var placetype = $("#placetype").val();
-        var imageurl = $("#imageurl").val();
-        var placepic = $("#placepic").val();
-        var enter_rewardid = $("#enter_rewardid").val();
-        var rewardid = $("#rewardid").val();
+        var inputFile = $('input[name=placepic]');
+        var placepic = inputFile[0].files[0];
+
+        var formElement = document.querySelector("form");
+        var formData = new FormData(formElement);
+
+        if (placepic != 'undefined') {
+          formData.append("placepic", placepic);
+        }
 
 
         var url = "<?=base_url('editplace/editplacecheck')?>"+"/"+placeid;
         $.ajax({
                type: "POST",
                url: url,
-               data: {
-                placename: placename,
-                placefullname: placefullname,
-                latitude: latitude,
-                longitude: longitude,
-                radius: radius,
-                placetype: placetype,
-                imageurl: imageurl,
-                placepic: placepic,
-                enter_rewardid: enter_rewardid,
-                rewardid: rewardid
-               }
-               , 
+               data: formData,
+               processData: false,
+               contentType: false,  
                success: function(data){
                    if(data == 'edit_place_success'){
                         $('#mainarea').load(
@@ -92,11 +80,13 @@ $(document).ready(function(){
 		id="placepic"
 		size ="999"
         accept="image/*">
-		<img
+		<?php if(!empty($placedata["imageurl"])):?>
+        <img
             src="http://52.74.64.61/questio_management<?=$placedata["imageurl"]?>"
             alt="<?= $placedata["imageurl"]?>"
             style="width:100px;
                     height:100px;">
+        <?php endif;?>
 		<br>
 	Enter Rewards:
 	<?= form_dropdown('enter_rewardid',$enterrewarddata,$placedata["enter_rewardid"],'id="enter_rewardid"') ?><br>

@@ -12,26 +12,14 @@ $(document).ready(function(){
     $(document).on("submit", "form", function(event){
         event.preventDefault();
             
-        var questname = $("#questname").val();
-        var questdetails = $("#questdetails").val();
-        var questtypeid = $("#questtypeid").val();
-        var zoneid = $("#zoneid").val();
-        var diffid = $("#diffid").val();
-        var rewardid = $("#rewardid").val();
+        var formElement = document.querySelector("form");
+        var formData = new FormData(formElement);
 
         var url = "<?=base_url('addquest/addquestcheck')?>";
         $.ajax({
                type: "POST",
                url: url,
-               data: {
-                questname: questname,
-                questdetails: questdetails,
-                questtypeid: questtypeid,
-                zoneid: zoneid,
-                diffid: diffid,
-                rewardid: rewardid
-               }
-               , 
+               data: formData,
                success: function(data){
                    if(data == 'add_quest_success'){
                         $('#mainarea').load(

@@ -46,11 +46,15 @@ $(document).ready(function(){
             <td><?= $reward['rewardname']?></td>
             
             <td><?= $reward['description']?></td>
-            <td><img
+            <td>
+                <?php if(!empty($reward['rewardpic'])):?>
+            <img
                 src="http://52.74.64.61/questio_management<?=$reward['rewardpic']?>"
                 alt="<?= $reward['rewardpic']?>"
                 style="width:50px;
-                        height:50px;"></td>
+                        height:50px;">
+            <?php endif;?>
+                        </td>
             <td><?= $reward['rewardtypename']?></td>
             <td>
                 <a href="#" class="editreward" rewardid="<?=$reward['rewardid']?>">
