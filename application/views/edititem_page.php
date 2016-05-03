@@ -1,5 +1,8 @@
 <script>
 $(document).ready(function(){
+    $.ajaxSetup({ 
+        cache: false 
+    });  
     $('.goback').click(function(){
         $('#mainarea').load(
     		"<?=base_url('itemoverview')?>"
@@ -86,7 +89,7 @@ $(document).ready(function(){
 		size ="999"
         accept="image/*">
 		<img
-            src="http://52.74.64.61/questio_management<?=$itemdata['itempicpath']?>"
+            src="<?=base_url($itemdata['itempicpath'])?>"
             alt="<?= $itemdata['itempicpath']?>"
             style="width:100px;
                     height:100px;">
@@ -98,7 +101,7 @@ $(document).ready(function(){
 		size ="999"
         accept="image/*">
 		<img
-            src="http://52.74.64.61/questio_management<?=$itemdata['equipspritepath']?>"
+            src="<?=base_url($itemdata['equipspritepath'])?>"
             alt="<?= $itemdata['equipspritepath']?>"
             style="width:100px;
                     height:100px;">

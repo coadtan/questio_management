@@ -1,5 +1,8 @@
 <script type="text/javascript">
 $(document).ready(function(){
+    $.ajaxSetup({ 
+        cache: false 
+    });    
     $('#additem').click(function(){
         $('#mainarea').load(
             "<?=base_url('additem')?>"

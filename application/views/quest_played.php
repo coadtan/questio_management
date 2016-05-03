@@ -3,6 +3,9 @@
     </div>
     <script>
     $(document).ready(function(){
+    $.ajaxSetup({ 
+        cache: false 
+    });        
         <?php if(!empty($x) && !empty($y)):?>
         $('#error').text("");
         var questname_arr = [];

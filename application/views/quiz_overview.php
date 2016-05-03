@@ -1,5 +1,8 @@
 <script type="text/javascript">
 $(document).ready(function(){
+    $.ajaxSetup({ 
+        cache: false 
+    });    
     $('#addquiz').click(function(){
         var questid = this.getAttribute("questid");
         $('#mainarea').load(

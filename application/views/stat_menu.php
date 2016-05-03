@@ -1,5 +1,8 @@
 <script>
 $(document).ready(function(){
+    $.ajaxSetup({ 
+        cache: false 
+    });
 
 var placeid = sessionStorage.getItem('placeid');
 

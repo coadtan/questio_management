@@ -1,6 +1,8 @@
 <script type="text/javascript">
     $(document).ready(function(){
-
+    $.ajaxSetup({ 
+        cache: false 
+    });
     // $("#addnews").submit(function(e) {
     $(document).on("submit", "form", function(event){
         event.preventDefault();

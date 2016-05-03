@@ -1,5 +1,8 @@
 <script type="text/javascript">
     $(document).ready(function(){
+    $.ajaxSetup({ 
+        cache: false 
+    });        
         $('.keeperplace').click(function(){
             var placeid = this.getAttribute("placeid");
             $('#buildinglist').load(
@@ -63,7 +66,7 @@
                 >
                 <?php if(!empty($place['imageurl'])):?>
                     <img
-                        src="http://52.74.64.61/questio_management<?=$place['imageurl']?>"
+                        src="<?=base_url($place['imageurl'])?>"
                         alt="<?=$place['placename']?>">
                 <?php else:?>
                     <h3 style="color:black"><b><?=$place['placename']?></b></h3>

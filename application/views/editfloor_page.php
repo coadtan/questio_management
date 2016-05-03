@@ -1,5 +1,8 @@
 <script>
 $(document).ready(function(){
+    $.ajaxSetup({ 
+        cache: false 
+    });  
     $('.goback').click(function(){
         $('#mainarea').load(
     		"<?=base_url('mainpage/getplace')?>"
@@ -68,7 +71,7 @@ $(document).ready(function(){
     accept="image/*">
     <?php if(!empty($floordata['imageurl'])):?>
 		<img
-            src="http://52.74.64.61/questio_management<?=$floordata['imageurl']?>"
+            src="<?=base_url($floordata['imageurl'])?>"
             alt="<?= $floordata["imageurl"]?>"
             style="width:100px;
                     height:100px;">

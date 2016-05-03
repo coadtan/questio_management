@@ -1,5 +1,8 @@
 <script type="text/javascript">
 $(document).ready(function(){
+    $.ajaxSetup({ 
+        cache: false 
+    });    
     $('#addpuzzle').click(function(){
         var puzzleid = this.getAttribute("puzzleid");
         $('#mainarea').load(
@@ -39,7 +42,7 @@ $(document).ready(function(){
         <?php foreach($puzzledata as $puzzle):?>
         <tr>
             <td><img
-                src="http://52.74.64.61/questio_management<?=$puzzle['imageurl']?>"
+                src="<?=base_url($puzzle['imageurl'])?>"
                 alt="<?= $puzzle['imageurl']?>"
                 style="width:100px;
                         height:100px;"></td>

@@ -1,5 +1,8 @@
 <script type="text/javascript">
 $(document).ready(function(){
+    $.ajaxSetup({ 
+        cache: false 
+    });    
     $('#addreward').click(function(){
         $('#mainarea').load(
             "<?=base_url('addreward')?>"

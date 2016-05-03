@@ -1,5 +1,8 @@
 <script type="text/javascript">
 $(document).ready(function(){
+    $.ajaxSetup({ 
+        cache: false 
+    });    
     $("#login-form").submit(function(e) {
         var url = "<?=base_url('login/login_action')?>";
         $.ajax({

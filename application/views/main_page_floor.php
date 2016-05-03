@@ -1,5 +1,8 @@
 <script type="text/javascript">
 $(document).ready(function(){
+    $.ajaxSetup({ 
+        cache: false 
+    });    
 	$('.keeperfloor').click(function(){
         var floorid = this.getAttribute( "floorid");
         $('#zonelist').load(
@@ -50,7 +53,7 @@ $(document).ready(function(){
             >
             <?php if(!empty($floor['imageurl'])):?>
 		      <img
-		      	src="http://52.74.64.61/questio_management<?=$floor['imageurl']?>"
+		      	src="<?=base_url($floor['imageurl'])?>"
 		      	alt="<?=$floor['floorname']?>">
             <?php else:?>
                 <h3 style="color:black"><b><?=$floor['floorname']?></b></h3>

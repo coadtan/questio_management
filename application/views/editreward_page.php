@@ -1,5 +1,8 @@
 <script>
 $(document).ready(function(){
+    $.ajaxSetup({ 
+        cache: false 
+    });  
     $('.goback').click(function(){
         $('#mainarea').load(
     		"<?=base_url('rewardoverview')?>"
@@ -83,7 +86,7 @@ Reward Picture: <input type="file"
     accept="image/*">
     <?php if(!empty($rewarddata['rewardpic'])):?>
 		<img
-            src="http://52.74.64.61/questio_management<?=$rewarddata['rewardpic']?>"
+            src="<?=base_url($rewarddata['rewardpic'])?>"
             alt="<?= $rewarddata['rewardpic']?>"
             style="width:100px;
                     height:100px;">

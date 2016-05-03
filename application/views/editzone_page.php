@@ -1,5 +1,8 @@
 <script>
 $(document).ready(function(){
+    $.ajaxSetup({ 
+        cache: false 
+    });  
     $('.goback').click(function(){
         $('#mainarea').load(
     		"<?=base_url('mainpage/getplace')?>"
@@ -80,7 +83,7 @@ $(document).ready(function(){
         accept="image/*">
     <?php if(!empty($zonedata['imageurl'])):?>
 		<img
-            src="http://52.74.64.61/questio_management<?=$zonedata['imageurl']?>"
+            src="<?=base_url($zonedata['imageurl'])?>"
             alt="<?= $zonedata['imageurl']?>"
             style="width:100px;
                     height:100px;">
@@ -94,7 +97,7 @@ $(document).ready(function(){
         accept="image/*">
     <?php if(!empty($zonedata['minimapurl'])):?>
 		<img
-            src="http://52.74.64.61/questio_management<?=$zonedata['minimapurl']?>"
+            src="<?=base_url($zonedata['minimapurl'])?>"
             alt="<?= $zonedata['minimapurl']?>"
             style="width:100px;
                     height:100px;">

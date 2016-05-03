@@ -13,6 +13,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
+		    $.ajaxSetup({ 
+		        cache: false 
+		    });			
 			$('#place').click(function(){
 		        $('#mainarea').load(
             		"<?=base_url('mainpage/getplace')?>"

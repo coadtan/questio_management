@@ -1,5 +1,8 @@
 <script type="text/javascript">
 $(document).ready(function(){
+    $.ajaxSetup({ 
+        cache: false 
+    });    
     $('#addriddle').click(function(){
         var ridid = this.getAttribute("ridid");
         $('#mainarea').load(

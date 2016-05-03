@@ -1,6 +1,9 @@
 <script type="text/javascript">
     
     $(document).ready(function(){
+    $.ajaxSetup({ 
+        cache: false 
+    });    
 
         var placeid = sessionStorage.setItem('placeid', $('#placechoose').val());
     $('#placechoose').on('change', function() {

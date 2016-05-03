@@ -1,5 +1,8 @@
 <script type="text/javascript">
 $(document).ready(function(){
+    $.ajaxSetup({ 
+        cache: false 
+    });  
     $('.goback').click(function(){
         var zoneid = this.getAttribute("zoneid");
         $('#mainarea').load(
@@ -73,7 +76,7 @@ $(document).ready(function(){
         size ="999"
         accept="image/*">
         <img
-            src="http://52.74.64.61/questio_management<?=$puzzledata['imageurl']?>"
+            src="<?=base_url($puzzledata['imageurl'])?>"
             alt="<?= $puzzledata['imageurl']?>"
             style="width:100px;
                     height:100px;">

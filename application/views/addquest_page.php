@@ -1,5 +1,8 @@
 <script>
 $(document).ready(function(){
+    $.ajaxSetup({ 
+        cache: false 
+    });  
     $('.goback').click(function(){
     	var zoneid = this.getAttribute("zoneid");
         $('#mainarea').load(

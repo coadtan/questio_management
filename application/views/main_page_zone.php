@@ -1,5 +1,8 @@
 <script type="text/javascript">
 $(document).ready(function(){
+    $.ajaxSetup({ 
+        cache: false 
+    });    
     $('.keeperzone').click(function(){
         var zoneid = this.getAttribute("zoneid");
         $('#mainarea').load(
@@ -50,7 +53,7 @@ $(document).ready(function(){
             >
             <?php if(!empty($zone['imageurl'])):?>
 		      <img
-		      	src="http://52.74.64.61/questio_management<?=$zone['imageurl']?>"
+		      	src="<?=base_url($zone['imageurl'])?>"
 		      	alt="<?=$zone['zonename']?>">
             <?php else:?>
                 <h3 style="color:black"><b><?=$zone['zonename']?></b></h3>
