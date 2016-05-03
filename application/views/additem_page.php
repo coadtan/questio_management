@@ -26,10 +26,9 @@ $(document).ready(function(){
           formData.append("spritepic", spritepic);
 
 
-        var url = "<?=base_url('additem/additemcheck')?>";
         $.ajax({
                type: "POST",
-               url: url,
+               url: "<?=base_url('additem/additemcheck')?>",
                data: formData,
                processData: false,
                contentType: false,
