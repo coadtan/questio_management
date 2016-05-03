@@ -27,7 +27,6 @@ class Addreward extends CI_Controller {
 		$description = $this->input->post('description');
 		$rewardtype = $this->input->post('rewardtype');
 		$rewardpic = null;
-
 		if(!empty($_FILES)){
 			$config['upload_path'] = './pictures/reward/';
 			$config['allowed_types'] = 'gif|jpg|jpeg|png';
@@ -40,9 +39,11 @@ class Addreward extends CI_Controller {
 			if ($this->upload->do_upload('rewardpic')){
 				$uploaddata = $this->upload->data();
 				$rewardpic = substr($uploaddata['full_path'], strpos($uploaddata['full_path'],"questio_management")+18);
+			}else{
+				echo $this->upload->display_error();
+
 			}
 		}
-
 		$this->form_validation->set_rules('rewardname', 'rewardname', 'required|max_length[50]');
 		$this->form_validation->set_rules('description', 'description', 'required|max_length[200]');
 

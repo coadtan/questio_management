@@ -49,7 +49,7 @@ $(document).ready(function(){
             <td>
                 <?php if(!empty($reward['rewardpic'])):?>
             <img
-                src="http://52.74.64.61/questio_management<?=$reward['rewardpic']?>"
+                src="<?=base_url($reward['rewardpic'])?>"
                 alt="<?= $reward['rewardpic']?>"
                 style="width:50px;
                         height:50px;">
