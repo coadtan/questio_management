@@ -103,40 +103,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div class="row r5">
 			<div class="col-md-3"></div>
 			<div class="col-md-6" style ="margin-top : 20px">
-				<h3 class="text-white">Still for looking for ? Download application and have fun </h3>
+				<h3 class="text-white">Download application for Android and have fun!</h3>
 				<br>
 				<img src="<?= base_url()?>assets/images/playstore.png" alt="">
 			</div>
 	</div>
-	<!-- <div class="row">
-		<div class ="r7">
-			<div class="col-md-2"></div>
-			<div class="col-md-8">
-				<div class ="col-md-6" style="margin-top:20px">
-					<h3 class="text-white">Subscribe for newsletter feed ! </h3>
-					<br>
-					<h4 class="text-gray" style ="margin-top:-15px;margin-left:-40px">Get the latest news from Questio</h4>
-				</div>
-				<div class ="col-md-6">
-					<div class="form-group">
-						<input type="text" class="form-control" id="Input your email address" placeholder="Enter your email-address">
-					</div>
-				</div>
-			</div>
-			<div class="col-md-2"></div>
-		</div> -->
 		<div class="row r8">
-				<!-- <div class="col-md-2" style ="color:white"></div> -->
 				<div class="col-md-8 col-md-push-2" style ="color:white">
 					<h1 style ="text-align:center;margin-top:50px">Questio</h1>
 					<div class ="detail-questio">
 						<div class ="tropic">
-							<div class="col-md-2" style ="color:white"><h4>Home</div>
-							<div class="col-md-2" style ="color:white"><h4>About</div>
-							<div class="col-md-2" style ="color:white"><h4>Facebook</div>
-							<div class="col-md-2" style ="color:white"><h4>Blog</div>
-							<div class="col-md-2" style ="color:white"><h4>Contact</div>
-							<div class="col-md-2" style ="color:white"><h4></div>
+							<div class="col-md-6" style ="color:white"><h4>Contact: questio_kmutt@gmail.com</div>
 						</div>
 					</div>
 					<br>				
@@ -145,7 +122,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<p> &nbsp&nbsp © copyright Questio Application for Adventure project KMUTT</p>
 					</div>
 				</div>
-				<!-- <div class="col-md-2" style ="color:white"></div> -->
 			</div>
 		</div>
 </div>
