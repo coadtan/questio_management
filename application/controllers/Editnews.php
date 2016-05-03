@@ -24,12 +24,12 @@ class Editnews extends CI_Controller {
 	public function editnewscheck(){
 		$placedata = $this->getplace();
 		$news = $this->News_model;
-		$newsid = $_POST['newsid'];
-		$placeid = $_POST['placeid'];
-		$newsheader = $_POST['newsheader'];
-		$newsdetails = $_POST['newsdetails'];
-		$datestarted = $_POST['datestarted'];
-		$dateended = $_POST['dateended'];
+		$newsid = $this->input->post('newsid');
+		$placeid = $this->input->post('placeid');
+		$newsheader = $this->input->post('newsheader');
+		$newsdetails = $this->input->post('newsdetails');
+		$datestarted = $this->input->post('datestarted');
+		$dateended = $this->input->post('dateended');
 
 		$this->form_validation->set_rules('newsheader', 'newsheader', 'required|max_length[100]');
 		$this->form_validation->set_rules('newsdetails', 'newsdetails', 'required');

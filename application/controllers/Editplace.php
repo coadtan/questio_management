@@ -32,24 +32,24 @@ class Editplace extends CI_Controller {
 		$reward = $this->Rewards_model;
 		$enterrewarddata = $reward->getRewardFromType(5);
 		$rewarddata = $reward->getRewardFromType(2);
-		$placename = $_POST['placename'];
-		$placefullname = $_POST['placefullname'];
-		$latitude = $_POST['latitude'];
-		$longitude = $_POST['longitude'];
-		$radius = $_POST['radius'];
-		$placetype = $_POST['placetype'];
-		if($_POST['enter_rewardid'] != 0){
-			$enter_rewardid = $_POST['enter_rewardid'];
+		$placename = $this->input->post('placename');
+		$placefullname = $this->input->post('placefullname');
+		$latitude = $this->input->post('latitude');
+		$longitude = $this->input->post('longitude');
+		$radius = $this->input->post('radius');
+		$placetype = $this->input->post('placetype');
+		if($this->input->post('enter_rewardid') != 0){
+			$enter_rewardid = $this->input->post('enter_rewardid');
 		}else{
 			$enter_rewardid = null;
 		}
-		if($_POST['rewardid'] != 0){
-			$rewardid = $_POST['rewardid'];
+		if($this->input->post('rewardid') != 0){
+			$rewardid = $this->input->post('rewardid');
 		}else{
 			$rewardid = null;
 		}
 
-		$imageurl = $_POST['imageurl'];
+		$imageurl = $this->input->post('imageurl');
 
 		if(!empty($_FILES['placepic']['name'])){
 

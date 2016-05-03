@@ -38,12 +38,12 @@ class Editquest extends CI_Controller {
 		$questtype = $quest->getquesttypedata();
 		$difficulty = $quest->getdifficulty();
 		$reward = $this->Rewards_model->getRewardFromType(4);
-		$questid = $_POST['questid'];
-		$questname = $_POST['questname'];
-		$questdetails = $_POST['questdetails'];
-		$diffid = $_POST['diffid'];
-		if($_POST['rewardid'] != 0){
-			$rewardid = $_POST['rewardid'];
+		$questid = $this->input->post('questid');
+		$questname = $this->input->post('questname');
+		$questdetails = $this->input->post('questdetails');
+		$diffid = $this->input->post('diffid');
+		if($this->input->post('rewardid'] != 0){
+			$rewardid = $this->input->post('rewardid');
 		}else{
 			$rewardid = null;
 		}
@@ -105,13 +105,13 @@ class Editquest extends CI_Controller {
 	public function editQuizCheck(){
 		$quiz = $this->Quiz_model;
 		$quest = $this->Quest_model;
-		$quizid = $_POST['quizid'];
-		$question = $_POST['question'];
-		$choicea = $_POST['choicea'];
-		$choiceb = $_POST['choiceb'];
-		$choicec = $_POST['choicec'];
-		$choiced = $_POST['choiced'];
-		$answerid = $_POST['answerid'];
+		$quizid = $this->input->post('quizid');
+		$question = $this->input->post('question');
+		$choicea = $this->input->post('choicea');
+		$choiceb = $this->input->post('choiceb');
+		$choicec = $this->input->post('choicec');
+		$choiced = $this->input->post('choiced');
+		$answerid = $this->input->post('answerid');
 
 		$this->form_validation->set_rules('question', 'question', 'required');
 		$this->form_validation->set_rules('choicea', 'choicea', 'required|max_length[100]');
@@ -202,20 +202,20 @@ class Editquest extends CI_Controller {
 	public function editRiddleCheck(){
 		$riddle = $this->Riddle_model;
 		$quest = $this->Quest_model;
-		$questname = $_POST['questname'];
-		$questdetails = $_POST['questdetails'];
-		$diffid = $_POST['diffid'];
-		if($_POST['rewardid'] != 0){
-			$rewardid = $_POST['rewardid'];
+		$questname = $this->input->post('questname');
+		$questdetails = $this->input->post('questdetails');
+		$diffid = $this->input->post('diffid');
+		if($this->input->post('rewardid'] != 0){
+			$rewardid = $this->input->post('rewardid');
 		}else{
 			$rewardid = null;
 		}
-		$ridid = $_POST['ridid'];
-		$riddetails = $_POST['riddetails'];
-		$scanlimit = $_POST['scanlimit'];
-		$hint1 = $_POST['hint1'];
-		$hint2 = $_POST['hint2'];
-		$hint3 = $_POST['hint3'];
+		$ridid = $this->input->post('ridid');
+		$riddetails = $this->input->post('riddetails');
+		$scanlimit = $this->input->post('scanlimit');
+		$hint1 = $this->input->post('hint1');
+		$hint2 = $this->input->post('hint2');
+		$hint3 = $this->input->post('hint3');
 		$this->form_validation->set_rules('questname', 'questname', 'required|max_length[100]');
 		$this->form_validation->set_rules('riddetails', 'riddetails', 'required');
 		$this->form_validation->set_rules('hint1', 'hint1', 'max_length[100]');
@@ -307,19 +307,19 @@ class Editquest extends CI_Controller {
 	public function editPuzzleCheck(){
 		$puzzle = $this->Puzzle_model;
 		$quest = $this->Quest_model;
-		$questname = $_POST['questname'];
-		$questdetails = $_POST['questdetails'];
-		$diffid = $_POST['diffid'];
-		if($_POST['rewardid'] != 0){
-			$rewardid = $_POST['rewardid'];
+		$questname = $this->input->post('questname');
+		$questdetails = $this->input->post('questdetails');
+		$diffid = $this->input->post('diffid');
+		if($this->input->post('rewardid'] != 0){
+			$rewardid = $this->input->post('rewardid');
 		}else{
 			$rewardid = null;
 		}
-		$puzzleid = $_POST['puzzleid'];
-		$helperanswer = $_POST['helperanswer'];
-		$correctanswer = $_POST['correctanswer'];
+		$puzzleid = $this->input->post('puzzleid');
+		$helperanswer = $this->input->post('helperanswer');
+		$correctanswer = $this->input->post('correctanswer');
 
-		$imageurl = $_POST['imageurl'];
+		$imageurl = $this->input->post('imageurl');
 
 		if(!empty($_FILES['puzzlepic']['name'])){
 

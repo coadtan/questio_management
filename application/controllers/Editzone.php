@@ -38,22 +38,22 @@ class Editzone extends CI_Controller {
 		$zonetypedata = $zone->getzonetypedata();
 		$itemdata = $this->Item_model->getEquippableItem();
 		$rewarddata = $this->Rewards_model->getRewardFromType(4);
-		$floorid = $_POST['floorid'];
-		$zonename = $_POST['zonename'];
-		$zonetypeid = $_POST['zonetype'];
-		$zonedetails = $_POST['zonedetails'];
-		if($_POST['itemid'] != 0){
-			$itemid = $_POST['itemid'];
+		$floorid = $this->input->post('floorid');
+		$zonename = $this->input->post('zonename');
+		$zonetypeid = $this->input->post('zonetype');
+		$zonedetails = $this->input->post('zonedetails');
+		if($this->input->post('itemid') != 0){
+			$itemid = $this->input->post('itemid');
 		}else{
 			$itemid = null;
 		}
-		if($_POST['rewardid'] != 0){
-			$rewardid = $_POST['rewardid'];
+		if($this->input->post('rewardid') != 0){
+			$rewardid = $this->input->post('rewardid');
 		}else{
 			$rewardid = null;
 		}
-		$imageurl =  $_POST['imageurl'];
-		$minimapurl = $_POST['minimapurl'];
+		$imageurl =  $this->input->post('imageurl');
+		$minimapurl = $this->input->post('minimapurl');
 
 		if(!empty($_FILES['zonepic']['name'])){
 			$config['upload_path'] = './pictures/zone';
@@ -64,7 +64,7 @@ class Editzone extends CI_Controller {
 			$this->upload->initialize($config);
 
 			if ($this->upload->do_upload('zonepic')){
-				$zonedata = $this->zonepicupload->data();
+				$zonedata = $this->upload->data();
 				$imageurl = substr($zonedata['full_path'], strpos($zonedata['full_path'],"questio_management")+18);
 			}
 		}
@@ -78,7 +78,7 @@ class Editzone extends CI_Controller {
 			$this->upload->initialize($config);
 
 			if ($this->upload->do_upload('minimappic')){
-				$minimapdata = $this->zoneminimapupload->data();
+				$minimapdata = $this->upload->data();
 				$minimapurl = substr($minimapdata['full_path'], strpos($minimapdata['full_path'],"questio_management")+18);
 			}
 		}

@@ -23,9 +23,9 @@ class Addreward extends CI_Controller {
 	public function addrewardcheck(){
 		$reward = $this->Rewards_model;
 		$rewardtypedata = $reward->getrewardtype();
-		$rewardname = $_POST['rewardname'];
-		$description = $_POST['description'];
-		$rewardtype = $_POST['rewardtype'];
+		$rewardname = $this->input->post('rewardname');
+		$description = $this->input->post('description');
+		$rewardtype = $this->input->post('rewardtype');
 		$rewardpic = null;
 
 		if(!empty($_FILES)){

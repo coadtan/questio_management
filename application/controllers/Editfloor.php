@@ -27,9 +27,9 @@ class Editfloor extends CI_Controller {
 	public function editfloorcheck($floorid){
 		$buildingdata = $this->getbuilding();
 		$floor = $this->Floor_model;
-		$buildingid = $_POST['buildingid'];
-		$floorname = $_POST['floorname'];
-		$imageurl = $_POST['imageurl']
+		$buildingid = $this->input->post('buildingid');
+		$floorname = $this->input->post('floorname');
+		$imageurl = $this->input->post('imageurl')
 
 		if(!empty($_FILES['floorpic']['name'])){
 			$config['upload_path'] = './pictures/floor';

@@ -119,7 +119,7 @@ function placeMarker(location, map) {
 			placeholder ="&nbsp Place Full Name*: Must be less than 255 characters"
 			required
 			maxlength="255"><br>
-	<input type="number"
+	<input type="text"
 			class ="register-margin register-box"
 			name="latitude"
 			id="latitude"
@@ -127,7 +127,7 @@ function placeMarker(location, map) {
 			placeholder ="&nbsp Latitude*:"
 			required
 			pattern="\d+(\.\d{1,15})?">
-	<input type="number"
+	<input type="text"
 			class ="register-margin register-box"
 			name="longitude"
 			id="longitude"
@@ -135,7 +135,7 @@ function placeMarker(location, map) {
 			placeholder ="&nbsp Longitude*:"
 			required
 			pattern="\d+(\.\d{1,15})?"><br>
-	<input type="number"
+	<input type="text"
 			class ="register-margin register-box"
 			name="radius"
 			id="radius"

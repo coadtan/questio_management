@@ -26,11 +26,11 @@ class Editreward extends CI_Controller {
 	public function editrewardcheck(){
 		$reward = $this->Rewards_model;
 		$rewardtypedata = $reward->getrewardtype();
-		$rewardid = $_POST['rewardid'];
-		$rewardname = $_POST['rewardname'];
-		$description = $_POST['description'];
-		$rewardtype = $_POST['rewardtype'];
-		$rewardpic = $_POST['rewardpic'];
+		$rewardid = $this->input->post('rewardid');
+		$rewardname = $this->input->post('rewardname');
+		$description = $this->input->post('description');
+		$rewardtype = $this->input->post('rewardtype');
+		$rewardpic = $this->input->post('rewardpic');
 
 		if(!empty($_FILES['rewardurl']['name'])){
 			$config['upload_path'] = './pictures/reward';

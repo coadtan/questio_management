@@ -23,9 +23,9 @@ class Additem extends CI_Controller {
 	public function additemcheck(){
 		$item = $this->Item_model;
 		$position = $item->getposition();
-		$itemname = $_POST['itemname'];
-		$itemcollection = $_POST['itemcollection'];
-		$positionid = $_POST['positionid'];
+		$itemname = $this->input->post('itemname');
+		$itemcollection = $this->input->post('itemcollection');
+		$positionid = $this->input->post('positionid');
 		$itempicpath = "/pictures/item/blank.png";
 		$equipspritepath = "/pictures/equipsprite/blank.png";
 

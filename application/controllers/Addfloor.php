@@ -29,10 +29,10 @@ class Addfloor extends CI_Controller {
 	public function addfloorcheck(){
 		$buildingdata = $this->getbuilding();
 		$floor = $this->Floor_model;
-		$buildingid = $_POST['buildingid'];
-		$floorname = $_POST['floorname'];
-		$qrcode = $_POST['qrcode'];
-		$sensorid = $_POST['sensorid'];
+		$buildingid = $this->input->post('buildingid');
+		$floorname = $this->input->post('floorname');
+		$qrcode = $this->input->post('qrcode');
+		$sensorid = $this->input->post('sensorid');
 
 		$imageurl = null;
 

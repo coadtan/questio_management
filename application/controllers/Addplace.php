@@ -33,21 +33,21 @@ class Addplace extends CI_Controller {
 		$reward = $this->Rewards_model;
 		$enterrewarddata = $reward->getRewardFromType(5);
 		$rewarddata = $reward->getRewardFromType(2);
-		$placename = $_POST['placename'];
-		$placefullname = $_POST['placefullname'];
-		$latitude = $_POST['latitude'];
-		$longitude = $_POST['longitude'];
-		$radius = $_POST['radius'];
-		$placetype = $_POST['placetype'];
-		$qrcode = $_POST['qrcode'];
-		$sensorid = $_POST['sensorid'];
-		if($_POST['enter_rewardid'] != 0){
-			$enter_rewardid = $_POST['enter_rewardid'];
+		$placename = $this->input->post('placename');
+		$placefullname = $this->input->post('placefullname');
+		$latitude = $this->input->post('latitude');
+		$longitude = $this->input->post('longitude');
+		$radius = $this->input->post('radius');
+		$placetype = $this->input->post('placetype');
+		$qrcode = $this->input->post('qrcode');
+		$sensorid = $this->input->post('sensorid');
+		if($this->input->post('enter_rewardid'] != 0){
+			$enter_rewardid = $this->input->post('enter_rewardid');
 		}else{
 			$enter_rewardid = null;
 		}
-		if($_POST['rewardid'] != 0){
-			$rewardid = $_POST['rewardid'];
+		if($this->input->post('rewardid'] != 0){
+			$rewardid = $this->input->post('rewardid');
 		}else{
 			$rewardid = null;
 		}
@@ -147,12 +147,12 @@ class Addplace extends CI_Controller {
 
 	public function addPlaceDetailCheck(){
 		$placedet = $this->Placedetail_model;
-		$placeid = $_POST['placeid'];
-		$placedetails = $_POST['placedetails'];
-		$phonecontact1 = $_POST['phonecontact1'];
-		$phonecontact2 = $_POST['phonecontact2'];
-		$website = $_POST['website'];
-		$email = $_POST['email'];
+		$placeid = $this->input->post('placeid');
+		$placedetails = $this->input->post('placedetails');
+		$phonecontact1 = $this->input->post('phonecontact1');
+		$phonecontact2 = $this->input->post('phonecontact2');
+		$website = $this->input->post('website');
+		$email = $this->input->post('email');
 		$imageurl = null;
 
 		if(!empty($_FILES['placepic']['name'])){

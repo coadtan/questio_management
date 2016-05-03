@@ -26,12 +26,12 @@ class Edititem extends CI_Controller {
 	public function edititemcheck(){
 		$item = $this->Item_model;
 		$position = $item->getposition();
-		$itemid = $_POST['itemid'];
-		$itemname = $_POST['itemname'];
-		$itemcollection = $_POST['itemcollection'];
-		$positionid = $_POST['positionid'];
-		$itempicpath = $_POST['itempicpath'];
-		$equipspritepath = $_POST['equipspritepath'];
+		$itemid = $this->input->post('itemid');
+		$itemname = $this->input->post('itemname');
+		$itemcollection = $this->input->post('itemcollection');
+		$positionid = $this->input->post('positionid');
+		$itempicpath = $this->input->post('itempicpath');
+		$equipspritepath = $this->input->post('equipspritepath');
 
 		$this->form_validation->set_rules('itemname', 'itemname', 'required|max_length[30]');
 		$this->form_validation->set_rules('itemcollection', 'itemcollection', 'required|max_length[50]');

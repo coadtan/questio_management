@@ -24,11 +24,11 @@ class Addbuilding extends CI_Controller {
 	public function addbuildingcheck(){
 		$placedata = $this->getplace();
 		$building = $this->Building_model;
-		$placeid = $_POST['placeid'];
-		$buildingname = $_POST['buildingname'];
-		$latitude = $_POST['latitude'];
-		$longitude = $_POST['longitude'];
-		$radius = $_POST['radius'];
+		$placeid = $this->input->post('placeid');
+		$buildingname = $this->input->post('buildingname');
+		$latitude = $this->input->post('latitude');
+		$longitude = $this->input->post('longitude');
+		$radius = $this->input->post('radius');
 
 		$imageurl = null;
 
