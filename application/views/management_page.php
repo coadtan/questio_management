@@ -22,6 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		        cache: false 
 		    });			
 			$('#place').click(function(){
+				$('#mainarea').empty();
 		        $('#mainarea').load(
             		"<?=base_url('mainpage/getplace')?>"
         		);
@@ -33,6 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     		});
 
         	$('#statistics').click(function(){
+        		$('#mainarea').empty();
 		        $('#mainarea').load(
 		            "<?=base_url('statistic')?>"
 		        );
@@ -46,6 +48,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     		});
 
     		$('#item').click(function(){
+    			$('#mainarea').empty();
+
 		        $('#mainarea').load(
 		            "<?=base_url('itemoverview')?>"
 		        );
@@ -57,6 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     		});
 
     		$('#reward').click(function(){
+    			$('#mainarea').empty();
 		        $('#mainarea').load(
 		            "<?=base_url('rewardoverview')?>"
 		        );
@@ -68,6 +73,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     		});
 
     		$('#news').click(function(){
+    			$('#mainarea').empty();
 		        $('#mainarea').load(
 		            "<?=base_url('newsoverview')?>"
 		        );
@@ -78,6 +84,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		        'slow');
     		});
     		$('#contact').click(function(){
+    			$('#mainarea').empty();
 		        $('#mainarea').load(
 		            "<?=base_url('management/load_contact')?>"
 		        );
@@ -158,26 +165,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class ="wrapper-align-mid header-float wrapper-m">
 			<div class ="wrapper-m" id="mainarea">
 			</div>
-		<!--<div class ="wrapper-align-right header-floatwrapper-m wrapper-r">
-			<div class ="wrapper-r">
-				<p>MENU</p>
-				<ul>
-					<li>xxx</li>
-					<li>xxx</li>
-					<li>xxx</li>
-					<li>xxx</li>
-				</ul>
-			</div>
-			<div class ="wrapper-r">
-				<p>MENU</p>
-				<ul>
-					<li>xxx</li>
-					<li>xxx</li>
-					<li>xxx</li>
-					<li>xxx</li>
-				</ul>
-			</div>
-		</div>-->
 	</div>
 	<div class="footer">
 	</div>
