@@ -45,7 +45,7 @@ $(document).ready(function(){
             <td><?= $i++?></td>
             <td><?= $item['itemname']?></td>
             <td><img
-                src="http://52.74.64.61/questio_management<?=$item['itempicpath']?>"
+                src="<?=base_url($item['itempicpath'])?>"
                 alt="<?= $item['itempicpath']?>"
                 style="width:100px;
                         height:100px;"></td>

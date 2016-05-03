@@ -1,5 +1,10 @@
 <script>
 $(document).ready(function(){
+
+    $.ajaxSetup({ 
+        cache: false 
+    });
+    
     $('.goback').click(function(){
         $('#mainarea').load(
     		"<?=base_url('itemoverview')?>"
@@ -26,9 +31,10 @@ $(document).ready(function(){
           formData.append("spritepic", spritepic);
 
 
+        var url = "<?=base_url('additem/additemcheck')?>";
         $.ajax({
                type: "POST",
-               url: "<?=base_url('additem/additemcheck')?>",
+               url: url,
                data: formData,
                processData: false,
                contentType: false,
