@@ -381,6 +381,10 @@ li{
 .copyright{
 	text-align:left;
 }
+
+.js-plotly-plot .plotly .main-svg{
+	padding: 0px 55px !important;
+}
 @media screen and (max-width: 1136px) {
     .tropic{
         text-align: center;
