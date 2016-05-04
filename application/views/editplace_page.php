@@ -76,19 +76,19 @@ $(document).ready(function(){
 	<option value="Museum" <?=$placedata["placetype"]=="Museum"?'selected':''?>>Museum</option>
 	<option value="Temple" <?=$placedata["placetype"]=="Temple"?'selected':''?>>Temple</option>
 </select>
-	<input type="hidden" name="imageurl" id="imageurl" value='<?=$placedata["imageurl"]?>'>
-	Place Image: <input type="file"
-		class ="register-margin register-box"
+    <input style ="margin:0 auto;" type="hidden" name="imageurl" id="imageurl" value='<?=$placedata["imageurl"]?>'><br>
+	Place Image: 
+    <input type="file" 
+    class ="register-margin register-box"
 		name="placepic"
 		id="placepic"
 		size ="999"
-        accept="image/*">
+    accept="image/*">
 		<?php if(!empty($placedata["imageurl"])):?>
         <img
             src="<?=base_url($placedata["imageurl"])?>"
             alt="<?= $placedata["imageurl"]?>"
-            style="width:100px;
-                    height:100px;">
+            style="width:100px;height:100px;">
         <?php endif;?>
 		<br>
 	Enter Rewards:

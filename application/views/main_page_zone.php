@@ -60,8 +60,8 @@ $(document).ready(function(){
             <?php endif;?>
 		    </a>
 		    <?=$zone['zonename']?>
-		    <a href="#" class="editzone" zoneid="<?=$zone["zoneid"]?>">Edit</a>
-		    <a href="#" class="deletezone" zoneid="<?=$zone["zoneid"]?>">Delete</a>
+		    <a href="#" class="editzone" zoneid="<?=$zone["zoneid"]?>"style ="color:black">Edit</a>
+		    <a href="#" class="deletezone" zoneid="<?=$zone["zoneid"]?>"style ="color:black">Delete</a>
 	  	</div>
     <?php endforeach;?>
 <?php endif;?>

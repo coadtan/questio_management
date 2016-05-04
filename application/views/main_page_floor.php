@@ -60,8 +60,8 @@ $(document).ready(function(){
             <?php endif;?>
 		    </a>
 		    <?=$floor['floorname']?>
-		    <a href="#" class="editfloor" floorid="<?=$floor['floorid']?>">Edit</a>
-		    <a href="#" class="deletefloor" floorid="<?=$floor['floorid']?>">Delete</a>
+		    <a href="#" class="editfloor" floorid="<?=$floor['floorid']?>"style ="color:black">Edit</a>
+		    <a href="#" class="deletefloor" floorid="<?=$floor['floorid']?>"style ="color:black">Delete</a>
 	  	</div>
     <?php endforeach;?>
 <?php endif;?>

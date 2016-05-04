@@ -60,8 +60,8 @@ $(document).ready(function(){
             <?php endif;?>
 		    </a>
 		    <?=$building['buildingname']?>
-		    <a href="#" class="editbuilding" buildingid="<?=$building['buildingid']?>">Edit</a>
-		    <a href="#" class="deletebuilding" buildingid="<?=$building['buildingid']?>">Delete</a>
+		    <a href="#" class="editbuilding" buildingid="<?=$building['buildingid']?>" style ="color:black">Edit</a>
+		    <a href="#" class="deletebuilding" buildingid="<?=$building['buildingid']?>"style ="color:black">Delete</a>
 	  	</div>
     <?php endforeach;?>
 <?php endif;?>

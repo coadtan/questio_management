@@ -354,7 +354,8 @@ li{
 
 }
 .r1-add-place{
-	background: url(../images/bg_register.png) no-repeat center center fixed; 
+	/*background: url(../images/bg_register.png) no-repeat center center fixed; */
+	background-color: #39b5eb;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -400,3 +401,8 @@ li{
     	text-align: center;
     }
 }
+.imageurl{
+	text-align: center;
+}
+
+

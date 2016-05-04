@@ -73,9 +73,9 @@
                 <?php endif;?>
                 </a>
                 <?=$place['placename']?>
-                <a href="#" class="editplace" placeid="<?=$place['placeid']?>">Edit</a>
-                <a href="#" class="deleteplace" placeid="<?=$place['placeid']?>">Delete</a>
-                <a href="#" class="manageplacedetail" placeid="<?=$place['placeid']?>">
+                <a href="#" class="editplace" placeid="<?=$place['placeid']?>" style ="color:black">Edit</a>
+                <a href="#" class="deleteplace" placeid="<?=$place['placeid']?>"style ="color:black">Delete</a>
+                <a href="#" class="manageplacedetail" placeid="<?=$place['placeid']?>"style ="color:black">
                 Add/Edit Placedetail
                 </a>
             </div>
