@@ -55,37 +55,40 @@ $(document).ready(function(){
 });
 </script>
 <form enctype="multipart/form-data" method="post" accept-charset="utf-8">
-	<input type="hidden" name="placeid" id="placeid" value="<?=$placedata["placeid"]?>"
+	<input type="hidden" name="placeid" id="placeid"  class ="margin-field-default" value="<?=$placedata["placeid"]?>"
 	Place Name*:
 	<i>Must be less than 50 characters</i>
-	 <input type="text" name="placename" id="placename" value="<?=$placedata['placename']?>" size="30" required maxlength="50"><br>
+	 <input type="text" name="placename" class ="margin-field-default" id="placename" value="<?=$placedata['placename']?>" size="30" required maxlength="50"><br>
 	Place Full Name*:
 	<i>Must be less than 255 characters</i>
-	 <input type="text" name="placefullname" id="placefullname" value="<?=$placedata['placefullname']?>" size="50" required maxlength="255"><br>
+	 <input type="text" name="placefullname" class ="margin-field-default" id="placefullname" value="<?=$placedata['placefullname']?>" size="50" required maxlength="255"><br>
 	Latitude*:
-	<input type="number" name="latitude" id="latitude" value='<?=$placedata["latitude"]?>' required
+	<input type="number" name="latitude" class ="margin-field-default" id="latitude" value='<?=$placedata["latitude"]?>' required
 			pattern="\d+(\.\d{1,15})?"><br>
 	Longitude*:
-	<input type="number" name="longitude" id="longitude" value='<?=$placedata["longitude"]?>' required
+	<input type="number" name="longitude" class ="margin-field-default" id="longitude" value='<?=$placedata["longitude"]?>' required
 			pattern="\d+(\.\d{1,15})?"><br>
 	Radius*:
-	<input type="number" name="radius" id="radius" value='<?=$placedata["radius"]?>' required
-			pattern="\d+(\.\d{1,4})?"><br>
-<select name="placetype" id="placetype">
+	<input type="number" name="radius" class ="margin-field-default" id="radius" value='<?=$placedata["radius"]?>' required
+			pattern="\d+(\.\d{1,4})?"><br> 
+<select name="placetype" id="placetype" class ="margin-field-default">
 	<option value="University" <?=$placedata["placetype"]=="University"?'selected':''?>>University</option>
 	<option value="Museum" <?=$placedata["placetype"]=="Museum"?'selected':''?>>Museum</option>
 	<option value="Temple" <?=$placedata["placetype"]=="Temple"?'selected':''?>>Temple</option>
 </select>
-    <input style ="margin:0 auto;" type="hidden" name="imageurl" id="imageurl" value='<?=$placedata["imageurl"]?>'><br>
+
+    <input style ="margin:0 auto;" type="hidden" name="imageurl" id="imageurl" class ="margin-field-default"value='<?=$placedata["imageurl"]?>'><br>
 	Place Image: 
-    <input type="file" 
+    <input type="file"
     class ="register-margin register-box"
 		name="placepic"
 		id="placepic"
 		size ="999"
     accept="image/*">
+    <br>
 		<?php if(!empty($placedata["imageurl"])):?>
         <img
+            class ="margin-field-default"
             src="<?=base_url($placedata["imageurl"])?>"
             alt="<?= $placedata["imageurl"]?>"
             style="width:100px;height:100px;">
@@ -95,6 +98,6 @@ $(document).ready(function(){
 	<?= form_dropdown('enter_rewardid',$enterrewarddata,$placedata["enter_rewardid"],'id="enter_rewardid"') ?><br>
 	Rewards:
 	<?= form_dropdown('rewardid',$rewarddata,$placedata["rewardid"],'id="rewardid"') ?><br>
-	<input type="submit" value="Submit">
+	<input type="submit" class ="margin-field-default" value="Submit">
 </form>
 <a href="#" class="goback"style ="color:black">Go Back</a>

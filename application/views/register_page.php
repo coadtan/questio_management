@@ -13,6 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<?=link_tag('assets/questio/questio.css')?>
 </head>
 <body>
+	<div class="container-fluid" style="overflow:hidden">
 	<?php $this->load->view('header', array('title' => 'Keeper Registeration'));?>
 	<div class ="r1-register">
 		<h1 class ="text-white"style="margin-top:50px !important">สร้าง Keeper ID ของคุณ</h1>
@@ -68,5 +69,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
 	</div>
 	</div>
+</div>
 </body>
 </html>

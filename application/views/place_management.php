@@ -1,8 +1,9 @@
+<?=link_tag('assets/questio/questio.css')?>
 <script type="text/javascript">
     $(document).ready(function(){
-    $.ajaxSetup({ 
-        cache: false 
-    });        
+        $.ajaxSetup({ 
+            cache: false 
+        });        
         $('.keeperplace').click(function(){
             var placeid = this.getAttribute("placeid");
             $('#buildinglist').load(
@@ -11,6 +12,11 @@
             $('html,body').animate({
                 scrollTop: $("#buildinglist").offset().top},
             'slow');
+            $('.keeperplace').removeClass('element_item');
+            $('.keeperplace').addClass('item_default');
+            $(this).removeClass('item_default');
+            $(this).addClass('element_item');
+            //addClass("fadeOutDown");
         });
         $('#addplace').click(function(){
             $('#mainarea').load(
@@ -19,6 +25,9 @@
             $('html,body').animate({
                 scrollTop: $("#mainarea").offset().top},
             'slow');
+            $(this).addClass('element_item');
+            $(this).removeClass('item_default');
+
         });
         $('.editplace').click(function(){
             var placeid = this.getAttribute("placeid");
@@ -53,14 +62,16 @@
 <div class ="r1-add-place">
         <h1 class ="text-white"style="margin-top:50px !important">Place Managemet </h1>
 </div>
-<br><br>
+<div class = "default-item-management">
+<br>
+<h1>Places</h1>
 <div class="row">
     <?php if(!empty($keeperplace)):?>
         <?php foreach($keeperplace as $place):?>
             <div class="col-xs-6 col-md-3">
                 <a
                     href="#"
-                    class="thumbnail keeperplace"
+                    class="thumbnail keeperplace item_default"
                     id="place_<?=$place['placeid']?>"
                     placeid="<?=$place['placeid']?>"
                 >
@@ -78,13 +89,14 @@
                 <a href="#" class="manageplacedetail" placeid="<?=$place['placeid']?>"style ="color:black">
                 Add/Edit Placedetail
                 </a>
+              
             </div>
         <?php endforeach;?>
     <?php endif;?>
     <div class="col-xs-6 col-md-3" style="text-align:center">
         <a
             href="#"
-            class="thumbnail"
+            class="thumbnail item_default"
             id="addplace"
             style="color:black"
         >
@@ -93,6 +105,7 @@
     </div>
 </div>
 <div id="buildinglist">
+</div>
 </div>
 
 <!--Place management end here :D-->

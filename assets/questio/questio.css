@@ -244,7 +244,6 @@ header{
 .wrapper-m{
 	padding-top: 15px;
 	padding-bottom: 20px;
-	border-bottom: solid gray 1px;
 	overflow: scroll;
 	width: 100%;
 }
@@ -345,6 +344,7 @@ li{
 	border-width: 0.3px;
 	outline: 0 none;
 	border-opacity:0.1;
+	text-indent:8px;
 }
 
 #map {
@@ -405,4 +405,35 @@ li{
 	text-align: center;
 }
 
+.element_item{
+	opacity: 1 !important;
+	border-color: #337ab7;
+	border-radius: 10px;
+	border-width: 5px;
+}
+.item_default{
+	opacity: 0.3 !important;
+	border-radius: 10px;
+	border-color:white;
+	border-width: 5px;
 
+}
+.default-item-management{
+	margin: 50px 50px !important;
+}
+input{
+	display: inline !important; 
+}
+.username{
+	text-indent: 8px !important;
+}
+.password{
+	text-indent: 8px !important;
+}
+.edit-place-field{
+	text-indent: 8px !important;
+}
+.margin-field-default{
+	margin-top: 3px;
+	margin-bottom: 3px;
+}

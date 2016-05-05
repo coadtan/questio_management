@@ -1,3 +1,4 @@
+<?=link_tag('assets/questio/questio.css')?>
 <script type="text/javascript">
 $(document).ready(function(){
     $.ajaxSetup({ 
@@ -11,6 +12,10 @@ $(document).ready(function(){
        	$('html,body').animate({
         scrollTop: $("#floorlist").offset().top},
         'slow');
+        $('.keeperbuilding').removeClass('element_item');
+        $('.keeperbuilding').addClass('item_default');
+        $(this).removeClass('item_default');
+        $(this).addClass('element_item');
     });
     $('#addbuilding').click(function(){
         $('#mainarea').load(
@@ -19,6 +24,8 @@ $(document).ready(function(){
         $('html,body').animate({
             scrollTop: $("#mainarea").offset().top},
         'slow');
+        $(this).addClass('element_item');
+        $(this).removeClass('item_default');
     });
     $('.editbuilding').click(function(){
         var buildingid = this.getAttribute("buildingid");
@@ -47,7 +54,7 @@ $(document).ready(function(){
         <div class="col-xs-6 col-md-3">
             <a
             	href="#"
-            	class="thumbnail keeperbuilding"
+            	class="thumbnail keeperbuilding item_default"
             	id="building_<?=$building['buildingid']?>"
             	buildingid="<?=$building['buildingid']?>"
             >
@@ -68,7 +75,7 @@ $(document).ready(function(){
 	<div class="col-xs-6 col-md-3" style="text-align:center">
 		<a
 		    href="#"
-		    class="thumbnail"
+		    class="thumbnail item_default"
 		    id="addbuilding"
             style="color:black"
 		>
