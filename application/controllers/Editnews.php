@@ -33,10 +33,8 @@ class Editnews extends CI_Controller {
 
 		$this->form_validation->set_rules('newsheader', 'newsheader', 'required|max_length[100]');
 		$this->form_validation->set_rules('newsdetails', 'newsdetails', 'required');
-		$this->form_validation->set_rules('datestarted', 'datestarted', 'required');
-		$this->form_validation->set_rules('dateended', 'dateended', 'required');
 
-		if ($this->form_validation->run()==TRUE){
+		if ($datestarted < $dateended && $this->form_validation->run()==TRUE){
 			if($news->updateNews($newsid, $placeid, $newsheader, $newsdetails, $datestarted, $dateended)==TRUE){
 				echo "edit_news_success";
 				//$newsdata = $this->News_model->getNewsByNewsId($newsid);

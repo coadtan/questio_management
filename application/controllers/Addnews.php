@@ -30,11 +30,8 @@ class Addnews extends CI_Controller {
 
 		$this->form_validation->set_rules('newsheader', 'newsheader', 'required|max_length[100]');
 		$this->form_validation->set_rules('newsdetails', 'newsdetails', 'required');
-		$this->form_validation->set_rules('datestarted', 'datestarted', 'required');
-		$this->form_validation->set_rules('dateended', 'dateended', 'required');
-
 		
-		if ($this->form_validation->run()==TRUE){
+		if ($datestarted < $dateended && $this->form_validation->run()==TRUE){
 			if($news->addNews($placeid, $newsheader, $newsdetails, $datestarted, $dateended)==TRUE){
 
 				echo "add_news_success";
