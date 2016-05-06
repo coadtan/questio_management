@@ -62,11 +62,11 @@ $(document).ready(function(){
 	<?= form_dropdown('placeid',$placedata,'','id="placeid"'); ?>
 	 <br>
 	Latitude*:
-	<input type="number" name="latitude" id="latitude" required pattern="\d+(\.\d{1,15})?" title="Decimal number"><br>
+	<input type="text" name="latitude" id="latitude" required pattern="\d+(\.\d{1,15})?" title="Decimal number"><br>
 	Longitude*:
-	<input type="number" name="longitude" id="longitude" required pattern="\d+(\.\d{1,15})?" title="Decimal number"><br>
+	<input type="text" name="longitude" id="longitude" required pattern="\d+(\.\d{1,15})?" title="Decimal number"><br>
 	Radius*:
-	<input type="number" name="radius" id="radius" required pattern="\d+(\.\d{1,4})?" title="Decimal number"><br>
+	<input type="text" name="radius" id="radius" required pattern="\d+(\.\d{1,4})?" title="Decimal number"><br>
 	Building Image: <input type="file"
 		class ="register-margin register-box"
 		name="buildingpic"
