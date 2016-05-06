@@ -32,7 +32,6 @@ $(document).ready(function(){
 });
 
 </script>
-
 <div class="row" style="background-color:white; height:50px;padding:8px 5px" >
     <div class="col-md-3 col-xs-6" id="header-logo">
         <img class="questio-mini-logo" src="<?= base_url()?>assets/images/logo.png" alt="">
@@ -62,6 +61,7 @@ $(document).ready(function(){
 
 
 <!-- Modal -->
+<?=link_tag('assets/questio/questio.css')?>
 <div id="login" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -76,9 +76,9 @@ $(document).ready(function(){
         <p id="form-error" style="color:red"></p>
         <?=validation_errors();?>
         <form id="login-form">
-        <input type="text" id="username" name="username" placeholder ="Username" style ="margin-bottom:5px;width:80%;" required />
+        <input type="text" id="username" class ="username" name="username" placeholder ="Username" style ="margin-bottom:5px;width:80%;" required />
         <div class="clear"></div>
-        <input type="password" id="password" name="password" placeholder ="Password"style ="width:80%;" required/>
+        <input type="password" id="password" class ="password" name="password" placeholder ="Password"style ="width:80%;" required/>
         <div class="clear"></div>
         <br/> <br/>
         <input class ="btn btn-info" type="submit" value="login">

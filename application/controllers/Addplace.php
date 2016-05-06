@@ -41,12 +41,12 @@ class Addplace extends CI_Controller {
 		$placetype = $this->input->post('placetype');
 		$qrcode = $this->input->post('qrcode');
 		$sensorid = $this->input->post('sensorid');
-		if($this->input->post('enter_rewardid'] != 0){
+		if($this->input->post('enter_rewardid')!= 0){
 			$enter_rewardid = $this->input->post('enter_rewardid');
 		}else{
 			$enter_rewardid = null;
 		}
-		if($this->input->post('rewardid'] != 0){
+		if($this->input->post('rewardid') != 0){
 			$rewardid = $this->input->post('rewardid');
 		}else{
 			$rewardid = null;

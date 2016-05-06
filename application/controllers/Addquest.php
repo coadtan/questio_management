@@ -40,7 +40,7 @@ class Addquest extends CI_Controller {
 		$questtypeid = $this->input->post('questtypeid');
 		$zoneid = $this->input->post('zoneid');
 		$diffid = $this->input->post('diffid');
-		if($this->input->post('rewardid'] != 0){
+		if($this->input->post('rewardid')!= 0){
 			$rewardid = $this->input->post('rewardid');
 		}else{
 			$rewardid = null;

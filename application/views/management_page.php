@@ -6,6 +6,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta charset="utf-8">
 	<title>Login</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="cache-control" content="max-age=0" />
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="0" />
+	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+	<meta http-equiv="pragma" content="no-cache" />
 	<?=script_tag('assets/jquery/jquery-2.2.0.min.js')?>
 	<?=script_tag('assets/bootstrap/js/bootstrap.js')?>
 	<?=link_tag('assets/bootstrap/css/bootstrap.min.css')?>
@@ -17,6 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		        cache: false 
 		    });			
 			$('#place').click(function(){
+				$('#mainarea').empty();
 		        $('#mainarea').load(
             		"<?=base_url('mainpage/getplace')?>"
         		);
@@ -28,6 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     		});
 
         	$('#statistics').click(function(){
+        		$('#mainarea').empty();
 		        $('#mainarea').load(
 		            "<?=base_url('statistic')?>"
 		        );
@@ -41,6 +48,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     		});
 
     		$('#item').click(function(){
+    			$('#mainarea').empty();
+
 		        $('#mainarea').load(
 		            "<?=base_url('itemoverview')?>"
 		        );
@@ -52,6 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     		});
 
     		$('#reward').click(function(){
+    			$('#mainarea').empty();
 		        $('#mainarea').load(
 		            "<?=base_url('rewardoverview')?>"
 		        );
@@ -63,6 +73,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     		});
 
     		$('#news').click(function(){
+    			$('#mainarea').empty();
 		        $('#mainarea').load(
 		            "<?=base_url('newsoverview')?>"
 		        );
@@ -73,6 +84,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		        'slow');
     		});
     		$('#contact').click(function(){
+    			$('#mainarea').empty();
 		        $('#mainarea').load(
 		            "<?=base_url('management/load_contact')?>"
 		        );
@@ -153,26 +165,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class ="wrapper-align-mid header-float wrapper-m">
 			<div class ="wrapper-m" id="mainarea">
 			</div>
-		<!--<div class ="wrapper-align-right header-floatwrapper-m wrapper-r">
-			<div class ="wrapper-r">
-				<p>MENU</p>
-				<ul>
-					<li>xxx</li>
-					<li>xxx</li>
-					<li>xxx</li>
-					<li>xxx</li>
-				</ul>
-			</div>
-			<div class ="wrapper-r">
-				<p>MENU</p>
-				<ul>
-					<li>xxx</li>
-					<li>xxx</li>
-					<li>xxx</li>
-					<li>xxx</li>
-				</ul>
-			</div>
-		</div>-->
 	</div>
 	<div class="footer">
 	</div>

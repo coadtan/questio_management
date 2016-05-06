@@ -11,6 +11,10 @@ $(document).ready(function(){
         $('html,body').animate({
         scrollTop: $("#zonelist").offset().top},
         'slow');
+        $('.keeperfloor').removeClass('element_item');
+        $('.keeperfloor').addClass('item_default');
+        $(this).removeClass('item_default');
+        $(this).addClass('element_item');
     });
     $('#addfloor').click(function(){
         $('#mainarea').load(
@@ -47,7 +51,7 @@ $(document).ready(function(){
         <div class="col-xs-6 col-md-3">
             <a
             	href="#"
-            	class="thumbnail keeperfloor"
+            	class="thumbnail keeperfloor item_default"
             	id="floor_<?=$floor['floorid']?>"
             	floorid="<?=$floor['floorid']?>"
             >
@@ -60,15 +64,15 @@ $(document).ready(function(){
             <?php endif;?>
 		    </a>
 		    <?=$floor['floorname']?>
-		    <a href="#" class="editfloor" floorid="<?=$floor['floorid']?>">Edit</a>
-		    <a href="#" class="deletefloor" floorid="<?=$floor['floorid']?>">Delete</a>
+		    <a href="#" class="editfloor" floorid="<?=$floor['floorid']?>"style ="color:black">Edit</a>
+		    <a href="#" class="deletefloor" floorid="<?=$floor['floorid']?>"style ="color:black">Delete</a>
 	  	</div>
     <?php endforeach;?>
 <?php endif;?>
 	<div class="col-xs-6 col-md-3" style="text-align:center">
 		<a
 		    href="#"
-		    class="thumbnail"
+		    class="thumbnail item_default"
 		    id="addfloor"
             style="color:black"
 		>

@@ -11,6 +11,9 @@ $(document).ready(function(){
         $('html,body').animate({
         scrollTop: $("#mainarea").offset().top},
         'slow');
+        $('.keeperzone').removeClass('element_item');
+        $(this).removeClass('item_default');
+        $(this).addClass('element_item');
     });
     $('#addzone').click(function(){
         $('#mainarea').load(
@@ -47,7 +50,7 @@ $(document).ready(function(){
         <div class="col-xs-6 col-md-3">
             <a
             	href="#"
-            	class="thumbnail keeperzone"
+            	class="thumbnail keeperzone item_default"
             	id="zone_<?=$zone['zoneid']?>"
             	zoneid="<?=$zone['zoneid']?>"
             >
@@ -60,15 +63,15 @@ $(document).ready(function(){
             <?php endif;?>
 		    </a>
 		    <?=$zone['zonename']?>
-		    <a href="#" class="editzone" zoneid="<?=$zone["zoneid"]?>">Edit</a>
-		    <a href="#" class="deletezone" zoneid="<?=$zone["zoneid"]?>">Delete</a>
+		    <a href="#" class="editzone" zoneid="<?=$zone["zoneid"]?>"style ="color:black">Edit</a>
+		    <a href="#" class="deletezone" zoneid="<?=$zone["zoneid"]?>"style ="color:black">Delete</a>
 	  	</div>
     <?php endforeach;?>
 <?php endif;?>
 	<div class="col-xs-6 col-md-3" style="text-align:center">
 		<a
 		    href="#"
-		    class="thumbnail"
+		    class="thumbnail item_default"
 		    id="addzone"
             style="color:black"
 		>
