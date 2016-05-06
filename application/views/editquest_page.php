@@ -22,7 +22,9 @@ $(document).ready(function(){
         $.ajax({
                type: "POST",
                url: url,
-               data: formData, 
+               data: formData,
+               processData: false,
+               contentType: false,   
                success: function(data){
                    if(data == 'edit_quest_success'){
                         $('#mainarea').load(

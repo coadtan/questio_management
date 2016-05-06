@@ -16,26 +16,17 @@ $(document).ready(function(){
     $(document).on("submit", "form", function(event){
         event.preventDefault();
         
-        var newsid = $("#newsid").val();
-        var placeid = $("#placeid").val();
-        var newsheader = $("#newsheader").val();
-        var newsdetails = $("#newsdetails").val();
-        var datestarted = $("#datestarted").val();
-        var dateended = $("#dateended").val();
+        var formElement = document.querySelector("form");
+        var formData = new FormData(formElement);
 
 
         var url = "<?=base_url('editnews/editnewscheck')?>";
         $.ajax({
                type: "POST",
                url: url,
-               data: {
-                newsid: newsid,
-                placeid: placeid,
-                newsheader: newsheader,
-                newsdetails: newsdetails,
-                datestarted: datestarted,
-                dateended: dateended
-               }
+               data: formData,
+               processData: false,
+               contentType: false,                
                , 
                success: function(data){
                    if(data == 'edit_news_success'){
@@ -50,7 +41,7 @@ $(document).ready(function(){
                    }else if(data == 'edit_news_failed'){
                         alert('Edit news failed');
                    }else if(data == 'edit_news_error'){
-                        alert('Error: Some field is empty');
+                        alert('Error: Some field is not valid');
                    }
                }
         });

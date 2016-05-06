@@ -16,6 +16,8 @@
                type: "POST",
                url: url,
                data: formData,
+               processData: false,
+               contentType: false,                
                success: function(data){
                    if(data == 'add_news_success'){
                         $('#mainarea').load(
@@ -29,7 +31,7 @@
                    }else if(data == 'add_news_failed'){
                         alert('Add news failed');
                    }else if(data == 'add_news_error'){
-                        alert('Error: Some field is empty');
+                        alert('Error: Some field is not valid');
                    }
                }
         });

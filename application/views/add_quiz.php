@@ -24,6 +24,8 @@ $(document).ready(function(){
                type: "POST",
                url: url,
                data: formData,
+               processData: false,
+               contentType: false, 
                success: function(data){
                    if(data == 'add_quiz_success'){
                         $('#mainarea').load(

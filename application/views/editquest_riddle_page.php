@@ -24,6 +24,8 @@ $(document).ready(function(){
                type: "POST",
                url: url,
                data: formData,
+               processData: false,
+               contentType: false,  
                success: function(data){
                    if(data == 'edit_riddle_success'){
                         $('#mainarea').load(
