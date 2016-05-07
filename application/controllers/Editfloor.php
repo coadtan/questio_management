@@ -29,7 +29,7 @@ class Editfloor extends CI_Controller {
 		$floor = $this->Floor_model;
 		$buildingid = $this->input->post('buildingid');
 		$floorname = $this->input->post('floorname');
-		$imageurl = $this->input->post('imageurl')
+		$imageurl = $this->input->post('imageurl');
 
 		if(!empty($_FILES['floorpic']['name'])){
 			$config['upload_path'] = './pictures/floor';
