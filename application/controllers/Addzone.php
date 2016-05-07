@@ -20,7 +20,7 @@ class Addzone extends CI_Controller {
 		$sensorid = $zone->getsensorid();
 		$zonetypedata = $zone->getzonetypedata();
 		$itemdata = $this->getitem();
-		$rewarddata = $this->getreward(4);
+		$rewarddata = $this->getreward(3);
 		$this->load->view(
 			'addzone_page',array(
 				'message' => "",

@@ -19,7 +19,7 @@ class Editzone extends CI_Controller {
 		$zonedata = $zone->getZoneFromId($zoneid);
 		$zonetypedata = $zone->getzonetypedata();
 		$itemdata = $this->getitem();
-		$rewarddata = $this->getreward(4);
+		$rewarddata = $this->getreward(3);
 		$this->load->view(
 			'editzone_page',array(
 				'message' => "",
