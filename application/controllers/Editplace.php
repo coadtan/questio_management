@@ -29,9 +29,6 @@ class Editplace extends CI_Controller {
 
 	public function editplacecheck($placeid){
 		$place = $this->Place_model;
-		$reward = $this->Rewards_model;
-		$enterrewarddata = $reward->getRewardFromType(5);
-		$rewarddata = $reward->getRewardFromType(2);
 		$placename = $this->input->post('placename');
 		$placefullname = $this->input->post('placefullname');
 		$latitude = $this->input->post('latitude');

@@ -13,6 +13,7 @@ $(document).ready(function(){
         'slow');
     });
     $('#submit-add-place').click(function(){
+    	
         event.preventDefault();
             
         var inputFile = $('input[name=placepic]');
@@ -35,6 +36,7 @@ $(document).ready(function(){
                contentType: false,  
                success: function(data){
                    if(data == 'add_place_success'){
+                   	
                         $('#mainarea').load(
                             "<?=base_url('mainpage/getplace')?>"
                         );
@@ -50,6 +52,7 @@ $(document).ready(function(){
                    }
                }
         });
+        console.log("end");
         return false;
     });
 });

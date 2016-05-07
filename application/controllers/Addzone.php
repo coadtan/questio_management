@@ -35,11 +35,7 @@ class Addzone extends CI_Controller {
 	}
 
 	public function addzonecheck(){
-		$floordata = $this->getfloor();
 		$zone = $this->Zone_model;
-		$zonetypedata = $zone->getzonetypedata();
-		$itemdata = $this->Item_model->getEquippableItem();
-		$rewarddata = $this->Rewards_model->getRewardFromType(4);
 		$floorid = $this->input->post('floorid');
 		$zonename = $this->input->post('zonename');
 		$zonetypeid = $this->input->post('zonetype');

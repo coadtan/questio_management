@@ -30,9 +30,6 @@ class Addplace extends CI_Controller {
 
 	public function addplacecheck(){
 		$place = $this->Place_model;
-		$reward = $this->Rewards_model;
-		$enterrewarddata = $reward->getRewardFromType(5);
-		$rewarddata = $reward->getRewardFromType(2);
 		$placename = $this->input->post('placename');
 		$placefullname = $this->input->post('placefullname');
 		$latitude = $this->input->post('latitude');
@@ -126,7 +123,7 @@ class Addplace extends CI_Controller {
 
 	public function addEditPlaceDetail($placeid){
 		$placedetaildata = $this->Placedetail_model->getPlaceDetailByPlaceId($placeid);
-		if(is_null($placedetaildata)){
+		if(empty($placedetaildata)){
 			$this->load->view(
 			'addplacedetail_page',array(
 				'message' => "",

@@ -35,9 +35,6 @@ class Editquest extends CI_Controller {
 
 	public function editquestcheck(){
 		$quest = $this->Quest_model;
-		$questtype = $quest->getquesttypedata();
-		$difficulty = $quest->getdifficulty();
-		$reward = $this->getreward(4);
 		$questid = $this->input->post('questid');
 		$questname = $this->input->post('questname');
 		$questdetails = $this->input->post('questdetails');
@@ -104,7 +101,6 @@ class Editquest extends CI_Controller {
 
 	public function editQuizCheck(){
 		$quiz = $this->Quiz_model;
-		$quest = $this->Quest_model;
 		$quizid = $this->input->post('quizid');
 		$question = $this->input->post('question');
 		$choicea = $this->input->post('choicea');
@@ -305,8 +301,6 @@ class Editquest extends CI_Controller {
 	}
 
 	public function editPuzzleCheck(){
-		$puzzle = $this->Puzzle_model;
-		$quest = $this->Quest_model;
 		$questname = $this->input->post('questname');
 		$questdetails = $this->input->post('questdetails');
 		$diffid = $this->input->post('diffid');

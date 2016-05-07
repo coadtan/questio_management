@@ -32,9 +32,6 @@ class Addquest extends CI_Controller {
 
 	public function addquestcheck(){
 		$quest = $this->Quest_model;
-		$questtype = $quest->getquesttypedata();
-		$difficulty = $quest->getdifficulty();
-		$reward = $this->Rewards_model->getRewardFromType(4);
 		$questname = $this->input->post('questname');
 		$questdetails = $this->input->post('questdetails');
 		$questtypeid = $this->input->post('questtypeid');

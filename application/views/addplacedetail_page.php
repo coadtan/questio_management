@@ -73,9 +73,9 @@ $(document).ready(function(){
         size ="999"
         accept="image/*">
         <br>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" id="submit-add-placedetail">
 </form>
-<a href="#" class="goback"style ="color:black" id="submit-add-placedetail">Go Back</a>
+<a href="#" class="goback" style ="color:black">Go Back</a>
 </div>
 </body>
 </html>
