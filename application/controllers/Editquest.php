@@ -301,6 +301,8 @@ class Editquest extends CI_Controller {
 	}
 
 	public function editPuzzleCheck(){
+		$puzzle = $this->Puzzle_model;
+		$quest = $this->Quest_model;
 		$questname = $this->input->post('questname');
 		$questdetails = $this->input->post('questdetails');
 		$diffid = $this->input->post('diffid');
