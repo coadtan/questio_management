@@ -60,6 +60,6 @@
     <input type="datetime-local" id="datestarted" name="datestarted" required><br>
     Date Ended*:
     <input type="datetime-local" id="dateended" name="dateended" required><br>
-    <input type="submit" value="Submit" id="submit-news">
+    <input type="submit" value="Submit" id="submit-add-news">
 </form>
 <a href="#" class="goback"style ="color:black">Go Back</a>
