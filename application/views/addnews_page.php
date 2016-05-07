@@ -48,7 +48,7 @@
     });
 });
 </script>
-<form id="addnews" method="POST" id="form-add-news">
+<form method="POST" id="form-add-news">
     Place Name*:
     <?= form_dropdown('placeid',$placedata,'','id="placeid"'); ?>
      <br>
