@@ -1,10 +1,10 @@
 <script type="text/javascript">
 $(document).ready(function(){
+  var zoneid = $('#zoneid').val();
     $.ajaxSetup({ 
         cache: false 
     });  
     $('.goback').click(function(){
-        var zoneid = this.getAttribute("zoneid");
         $('#mainarea').load(
           "<?=base_url('questoverview/getquest')?>"+ "/"+ zoneid
         );
@@ -12,13 +12,13 @@ $(document).ready(function(){
         scrollTop: $("#mainarea").offset().top},
         'slow');
     });
-    $(document).on("submit", "form", function(event){
+    $('#submit-edit-puzzle').click(function(){
         event.preventDefault();
             
         var inputFile = $('input[name=puzzlepic]');
         var puzzlepic = inputFile[0].files[0];
 
-        var formElement = document.querySelector("form");
+        var formElement = document.querySelector("#form-edit-puzzle");
         var formData = new FormData(formElement);
         
 
@@ -52,7 +52,7 @@ $(document).ready(function(){
     });
 });
 </script>
-<form enctype="multipart/form-data" method="post" accept-charset="utf-8">
+<form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-edit-puzzle">
     <input type="hidden" name="puzzleid" id="puzzleid" value="<?=$puzzledata['puzzleid']?>">
     <input type="hidden" name="zoneid" id="zoneid" value="<?=$zoneid?>">
     Quest Name*:
@@ -85,6 +85,6 @@ $(document).ready(function(){
     <input type="text" name="helperanswer" id="helperanswer" size="100" value="<?=$puzzledata['helperanswer']?>"><br>
     Correct Answer*:<i>Must not longer than 100 characters</i>
     <input type="text" name="correctanswer" id="correctanswer" size="100" value="<?=$puzzledata['correctanswer']?>"><br>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" id="submit-edit-puzzle">
 </form>
 <a href="#" class="goback" zoneid="<?=$zoneid?>"style ="color:black">Go Back</a>

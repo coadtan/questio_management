@@ -1,5 +1,6 @@
 <script>
 $(document).ready(function(){
+  var floorid = $('#floorid').val();
     $.ajaxSetup({ 
         cache: false 
     });  
@@ -12,13 +13,13 @@ $(document).ready(function(){
         scrollTop: $("#mainarea").offset().top},
         'slow');
     });
-    $(document).on("submit", "form", function(event){
+    $('#submit-edit-floor').click(function(){
         event.preventDefault();
             
         var inputFile = $('input[name=floorpic]');
         var floorpic = inputFile[0].files[0];
 
-        var formElement = document.querySelector("form");
+        var formElement = document.querySelector("#form-edit-floor");
         var formData = new FormData(formElement);
 
         if (floorpic != 'undefined') {
@@ -54,7 +55,7 @@ $(document).ready(function(){
     });
 });
 </script>
-<form enctype="multipart/form-data" method="post" accept-charset="utf-8">
+<form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-edit-floor">
 	<input type="hidden" name="floorid" id="floorid" value="<?=$floordata['floorid']?>">
 	Floor Name*:
 	<i>Must be less than 100 characters</i>
@@ -77,6 +78,6 @@ $(document).ready(function(){
                     height:100px;">
     <?php endif;?>
 		<br>
-	<input type="submit" value="Submit">
+	<input type="submit" value="Submit" id="submit-edit-floor">
 </form>
 <a href="#" class="goback" style ="color:black">Go Back</a>

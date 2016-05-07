@@ -12,17 +12,17 @@ $(document).ready(function(){
         scrollTop: $("#mainarea").offset().top},
         'slow');
     });
-    $(document).on("submit", "form", function(event){
+    $('#submit-edit-reward').click(function(){
         event.preventDefault();
             
-        var inputFile = $('input[name=rewardpic]');
-      var rewardpic = inputFile[0].files[0];
+        var inputFile = $('input[name=rewardurl]');
+      var rewardurl = inputFile[0].files[0];
       
-      var formElement = document.querySelector("form");
+      var formElement = document.querySelector("#form-edit-reward");
       var formData = new FormData(formElement);
           
-        if (rewardpic != 'undefined') {
-          formData.append("rewardpic", rewardpic);
+        if (rewardurl != 'undefined') {
+          formData.append("rewardurl", rewardurl);
         }
 
         var url = "<?=base_url('editreward/editrewardcheck')?>"
@@ -56,7 +56,7 @@ $(document).ready(function(){
 <div class ="r1-register">
 	<h1 class ="text-white"style="margin-top:50px !important">แก้ไขรางวัลให้กับผู้เล่นของคุณ</h1>
 </div>
-<form enctype="multipart/form-data" method="post" accept-charset="utf-8">
+<form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-edit-reward">
 <input type="hidden" name="rewardid" id="rewardid" value="<?=$rewarddata['rewardid']?>">
 Reward Name*:
 	<input type="text" 
@@ -96,6 +96,6 @@ Reward Picture: <input type="file"
 Reward Type*:
 	<?= form_dropdown('rewardtype',$rewardtypedata, $rewarddata['rewardtype'],'id="rewardtype"'); ?>
 	 <br><br>
-	<input type="submit" value="Submit">
+	<input type="submit" value="Submit" id="submit-edit-reward">
 </form>
 <a href="#" class="goback"style ="color:black">Go Back</a>

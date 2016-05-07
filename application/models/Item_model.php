@@ -98,11 +98,16 @@ class Item_model extends CI_Model{
 		}
 		return $items;
 	}
-	public function getEquippableItem(){
+	public function getEquippableItem($keeperid){
 		$items = null;
+		$this->db->select('itemid');
+		$this->db->from('management_item');
+		$this->db->where('keeperid',$keeperid);
+		$subquery = $this->db->get_compiled_select();
 		$this->db->select('itemid,itemname');
 		$this->db->from('Item');
 		$this->db->where('positionid <> 10');
+		$this->db->where('itemid IN ('.$subquery.')', null, false);
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
 			$items = array();

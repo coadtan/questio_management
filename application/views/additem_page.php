@@ -14,7 +14,9 @@ $(document).ready(function(){
         scrollTop: $("#mainarea").offset().top},
         'slow');
     });
-    $(document).on("submit", "form", function(event){
+
+    $('#submit-add-item').click(function(){
+    // $(document).on("submit", "form", function(event){
         event.preventDefault();
             
         var inputFile1 = $('input[name=itempic]');
@@ -25,37 +27,40 @@ $(document).ready(function(){
 
         if (itempic != 'undefined' && spritepic != 'undefined') {
 
-          var formElement = document.querySelector("form");
-          var formData = new FormData(formElement);
-          formData.append("itempic", itempic);
-          formData.append("spritepic", spritepic);
+            var formElement = document.querySelector("#form-add-item");
+            var formData = new FormData(formElement);
+            // formData.append("itempic", itempic);
+            // formData.append("spritepic", spritepic);
 
+            //var formData = $('#form-add-item').serialize();
+            formData.append("itempic", itempic);
+            formData.append("spritepic", spritepic);
 
-        var url = "<?=base_url('additem/additemcheck')?>";
-        $.ajax({
-               type: "POST",
-               url: url,
-               data: formData,
-               processData: false,
-               contentType: false,
-               success: function(data){
-                   if(data == 'add_item_success'){
-                        $('#mainarea').load(
-                            "<?=base_url('itemoverview')?>"
-                        );
+            var url = "<?=base_url('additem/additemcheck')?>";
+            $.ajax({
+                   type: "POST",
+                   url: url,
+                   data: formData,
+                   processData: false,
+                   contentType: false,
+                   success: function(data){
+                       if(data == 'add_item_success'){
+                            $('#mainarea').load(
+                                "<?=base_url('itemoverview')?>"
+                            );
 
-                        $('html,body').animate({
-                            scrollTop: $("#mainarea").offset().top},
-                            'slow'
-                        );
-                   }else if(data == 'add_item_failed'){
-                        alert('Add item failed');
-                   }else if(data == 'add_item_error'){
-                        alert('Error: Some field is not valid');
+                            $('html,body').animate({
+                                scrollTop: $("#mainarea").offset().top},
+                                'slow'
+                            );
+                       }else if(data == 'add_item_failed'){
+                            alert('Add item failed');
+                       }else if(data == 'add_item_error'){
+                            alert('Error: Some field is not valid');
+                       }
                    }
-               }
-        });
-        return false;
+            });
+            return false;
       }
     });
 });
@@ -63,7 +68,7 @@ $(document).ready(function(){
 <div class ="r1-register">
 	<h1 class ="text-white"style="margin-top:50px !important"> สร้างอุปกรณ์ให้กับตัวละคร</h1>
 </div>
-<form enctype="multipart/form-data" method="post" accept-charset="utf-8">
+<form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-add-item">
 	Item Name*: 
 	<input type="text" 
 		class ="register-margin register-box" 
@@ -101,6 +106,6 @@ $(document).ready(function(){
 	Position to Equip*:
 	<?= form_dropdown('positionid',$position,'','id="positionid"'); ?>
 	 <br><br>
-	<input type="submit" value="Submit">
+	<input type="submit" id="submit-add-item" value="Submit">
 </form>
 <a href="#" class="goback"style ="color:black">Go Back</a>

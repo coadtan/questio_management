@@ -12,13 +12,13 @@ $(document).ready(function(){
         scrollTop: $("#mainarea").offset().top},
         'slow');
     });
-    $(document).on("submit", "form", function(event){
+    $('#submit-edit-placedetail').click(function(){
         event.preventDefault();
             
         var inputFile = $('input[name=placepic]');
         var placepic = inputFile[0].files[0];
 
-        var formElement = document.querySelector("form");
+        var formElement = document.querySelector("#form-edit-placedetail");
         var formData = new FormData(formElement);
 
         if (placepic != 'undefined') {
@@ -54,7 +54,7 @@ $(document).ready(function(){
     });
 });
 </script>
-<form enctype="multipart/form-data" method="post" accept-charset="utf-8">
+<form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-edit-placedetail">
 <input type="hidden" name="placeid" id="placeid" value="<?=$placeid?>">
     Place Details:*<br>
 		<textarea name="placedetails" id="placedetails" rows="5" cols="50" required>
@@ -82,6 +82,6 @@ $(document).ready(function(){
                     height:100px;">
         <?php endif;?>
         <br>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" id="submit-edit-placedetail">
 </form>
 <a href="#" class="goback"style ="color:black">Go Back</a>

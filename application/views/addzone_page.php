@@ -12,14 +12,14 @@ $(document).ready(function(){
         scrollTop: $("#mainarea").offset().top},
         'slow');
     });
-    $(document).on("submit", "form", function(event){
+    $('#submit-add-zone').click(function(){
         event.preventDefault();
             
         var inputFile1 = $('input[name=zonepic]');
         var zonepic = inputFile1[0].files[0];
         var inputFile2 = $('input[name=minimappic]');
         var minimappic = inputFile2[0].files[0];
-        var formElement = document.querySelector("form");
+        var formElement = document.querySelector("#form-add-zone");
         var formData = new FormData(formElement);
 
         if (zonepic != 'undefined'){
@@ -59,7 +59,7 @@ $(document).ready(function(){
     });
 });
 </script>
-<form enctype="multipart/form-data" method="post" accept-charset="utf-8">
+<form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-add-zone">
 	Zone Name*:
 	<i>Must be less than 100 characters</i>
 	 <input type="text" name="zonename" id="zonename" size="50" required maxlength="100"><br>
@@ -93,6 +93,6 @@ $(document).ready(function(){
 	<?= form_dropdown('itemid',$itemdata, '', 'id="itemid"'); ?><br>
 	Rewards:
 	<?= form_dropdown('rewardid',$rewarddata, '', 'id="rewardid"'); ?><br>
-	<input type="submit" value="Submit">
+	<input type="submit" value="Submit" id="submit-add-zone">
 </form>
 <a href="#" class="goback"style ="color:black">Go Back</a>

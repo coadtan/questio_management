@@ -12,13 +12,13 @@ $(document).ready(function(){
         scrollTop: $("#mainarea").offset().top},
         'slow');
     });
-    $(document).on("submit", "form", function(event){
+    $('#submit-add-place').click(function(){
         event.preventDefault();
             
         var inputFile = $('input[name=placepic]');
         var placepic = inputFile[0].files[0];
 
-        var formElement = document.querySelector("form");
+        var formElement = document.querySelector("#form-add-place");
         var formData = new FormData(formElement);
 
         if (placepic != 'undefined') {
@@ -104,7 +104,7 @@ function placeMarker(location, map) {
 	<div class ="r1-add-place">
 		<h1 class ="text-white"style="margin-top:50px !important">Add Place ของคุณ</h1>
 	</div>
-	<form enctype="multipart/form-data" method="post" accept-charset="utf-8">
+	<form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-add-place">
 	<div style ="margin-top:35px">
 	<input type="text"
 			class ="register-margin register-box"
@@ -175,7 +175,7 @@ function placeMarker(location, map) {
 		Rewards:
 		<?= form_dropdown('rewardid',$rewarddata,'','id="rewardid"'); ?><br><br>
 
-		<input type="submit" value="Submit">
+		<input type="submit" value="Submit" id="submit-add-place">
 	</div>
 	<br>
 	<a href="#" class="goback"style ="color:black">Go Back</a>

@@ -1,5 +1,6 @@
 <script>
 $(document).ready(function(){
+  var buildingid = $('#buildingid').val();
     $.ajaxSetup({ 
         cache: false 
     });  
@@ -12,13 +13,13 @@ $(document).ready(function(){
         scrollTop: $("#mainarea").offset().top},
         'slow');
     });
-    $(document).on("submit", "form", function(event){
+    $('#submit-edit-building').click(function(){
         event.preventDefault();
         
         var inputFile = $('input[name=buildingpic]');
         var buildingpic = inputFile[0].files[0];
 
-        var formElement = document.querySelector("form");
+        var formElement = document.querySelector("#form-edit-building");
         var formData = new FormData(formElement);
 
         if (buildingpic != 'undefined') {
@@ -54,7 +55,7 @@ $(document).ready(function(){
     });
 });
 </script>
-<form enctype="multipart/form-data" method="post" accept-charset="utf-8">
+<form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-edit-building">
 	<input type="hidden" name="buildingid" id="buildingid" value="<?=$buildingdata["buildingid"]?>"
 	Building Name*:
 	<i>Must be less than 140 characters</i>
@@ -83,6 +84,6 @@ $(document).ready(function(){
                     height:100px;">
     <?php endif;?>
 		<br>
-	<input type="submit" value="Submit">
+	<input type="submit" value="Submit" id="submit-edit-building">
 </form>
 <a href="#" class="goback"style ="color:black">Go Back</a>

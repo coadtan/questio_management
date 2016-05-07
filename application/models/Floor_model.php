@@ -73,7 +73,7 @@ class Floor_model extends CI_Model{
 		$this->db->where('keeperid',$keeperid);
 		$subquery = $this->db->get_compiled_select();
 		$this->db->select('buildingid');
-		$this->db->from('management');
+		$this->db->from('Building');
 		$this->db->where('placeid IN ('.$subquery.')', null, false);
 		$subquery2 = $this->db->get_compiled_select();
 		$this->db->select('*');

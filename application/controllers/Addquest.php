@@ -18,7 +18,7 @@ class Addquest extends CI_Controller {
 		$quest = $this->Quest_model;
 		$questtype = $quest->getquesttypedata();
 		$difficulty = $quest->getdifficulty();
-		$reward = $this->Rewards_model->getRewardFromType(4);
+		$reward = $this->getreward(4);
 		$this->load->view(
 			'addquest_page',array(
 				'message' => "",
@@ -297,5 +297,12 @@ class Addquest extends CI_Controller {
 			//	)
 			//);
 		}
+	}
+
+	public function getreward($rewardtypeid){
+		$session_data = $this->session->userdata('logged_in');
+		$keeperid = $session_data['keeperid'];
+		$rewarddata = $this->Rewards_model->getRewardFromType($rewardtypeid,$keeperid);
+		return $rewarddata;
 	}
 }

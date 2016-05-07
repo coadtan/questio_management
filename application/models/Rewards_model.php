@@ -91,11 +91,16 @@ class Rewards_model extends CI_Model{
 		}
 		return $rewards;
 	}
-	public function getRewardFromType($rewardtype){
+	public function getRewardFromType($rewardtype,$keeperid){
 		$rewards = null;
+		$this->db->select('rewardid');
+		$this->db->from('management_reward');
+		$this->db->where('keeperid',$keeperid);
+		$subquery = $this->db->get_compiled_select();
 		$this->db->select('rewardid, rewardname');
 		$this->db->from('Rewards');
 		$this->db->where('RewardType',$rewardtype);
+		$this->db->where('rewardid IN ('.$subquery.')', null, false);
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1){
 			$rewards = array();

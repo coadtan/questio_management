@@ -20,7 +20,7 @@ class Editquest extends CI_Controller {
 		$zoneid = $this->Quest_model->getZoneIdByQuestId($questid);
 		$questtype = $quest->getquesttypedata();
 		$difficulty = $quest->getdifficulty();
-		$reward = $this->Rewards_model->getRewardFromType(4);
+		$reward = $this->getreward(4);
 		$this->load->view(
 			'editquest_page',array(
 				'message' => "",
@@ -37,12 +37,12 @@ class Editquest extends CI_Controller {
 		$quest = $this->Quest_model;
 		$questtype = $quest->getquesttypedata();
 		$difficulty = $quest->getdifficulty();
-		$reward = $this->Rewards_model->getRewardFromType(4);
+		$reward = $this->getreward(4);
 		$questid = $this->input->post('questid');
 		$questname = $this->input->post('questname');
 		$questdetails = $this->input->post('questdetails');
 		$diffid = $this->input->post('diffid');
-		if($this->input->post('rewardid'] != 0){
+		if($this->input->post('rewardid') != 0){
 			$rewardid = $this->input->post('rewardid');
 		}else{
 			$rewardid = null;
@@ -125,7 +125,7 @@ class Editquest extends CI_Controller {
 					//$quizdata = $quiz->getQuizByQuizId($quizid);
 					//$questtype = $quest->getquesttypedata();
 					//$difficulty = $quest->getdifficulty();
-					//$reward = $this->Rewards_model->getRewardFromType(4);
+					//$reward = $this->getreward(4);
 					//$questdata = $quest->getQuestFromQuestId($quizdata['questid']);
 					//$this->load->view(
 					//	'editquest_quiz_page',array(
@@ -143,7 +143,7 @@ class Editquest extends CI_Controller {
 				//$quizdata = $quiz->getQuizByQuizId($quizid);
 				//$questtype = $quest->getquesttypedata();
 				//$difficulty = $quest->getdifficulty();
-				//$reward = $this->Rewards_model->getRewardFromType(4);
+				//$reward = $this->getreward(4);
 				//$questdata = $quest->getQuestFromQuestId($quizdata['questid']);
 				//$this->load->view(
 				//	'editquest_quiz_page',array(
@@ -162,7 +162,7 @@ class Editquest extends CI_Controller {
 			//$quizdata = $quiz->getQuizByQuizId($quizid);
 			//$questtype = $quest->getquesttypedata();
 			//$difficulty = $quest->getdifficulty();
-			//$reward = $this->Rewards_model->getRewardFromType(4);
+			//$reward = $this->getreward(4);
 			//$questdata = $quest->getQuestFromQuestId($quizdata['questid']);
 			//$this->load->view(
 			//'editquest_quiz_page',array(
@@ -183,7 +183,7 @@ class Editquest extends CI_Controller {
 		$quest = $this->Quest_model;
 		$questtype = $quest->getquesttypedata();
 		$difficulty = $quest->getdifficulty();
-		$reward = $this->Rewards_model->getRewardFromType(4);
+		$reward = $this->getreward(4);
 		$questdata = $quest->getQuestFromQuestId($ridid);
 		$zoneid = $this->Quest_model->getZoneIdByQuestId($ridid);
 		$this->load->view(
@@ -205,7 +205,7 @@ class Editquest extends CI_Controller {
 		$questname = $this->input->post('questname');
 		$questdetails = $this->input->post('questdetails');
 		$diffid = $this->input->post('diffid');
-		if($this->input->post('rewardid'] != 0){
+		if($this->input->post('rewardid') != 0){
 			$rewardid = $this->input->post('rewardid');
 		}else{
 			$rewardid = null;
@@ -229,7 +229,7 @@ class Editquest extends CI_Controller {
 					//$quest = $this->Quest_model;
 					//$questtype = $quest->getquesttypedata();
 					//$difficulty = $quest->getdifficulty();
-					//$reward = $this->Rewards_model->getRewardFromType(4);
+					//$reward = $this->getreward(4);
 					//$questdata = $quest->getQuestFromQuestId($ridid);
 					//$this->load->view(
 					//	'editquest_riddle_page',array(
@@ -247,7 +247,7 @@ class Editquest extends CI_Controller {
 				//$quest = $this->Quest_model;
 				//$questtype = $quest->getquesttypedata();
 				//$difficulty = $quest->getdifficulty();
-				//$reward = $this->Rewards_model->getRewardFromType(4);
+				//$reward = $this->getreward(4);
 				//$questdata = $quest->getQuestFromQuestId($ridid);
 				//$this->load->view(
 				//	'editquest_riddle_page',array(
@@ -267,7 +267,7 @@ class Editquest extends CI_Controller {
 			//$quest = $this->Quest_model;
 			//$questtype = $quest->getquesttypedata();
 			//$difficulty = $quest->getdifficulty();
-			//$reward = $this->Rewards_model->getRewardFromType(4);
+			//$reward = $this->getreward(4);
 			//$questdata = $quest->getQuestFromQuestId($ridid);
 			//$this->load->view(
 			//'editquest_riddle_page',array(
@@ -287,7 +287,7 @@ class Editquest extends CI_Controller {
 		$quest = $this->Quest_model;
 		$questtype = $quest->getquesttypedata();
 		$difficulty = $quest->getdifficulty();
-		$reward = $this->Rewards_model->getRewardFromType(4);
+		$reward = $this->getreward(4);
 		$questdata = $quest->getQuestFromQuestId($puzzleid);
 		$zoneid = $this->Quest_model->getZoneIdByQuestId($puzzleid);
 		$this->load->view(
@@ -310,7 +310,7 @@ class Editquest extends CI_Controller {
 		$questname = $this->input->post('questname');
 		$questdetails = $this->input->post('questdetails');
 		$diffid = $this->input->post('diffid');
-		if($this->input->post('rewardid'] != 0){
+		if($this->input->post('rewardid') != 0){
 			$rewardid = $this->input->post('rewardid');
 		}else{
 			$rewardid = null;
@@ -348,7 +348,7 @@ class Editquest extends CI_Controller {
 					//$quest = $this->Quest_model;
 					//$questtype = $quest->getquesttypedata();
 					//$difficulty = $quest->getdifficulty();
-					//$reward = $this->Rewards_model->getRewardFromType(4);
+					//$reward = $this->getreward(4);
 					//$questdata = $quest->getQuestFromQuestId($puzzleid);
 					//$this->load->view(
 					//	'editquest_puzzle_page',array(
@@ -366,7 +366,7 @@ class Editquest extends CI_Controller {
 				//$quest = $this->Quest_model;
 				//$questtype = $quest->getquesttypedata();
 				//$difficulty = $quest->getdifficulty();
-				//$reward = $this->Rewards_model->getRewardFromType(4);
+				//$reward = $this->getreward(4);
 				//$questdata = $quest->getQuestFromQuestId($puzzleid);
 				//$this->load->view(
 				//	'editquest_puzzle_page',array(
@@ -386,7 +386,7 @@ class Editquest extends CI_Controller {
 			//$quest = $this->Quest_model;
 			//$questtype = $quest->getquesttypedata();
 			//$difficulty = $quest->getdifficulty();
-			//$reward = $this->Rewards_model->getRewardFromType(4);
+			//$reward = $this->getreward(4);
 			//$questdata = $quest->getQuestFromQuestId($puzzleid);
 			//$this->load->view(
 			//	'editquest_puzzle_page',array(
@@ -399,5 +399,12 @@ class Editquest extends CI_Controller {
 			//	)
 			//);
 		}
+	}
+
+	public function getreward($rewardtypeid){
+		$session_data = $this->session->userdata('logged_in');
+		$keeperid = $session_data['keeperid'];
+		$rewarddata = $this->Rewards_model->getRewardFromType($rewardtypeid,$keeperid);
+		return $rewarddata;
 	}
 }

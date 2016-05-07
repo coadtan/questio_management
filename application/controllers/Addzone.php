@@ -19,8 +19,8 @@ class Addzone extends CI_Controller {
 		$qrcode = $zone->getqrcode();
 		$sensorid = $zone->getsensorid();
 		$zonetypedata = $zone->getzonetypedata();
-		$itemdata = $this->Item_model->getEquippableItem();
-		$rewarddata = $this->Rewards_model->getRewardFromType(4);
+		$itemdata = $this->getitem();
+		$rewarddata = $this->getreward(4);
 		$this->load->view(
 			'addzone_page',array(
 				'message' => "",
@@ -148,7 +148,19 @@ class Addzone extends CI_Controller {
 		return $floordata;
 	}
 
+	public function getreward($rewardtypeid){
+		$session_data = $this->session->userdata('logged_in');
+		$keeperid = $session_data['keeperid'];
+		$rewarddata = $this->Rewards_model->getRewardFromType($rewardtypeid,$keeperid);
+		return $rewarddata;
+	}
 
+	public function getitem(){
+		$session_data = $this->session->userdata('logged_in');
+		$keeperid = $session_data['keeperid'];
+		$itemdata = $this->Item_model->getEquippableItem($keeperid);
+		return $itemdata;
+	}	
 
 
 }

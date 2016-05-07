@@ -18,8 +18,8 @@ class Editzone extends CI_Controller {
 		$zone = $this->Zone_model;
 		$zonedata = $zone->getZoneFromId($zoneid);
 		$zonetypedata = $zone->getzonetypedata();
-		$itemdata = $this->Item_model->getEquippableItem();
-		$rewarddata = $this->Rewards_model->getRewardFromType(4);
+		$itemdata = $this->getitem();
+		$rewarddata = $this->getreward(4);
 		$this->load->view(
 			'editzone_page',array(
 				'message' => "",
@@ -137,7 +137,19 @@ class Editzone extends CI_Controller {
 		return $floordata;
 	}
 
+	public function getreward($rewardtypeid){
+		$session_data = $this->session->userdata('logged_in');
+		$keeperid = $session_data['keeperid'];
+		$rewarddata = $this->Rewards_model->getRewardFromType($rewardtypeid,$keeperid);
+		return $rewarddata;
+	}
 
+	public function getitem(){
+		$session_data = $this->session->userdata('logged_in');
+		$keeperid = $session_data['keeperid'];
+		$itemdata = $this->Item_model->getEquippableItem($keeperid);
+		return $itemdata;
+	}	
 
 
 }

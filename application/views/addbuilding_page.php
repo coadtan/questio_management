@@ -12,13 +12,13 @@ $(document).ready(function(){
         scrollTop: $("#mainarea").offset().top},
         'slow');
     });
-    $(document).on("submit", "form", function(event){
+    $('#submit-add-building').click(function(){
         event.preventDefault();
             
         var inputFile = $('input[name=buildingpic]');
         var buildingpic = inputFile[0].files[0];
 
-        var formElement = document.querySelector("form");
+        var formElement = document.querySelector("#form-add-building");
         var formData = new FormData(formElement);
 
         if (buildingpic != 'undefined') {
@@ -54,7 +54,7 @@ $(document).ready(function(){
     });
 });
 </script>
-<form enctype="multipart/form-data" method="post" accept-charset="utf-8">
+<form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-add-building">
 	Building Name*:
 	<i>Must be less than 140 characters</i>
 	 <input type="text" name="buildingname" id="buildingname" size="50" required maxlength="140"><br>
@@ -74,6 +74,6 @@ $(document).ready(function(){
 		size ="999"
     accept="image/*">
 		<br>
-	<input type="submit" value="Submit">
+	<input type="submit" value="Submit" id="submit-add-building">
 </form>
 <a href="#" class="goback"style ="color:black">Go Back</a>

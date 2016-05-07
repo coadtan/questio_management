@@ -15,8 +15,8 @@ class Editplace extends CI_Controller {
 		$place = $this->Place_model;
 		$placedata = $place->getPlaceById($placeid);
 		$reward = $this->Rewards_model;
-		$enterrewarddata = $reward->getRewardFromType(5);
-		$rewarddata = $reward->getRewardFromType(2);
+		$enterrewarddata = $this->getreward(5);
+		$rewarddata = $this->getreward(2);
 		$this->load->view(
 			'editplace_page',array(
 				'message' => "",
@@ -182,5 +182,12 @@ class Editplace extends CI_Controller {
 			//	)
 			//);
 		}
+	}
+
+	public function getreward($rewardtypeid){
+		$session_data = $this->session->userdata('logged_in');
+		$keeperid = $session_data['keeperid'];
+		$rewarddata = $this->Rewards_model->getRewardFromType($rewardtypeid,$keeperid);
+		return $rewarddata;
 	}
 }

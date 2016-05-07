@@ -12,14 +12,19 @@ $(document).ready(function(){
         scrollTop: $("#mainarea").offset().top},
         'slow');
     });
-    $(document).on("submit", "form", function(event){
+
+
+    $('#submit-add-reward').click(function(){
+    //$(document).on("submit", "form", function(event){
       event.preventDefault();
       var inputFile = $('input[name=rewardpic]');
       var rewardpic = inputFile[0].files[0];
       
-      var formElement = document.querySelector("form");
-      var formData = new FormData(formElement);
-          
+       var formElement = document.querySelector("#form-add-reward");
+       var formData = new FormData(formElement);
+        
+      //  var formData = $('#form-add-reward').serializeArray();
+
         if (rewardpic != 'undefined') {
           formData.append("rewardpic", rewardpic);
         }
@@ -56,7 +61,7 @@ $(document).ready(function(){
 <div class ="r1-register">
 	<h1 class ="text-white"style="margin-top:50px !important">สร้างรางวัลให้กับผู้เล่นของคุณ</h1>
 </div>
-<form enctype="multipart/form-data" method="post" accept-charset="utf-8">
+<form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-add-reward">
 Reward Name*:
 	<input type="text" 
 		class ="register-margin register-box" 
@@ -86,6 +91,6 @@ Reward Picture: <input type="file"
 Reward Type*:
 	<?= form_dropdown('rewardtype',$rewardtypedata, '', 'id="rewardtype"'); ?>
 	 <br><br>
-	<input type="submit" value="Submit">
+	<input id="submit-add-reward" type="submit" value="Submit">
 <?=form_close()?>
 <a href="#" class="goback"style ="color:black">Go Back</a>

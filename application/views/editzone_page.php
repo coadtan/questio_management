@@ -1,5 +1,6 @@
 <script>
 $(document).ready(function(){
+  var zoneid = $('#zoneid').val();
     $.ajaxSetup({ 
         cache: false 
     });  
@@ -12,14 +13,14 @@ $(document).ready(function(){
         scrollTop: $("#mainarea").offset().top},
         'slow');
     });
-        $(document).on("submit", "form", function(event){
+      $('#submit-edit-zone').click(function(){
         event.preventDefault();
             
         var inputFile1 = $('input[name=zonepic]');
         var zonepic = inputFile1[0].files[0];
         var inputFile2 = $('input[name=minimappic]');
         var minimappic = inputFile2[0].files[0];
-        var formElement = document.querySelector("form");
+        var formElement = document.querySelector("#form-edit-zone");
         var formData = new FormData(formElement);
 
         if (zonepic != 'undefined'){
@@ -58,7 +59,7 @@ $(document).ready(function(){
     });
 });
 </script>
-<form enctype="multipart/form-data" method="post" accept-charset="utf-8">
+<form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-edit-zone">
 	<input type="hidden" name="zoneid" id="zoneid" value="<?=$zonedata['zoneid']?>">
 	Zone Name*:
 	<i>Must be less than 100 characters</i>
@@ -107,6 +108,6 @@ $(document).ready(function(){
 	<?= form_dropdown('itemid',$itemdata,$zonedata["itemid"],'id="itemid"') ?><br>
 	Rewards:
 	<?= form_dropdown('rewardid',$rewarddata,$zonedata["rewardid"],'id="rewardid"') ?><br>
-	<input type="submit" value="Submit">
+	<input type="submit" value="Submit" id="submit-edit-zone">
 </form>
 <a href="#" class="goback"style ="color:black">Go Back</a>

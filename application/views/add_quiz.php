@@ -1,10 +1,10 @@
 <script type="text/javascript">
 $(document).ready(function(){
+  var zoneid = $('#zoneid').val();
     $.ajaxSetup({ 
         cache: false 
     });
     $('.goback').click(function(){
-        var zoneid = this.getAttribute("zoneid");
         $('#mainarea').load(
             "<?=base_url('questoverview/getquest')?>"+ "/"+ zoneid
         );
@@ -12,10 +12,10 @@ $(document).ready(function(){
         scrollTop: $("#mainarea").offset().top},
         'slow');
     });
-    $(document).on("submit", "form", function(event){
+    $('#submit-add-quiz').click(function(){
         event.preventDefault();
             
-        var formElement = document.querySelector("form");
+        var formElement = document.querySelector("#form-add-quiz");
         var formData = new FormData(formElement);
 
 
@@ -46,7 +46,7 @@ $(document).ready(function(){
 });
 </script>
 <h2 style='color:red'><?=$message?></h2>
-<form method="POST">
+<form method="POST" id="form-add-quiz">
     <input type="hidden" name="questid" id="questid" value="<?=$questid?>">
     <input type="hidden" name="zoneid" id="zoneid" value="<?=$zoneid?>">
     <input type="hidden" name="seqid" id="seqid" value="<?=$seqid?>">
@@ -66,7 +66,7 @@ $(document).ready(function(){
     <input type="radio" name="answerid" id="answerid" value="3">3
     <input type="radio" name="answerid" id="answerid" value="4">4
      <br>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" id="submit-add-quiz">
 </form>
 <a href="#" class="goback" zoneid="<?=$zoneid?>"style ="color:black">Go Back</a>
 

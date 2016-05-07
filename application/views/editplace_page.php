@@ -1,5 +1,6 @@
 <script>
 $(document).ready(function(){
+  var placeid = $('#placeid').val();
     $.ajaxSetup({ 
         cache: false 
     });  
@@ -12,13 +13,13 @@ $(document).ready(function(){
         scrollTop: $("#mainarea").offset().top},
         'slow');
     });
-	$(document).on("submit", "form", function(event){
+	$('#submit-edit-place').click(function(){
         event.preventDefault();
         
         var inputFile = $('input[name=placepic]');
         var placepic = inputFile[0].files[0];
 
-        var formElement = document.querySelector("form");
+        var formElement = document.querySelector("#form-edit-place");
         var formData = new FormData(formElement);
 
         if (placepic != 'undefined') {
@@ -54,7 +55,7 @@ $(document).ready(function(){
     });    
 });
 </script>
-<form enctype="multipart/form-data" method="post" accept-charset="utf-8">
+<form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-edit-place">
 	<input type="hidden" name="placeid" id="placeid"  class ="margin-field-default" value="<?=$placedata["placeid"]?>"
 	Place Name*:
 	<i>Must be less than 50 characters</i>
@@ -98,6 +99,6 @@ $(document).ready(function(){
 	<?= form_dropdown('enter_rewardid',$enterrewarddata,$placedata["enter_rewardid"],'id="enter_rewardid"') ?><br>
 	Rewards:
 	<?= form_dropdown('rewardid',$rewarddata,$placedata["rewardid"],'id="rewardid"') ?><br>
-	<input type="submit" class ="margin-field-default" value="Submit">
+	<input type="submit" class ="margin-field-default" value="Submit" id="submit-edit-place">
 </form>
 <a href="#" class="goback"style ="color:black">Go Back</a>

@@ -1,10 +1,10 @@
 <script type="text/javascript">
 $(document).ready(function(){
+  var zoneid = $('#zoneid').val();
     $.ajaxSetup({ 
         cache: false 
     });
     $('.goback').click(function(){
-      var zoneid = this.getAttribute("zoneid");
         $('#mainarea').load(
           "<?=base_url('questoverview/getquest')?>"+ "/"+ zoneid
         );
@@ -12,10 +12,10 @@ $(document).ready(function(){
         scrollTop: $("#mainarea").offset().top},
         'slow');
     });
-    $(document).on("submit", "form", function(event){
+    $('#submit-add-riddle').click(function(){
         event.preventDefault();
             
-        var formElement = document.querySelector("form");
+        var formElement = document.querySelector("#form-add-riddle");
         var formData = new FormData(formElement);
 
 
@@ -46,10 +46,11 @@ $(document).ready(function(){
 });
 </script>
 <h2 style='color:red'><?=$message?></h2>
-<form method="POST">
+<form method="POST" id="form-add-riddle">
     <input type="hidden" name="ridid" id="ridid" value="<?=$ridid?>">
     <input type="hidden" name="qrcode" id="qrcode" value="<?=$qrcode?>">
     <input type="hidden" name="sensorid" id="sensorid" value="<?=$sensorid?>">
+    <input type="hidden" name="zoneid" id="zoneid" value="<?=$zoneid?>">
     Riddle Details*:
     <input type="text" name="riddetails" id="riddetails" size="100" required><br>
     Scan Limit*:
@@ -60,6 +61,6 @@ $(document).ready(function(){
     <input type="text" name="hint2" id="hint2" size="100" required maxlength="100"><br>
     Hint 3:<i>Must not longer than 100 characters</i>
     <input type="text" name="hint3" id="hint3" size="100" required maxlength="100"><br>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" id="submit-add-riddle">
 </form>
 <a href="#" class="goback" zoneid="<?=$zoneid?>"style ="color:black">Go Back</a>

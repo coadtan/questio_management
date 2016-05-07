@@ -4,10 +4,10 @@
         cache: false 
     });
     // $("#addnews").submit(function(e) {
-    $(document).on("submit", "form", function(event){
+    $('#submit-add-news').click(function(){
         event.preventDefault();
             
-        var formElement = document.querySelector("form");
+        var formElement = document.querySelector("#form-add-news");
         var formData = new FormData(formElement);
 
 
@@ -48,7 +48,7 @@
     });
 });
 </script>
-<form id="addnews" method="POST">
+<form id="addnews" method="POST" id="form-add-news">
     Place Name*:
     <?= form_dropdown('placeid',$placedata,'','id="placeid"'); ?>
      <br>
@@ -60,6 +60,6 @@
     <input type="datetime-local" id="datestarted" name="datestarted" required><br>
     Date Ended*:
     <input type="datetime-local" id="dateended" name="dateended" required><br>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" id="submit-news">
 </form>
 <a href="#" class="goback"style ="color:black">Go Back</a>

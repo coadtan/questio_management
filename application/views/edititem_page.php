@@ -12,7 +12,7 @@ $(document).ready(function(){
         scrollTop: $("#mainarea").offset().top},
         'slow');
     });
-    $(document).on("submit", "form", function(event){
+    $('#submit-edit-item').click(function(){
         event.preventDefault();
             
         var inputFile1 = $('input[name=itempic]');
@@ -23,7 +23,7 @@ $(document).ready(function(){
 
         if (itempic != 'undefined' && spritepic != 'undefined') {
 
-          var formElement = document.querySelector("form");
+          var formElement = document.querySelector("#form-edit-item");
           var formData = new FormData(formElement);
           formData.append("itempic", itempic);
           formData.append("spritepic", spritepic);
@@ -62,7 +62,7 @@ $(document).ready(function(){
 <div class ="r1-register">
 	<h1 class ="text-white"style="margin-top:50px !important"> แก้ไขอุปกรณ์ให้กับตัวละคร</h1>
 </div>
-<form enctype="multipart/form-data" method="post" accept-charset="utf-8">
+<form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-edit-item">
 	<input type="hidden" name="itemid" id="itemid" value="<?=$itemdata['itemid']?>">
 	Item Name*: 
 	<input type="text" 
@@ -109,6 +109,6 @@ $(document).ready(function(){
 	Position to Equip*:
 	<?= form_dropdown('positionid',$position, $itemdata["positionid"], 'id="positionid"'); ?>
 	 <br><br>
-	<input type="submit" value="Submit">
+	<input type="submit" value="Submit" id="submit-edit-item">
 </form>
 <a href="#" class="goback"style ="color:black">Go Back</a>

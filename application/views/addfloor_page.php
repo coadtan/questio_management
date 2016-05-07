@@ -12,13 +12,13 @@ $(document).ready(function(){
         scrollTop: $("#mainarea").offset().top},
         'slow');
     });
-    $(document).on("submit", "form", function(event){
+    $('#submit-add-floor').click(function(){
         event.preventDefault();
             
         var inputFile = $('input[name=floorpic]');
         var floorpic = inputFile[0].files[0];
 
-        var formElement = document.querySelector("form");
+        var formElement = document.querySelector("#form-add-floor");
         var formData = new FormData(formElement);
 
         if (floorpic != 'undefined') {
@@ -54,7 +54,7 @@ $(document).ready(function(){
     });
 });
 </script>
-<form enctype="multipart/form-data" method="post" accept-charset="utf-8">
+<form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-add-floor">
 	Floor Name*:
 	<i>Must be less than 100 characters</i>
 	 <input type="text" name="floorname" id="floorname" size="50" required maxlength="100"><br>
@@ -70,6 +70,6 @@ $(document).ready(function(){
 		size ="999"
     accept="image/*">
 		<br>
-	<input type="submit" value="Submit">
+	<input type="submit" value="Submit" id="submit-add-floor">
 </form>
 <a href="#" class="goback"style ="color:black">Go Back</a>

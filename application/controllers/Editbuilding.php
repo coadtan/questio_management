@@ -31,7 +31,7 @@ class Editbuilding extends CI_Controller {
 		$latitude = $this->input->post('latitude');
 		$longitude = $this->input->post('longitude');
 		$radius = $this->input->post('radius');
-		$imageurl = null;
+		$imageurl = $this->input->post('imageurl');
 
 		if(!empty($_FILES['buildingpic']['name'])){
 
@@ -47,6 +47,8 @@ class Editbuilding extends CI_Controller {
 			if ($this->upload->do_upload('buildingpic')){
 				$uploaddata = $this->upload->data();
 				$imageurl = substr($uploaddata['full_path'], strpos($uploaddata['full_path'],"questio_management")+18);
+			}else{
+				echo $this->upload->display_errors();
 			}
 		}
 
@@ -56,7 +58,7 @@ class Editbuilding extends CI_Controller {
 		$this->form_validation->set_rules('radius', 'radius', 'required|greater_than[1]|less_than[2000]');
 
 		if ($this->form_validation->run()==TRUE){
-			if($building->updateBuilding($buildingid,$placeid,$buildingname,$latitude,$longitude,$radius,null)==TRUE){
+			if($building->updateBuilding($buildingid,$placeid,$buildingname,$latitude,$longitude,$radius,$imageurl)==TRUE){
 				echo "edit_building_success";
 				//$buildingdata = $building->getBuildingFromId($buildingid);
 				//$this->load->view(

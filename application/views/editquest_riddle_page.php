@@ -1,10 +1,10 @@
 <script type="text/javascript">
 $(document).ready(function(){
+    var zoneid = $('#zoneid').val();
     $.ajaxSetup({ 
         cache: false 
     });  
     $('.goback').click(function(){
-        var zoneid = this.getAttribute("zoneid");
         $('#mainarea').load(
           "<?=base_url('questoverview/getquest')?>"+ "/"+ zoneid
         );
@@ -12,10 +12,10 @@ $(document).ready(function(){
         scrollTop: $("#mainarea").offset().top},
         'slow');
     });
-    $(document).on("submit", "form", function(event){
+    $('#submit-edit-riddle').click(function(){
         event.preventDefault();
             
-        var formElement = document.querySelector("form");
+        var formElement = document.querySelector("#form-edit-riddle");
         var formData = new FormData(formElement);
 
 
@@ -45,7 +45,7 @@ $(document).ready(function(){
     });
 });
 </script>
-<form method="POST">
+<form method="POST" id="form-edit-riddle">
     <input type="hidden" name="ridid" id="ridid" value="<?=$riddledata['ridid']?>">
     <input type="hidden" name="zoneid" id="zoneid" value="<?=$zoneid?>">
     Quest Name*:
@@ -70,6 +70,6 @@ $(document).ready(function(){
     <input type="text" name="hint2" id="hint2" size="100" value="<?=$riddledata['hint2']?>" required maxlength="100"><br>
     Hint 3:<i>Must not longer than 100 characters</i>
     <input type="text" name="hint3" id="hint3" size="100" value="<?=$riddledata['hint3']?>" required maxlength="100"><br>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" id="submit-edit-riddle">
 </form>
 <a href="#" class="goback" zoneid="<?=$zoneid?>"style ="color:black">Go Back</a>

@@ -1,10 +1,12 @@
 <script>
 $(document).ready(function(){
+  var zoneid = $('#zoneid').val();
+  console.log(zoneid);
     $.ajaxSetup({ 
         cache: false 
     });  
     $('.goback').click(function(){
-    	var zoneid = this.getAttribute("zoneid");
+    	
         $('#mainarea').load(
           "<?=base_url('questoverview/getquest')?>"+ "/"+ zoneid
         );
@@ -12,10 +14,10 @@ $(document).ready(function(){
         scrollTop: $("#mainarea").offset().top},
         'slow');
     });
-    $(document).on("submit", "form", function(event){
+    $('#submit-add-quest').click(function(){
         event.preventDefault();
             
-        var formElement = document.querySelector("form");
+        var formElement = document.querySelector("#form-add-quest");
         var formData = new FormData(formElement);
 
         var url = "<?=base_url('addquest/addquestcheck')?>";
@@ -46,7 +48,7 @@ $(document).ready(function(){
     });
 });
 </script>
-<form method="POST">
+<form method="POST" id="form-add-quest">
 	Quest Name*:
 	<i>Must be less than 100 characters</i>
 	 <input type="text" name="questname" id="questname" size="100" required maxlength="100"><br>
@@ -63,6 +65,6 @@ $(document).ready(function(){
 	Rewards:
 	<?= form_dropdown('rewardid',$reward, '', 'id="rewardid"'); ?>
 	 <br>
-	<input type="submit" value="Submit">
+	<input type="submit" value="Submit" id="submit-add-quest">
 </form>
 <a href="#" class="goback" zoneid="<?=$zoneid?>" style ="color:black">Go Back</a>

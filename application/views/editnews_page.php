@@ -13,10 +13,10 @@ $(document).ready(function(){
             'slow'
         );
     });
-    $(document).on("submit", "form", function(event){
+    $('#submit-edit-news').click(function(){
         event.preventDefault();
         
-        var formElement = document.querySelector("form");
+        var formElement = document.querySelector("#form-edit-news");
         var formData = new FormData(formElement);
 
 
@@ -27,7 +27,6 @@ $(document).ready(function(){
                data: formData,
                processData: false,
                contentType: false,                
-               , 
                success: function(data){
                    if(data == 'edit_news_success'){
                         $('#mainarea').load(
@@ -58,7 +57,7 @@ $(document).ready(function(){
     });    
 });
 </script>
-<form method="POST">
+<form method="POST" id="form-edit-news">
     <input type="hidden" name="newsid" id="newsid" value="<?=$newsdata['newsid']?>">
     Place Name*:
     <?= form_dropdown('placeid',$placedata, $newsdata['placeid'],'id="placeid"'); ?>
@@ -71,6 +70,6 @@ $(document).ready(function(){
     <input type="datetime-local" name="datestarted" id="datestarted" value="<?=date_format(date_create($newsdata['datestarted']),"Y-m-d")."T".date_format(date_create($newsdata['datestarted']),"H:i:s")?>" required><br>
     Date Ended*:
     <input type="datetime-local" name="dateended" id="dateended" value="<?=date_format(date_create($newsdata['dateended']),"Y-m-d")."T".date_format(date_create($newsdata['dateended']),"H:i:s")?>" required><br>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" id="submit-edit-news">
 </form>
 <a href="#" class="goback" style ="color:black">Go Back</a>
