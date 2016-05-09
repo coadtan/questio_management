@@ -145,11 +145,11 @@ function placeMarker(location, map) {
 			class ="register-margin register-box"
 			name="radius"
 			id="radius"
-			size ="20"
+			size ="16"
 			placeholder ="&nbsp Radius*"
 			required
 			pattern="\d+(\.\d{1,4})?"
-			>&nbsp Metres &nbsp
+			>&nbsp Metres
 	<input type="hidden"
 			class ="register-margin register-box"
 			name="qrcode"
@@ -159,7 +159,7 @@ function placeMarker(location, map) {
 			class ="register-margin register-box"
 			name="sensorid"
 			id="sensorid"
-			value="<?=$sensorid?>">&nbsp
+			value="<?=$sensorid?>">&nbsp&nbsp
 	<select name="placetype" id="placetype">
 		<option value="University">University</option>
 		<option value="Museum">Museum</option>
@@ -179,9 +179,8 @@ function placeMarker(location, map) {
 		<?= form_dropdown('rewardid',$rewarddata,'','id="rewardid"'); ?><br><br>
 
 		<input type="submit" value="Submit" id="submit-add-place">
+		<input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
 	</div>
-	<br>
-	<a href="#" class="goback"style ="color:black">Go Back</a>
 </div>
 <br>
 </div>

@@ -58,18 +58,24 @@ $(document).ready(function(){
 });
 </script>
 <form method="POST" id="form-edit-news">
+    <div class ="r1-add-place">
+    <h1 class ="text-white"style="margin-top:50px !important">แก้ไขข่าว</h1>
+  </div>
+    <div class="form-field-add">
     <input type="hidden" name="newsid" id="newsid" value="<?=$newsdata['newsid']?>">
     Place Name*:
     <?= form_dropdown('placeid',$placedata, $newsdata['placeid'],'id="placeid"'); ?>
      <br>
-    News Header*:<i>Must not longer than 100 characters</i>
-    <input type="text" name="newsheader" id="newsheader" size="100" value="<?=$newsdata['newsheader']?>" required maxlength="100"><br>
-    News Details*:
-    <input type="text" name="newsdetails" id="newsdetails" size="100" value="<?=$newsdata['newsdetails']?>" required><br>
-    Date Started*:
-    <input type="datetime-local" name="datestarted" id="datestarted" value="<?=date_format(date_create($newsdata['datestarted']),"Y-m-d")."T".date_format(date_create($newsdata['datestarted']),"H:i:s")?>" required><br>
-    Date Ended*:
-    <input type="datetime-local" name="dateended" id="dateended" value="<?=date_format(date_create($newsdata['dateended']),"Y-m-d")."T".date_format(date_create($newsdata['dateended']),"H:i:s")?>" required><br>
+    <label>News Header*:</label>
+    <input type="text" name="newsheader" class ="register-margin register-box"  id="newsheader" size="100" placeholder ="Must not longer than 100 characters"value="<?=$newsdata['newsheader']?>" required maxlength="100"><br>
+    <label>News Details*:</label>
+    <input type="text" name="newsdetails" class ="register-margin register-box"  id="newsdetails" size="100" value="<?=$newsdata['newsdetails']?>" required><br>
+    <label>Date Started*:</label>
+    <input type="datetime-local" name="datestarted" class ="register-margin register-box" id="datestarted" value="<?=date_format(date_create($newsdata['datestarted']),"Y-m-d")."T".date_format(date_create($newsdata['datestarted']),"H:i:s")?>" required><br>
+    <label>Date Ended*:</label>
+    <input type="datetime-local" name="dateended" class ="register-margin register-box" id="dateended" value="<?=date_format(date_create($newsdata['dateended']),"Y-m-d")."T".date_format(date_create($newsdata['dateended']),"H:i:s")?>" required><br>
+    <br><br>
     <input type="submit" value="Submit" id="submit-edit-news">
+    <input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
+</div>
 </form>
-<a href="#" class="goback" style ="color:black">Go Back</a>

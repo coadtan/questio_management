@@ -53,10 +53,11 @@ $(document).ready(function(){
     });
 });
 </script>
-<div class ="r1-register">
-	<h1 class ="text-white"style="margin-top:50px !important">แก้ไขรางวัลให้กับผู้เล่นของคุณ</h1>
-</div>
+<div class ="r1-add-place">
+    <h1 class ="text-white"style="margin-top:50px !important">แก้ไขรางวัลของคุณ</h1>
+  </div>
 <form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-edit-reward">
+<div class ="form-field-add">
 <input type="hidden" name="rewardid" id="rewardid" value="<?=$rewarddata['rewardid']?>">
 Reward Name*:
 	<input type="text" 
@@ -97,5 +98,6 @@ Reward Type*:
 	<?= form_dropdown('rewardtype',$rewardtypedata, $rewarddata['rewardtype'],'id="rewardtype"'); ?>
 	 <br><br>
 	<input type="submit" value="Submit" id="submit-edit-reward">
+  <input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
+</div>
 </form>
-<a href="#" class="goback"style ="color:black">Go Back</a>

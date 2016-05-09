@@ -53,6 +53,9 @@ $(document).ready(function(){
 });
 </script>
 <form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-edit-puzzle">
+  <div class ="r1-add-place">
+    <h1 class ="text-white"style="margin-top:50px !important">แก้ไข Puzzle</h1>
+  </div>
     <input type="hidden" name="puzzleid" id="puzzleid" value="<?=$puzzledata['puzzleid']?>">
     <input type="hidden" name="zoneid" id="zoneid" value="<?=$zoneid?>">
     Quest Name*:
@@ -86,5 +89,5 @@ $(document).ready(function(){
     Correct Answer*:<i>Must not longer than 100 characters</i>
     <input type="text" name="correctanswer" id="correctanswer" size="100" value="<?=$puzzledata['correctanswer']?>"><br>
     <input type="submit" value="Submit" id="submit-edit-puzzle">
+    <input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
 </form>
-<a href="#" class="goback" zoneid="<?=$zoneid?>"style ="color:black">Go Back</a>

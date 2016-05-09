@@ -59,9 +59,10 @@ $(document).ready(function(){
     });
 });
 </script>
-<div class ="r1-register">
-	<h1 class ="text-white"style="margin-top:50px !important"> แก้ไขอุปกรณ์ให้กับตัวละคร</h1>
-</div>
+<div class ="r1-add-place">
+    <h1 class ="text-white"style="margin-top:50px !important">แก้ไขไอเท็มของคุณ</h1>
+  </div>
+  <div class="form-field-add">
 <form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-edit-item">
 	<input type="hidden" name="itemid" id="itemid" value="<?=$itemdata['itemid']?>">
 	Item Name*: 
@@ -110,5 +111,6 @@ $(document).ready(function(){
 	<?= form_dropdown('positionid',$position, $itemdata["positionid"], 'id="positionid"'); ?>
 	 <br><br>
 	<input type="submit" value="Submit" id="submit-edit-item">
+  <input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
+</div>
 </form>
-<a href="#" class="goback"style ="color:black">Go Back</a>

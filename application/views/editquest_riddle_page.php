@@ -46,6 +46,9 @@ $(document).ready(function(){
 });
 </script>
 <form method="POST" id="form-edit-riddle">
+    <div class ="r1-add-place">
+    <h1 class ="text-white"style="margin-top:50px !important">แก้ไข Riddle</h1>
+  </div>
     <input type="hidden" name="ridid" id="ridid" value="<?=$riddledata['ridid']?>">
     <input type="hidden" name="zoneid" id="zoneid" value="<?=$zoneid?>">
     Quest Name*:
@@ -71,5 +74,5 @@ $(document).ready(function(){
     Hint 3:<i>Must not longer than 100 characters</i>
     <input type="text" name="hint3" id="hint3" size="100" value="<?=$riddledata['hint3']?>" required maxlength="100"><br>
     <input type="submit" value="Submit" id="submit-edit-riddle">
+    <input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
 </form>
-<a href="#" class="goback" zoneid="<?=$zoneid?>"style ="color:black">Go Back</a>

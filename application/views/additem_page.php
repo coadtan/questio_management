@@ -65,11 +65,12 @@ $(document).ready(function(){
     });
 });
 </script>
-<div class ="r1-register">
-	<h1 class ="text-white"style="margin-top:50px !important"> สร้างอุปกรณ์ให้กับตัวละคร</h1>
-</div>
 <form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-add-item">
-	Item Name*: 
+  <div class ="r1-add-place">
+    <h1 class ="text-white"style="margin-top:50px !important">เพิ่มไอเท็ม</h1>
+  </div>
+  <div class ="form-field-add">
+	<label>Item Name*:</label>
 	<input type="text" 
 		class ="register-margin register-box" 
 		name="itemname" 
@@ -78,7 +79,7 @@ $(document).ready(function(){
 		placeholder ="&nbsp Must be less than 30 characters"
 		required
 		maxlength="30"><br>
-	Item Collection*:
+	<label>Item Collection*:</label>
 	<input type="text" 
 		class ="register-margin register-box" 
 		name="itemcollection" 
@@ -87,7 +88,8 @@ $(document).ready(function(){
 		placeholder ="&nbsp  Must be less than 50 characters"
 		required
 		maxlength="50"><br>
-	Item Picture: <input type="file"
+	<label>Item Picture:</label>
+   <input type="file"
 		style ="margin:auto;margin-top:5px!important"
 		class ="register-margin register-box"
 		name="itempic"
@@ -95,7 +97,8 @@ $(document).ready(function(){
 		size ="999"
     accept="image/*">
 		<br>
-	Item Sprite: <input type="file"
+	<label>Item Sprite:</label>
+  <input type="file"
 		style ="margin:auto;margin-top:5px!important"
 		class ="register-margin register-box"
 		name="spritepic"
@@ -103,9 +106,10 @@ $(document).ready(function(){
 		size ="999"
     accept="image/*">
 		<br>
-	Position to Equip*:
+	<label>Position to Equip*:</label>
 	<?= form_dropdown('positionid',$position,'','id="positionid"'); ?>
 	 <br><br>
 	<input type="submit" id="submit-add-item" value="Submit">
+  <input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
 </form>
-<a href="#" class="goback"style ="color:black">Go Back</a>
+</div>

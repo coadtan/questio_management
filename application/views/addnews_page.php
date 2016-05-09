@@ -1,3 +1,4 @@
+<?=link_tag('assets/questio/questio.css')?>
 <script type="text/javascript">
     $(document).ready(function(){
     $.ajaxSetup({ 
@@ -49,17 +50,33 @@
 });
 </script>
 <form method="POST" id="form-add-news">
-    Place Name*:
-    <?= form_dropdown('placeid',$placedata,'','id="placeid"'); ?>
-     <br>
-    News Header*:<i>Must not longer than 100 characters</i>
-    <input type="text" id="newsheader" name="newsheader" size="100" required maxlength="100"><br>
-    News Details*:
-    <input type="text" id="newsdetails" name="newsdetails" size="100" required><br>
-    Date Started*:
-    <input type="datetime-local" id="datestarted" name="datestarted" required><br>
-    Date Ended*:
-    <input type="datetime-local" id="dateended" name="dateended" required><br>
+    <div class ="r1-add-place">
+    <h1 class ="text-white"style="margin-top:50px !important">เพิ่มข้อมูลข่าวของคุณ</h1>
+  </div>
+  <div class ="form-field-add">
+    <label>Place Name*:</label>
+    <?= form_dropdown('placeid',$placedata,'','id="placeid"'); ?><br>
+    <label>News Header*:</label>
+    <input type="text" 
+      id="newsheader" 
+      class ="register-margin register-box"
+      name="newsheader" 
+      size="100" 
+      required maxlength="100"
+      placeholder ="&nbsp Must not longer than 100 characters"><br>
+    <label>News Details*:</label>
+    <input type="text" 
+      class ="register-margin register-box"
+      id="newsdetails" 
+      name="newsdetails" 
+      size="100" 
+      required><br>
+    <label>Date Started*:</label><br>
+    <input class ="register-margin register-box"type="datetime-local" id="datestarted" name="datestarted" required><br>
+    <label>Date Ended*:</label><br>
+    <input class ="register-margin register-box"type="datetime-local" id="dateended" name="dateended" required><br>
+    <br><br>
     <input type="submit" value="Submit" id="submit-add-news">
+    <input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
 </form>
-<a href="#" class="goback"style ="color:black">Go Back</a>
+</div>

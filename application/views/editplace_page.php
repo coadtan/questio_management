@@ -56,6 +56,9 @@ $(document).ready(function(){
 });
 </script>
 <form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-edit-place">
+  <div class ="r1-add-place">
+    <h1 class ="text-white"style="margin-top:50px !important">แก้ไข Place</h1>
+  </div>
 	<input type="hidden" name="placeid" id="placeid"  class ="margin-field-default" value="<?=$placedata["placeid"]?>"
 	Place Name*:
 	<i>Must be less than 50 characters</i>
@@ -100,5 +103,5 @@ $(document).ready(function(){
 	Rewards:
 	<?= form_dropdown('rewardid',$rewarddata,$placedata["rewardid"],'id="rewardid"') ?><br>
 	<input type="submit" class ="margin-field-default" value="Submit" id="submit-edit-place">
+  <input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
 </form>
-<a href="#" class="goback"style ="color:black">Go Back</a>

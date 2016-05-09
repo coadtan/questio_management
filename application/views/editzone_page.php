@@ -60,6 +60,9 @@ $(document).ready(function(){
 });
 </script>
 <form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-edit-zone">
+  <div class ="r1-add-place">
+    <h1 class ="text-white"style="margin-top:50px !important">แก้ไข Zone</h1>
+  </div>
 	<input type="hidden" name="zoneid" id="zoneid" value="<?=$zonedata['zoneid']?>">
 	Zone Name*:
 	<i>Must be less than 100 characters</i>
@@ -109,5 +112,5 @@ $(document).ready(function(){
 	Rewards:
 	<?= form_dropdown('rewardid',$rewarddata,$zonedata["rewardid"],'id="rewardid"') ?><br>
 	<input type="submit" value="Submit" id="submit-edit-zone">
+  <input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
 </form>
-<a href="#" class="goback"style ="color:black">Go Back</a>

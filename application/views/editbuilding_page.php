@@ -56,6 +56,9 @@ $(document).ready(function(){
 });
 </script>
 <form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-edit-building">
+  <div class ="r1-add-place">
+    <h1 class ="text-white"style="margin-top:50px !important">แก้ไข Building</h1>
+  </div>
 	<input type="hidden" name="buildingid" id="buildingid" value="<?=$buildingdata["buildingid"]?>"
 	Building Name*:
 	<i>Must be less than 140 characters</i>
@@ -85,5 +88,5 @@ $(document).ready(function(){
     <?php endif;?>
 		<br>
 	<input type="submit" value="Submit" id="submit-edit-building">
+  <input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
 </form>
-<a href="#" class="goback"style ="color:black">Go Back</a>

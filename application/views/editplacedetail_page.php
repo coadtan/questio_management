@@ -55,6 +55,9 @@ $(document).ready(function(){
 });
 </script>
 <form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-edit-placedetail">
+    <div class ="r1-add-place">
+    <h1 class ="text-white"style="margin-top:50px !important">แก้ไข Place Detail</h1>
+  </div>
 <input type="hidden" name="placeid" id="placeid" value="<?=$placeid?>">
     Place Details:*<br>
 		<textarea name="placedetails" id="placedetails" rows="5" cols="50" required>
@@ -83,5 +86,5 @@ $(document).ready(function(){
         <?php endif;?>
         <br>
     <input type="submit" value="Submit" id="submit-edit-placedetail">
+    <input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
 </form>
-<a href="#" class="goback"style ="color:black">Go Back</a>

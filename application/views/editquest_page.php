@@ -46,6 +46,9 @@ $(document).ready(function(){
 });
 </script>
 <form method="POST" id="form-edit-quest">
+  <div class ="r1-add-place">
+    <h1 class ="text-white"style="margin-top:50px !important">แก้ไข Quest</h1>
+  </div>
     <input type="hidden" name="questid" id="questid" value="<?=$questdata['questid']?>">
     <input type="hidden" name="zoneid" id="zoneid" value="<?=$zoneid?>">
     Quest Name*:
@@ -62,5 +65,5 @@ $(document).ready(function(){
     <?= form_dropdown('rewardid',$reward,$questdata['rewardid'],'id="rewardid"'); ?>
      <br>
     <input type="submit" value="Submit" id="submit-edit-quest">
+    <input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
 </form>
-<a href="#" class="goback" zoneid="<?=$zoneid?>"style ="color:black">Go Back</a>

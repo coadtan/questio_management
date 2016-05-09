@@ -40,7 +40,7 @@ $(document).ready(function(){
     </a>
     <table class="table">
     <thead>
-        <tr>
+        <tr class ="table-tropic">
             <th>#</th>
             <th>Question</th>
             <th>Choice 1</th>

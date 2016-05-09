@@ -45,6 +45,9 @@ $(document).ready(function(){
     });
 });
 </script>
+<div class ="r1-add-place">
+    <h1 class ="text-white"style="margin-top:50px !important">แก้ไข Quiz</h1>
+  </div>
 <h2 style='color:red'><?=$message?></h2>
 <form method="POST" id="form-edit-quiz">
 	<input type="hidden" name="quizid" id="quizid" value="<?=$quizdata['quizid']?>">
@@ -66,5 +69,5 @@ $(document).ready(function(){
     <input type="radio" name="answerid" id="answerid" value="4" <?=$quizdata['answerid']== 4 ? 'checked' : ''?>>4
      <br>
     <input type="submit" value="Submit" id="submit-edit-quiz">
+    <input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
 </form>
-<a href="#" class="goback" zoneid="<?=$zoneid?>"style ="color:black">Go Back</a>

@@ -244,7 +244,7 @@ header{
 .wrapper-m{
 	padding-top: 15px;
 	padding-bottom: 20px;
-	overflow: scroll;
+	overflow:scroll;
 	width: 100%;
 }
 .wrapper-r{
@@ -436,4 +436,16 @@ input{
 .margin-field-default{
 	margin-top: 3px;
 	margin-bottom: 3px;
+}
+.r1-register .text-white{
+	margin-top:50px !important;
+}
+.form-field-add{
+	margin-top: 50px;
+}
+.table-tropic{
+	text-align: center;
+}
+th{
+	text-align: center;
 }

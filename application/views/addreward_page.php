@@ -58,11 +58,12 @@ $(document).ready(function(){
     });
 });
 </script>
-<div class ="r1-register">
-	<h1 class ="text-white"style="margin-top:50px !important">สร้างรางวัลให้กับผู้เล่นของคุณ</h1>
-</div>
 <form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-add-reward">
-Reward Name*:
+  <div class ="r1-add-place">
+    <h1 class ="text-white"style="margin-top:50px !important">เพิ่มรางวัลให้กับผู้เล่นของคุณ</h1>
+  </div>
+<div class ="form-field-add">
+<label>Reward Name*:</label>
 	<input type="text" 
 		class ="register-margin register-box" 
 		name="rewardname" 
@@ -71,16 +72,17 @@ Reward Name*:
 		placeholder ="&nbsp  Must be less than 50 characters"
 		required
 		maxlength="50"><br>
-Description*:
+<label>Description*:</label>
 	<input type="text" 
 		class ="register-margin register-box" 
 		name="description" 
 		id="description" 
-		size ="100" 
+		size ="103" 
 		placeholder ="&nbsp  Must be less than 200 characters"
 		required
 		maxlength="200"><br>
-Reward Picture: <input type="file"
+<label>Reward Picture:</label>
+ <input type="file"
 		style ="margin:auto;margin-top:5px!important"
 		class ="register-margin register-box"
 		name="rewardpic"
@@ -88,9 +90,10 @@ Reward Picture: <input type="file"
 		size ="999"
     accept="image/*">
 		<br>
-Reward Type*:
+<label>Reward Type*:</label>
 	<?= form_dropdown('rewardtype',$rewardtypedata, '', 'id="rewardtype"'); ?>
 	 <br><br>
 	<input id="submit-add-reward" type="submit" value="Submit">
 <?=form_close()?>
-<a href="#" class="goback"style ="color:black">Go Back</a>
+<input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
+</div>
