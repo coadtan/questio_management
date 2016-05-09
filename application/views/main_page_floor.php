@@ -35,12 +35,23 @@ $(document).ready(function(){
     });
     $('.deletefloor').click(function(){
         var floorid = this.getAttribute("floorid");
-        $('#mainarea').load(
-            "<?=base_url('mainpage/deletefloor')?>"+ "/"+ floorid
-        );
-        $('html,body').animate({
-            scrollTop: $("#mainarea").offset().top},
-        'slow');
+        sweetAlert({
+              title: "Delete floor?",
+              text: "Typing 'yes' to continue",
+              type: 'input',
+              showCancelButton: true,
+              closeOnConfirm: true,
+              animation: "slide-from-top"
+              }, function(inputValue){
+                if(inputValue=="yes"){
+                    $('#mainarea').load(
+                        "<?=base_url('mainpage/deletefloor')?>"+ "/"+ floorid
+                    );
+                    $('html,body').animate({
+                        scrollTop: $("#mainarea").offset().top},
+                    'slow');
+                }
+        });
     });
 });
 </script>
@@ -63,9 +74,13 @@ $(document).ready(function(){
                 <h3 style="color:black"><b><?=$floor['floorname']?></b></h3>
             <?php endif;?>
 		    </a>
-		    <?=$floor['floorname']?>
-		    <a href="#" class="editfloor" floorid="<?=$floor['floorid']?>"style ="color:black">Edit</a>
-		    <a href="#" class="deletefloor" floorid="<?=$floor['floorid']?>"style ="color:black">Delete</a>
+            <span style="font-size: 20px; font-weight: bold;"><?=$floor['floorname']?></span>
+		    <a href="#" class="editfloor" floorid="<?=$floor['floorid']?>"style ="color:black">
+                <span class="glyphicon glyphicon-cog"/>
+            </a>
+		    <a href="#" class="deletefloor" floorid="<?=$floor['floorid']?>"style ="color:black">
+                <span class="glyphicon glyphicon-trash" style="color:red"/>
+            </a>
 	  	</div>
     <?php endforeach;?>
 <?php endif;?>

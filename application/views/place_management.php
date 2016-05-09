@@ -1,4 +1,6 @@
 <?=link_tag('assets/questio/questio.css')?>
+<?=link_tag('assets/sweetalert/sweetalert.css')?>
+<?=script_tag('assets/sweetalert/sweetalert-dev.js')?>
 <script type="text/javascript">
     $(document).ready(function(){
         $.ajaxSetup({ 
@@ -16,7 +18,6 @@
             $('.keeperplace').addClass('item_default');
             $(this).removeClass('item_default');
             $(this).addClass('element_item');
-            //addClass("fadeOutDown");
         });
         $('#addplace').click(function(){
             $('#mainarea').load(
@@ -36,16 +37,28 @@
             );
             $('html,body').animate({
                 scrollTop: $("#mainarea").offset().top},
-            'slow');
+                'slow'
+            );
         });
         $('.deleteplace').click(function(){
             var placeid = this.getAttribute("placeid");
-            $('#mainarea').load(
-                "<?=base_url('mainpage/deleteplace')?>"+ "/"+ placeid
-            );
-            $('html,body').animate({
-                scrollTop: $("#mainarea").offset().top},
-            'slow');
+            sweetAlert({
+              title: "Delete place?",
+              text: "Typing 'yes' to continue",
+              type: 'input',
+              showCancelButton: true,
+              closeOnConfirm: true,
+              animation: "slide-from-top"
+              }, function(inputValue){
+                if(inputValue=="yes"){
+                    $('#mainarea').load(
+                        "<?=base_url('mainpage/deleteplace')?>"+ "/"+ placeid
+                    );
+                    $('html,body').animate({
+                        scrollTop: $("#mainarea").offset().top},
+                    'slow');
+                }
+            });
         });
         $('.manageplacedetail').click(function(){
             var placeid = this.getAttribute("placeid");
@@ -83,13 +96,16 @@
                     <h3 style="color:black"><b><?=$place['placename']?></b></h3>
                 <?php endif;?>
                 </a>
-                <?=$place['placename']?>
-                <a href="#" class="editplace" placeid="<?=$place['placeid']?>" style ="color:black">Edit</a>
-                <a href="#" class="deleteplace" placeid="<?=$place['placeid']?>"style ="color:black">Delete</a>
-                <a href="#" class="manageplacedetail" placeid="<?=$place['placeid']?>"style ="color:black">
-                Add/Edit Placedetail
+                <span style="font-size: 20px; font-weight: bold;"><?=$place['placename']?></span>
+                <a href="#" class="editplace" placeid="<?=$place['placeid']?>" style ="color:black">
+                    <span class="glyphicon glyphicon-cog"/>
                 </a>
-              
+                <a href="#" class="deleteplace" placeid="<?=$place['placeid']?>"style ="color:black">
+                <span class="glyphicon glyphicon-trash" style="color:red"/>
+                </a>
+                <a href="#" class="manageplacedetail" placeid="<?=$place['placeid']?>"style ="color:black">
+                    <span class="glyphicon glyphicon-edit"/>
+                </a>
             </div>
         <?php endforeach;?>
     <?php endif;?>

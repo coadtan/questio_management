@@ -38,12 +38,23 @@ $(document).ready(function(){
     });
     $('.deletebuilding').click(function(){
         var buildingid = this.getAttribute("buildingid");
-        $('#mainarea').load(
-            "<?=base_url('mainpage/deletebuilding')?>"+ "/"+ buildingid
-        );
-        $('html,body').animate({
-            scrollTop: $("#mainarea").offset().top},
-        'slow');
+        sweetAlert({
+              title: "Delete building?",
+              text: "Typing 'yes' to continue",
+              type: 'input',
+              showCancelButton: true,
+              closeOnConfirm: true,
+              animation: "slide-from-top"
+              }, function(inputValue){
+                if(inputValue=="yes"){
+                    $('#mainarea').load(
+                        "<?=base_url('mainpage/deletebuilding')?>"+ "/"+ buildingid
+                    );
+                    $('html,body').animate({
+                        scrollTop: $("#mainarea").offset().top},
+                    'slow');
+                }
+        });
     });
 });
 </script>
@@ -66,9 +77,13 @@ $(document).ready(function(){
                 <h3 style="color:black"><b><?=$building['buildingname']?></b></h3>
             <?php endif;?>
 		    </a>
-		    <?=$building['buildingname']?>
-		    <a href="#" class="editbuilding" buildingid="<?=$building['buildingid']?>" style ="color:black">Edit</a>
-		    <a href="#" class="deletebuilding" buildingid="<?=$building['buildingid']?>"style ="color:black">Delete</a>
+            <span style="font-size: 20px; font-weight: bold;"><?=$building['buildingname']?></span>
+		    <a href="#" class="editbuilding" buildingid="<?=$building['buildingid']?>" style ="color:black">
+                <span class="glyphicon glyphicon-cog"/>
+            </a>
+		    <a href="#" class="deletebuilding" buildingid="<?=$building['buildingid']?>"style ="color:black">
+                <span class="glyphicon glyphicon-trash" style="color:red"/>
+            </a>
 	  	</div>
     <?php endforeach;?>
 <?php endif;?>

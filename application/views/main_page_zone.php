@@ -34,12 +34,24 @@ $(document).ready(function(){
     });
     $('.deletezone').click(function(){
         var zoneid = this.getAttribute("zoneid");
-        $('#mainarea').load(
-            "<?=base_url('mainpage/deletezone')?>"+ "/"+ zoneid
-        );
-        $('html,body').animate({
-            scrollTop: $("#mainarea").offset().top},
-        'slow');
+        sweetAlert({
+              title: "Delete zone?",
+              text: "Typing 'yes' to continue",
+              type: 'input',
+              showCancelButton: true,
+              closeOnConfirm: true,
+              animation: "slide-from-top"
+              }, function(inputValue){
+                if(inputValue=="yes"){
+                    $('#mainarea').load(
+                        "<?=base_url('mainpage/deletezone')?>"+ "/"+ zoneid
+                    );
+                    $('html,body').animate({
+                        scrollTop: $("#mainarea").offset().top},
+                    'slow');
+                }
+        });
+
     });
 });
 </script>
@@ -62,9 +74,13 @@ $(document).ready(function(){
                 <h3 style="color:black"><b><?=$zone['zonename']?></b></h3>
             <?php endif;?>
 		    </a>
-		    <?=$zone['zonename']?>
-		    <a href="#" class="editzone" zoneid="<?=$zone["zoneid"]?>"style ="color:black">Edit</a>
-		    <a href="#" class="deletezone" zoneid="<?=$zone["zoneid"]?>"style ="color:black">Delete</a>
+            <span style="font-size: 20px; font-weight: bold;"><?=$zone['zonename']?></span>
+		    <a href="#" class="editzone" zoneid="<?=$zone["zoneid"]?>"style ="color:black">
+                <span class="glyphicon glyphicon-cog"/>
+            </a>
+		    <a href="#" class="deletezone" zoneid="<?=$zone["zoneid"]?>"style ="color:black">
+                <span class="glyphicon glyphicon-trash" style="color:red"/>
+            </a>
 	  	</div>
     <?php endforeach;?>
 <?php endif;?>
