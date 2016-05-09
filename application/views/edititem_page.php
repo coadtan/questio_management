@@ -61,8 +61,7 @@ $(document).ready(function(){
 </script>
 <div class ="r1-add-place">
     <h1 class ="text-white"style="margin-top:50px !important">แก้ไขไอเท็มของคุณ</h1>
-  </div>
-  <div class="form-field-add">
+  </div><br><br>
 <form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-edit-item">
 	<input type="hidden" name="itemid" id="itemid" value="<?=$itemdata['itemid']?>">
 	Item Name*: 
@@ -112,5 +111,4 @@ $(document).ready(function(){
 	 <br><br>
 	<input type="submit" value="Submit" id="submit-edit-item">
   <input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
-</div>
 </form>

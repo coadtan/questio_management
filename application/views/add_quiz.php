@@ -45,6 +45,10 @@ $(document).ready(function(){
     });
 });
 </script>
+<div class ="r1-add-place">
+    <h1 class ="text-white"style="margin-top:50px !important">Add Quiz</h1>
+  </div>
+  <br><br>
 <h2 style='color:red'><?=$message?></h2>
 <form method="POST" id="form-add-quiz">
     <input type="hidden" name="questid" id="questid" value="<?=$questid?>">
@@ -52,21 +56,21 @@ $(document).ready(function(){
     <input type="hidden" name="seqid" id="seqid" value="<?=$seqid?>">
     Question*:
     <input type="text" name="question" id="question" size="100" required><br>
-    Choice 1*:<i>Must not longer than 100 characters</i>
-    <input type="text" name="choicea" id="choicea" size="100" required maxlength="100"><br>
-    Choice 2*:<i>Must not longer than 100 characters</i>
-    <input type="text" name="choiceb" id="choiceb" size="100" required maxlength="100"><br>
-    Choice 3:<i>Must not longer than 100 characters</i>
-    <input type="text" name="choicec" id="choicec" size="100" maxlength="100"><br>
-    Choice 4:<i>Must not longer than 100 characters</i>
-    <input type="text" name="choiced" id="choiced" size="100" maxlength="100"><br>
+    Choice 1*:
+    <input type="text" name="choicea" id="choicea" size="100" placeholder="Must not longer than 100 characters"r equired maxlength="100"><br>
+    Choice 2*:
+    <input type="text" name="choiceb" id="choiceb" size="100" placeholder="Must not longer than 100 characters" required maxlength="100"><br>
+    Choice 3:
+    <input type="text" name="choicec" id="choicec" size="100" placeholder="Must not longer than 100 characters" maxlength="100"><br>
+    Choice 4:
+    <input type="text" name="choiced" id="choiced" size="100" placeholder="Must not longer than 100 characters" maxlength="100"><br>
     Answer*
-    <input type="radio" name="answerid" id="answerid" value="1" checked>1
-    <input type="radio" name="answerid" id="answerid" value="2">2
-    <input type="radio" name="answerid" id="answerid" value="3">3
-    <input type="radio" name="answerid" id="answerid" value="4">4
+    <input type="radio" name="answerid" id="answerid" value="1" checked> &nbsp1 &nbsp
+    <input type="radio" name="answerid" id="answerid" value="2">&nbsp 2 &nbsp
+    <input type="radio" name="answerid" id="answerid" value="3">&nbsp 3 &nbsp
+    <input type="radio" name="answerid" id="answerid" value="4">&nbsp 4 &nbsp
      <br>
     <input type="submit" value="Submit" id="submit-add-quiz">
+    <input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
 </form>
-<a href="#" class="goback" zoneid="<?=$zoneid?>"style ="color:black">Go Back</a>
 

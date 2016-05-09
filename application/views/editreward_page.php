@@ -55,9 +55,8 @@ $(document).ready(function(){
 </script>
 <div class ="r1-add-place">
     <h1 class ="text-white"style="margin-top:50px !important">แก้ไขรางวัลของคุณ</h1>
-  </div>
+  </div><br><br>
 <form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-edit-reward">
-<div class ="form-field-add">
 <input type="hidden" name="rewardid" id="rewardid" value="<?=$rewarddata['rewardid']?>">
 Reward Name*:
 	<input type="text" 
@@ -99,5 +98,4 @@ Reward Type*:
 	 <br><br>
 	<input type="submit" value="Submit" id="submit-edit-reward">
   <input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
-</div>
 </form>

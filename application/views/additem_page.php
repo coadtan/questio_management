@@ -65,11 +65,10 @@ $(document).ready(function(){
     });
 });
 </script>
+<div class ="r1-add-place">
+    <h1 class ="text-white"style="margin-top:50px !important">Add Item</h1>
+  </div><br><br>
 <form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-add-item">
-  <div class ="r1-add-place">
-    <h1 class ="text-white"style="margin-top:50px !important">เพิ่มไอเท็ม</h1>
-  </div>
-  <div class ="form-field-add">
 	<label>Item Name*:</label>
 	<input type="text" 
 		class ="register-margin register-box" 
@@ -112,4 +111,3 @@ $(document).ready(function(){
 	<input type="submit" id="submit-add-item" value="Submit">
   <input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
 </form>
-</div>

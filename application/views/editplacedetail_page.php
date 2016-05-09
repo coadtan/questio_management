@@ -57,7 +57,7 @@ $(document).ready(function(){
 <form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-edit-placedetail">
     <div class ="r1-add-place">
     <h1 class ="text-white"style="margin-top:50px !important">แก้ไข Place Detail</h1>
-  </div>
+  </div><br><br>
 <input type="hidden" name="placeid" id="placeid" value="<?=$placeid?>">
     Place Details:*<br>
 		<textarea name="placedetails" id="placedetails" rows="5" cols="50" required>

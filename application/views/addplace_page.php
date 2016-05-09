@@ -106,7 +106,7 @@ function placeMarker(location, map) {
 <div class="container-fluid">
 	<div class ="r1-add-place">
 		<h1 class ="text-white"style="margin-top:50px !important">Add Place ของคุณ</h1>
-	</div>
+	</div><br><br>
 	<form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-add-place">
 	<div style ="margin-top:35px">
 	<input type="text"

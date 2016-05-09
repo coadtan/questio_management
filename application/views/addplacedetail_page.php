@@ -54,6 +54,9 @@ $(document).ready(function(){
     });
 });
 </script>
+<div class ="r1-add-place">
+    <h1 class ="text-white"style="margin-top:50px !important">Add Place Detail</h1>
+  </div><br><br>
 <form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-add-placedetail">
 <input type="hidden" name="placeid" id="placeid" value="<?=$placeid?>">
     Place Details:*<br>
@@ -74,8 +77,8 @@ $(document).ready(function(){
         accept="image/*">
         <br>
     <input type="submit" value="Submit" id="submit-add-placedetail">
+    <input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
 </form>
-<a href="#" class="goback" style ="color:black">Go Back</a>
 </div>
 </body>
 </html>

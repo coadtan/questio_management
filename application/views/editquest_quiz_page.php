@@ -47,7 +47,7 @@ $(document).ready(function(){
 </script>
 <div class ="r1-add-place">
     <h1 class ="text-white"style="margin-top:50px !important">แก้ไข Quiz</h1>
-  </div>
+  </div><br><br>
 <h2 style='color:red'><?=$message?></h2>
 <form method="POST" id="form-edit-quiz">
 	<input type="hidden" name="quizid" id="quizid" value="<?=$quizdata['quizid']?>">

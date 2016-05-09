@@ -57,8 +57,7 @@ $(document).ready(function(){
 <form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-add-building">
   <div class ="r1-add-place">
     <h1 class ="text-white"style="margin-top:50px !important">Add Building ของคุณ</h1>
-  </div>
-  <div class="form-field-add">
+  </div><br><br>
 	Building Name*:
 	<i>Must be less than 140 characters</i>
 	 <input type="text" name="buildingname" id="buildingname" size="50" required maxlength="140"><br>
@@ -81,4 +80,3 @@ $(document).ready(function(){
 	<input type="submit" value="Submit" id="submit-add-building">
     <input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
 </form>
-</div>

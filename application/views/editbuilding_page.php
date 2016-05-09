@@ -58,7 +58,7 @@ $(document).ready(function(){
 <form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-edit-building">
   <div class ="r1-add-place">
     <h1 class ="text-white"style="margin-top:50px !important">แก้ไข Building</h1>
-  </div>
+  </div><br><br>
 	<input type="hidden" name="buildingid" id="buildingid" value="<?=$buildingdata["buildingid"]?>"
 	Building Name*:
 	<i>Must be less than 140 characters</i>

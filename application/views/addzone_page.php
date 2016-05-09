@@ -59,7 +59,11 @@ $(document).ready(function(){
     });
 });
 </script>
+
 <form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-add-zone">
+  <div class ="r1-add-place">
+    <h1 class ="text-white"style="margin-top:50px !important">Add Zone</h1>
+  </div><br><br>
 	Zone Name*:
 	<i>Must be less than 100 characters</i>
 	 <input type="text" name="zonename" id="zonename" size="50" required maxlength="100"><br>
@@ -94,5 +98,5 @@ $(document).ready(function(){
 	Rewards:
 	<?= form_dropdown('rewardid',$rewarddata, '', 'id="rewardid"'); ?><br>
 	<input type="submit" value="Submit" id="submit-add-zone">
+  <input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
 </form>
-<a href="#" class="goback"style ="color:black">Go Back</a>

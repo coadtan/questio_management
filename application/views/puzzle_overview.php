@@ -23,6 +23,9 @@ $(document).ready(function(){
     });
 });
 </script>
+<div class ="r1-add-place">
+    <h1 class ="text-white"style="margin-top:50px !important">Puzzle List</h1>
+  </div><br><br>
 <?php if(empty($puzzledata)) :?>
 <a href = "#" id="addpuzzle" style="color:black" puzzleid="<?=$puzzleid?>">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>

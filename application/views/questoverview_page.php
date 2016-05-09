@@ -45,6 +45,10 @@ $(document).ready(function(){
 	});
 });
 </script>
+<div class ="r1-add-place">
+    <h1 class ="text-white"style="margin-top:50px !important">Quest list</h1>
+  </div>
+  <br><br>
 	<a class="Quest" href="#" zoneid="<?=$zoneid?>" style="color:black">
 		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 	</a>

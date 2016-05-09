@@ -61,8 +61,7 @@ $(document).ready(function(){
 <form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-add-reward">
   <div class ="r1-add-place">
     <h1 class ="text-white"style="margin-top:50px !important">เพิ่มรางวัลให้กับผู้เล่นของคุณ</h1>
-  </div>
-<div class ="form-field-add">
+  </div><br><br>
 <label>Reward Name*:</label>
 	<input type="text" 
 		class ="register-margin register-box" 
@@ -94,6 +93,6 @@ $(document).ready(function(){
 	<?= form_dropdown('rewardtype',$rewardtypedata, '', 'id="rewardtype"'); ?>
 	 <br><br>
 	<input id="submit-add-reward" type="submit" value="Submit">
+  <input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
 <?=form_close()?>
-<input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
-</div>
+

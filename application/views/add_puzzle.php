@@ -57,7 +57,11 @@ $(document).ready(function(){
     });
 });
 </script>
+<div class ="r1-add-place">
+    <h1 class ="text-white"style="margin-top:50px !important">Add Puzzle</h1>
+  </div><br><br>
 <h2 style='color:red'><?=$message?></h2>
+<div class ="form-field-add">
 <form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-add-puzzle">
     <input type="hidden" name="puzzleid" id="puzzleid" value="<?=$puzzleid?>">
     <input type="hidden" name="zoneid" id="zoneid" value="<?=$zoneid?>">
@@ -69,11 +73,11 @@ $(document).ready(function(){
         style="width:200px">
 
         <br>
-    Helper Answer:<i>Must not longer than 100 characters</i>
-    <input type="text" name="helperanswer" id="helperanswer" size="100" maxlength="100"><br>
-    Correct Answer*:<i>Must not longer than 100 characters</i>
-    <input type="text" name="correctanswer" id="correctanswer" size="100" required maxlength="100"><br>
+    <label>Helper Answer:</label>
+    <input type="text" name="helperanswer" id="helperanswer" placeholder ="Must not longer than 100 characters"size="100" maxlength="100"><br>
+    <label>Correct Answer*:</label>
+    <input type="text" placeholder ="Must not longer than 100 characters"name="correctanswer" id="correctanswer" size="100" required maxlength="100"><br>
     <input type="submit" value="Submit" id="submit-add-puzzle">
+    <input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
 </form>
-<a href="#" class="goback" zoneid="<?=$zoneid?>"style ="color:black">Go Back</a>
-
+</div>

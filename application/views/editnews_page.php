@@ -60,8 +60,7 @@ $(document).ready(function(){
 <form method="POST" id="form-edit-news">
     <div class ="r1-add-place">
     <h1 class ="text-white"style="margin-top:50px !important">แก้ไขข่าว</h1>
-  </div>
-    <div class="form-field-add">
+  </div><br><br>
     <input type="hidden" name="newsid" id="newsid" value="<?=$newsdata['newsid']?>">
     Place Name*:
     <?= form_dropdown('placeid',$placedata, $newsdata['placeid'],'id="placeid"'); ?>
@@ -77,5 +76,4 @@ $(document).ready(function(){
     <br><br>
     <input type="submit" value="Submit" id="submit-edit-news">
     <input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
-</div>
 </form>

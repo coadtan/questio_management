@@ -45,6 +45,9 @@ $(document).ready(function(){
     });
 });
 </script>
+<div class ="r1-add-place">
+    <h1 class ="text-white"style="margin-top:50px !important">Add Riddle</h1>
+  </div><br><br>
 <h2 style='color:red'><?=$message?></h2>
 <form method="POST" id="form-add-riddle">
     <input type="hidden" name="ridid" id="ridid" value="<?=$ridid?>">
@@ -55,12 +58,12 @@ $(document).ready(function(){
     <input type="text" name="riddetails" id="riddetails" size="100" required><br>
     Scan Limit*:
     <input type="number" name="scanlimit" id="scanlimit" value="4" required pattern="[0-9]"><br>
-    Hint 1:<i>Must not longer than 100 characters</i>
-    <input type="text" name="hint1" id="hint1" size="100" required maxlength="100"><br>
-    Hint 2:<i>Must not longer than 100 characters</i>
-    <input type="text" name="hint2" id="hint2" size="100" required maxlength="100"><br>
-    Hint 3:<i>Must not longer than 100 characters</i>
-    <input type="text" name="hint3" id="hint3" size="100" required maxlength="100"><br>
+    Hint 1:
+    <input type="text" name="hint1" id="hint1" size="100" placeholder="Must not longer than 100 characters" required maxlength="100"><br>
+    Hint 2:
+    <input type="text" name="hint2" id="hint2" size="100" placeholder="Must not longer than 100 characters" required maxlength="100"><br>
+    Hint 3:
+    <input type="text" name="hint3" id="hint3" size="100" placeholder="Must not longer than 100 characters" required maxlength="100"><br>
     <input type="submit" value="Submit" id="submit-add-riddle">
+    <input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
 </form>
-<a href="#" class="goback" zoneid="<?=$zoneid?>"style ="color:black">Go Back</a>

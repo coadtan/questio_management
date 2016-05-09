@@ -48,7 +48,7 @@ $(document).ready(function(){
 <form method="POST" id="form-edit-quest">
   <div class ="r1-add-place">
     <h1 class ="text-white"style="margin-top:50px !important">แก้ไข Quest</h1>
-  </div>
+  </div><br><br>
     <input type="hidden" name="questid" id="questid" value="<?=$questdata['questid']?>">
     <input type="hidden" name="zoneid" id="zoneid" value="<?=$zoneid?>">
     Quest Name*:

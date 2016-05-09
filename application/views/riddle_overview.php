@@ -23,6 +23,9 @@ $(document).ready(function(){
     });
 });
 </script>
+<div class ="r1-add-place">
+    <h1 class ="text-white"style="margin-top:50px !important">Riddle List</h1>
+  </div><br><br>
 <?php if(empty($riddledata)) :?>
 <a href = "#" style="color:black" id="addriddle" ridid="<?=$ridid?>">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>

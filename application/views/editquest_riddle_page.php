@@ -48,7 +48,7 @@ $(document).ready(function(){
 <form method="POST" id="form-edit-riddle">
     <div class ="r1-add-place">
     <h1 class ="text-white"style="margin-top:50px !important">แก้ไข Riddle</h1>
-  </div>
+  </div><br><br>
     <input type="hidden" name="ridid" id="ridid" value="<?=$riddledata['ridid']?>">
     <input type="hidden" name="zoneid" id="zoneid" value="<?=$zoneid?>">
     Quest Name*:

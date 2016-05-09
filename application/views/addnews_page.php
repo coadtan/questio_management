@@ -52,8 +52,7 @@
 <form method="POST" id="form-add-news">
     <div class ="r1-add-place">
     <h1 class ="text-white"style="margin-top:50px !important">เพิ่มข้อมูลข่าวของคุณ</h1>
-  </div>
-  <div class ="form-field-add">
+  </div><br><br>
     <label>Place Name*:</label>
     <?= form_dropdown('placeid',$placedata,'','id="placeid"'); ?><br>
     <label>News Header*:</label>
@@ -79,4 +78,3 @@
     <input type="submit" value="Submit" id="submit-add-news">
     <input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
 </form>
-</div>

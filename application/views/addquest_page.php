@@ -49,9 +49,12 @@ $(document).ready(function(){
 });
 </script>
 <form method="POST" id="form-add-quest">
+  <div class ="r1-add-place">
+    <h1 class ="text-white"style="margin-top:50px !important">เพิ่ม Quest</h1>
+  </div>
+  <br><br>
 	Quest Name*:
-	<i>Must be less than 100 characters</i>
-	 <input type="text" name="questname" id="questname" size="100" required maxlength="100"><br>
+	 <input type="text" name="questname" id="questname" size="100" placeholder="Must be less than 100 characters" required maxlength="100"><br>
 	Quest Details*:
 	<textarea name="questdetails" id="questdetails" rows="5" cols="50" required>
 	</textarea><br>
@@ -64,7 +67,7 @@ $(document).ready(function(){
 	 <br>
 	Rewards:
 	<?= form_dropdown('rewardid',$reward, '', 'id="rewardid"'); ?>
-	 <br>
+	 <br><br>
 	<input type="submit" value="Submit" id="submit-add-quest">
+  <input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
 </form>
-<a href="#" class="goback" zoneid="<?=$zoneid?>" style ="color:black">Go Back</a>

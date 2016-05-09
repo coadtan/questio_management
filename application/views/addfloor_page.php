@@ -54,6 +54,9 @@ $(document).ready(function(){
     });
 });
 </script>
+<div class ="r1-add-place">
+    <h1 class ="text-white"style="margin-top:50px !important">Add Floor</h1>
+  </div><br><br>
 <form enctype="multipart/form-data" method="post" accept-charset="utf-8" id="form-add-floor">
 	Floor Name*:
 	<i>Must be less than 100 characters</i>
@@ -71,5 +74,5 @@ $(document).ready(function(){
     accept="image/*">
 		<br>
 	<input type="submit" value="Submit" id="submit-add-floor">
+  <input type="button"href="#" class="goback"style ="color:black" value="Back"></input>
 </form>
-<a href="#" class="goback"style ="color:black">Go Back</a>
