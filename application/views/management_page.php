@@ -162,10 +162,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</ul>
 			</div>
 		</div>
-		<div class ="wrapper-align-mid header-float wrapper-m">
-			<div class ="wrapper-m" id="mainarea">
+		
+			<div class ="wrapper-align-mid header-float wrapper-m">
+				<div class ="wrapper-m" id="mainarea">
+				</div>
 			</div>
-	</div>
 	<div class="footer">
 	</div>
 </body>
