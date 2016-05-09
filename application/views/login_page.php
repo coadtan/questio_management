@@ -6,6 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta charset="utf-8">
 	<title>Login</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="<?=base_url('assets/images/questioicon.ico')?>" />
 	<?=script_tag('assets/jquery/jquery-2.2.0.min.js')?>
 	<?=script_tag('assets/bootstrap/js/bootstrap.js')?>
 	<?=link_tag('assets/bootstrap/css/bootstrap.min.css')?>
@@ -20,6 +21,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<h2 class ="text-blue-title">Application for Adventure</h2>
 				<br/>
 				<img class="questio-logo" src="<?= base_url()?>assets/images/logo.png" alt="">
+			</div>
+		</div>
+		<div class="row">
+			<div class ="r2" style ="padding-top:25px">
+				<iframe width="640" height="360" 
+				src="https://www.youtube.com/embed/51-eIeRX6gU?rel=0&amp;showinfo=0" 
+				frameborder="0" allowfullscreen>
+				</iframe>
 			</div>
 		</div>
 		<div class="row">
@@ -111,15 +120,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="row r8">
 				<div class="col-md-8 col-md-push-2" style ="color:white">
 					<h1 style ="text-align:center;margin-top:50px">Questio</h1>
-					<div class ="detail-questio">
-						<div class ="tropic">
-							<div class="col-md-6" style ="color:white"><h4>Contact: questio_kmutt@gmail.com</div>
-						</div>
-					</div>
+					<h3 style ="text-align:center;margin-top:50px">Contact: questio_kmutt@gmail.com</h3>
 					<br>				
-					<div class ="copyright">
+					<div class ="copyright" >
 						<hr>
-						<p> &nbsp&nbsp © copyright Questio Application for Adventure project KMUTT</p>
+						<p align="center"> &nbsp&nbsp © copyright Questio Application for Adventure project KMUTT</p>
 					</div>
 				</div>
 			</div>
