@@ -153,7 +153,7 @@ class Zone_model extends CI_Model{
 
 	public function showZoneManagement($floorid){
 		$zone = null;
-		$this->db->select('zoneid, zonename, imageurl');
+		$this->db->select('zoneid, zonename, imageurl, qrcode');
 		$this->db->from('Zone');
 		$this->db->where('floorid',$floorid);
 		$this->db->order_by('zoneid','asc');
@@ -165,11 +165,13 @@ class Zone_model extends CI_Model{
 				$zoneid = $row['zoneid'];
 				$zonename = $row['zonename'];
 				$imageurl = $row['imageurl'];
+				$qrcode = $row['qrcode'];
 				$zone[$i++] =
 					array(
 						'zoneid'=>$zoneid,
 						'zonename'=>$zonename,
-						'imageurl'=>$imageurl
+						'imageurl'=>$imageurl,
+						'qrcode'=>$qrcode,
 					);
 			}
 		}

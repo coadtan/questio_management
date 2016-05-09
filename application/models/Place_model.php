@@ -341,7 +341,7 @@ class Place_model extends CI_Model{
 		$this->db->from('management');
 		$this->db->where('keeperid',$keeperid);
 		$subquery = $this->db->get_compiled_select();
-		$this->db->select('placeid, placename, imageurl');
+		$this->db->select('placeid, placename, imageurl, qrcode');
 		$this->db->from('Place');
 		$this->db->where('placeid IN ('.$subquery.')', null, false);
 		$this->db->order_by('placeid','asc');
@@ -353,11 +353,13 @@ class Place_model extends CI_Model{
 				$placeid = $row['placeid'];
 				$placename = $row['placename'];
 				$imageurl = $row['imageurl'];
+				$qrcode = $row['qrcode'];
 				$places[$i++] =
 					array(
 						'placeid'=>$placeid,
 						'placename'=>$placename,
-						'imageurl'=>$imageurl
+						'imageurl'=>$imageurl,
+						'qrcode'=>$qrcode
 					);
 			}
 		}

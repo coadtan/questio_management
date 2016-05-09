@@ -72,7 +72,8 @@ $(document).ready(function(){
             <?php if(!empty($building['imageurl'])):?>
 		      <img
 		      	src="<?=base_url($building['imageurl'])?>"
-		      	alt="<?=$building['buildingname']?>">
+		      	alt="<?=$building['buildingname']?>"
+                style="width: 200px; height: 200px">
             <?php else:?>
                 <h3 style="color:black"><b><?=$building['buildingname']?></b></h3>
             <?php endif;?>
@@ -92,7 +93,7 @@ $(document).ready(function(){
 		    href="#"
 		    class="thumbnail item_default"
 		    id="addbuilding"
-            style="color:black"
+            style="color:black; width: 200px; height: 200px;"
 		>
 			<span class="glyphicon glyphicon-plus" style="font-size:100px"></span>
 		</a>
