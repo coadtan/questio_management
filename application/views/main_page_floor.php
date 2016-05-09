@@ -35,12 +35,23 @@ $(document).ready(function(){
     });
     $('.deletefloor').click(function(){
         var floorid = this.getAttribute("floorid");
-        $('#mainarea').load(
-            "<?=base_url('mainpage/deletefloor')?>"+ "/"+ floorid
-        );
-        $('html,body').animate({
-            scrollTop: $("#mainarea").offset().top},
-        'slow');
+        sweetAlert({
+              title: "Delete floor?",
+              text: "Typing 'yes' to continue",
+              type: 'input',
+              showCancelButton: true,
+              closeOnConfirm: true,
+              animation: "slide-from-top"
+              }, function(inputValue){
+                if(inputValue=="yes"){
+                    $('#mainarea').load(
+                        "<?=base_url('mainpage/deletefloor')?>"+ "/"+ floorid
+                    );
+                    $('html,body').animate({
+                        scrollTop: $("#mainarea").offset().top},
+                    'slow');
+                }
+        });
     });
 });
 </script>
@@ -58,14 +69,19 @@ $(document).ready(function(){
             <?php if(!empty($floor['imageurl'])):?>
 		      <img
 		      	src="<?=base_url($floor['imageurl'])?>"
-		      	alt="<?=$floor['floorname']?>">
+		      	alt="<?=$floor['floorname']?>"
+                style="width: 200px; height: 200px">
             <?php else:?>
                 <h3 style="color:black"><b><?=$floor['floorname']?></b></h3>
             <?php endif;?>
 		    </a>
-		    <?=$floor['floorname']?>
-		    <a href="#" class="editfloor" floorid="<?=$floor['floorid']?>"style ="color:black">Edit</a>
-		    <a href="#" class="deletefloor" floorid="<?=$floor['floorid']?>"style ="color:black">Delete</a>
+            <span style="font-size: 20px; font-weight: bold;"><?=$floor['floorname']?></span>
+		    <a href="#" class="editfloor" floorid="<?=$floor['floorid']?>"style ="color:black">
+                <span class="glyphicon glyphicon-cog"/>
+            </a>
+		    <a href="#" class="deletefloor" floorid="<?=$floor['floorid']?>"style ="color:black">
+                <span class="glyphicon glyphicon-trash" style="color:red"/>
+            </a>
 	  	</div>
     <?php endforeach;?>
 <?php endif;?>
@@ -74,7 +90,7 @@ $(document).ready(function(){
 		    href="#"
 		    class="thumbnail item_default"
 		    id="addfloor"
-            style="color:black"
+            style="color:black; width: 200px; height: 200px;"
 		>
 			<span class="glyphicon glyphicon-plus" style="font-size:100px"></span>
 		</a>

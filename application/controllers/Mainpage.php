@@ -81,22 +81,22 @@ class Mainpage extends CI_Controller {
 
 	public function deleteplace($placeid){
 		$this->Place_model->deletePlace($placeid);
-		redirect('Mainpage','refresh');
+		$this->getplace();
 	}
 
 	public function deletebuilding($buildingid){
 		$this->Building_model->deleteBuilding($buildingid);
-		redirect('Mainpage','refresh');
+		$this->getplace();
 	}
 
 	public function deletefloor($floorid){
 		$this->Floor_model->deleteFloor($floorid);
-		redirect('Mainpage','refresh');
+		$this->getplace();
 	}
 
 	public function deletezone($zoneid){
 		$this->Zone_model->deleteZone($zoneid);
-		redirect('Mainpage','refresh');
+		$this->getplace();
 	}
 
 

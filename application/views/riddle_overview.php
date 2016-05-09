@@ -36,6 +36,7 @@ $(document).ready(function(){
             <th>Hint 1</th>
             <th>Hint 2</th>
             <th>Hint 3</th>
+            <th>QR Code</th>
             <th>Edit</th>
         </tr>
     </thead>
@@ -49,6 +50,11 @@ $(document).ready(function(){
             <td><?= $riddle['hint2']?></td>
             <td><?= $riddle['hint3']?></td>
             <td>
+                <a href="#" style ="color:black" data-toggle="modal" data-target="#qrCodeRiddle-<?=$riddle['qrcode']?>">
+                    <span class="glyphicon glyphicon-qrcode"/>
+                </a>
+            </td>
+            <td>
                 <a href="#" class="editriddle" ridid="<?=$riddle['ridid']?>">
                     <span
                         class="glyphicon glyphicon-asterisk"
@@ -57,6 +63,25 @@ $(document).ready(function(){
                 </a>
             </td>
         </tr>
+<!-- QR Modal -->
+<div class="modal fade" id="qrCodeRiddle-<?=$riddle['qrcode']?>" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">QR Code <?=$riddle['qrcode']?></h4>
+      </div>
+      <div class="modal-body">
+        <img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=questio:riddleanswer:<?=$riddle['qrcode']?>:questio&choe=UTF-8" title="Link to Google.com" />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of QR Modal -->
         <?php endforeach;?>
     <?php else: ?>
         <h2 style='color:red'>Riddle not found</h2>"
